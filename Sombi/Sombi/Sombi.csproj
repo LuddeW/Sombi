@@ -39,14 +39,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
-    <Compile Include="Grid.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
 <<<<<<< HEAD
     <Compile Include="Tile.cs" />
 =======
     <Compile Include="TextureManager.cs" />
 >>>>>>> origin/master
+=======
+>>>>>>> parent of 7a8e272... Grid and tile test 2
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
