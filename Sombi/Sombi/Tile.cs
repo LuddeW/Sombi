@@ -10,7 +10,7 @@ namespace Sombi
     {
         bool passable;
         Vector2 pos;
-
+        2222
         public Tile(Vector2 index)
         {
             this.pos = new Vector2(index.X * 50, index.Y * 50);
