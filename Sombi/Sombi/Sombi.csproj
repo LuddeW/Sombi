@@ -42,7 +42,11 @@
     <Compile Include="Grid.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <Compile Include="Tile.cs" />
+=======
+    <Compile Include="TextureManager.cs" />
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
