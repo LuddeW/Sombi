@@ -19,7 +19,7 @@ namespace Sombi
         {
             base.Initialize();
         }
-        protected override void LoadContent()
+        protected override void LoadFucker()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
