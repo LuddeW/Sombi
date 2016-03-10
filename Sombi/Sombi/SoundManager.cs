@@ -10,26 +10,70 @@ namespace Sombi
 {
     class SoundManager
     {
-        public static Song song { get; private set; }
-        public static SoundEffect destroyed { get; private set; }
+        SoundLibrary soundLibrary = new SoundLibrary();
+        //public static Song song { get; private set; }
 
-        public static void LoadContent(ContentManager content)
+        //public static void LoadContent(ContentManager content)
+        //{
+        //    song = content.Load<Song>("BackgroundMusic");
+        //    destroyed = content.Load<SoundEffect>("rock_impact_3");
+        //}
+
+        //public static void Playsound(int soundNbr, ContentManager content)
+        //{
+        //    LoadContent(content);
+        //    if (soundNbr == 1)
+        //    {
+        //        MediaPlayer.Play(song);
+        //        MediaPlayer.IsRepeating = true;
+        //        MediaPlayer.Volume = 0.3f;
+        //    }
+        //    if (soundNbr == 2)
+        //    {
+        //        destroyed.Play();
+        //    }
+        //}
+
+        public void PlaySound(SoundEffectInstance sound)
         {
-            song = content.Load<Song>("BackgroundMusic");
-            destroyed = content.Load<SoundEffect>("rock_impact_3");
+            if (sound != null)
+            {
+                if (sound.State == SoundState.Stopped)
+                {
+                    sound.Play();
+                }
+            }
+        }
+        public void StopSound(SoundEffectInstance sound)
+        {
+            if (sound.State == SoundState.Playing)
+            {
+                sound.Stop();
+            }
         }
 
-        public static void Playsound(int soundNbr, ContentManager content)
+
+        //Instanser av ljud
+        public SoundEffectInstance ShotGunFire
         {
-            LoadContent(content);
-            if (soundNbr == 1)
+            get
             {
-                MediaPlayer.Play(song);
-            }
-            if (soundNbr == 2)
-            {
-                destroyed.Play();
+                if (soundLibrary.shotGunFireInstance == null)
+                {
+                    soundLibrary.shotGunFireInstance = soundLibrary.shotGunFire.CreateInstance();
+                }
+                return soundLibrary.shotGunFireInstance;
             }
         }
+
+
+
+
+
+
+
+
+
+
     }
 }
