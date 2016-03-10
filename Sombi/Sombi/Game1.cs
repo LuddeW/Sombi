@@ -10,8 +10,6 @@ namespace Sombi
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Player player;
-
-
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
