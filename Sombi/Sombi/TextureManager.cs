@@ -10,10 +10,14 @@ namespace Sombi
     class TextureManager
     {
         public static Texture2D tileTex { get; private set; }
+        public static Texture2D player1Tex { get; private set; }
+        public static Texture2D player2Tex { get; private set; }
+
 
         public static void LoadContent(ContentManager Content)
         {
             tileTex = Content.Load<Texture2D>("tile");
+
         }
     }
 }
