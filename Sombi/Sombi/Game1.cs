@@ -10,6 +10,7 @@ namespace Sombi
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Player player;
+        Gayass;
 
         public Game1()
         {
