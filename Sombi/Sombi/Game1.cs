@@ -9,6 +9,7 @@ namespace Sombi
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Player player;
 
         public Game1()
         {
@@ -22,10 +23,11 @@ namespace Sombi
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            
         }
         protected override void UnloadContent()
         {
+
         }
 
         protected override void Update(GameTime gameTime)
