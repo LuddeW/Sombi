@@ -28,6 +28,7 @@ namespace Sombi
                 } 
             }
         }
+
         public void Draw(SpriteBatch sb)
         {
             sb.Draw(tex, new Vector2(0, 0), Color.White);
