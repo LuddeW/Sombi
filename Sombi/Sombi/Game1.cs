@@ -9,8 +9,7 @@ namespace Sombi
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Player player
-        int prololo;
+        Player player;
 
 
         public Game1()
