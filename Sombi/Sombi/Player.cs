@@ -27,7 +27,6 @@ namespace Sombi
             maxspeed = 3.0f;
         }
 
-
         public void Update()
         {
             gamePadState = GamePad.GetState(PlayerIndex.One);
@@ -68,7 +67,6 @@ namespace Sombi
         {
 
         }
-
 
     }
 }

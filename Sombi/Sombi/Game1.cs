@@ -10,24 +10,29 @@ namespace Sombi
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Player player;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
+
         protected override void Initialize()
         {
             base.Initialize();
         }
+
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             
         }
+
         protected override void UnloadContent()
         {
 
         }
+
 
         protected override void Update(GameTime gameTime)
         {
@@ -35,6 +40,7 @@ namespace Sombi
                 Exit();
             base.Update(gameTime);
         }
+
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -42,5 +48,6 @@ namespace Sombi
             spriteBatch.End();
             base.Draw(gameTime);
         }
+
     }
 }
