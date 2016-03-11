@@ -11,14 +11,14 @@ namespace Sombi
     class GameManager
     {
         PlayerManager playerManager;
+        ContentManager contentManager;
         Vector2 testMapPos;
         TextureLibrary textureLibrary;
-        ContentManager contentManager;
+
 
         public GameManager(ContentManager contentManager)
         {
             this.contentManager = contentManager;
-
             playerManager = new PlayerManager();
             textureLibrary = new TextureLibrary();
             textureLibrary.LoadContent(contentManager);
@@ -29,7 +29,7 @@ namespace Sombi
         {
             playerManager.Update(gameTime);
         }
-
+        
         public void Draw(SpriteBatch spriteBatch)
         {
             playerManager.Draw(spriteBatch);

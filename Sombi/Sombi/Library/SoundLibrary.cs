@@ -13,11 +13,17 @@ namespace Sombi
         public Song song1;
         public SoundEffect shotGunFire;
         public SoundEffectInstance shotGunFireInstance;
+        public SoundEffect rifleFire;
+        public SoundEffectInstance rifleFireInstance;
+        public SoundEffect explosiveFire;
+        public SoundEffectInstance explosiveFireInstance;
 
         public void LoadContent(ContentManager content)
         {
             song1 = content.Load<Song>("BackgroundMusic");
-            shotGunFire = content.Load<SoundEffect>("rock_impact_3");
+            shotGunFire = content.Load<SoundEffect>("shotgun");
+            rifleFire = content.Load<SoundEffect>("rifle");
+            explosiveFire = content.Load<SoundEffect>("explosive");
         }
 
 

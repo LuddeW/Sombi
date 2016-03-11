@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,14 @@ namespace Sombi
         {
             this.passable = passable;
         }
-
         public bool GetPassable()
         {
             return this.passable;
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+
         }
     }
     
