@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Sombi
+namespace Sombi.Weapon
 {
-    class Rifle : Weapon
+    class Bullet
     {
-        public Rifle()
-        {
-
-        }
     }
 }
