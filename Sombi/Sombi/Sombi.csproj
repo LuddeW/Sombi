@@ -38,6 +38,12 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Camera.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="MovingObject.cs" />
+    <Compile Include="Package.cs" />
+    <Compile Include="StationaryObject.cs" />
+    <Compile Include="Weapon\Explosives.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Grid.cs" />
     <Compile Include="Library\SoundLibrary.cs" />
@@ -57,6 +63,8 @@
     <Compile Include="StationaryObject.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="Weapon\Bullet.cs" />
+    <Compile Include="Library\TextureLibrary.cs" />
+    <Compile Include="Manager\WeaponManager.cs" />
     <Compile Include="Weapon\Explosives.cs" />
     <Compile Include="Weapon\Rifle.cs" />
     <Compile Include="Weapon\Shotgun.cs" />
