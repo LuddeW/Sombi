@@ -7,5 +7,9 @@ namespace Sombi
 {
     class Shotgun : Weapon
     {
+        public Shotgun()
+        {
+
+        }
     }
 }
