@@ -9,6 +9,7 @@ namespace Sombi
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        GameManager gameManager = new GameManager();
         Player player;
         int test;
 
@@ -46,6 +47,7 @@ namespace Sombi
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
+            gameManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
