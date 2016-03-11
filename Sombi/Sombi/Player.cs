@@ -27,7 +27,7 @@ namespace Sombi
             maxspeed = 3.0f;
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             gamePadState = GamePad.GetState(PlayerIndex.One);
             circularGamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
@@ -43,9 +43,7 @@ namespace Sombi
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
             spriteBatch.Draw(texture, position, null, Color.White, angle, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
-            spriteBatch.End();
         }
 
         private void UpdatePosition() //Update Velocity and Position based on controller input
