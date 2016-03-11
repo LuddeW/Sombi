@@ -9,6 +9,9 @@ namespace Sombi
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        Player player;
+        int test;
         GameManager gameManager;
 
         public Game1()
@@ -25,7 +28,7 @@ namespace Sombi
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            gameManager = new GameManager();
+            gameManager = new GameManager(Content);
         }
 
         protected override void UnloadContent()

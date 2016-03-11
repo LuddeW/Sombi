@@ -13,8 +13,8 @@ namespace Sombi
         Player player2;
         public PlayerManager()
         {
-            player1 = new Player(TextureLibrary.player1Tex);
-            player2 = new Player(TextureLibrary.player2Tex);
+            player1 = new Player();
+            player2 = new Player();
         }
 
         public void Update(GameTime gameTime)

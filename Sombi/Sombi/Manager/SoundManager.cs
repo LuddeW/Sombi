@@ -65,8 +65,28 @@ namespace Sombi
                 return soundLibrary.shotGunFireInstance;
             }
         }
-
-
+        public SoundEffectInstance RifleFire
+        {
+            get
+            {
+                if (soundLibrary.rifleFireInstance == null)
+                {
+                    soundLibrary.rifleFireInstance = soundLibrary.rifleFire.CreateInstance();
+                }
+                return soundLibrary.rifleFireInstance;
+            }
+        }
+        public SoundEffectInstance ExplosiveFire
+        {
+            get
+            {
+                if (soundLibrary.explosiveFireInstance == null)
+                {
+                    soundLibrary.explosiveFireInstance = soundLibrary.explosiveFire.CreateInstance();
+                }
+                return soundLibrary.explosiveFireInstance;
+            }
+        }
 
 
 
