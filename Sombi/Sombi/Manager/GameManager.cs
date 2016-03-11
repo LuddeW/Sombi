@@ -14,6 +14,7 @@ namespace Sombi
     {
 
         //Texture2D testMap;
+        PlayerManager playerManager;
         Vector2 testMapPos = Vector2.Zero;
         TextureLibrary textureLibrary = new TextureLibrary();
 
@@ -21,11 +22,11 @@ namespace Sombi
         {
             //testMap = textureLibrary.testMapTex;
 
-        PlayerManager playerManager;
+            PlayerManager playerManager;
+        }
         public GameManager()
         {
             playerManager = new PlayerManager();
-
         }
 
         public void Update(GameTime gameTime)
