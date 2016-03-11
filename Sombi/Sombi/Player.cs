@@ -10,7 +10,6 @@ namespace Sombi
 {
     class Player
     {
-        Texture2D texture;
         Vector2 position;
         Vector2 velocity;
         float angle;
@@ -19,9 +18,8 @@ namespace Sombi
         GamePadState circularGamePadState;
 
 
-        public Player(Texture2D texture)
+        public Player()
         {
-            this.texture = texture;
             position = Vector2.Zero;
             velocity = Vector2.Zero;
             maxspeed = 3.0f;
@@ -43,7 +41,7 @@ namespace Sombi
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, null, Color.White, angle, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(TextureLibrary.player1Tex, position, null, Color.White, angle, new Vector2(TextureLibrary.player1Tex.Width / 2, TextureLibrary.player1Tex.Height / 2), 1f, SpriteEffects.None, 0f);
 
         }
 

@@ -16,8 +16,10 @@ namespace Sombi
 
         public void LoadContent(ContentManager Content)
         {
-            tileTex = Content.Load<Texture2D>("tile");
-            testMapTex = Content.Load<Texture2D>("TestMap");
+            //tileTex = Content.Load<Texture2D>("tile");
+            //testMapTex = Content.Load<Texture2D>("TestMap");
+            player1Tex = Content.Load<Texture2D>(@"Player1");
+            player2Tex = Content.Load<Texture2D>(@"Player1");
         }
     }
 }

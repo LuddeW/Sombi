@@ -25,7 +25,7 @@ namespace Sombi
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            gameManager = new GameManager();
+            gameManager = new GameManager(Content);
         }
 
         protected override void UnloadContent()
