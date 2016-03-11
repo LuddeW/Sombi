@@ -44,6 +44,7 @@ namespace Sombi
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, null, Color.White, angle, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
+
         }
 
         private void UpdatePosition() //Update Velocity and Position based on controller input

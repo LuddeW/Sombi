@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Sombi
 {
-    class Rifle
+    class Rifle : Weapon
     {
+        public Rifle()
+        {
+
+        }
     }
 }

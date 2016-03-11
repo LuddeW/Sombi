@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Sombi
 {
@@ -14,14 +12,17 @@ namespace Sombi
     {
 
         //Texture2D testMap;
+        PlayerManager playerManager;
         Vector2 testMapPos = Vector2.Zero;
         TextureLibrary textureLibrary = new TextureLibrary();
         PlayerManager playerManager;
+
 
         public void LoadContent(ContentManager Content)
         {
             //testMap = textureLibrary.testMapTex;
         }
+
         public GameManager()
         {
             playerManager = new PlayerManager();
