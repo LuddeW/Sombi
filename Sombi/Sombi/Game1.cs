@@ -9,8 +9,7 @@ namespace Sombi
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Player player;
-        int test;
+        GameManager gameManager;
 
         public Game1()
         {
@@ -26,7 +25,7 @@ namespace Sombi
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
+            gameManager = new GameManager();
         }
 
         protected override void UnloadContent()
@@ -40,12 +39,14 @@ namespace Sombi
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             base.Update(gameTime);
+            gameManager.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
+            gameManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
