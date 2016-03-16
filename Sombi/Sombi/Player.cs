@@ -41,7 +41,7 @@ namespace Sombi
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TextureLibrary.player1Tex, position, null, Color.White, angle, new Vector2(TextureLibrary.player1Tex.Width / 2, TextureLibrary.player1Tex.Height / 2), 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(TextureLibrary.player1Tex, new Vector2(500,500), null, Color.White, angle, new Vector2(TextureLibrary.player1Tex.Width / 2, TextureLibrary.player1Tex.Height / 2), 1f, SpriteEffects.None, 0f);
 
         }
 
