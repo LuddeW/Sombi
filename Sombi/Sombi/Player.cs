@@ -16,6 +16,7 @@ namespace Sombi
         float maxspeed;
         GamePadState gamePadState;
         GamePadState circularGamePadState;
+        Weapon playerWeapon;
 
 
         public Player()
@@ -23,6 +24,7 @@ namespace Sombi
             position = Vector2.Zero;
             velocity = Vector2.Zero;
             maxspeed = 3.0f;
+            playerWeapon = new Rifle();
         }
 
         public void Update(GameTime gameTime)
@@ -62,7 +64,10 @@ namespace Sombi
 
         private void FireWeapon() //Fire weapon when button is pressed
         {
-
+            if (gamePadState.Triggers.Right > 0.5f)
+            {
+                playerWeapon.FireWeapon(position,angle);
+            }
         }
 
     }

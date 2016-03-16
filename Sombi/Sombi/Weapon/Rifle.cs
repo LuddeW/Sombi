@@ -9,9 +9,16 @@ namespace Sombi
 {
     class Rifle : Weapon
     {
-        public Rifle()
+        public Rifle() : base()
         {
+            
+        }
 
+
+
+        public override void FireWeapon(Microsoft.Xna.Framework.Vector2 position, float angle)
+        {
+            Bullet b = new Bullet();     
         }
         public void Update(GameTime gameTime)
         {

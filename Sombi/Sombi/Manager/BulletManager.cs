@@ -9,6 +9,12 @@ namespace Sombi
 {
     class BulletManager
     {
+        List<Bullet> bullets;
+
+        public BulletManager()
+        {
+            bullets = new List<Bullet>();
+        }
 
         public void Update(GameTime gameTime)
         {
