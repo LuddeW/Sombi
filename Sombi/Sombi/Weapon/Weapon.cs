@@ -8,11 +8,17 @@ namespace Sombi
 {
     abstract class Weapon
     {
-        List<Bullet> bullets;
-        
+        float rateOfFire; //time between shots fired
+        float damage;
+
         public Weapon()
         {
-            this.bullets = new List<Bullet>();
+            
+        }
+
+        public void FireWeapon() //player calls method to fire bullets
+        {
+
         }
     }
 }
