@@ -16,9 +16,9 @@ namespace Sombi
             
         }
 
-        public void FireWeapon() //player calls method to fire bullets
+        public void FireWeapon(Vector2 position, float angle) //player calls method to fire bullets
         {
-
+            
         }
     }
 }
