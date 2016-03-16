@@ -19,11 +19,11 @@ namespace Sombi
         {
 
         }
-        public void Draw(SpriteBatch spriteBatch)
-        protected virtual void Update(GameTime gameTime)
-        {
+        //public void Draw(SpriteBatch spriteBatch);
+        //protected virtual void Update(GameTime gameTime)
+        //{
 
-        }
+        //}
 
 
         public virtual void FireWeapon(Vector2 position, float angle) //player calls method to fire bullets
