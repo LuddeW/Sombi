@@ -66,7 +66,7 @@ namespace Sombi
         {
             if (gamePadState.Triggers.Right > 0.5f)
             {
-                playerWeapon.FireWeapon();
+                playerWeapon.FireWeapon(position,angle);
             }
         }
 

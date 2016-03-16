@@ -8,17 +8,20 @@ namespace Sombi
 {
     abstract class Weapon
     {
-        float rateOfFire; //time between shots fired
-        float damage;
+        protected float rateOfFire; //time between shots fired
+        protected float damage;
+        
 
         public Weapon()
         {
             
         }
 
-        public void FireWeapon(Vector2 position, float angle) //player calls method to fire bullets
+        protected virtual void Update(GameTime gameTime);
+
+
+        public virtual void FireWeapon(Vector2 position, float angle) //player calls method to fire bullets
         {
-            
-        }
+        }    
     }
 }
