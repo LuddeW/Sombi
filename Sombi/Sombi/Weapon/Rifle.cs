@@ -20,7 +20,7 @@ namespace Sombi
         {
             Bullet b = new Bullet();     
         }
-        public void Update(GameTime gameTime)
+        protected override void Update(GameTime gameTime)
         {
 
         }

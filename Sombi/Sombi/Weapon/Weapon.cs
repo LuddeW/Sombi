@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +8,13 @@ namespace Sombi
 {
     abstract class Weapon
     {
-        List<Bullet> bullets;
+        protected float rateOfFire; //time between shots fired
+        protected float damage;
         
+
         public Weapon()
         {
-            this.bullets = new List<Bullet>();
-        }
-        public void Update(GameTime gameTime)
-        {
-
+            
         }
         //public void Draw(SpriteBatch spriteBatch);
         //protected virtual void Update(GameTime gameTime)
@@ -25,10 +22,11 @@ namespace Sombi
 
         //}
 
+        protected abstract void Update(GameTime gameTime);
+
 
         public virtual void FireWeapon(Vector2 position, float angle) //player calls method to fire bullets
         {
-
-        }
+        }    
     }
 }

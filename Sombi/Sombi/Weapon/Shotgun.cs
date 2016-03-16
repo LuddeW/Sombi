@@ -13,10 +13,11 @@ namespace Sombi
         {
 
         }
-        public void Update(GameTime gameTime)
+        protected override void Update(GameTime gameTime)
         {
 
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
 

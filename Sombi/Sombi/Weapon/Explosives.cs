@@ -15,7 +15,7 @@ namespace Sombi
         }
 
 
-        public void Update(GameTime gameTime)
+        protected override void Update(GameTime gameTime)
         {
 
         }

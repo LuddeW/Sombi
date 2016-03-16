@@ -10,10 +10,14 @@ namespace Sombi
     class WeaponManager
     {
 
+        BulletManager bulletManager;
 
 
 
-
+        public WeaponManager()
+        {
+            this.bulletManager = new BulletManager();
+        }
 
 
 
