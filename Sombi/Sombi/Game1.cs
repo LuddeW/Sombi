@@ -18,6 +18,9 @@ namespace Sombi
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            graphics.PreferredBackBufferHeight = 1000;
+            graphics.PreferredBackBufferWidth = 1000;
+            graphics.ApplyChanges();
         }
 
         protected override void Initialize()
@@ -47,7 +50,7 @@ namespace Sombi
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin();
             gameManager.Draw(spriteBatch);
             spriteBatch.End();

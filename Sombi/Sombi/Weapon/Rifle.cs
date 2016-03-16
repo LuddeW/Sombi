@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +19,14 @@ namespace Sombi
         public override void FireWeapon(Microsoft.Xna.Framework.Vector2 position, float angle)
         {
             Bullet b = new Bullet();     
+        }
+        public void Update(GameTime gameTime)
+        {
+
+        }
+        public void Draw(SpriteBatch spriteBatch)
+        {
+
         }
     }
 }

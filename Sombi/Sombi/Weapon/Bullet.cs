@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,15 @@ namespace Sombi
         Vector2 velocity;
 
         public Bullet()
+        {
+
+
+        }
+        public void Update(GameTime gameTime)
+        {
+
+        }
+        public void Draw(SpriteBatch spriteBatch)
         {
 
         }

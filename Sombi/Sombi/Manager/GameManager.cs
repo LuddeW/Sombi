@@ -32,8 +32,8 @@ namespace Sombi
         
         public void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(textureLibrary.testMapTex, testMapPos, Color.White);
             playerManager.Draw(spriteBatch);
-            //spriteBatch.Draw(textureLibrary.testMapTex, testMapPos, Color.White);
         }
     }
 }
