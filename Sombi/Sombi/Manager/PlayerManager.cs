@@ -11,6 +11,8 @@ namespace Sombi
     {
         Player player1;
         Player player2;
+        WeaponManager weaponManager;
+
         public PlayerManager()
         {
             player1 = new Player();
