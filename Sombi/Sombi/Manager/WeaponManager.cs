@@ -31,5 +31,10 @@ namespace Sombi
         {
 
         }
+
+        public void CreateBullets(Vector2 position, float angle)
+        {
+
+        }
     }
 }

@@ -16,9 +16,9 @@ namespace Sombi
 
     class Player
     {
-        Vector2 position;
+        public Vector2 position;
         Vector2 velocity;
-        float angle;
+        public float angle;
         float maxspeed;
         GamePadState gamePadState;
         GamePadState circularGamePadState;
@@ -75,11 +75,16 @@ namespace Sombi
             }
         }
 
-        private void FireWeapon() //Fire weapon when button is pressed
+        public bool FireWeapon() //Fire weapon when button is pressed
         {
             if (gamePadState.Triggers.Right > 0.5f)
             {
-                playerWeapon.FireWeapon(position,angle);
+                return true;
+            }
+
+            else
+            {
+                return false;
             }
         }
 

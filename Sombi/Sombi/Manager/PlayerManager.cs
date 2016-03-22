@@ -25,6 +25,16 @@ namespace Sombi
         {
             player1.Update(gameTime);
             player2.Update(gameTime);
+
+            if (player1.FireWeapon())
+            {
+                weaponManager.CreateBullets(player1.position, player1.angle);
+            }
+
+            if (player2.FireWeapon())
+            {
+                weaponManager.CreateBullets(player2.position, player2.angle);
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
