@@ -9,14 +9,16 @@ namespace Sombi
 {
     class WeaponManager
     {
-
         BulletManager bulletManager;
-
+        Weapon playerOneWeapon;
+        Weapon playerTwoWeapon;
 
 
         public WeaponManager()
         {
             this.bulletManager = new BulletManager();
+            playerOneWeapon = new Rifle();
+            playerTwoWeapon = new Rifle();
         }
 
 
