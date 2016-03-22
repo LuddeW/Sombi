@@ -7,25 +7,17 @@ using System.Text;
 
 namespace Sombi
 {
-    class GameObject
+    abstract class GameObject
     {
-        Texture2D tex;
         Vector2 pos;
 
-        public GameObject(Texture2D tex, Vector2 pos)
+        public GameObject(Vector2 pos)
         {
-            this.tex = tex;
             this.pos = pos;
         }
 
-        public void Update(GameTime gameTime)
-        {
+        public abstract void Update(GameTime gameTime);
 
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-
-        }
+        public abstract void Draw(SpriteBatch spriteBatch);
     }
 }

@@ -7,23 +7,12 @@ using System.Text;
 
 namespace Sombi
 {
-    class MovingObject
+    abstract class MovingObject : GameObject
     {
-
-
-
-
-
-
-
-
-        public void Update(GameTime gameTime)
+        Vector2 velocity;
+        public MovingObject(Vector2 pos, Vector2 velocity) : base(pos)
         {
-
-        }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-
+            this.velocity = velocity;
         }
     }
 }

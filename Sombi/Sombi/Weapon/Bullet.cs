@@ -9,7 +9,6 @@ namespace Sombi
 {
     class Bullet
     {
-        Vector2 velocity;
 
         public Bullet()
         {
