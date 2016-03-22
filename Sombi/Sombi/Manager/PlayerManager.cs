@@ -15,8 +15,10 @@ namespace Sombi
 
         public PlayerManager()
         {
-            player1 = new Player();
-            player2 = new Player();
+            weaponManager = new WeaponManager();
+            player1 = new Player(weaponManager);
+            player2 = new Player(weaponManager);
+           
         }
 
         public void Update(GameTime gameTime)

@@ -8,6 +8,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Sombi
 {
+    enum PlayerID
+    {
+        One,
+        Two,
+    }
+
     class Player
     {
         Vector2 position;
@@ -16,15 +22,31 @@ namespace Sombi
         float maxspeed;
         GamePadState gamePadState;
         GamePadState circularGamePadState;
+        WeaponManager weaponManager;
         Weapon playerWeapon;
+        PlayerID playerID = PlayerID.One;
 
 
-        public Player()
+        public Player(WeaponManager weaponManager)
         {
+            this.weaponManager = weaponManager;
             position = Vector2.Zero;
             velocity = Vector2.Zero;
             maxspeed = 3.0f;
-            playerWeapon = new Rifle();
+            switch (playerID)
+            {
+                case PlayerID.One:
+                    {
+                        playerWeapon = weaponManager.playerOneWeapon;
+                        break;
+                    }
+                case PlayerID.Two:
+                    {
+                        playerWeapon = weaponManager.playerTwoWeapon;
+                        break;
+                    }
+            }
+            
         }
 
         public void Update(GameTime gameTime)
