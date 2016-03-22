@@ -12,9 +12,10 @@ namespace Sombi
         bool passable;
         Vector2 pos;
 
-        public Tile(Vector2 index)
+        public Tile(Vector2 index, bool passable)
         {
             this.pos = new Vector2(index.X * 50, index.Y * 50);
+            this.passable = passable;
         }
 
         public void SetPassable(bool passable)

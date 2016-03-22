@@ -15,19 +15,19 @@ namespace Sombi
 
         public Grid()
         {
-            CreateGrid();
+            //CreateGrid();
         }
 
-        public void CreateGrid()
-        {
-            for (int i = 0; i < 20; i++)
-            {
-                for (int k = 0; k < 20; k++)
-                {
-                    grid[i, k] = new Tile(new Vector2(i, k));
-                } 
-            }
-        }
+        //public void CreateGrid()
+        //{
+        //    for (int i = 0; i < 20; i++)
+        //    {
+        //        for (int k = 0; k < 20; k++)
+        //        {
+        //            grid[i, k] = new Tile(new Vector2(i, k));
+        //        } 
+        //    }
+        //}
 
         public void Draw(SpriteBatch sb)
         {
