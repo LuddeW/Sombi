@@ -27,7 +27,6 @@ namespace Sombi
 
         public virtual void FireWeapon(Vector2 position, float angle) //player calls method to fire bullets
         {
-
         }    
     }
 }

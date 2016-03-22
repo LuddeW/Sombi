@@ -60,6 +60,10 @@ namespace Sombi
                 UpdateRotation();
                 FireWeapon();
             }
+            else
+            {
+                KeyBoardMovement();
+            }
 
         }
 
@@ -89,6 +93,26 @@ namespace Sombi
             if (gamePadState.Triggers.Right > 0.5f)
             {
                 playerWeapon.FireWeapon(position,angle);
+            }
+        }
+
+        private void KeyBoardMovement()
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            {
+                position.Y -= 1f;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            {
+                position.X -= 1f;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Down))
+            {
+                position.Y += 1f;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            {
+                position.X += 1f;
             }
         }
 
