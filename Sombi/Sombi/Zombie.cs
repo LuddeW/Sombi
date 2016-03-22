@@ -18,7 +18,7 @@ namespace Sombi
         {
             this.velocity = 100;
             this.pos = startPos;
-            this.direction = new Vector2(0, 0);
+            this.direction = new Vector2(1, 0);
             this.health = 70;
             this.activationRange = 250;
         }
@@ -32,7 +32,7 @@ namespace Sombi
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            
+            spriteBatch.Draw(TextureLibrary.zombieTex, pos, Color.White);
         }
     }
 }

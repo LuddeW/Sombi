@@ -13,15 +13,15 @@ namespace Sombi
         PlayerManager playerManager;
         ContentManager contentManager;
         Vector2 testMapPos;
-        TextureLibrary textureLibrary;
+       // TextureLibrary textureLibrary;
 
 
         public GameManager(ContentManager contentManager)
         {
             this.contentManager = contentManager;
             playerManager = new PlayerManager();
-            textureLibrary = new TextureLibrary();
-            textureLibrary.LoadContent(contentManager);
+            //textureLibrary = new TextureLibrary();
+            TextureLibrary.LoadContent(contentManager);
             testMapPos = Vector2.Zero;
         }
 
@@ -32,7 +32,7 @@ namespace Sombi
         
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(textureLibrary.testMapTex, testMapPos, Color.White);
+            spriteBatch.Draw(TextureLibrary.testMapTex, testMapPos, Color.White);
             playerManager.Draw(spriteBatch);
         }
     }
