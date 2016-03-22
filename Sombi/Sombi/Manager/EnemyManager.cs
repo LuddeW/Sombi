@@ -23,6 +23,16 @@ namespace Sombi
             Zombie z = new Zombie(startPos);
             zombies.Add(z);
         }
+        public void ClearZombies()
+        {
+            for (int i = zombies.Count; i < 1; i--)
+            {
+                if (zombies[i].health < 1)
+                {
+                    zombies.RemoveAt(i);
+                }
+            }
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (Zombie z in zombies)
