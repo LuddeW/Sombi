@@ -25,8 +25,7 @@ namespace Sombi
         protected abstract void Update(GameTime gameTime);
 
 
-        public virtual void FireWeapon(Vector2 position, float angle) //player calls method to fire bullets
-        {
-        }    
+        public abstract void FireWeapon(Vector2 position, float angle); //player calls method to fire bullets
+          
     }
 }

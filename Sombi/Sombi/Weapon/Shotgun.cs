@@ -22,5 +22,9 @@ namespace Sombi
         {
 
         }
+        public override void FireWeapon(Vector2 position, float angle)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

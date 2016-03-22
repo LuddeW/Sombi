@@ -13,13 +13,7 @@ namespace Sombi
         {
             
         }
-
-
-
-        public override void FireWeapon(Microsoft.Xna.Framework.Vector2 position, float angle)
-        {
-            Bullet b = new Bullet();     
-        }
+       
         protected override void Update(GameTime gameTime)
         {
 
@@ -27,6 +21,10 @@ namespace Sombi
         public void Draw(SpriteBatch spriteBatch)
         {
 
+        }
+        public override void FireWeapon(Vector2 position, float angle)
+        {
+            throw new NotImplementedException();
         }
     }
 }
