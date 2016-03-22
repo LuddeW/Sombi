@@ -27,25 +27,12 @@ namespace Sombi
         PlayerID playerID = PlayerID.One;
 
 
-        public Player(WeaponManager weaponManager)
+        public Player(Weapon weapon)
         {
-            this.weaponManager = weaponManager;
-            position = Vector2.Zero;
+            position = new Vector2(190,190);
             velocity = Vector2.Zero;
             maxspeed = 3.0f;
-            switch (playerID)
-            {
-                case PlayerID.One:
-                    {
-                        playerWeapon = weaponManager.playerOneWeapon;
-                        break;
-                    }
-                case PlayerID.Two:
-                    {
-                        playerWeapon = weaponManager.playerTwoWeapon;
-                        break;
-                    }
-            }
+            playerWeapon = weapon;
             
         }
 
