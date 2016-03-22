@@ -28,12 +28,12 @@ namespace Sombi
 
             if (player1.FireWeapon())
             {
-                weaponManager.CreateBullets(player1.position, player1.angle);
+                weaponManager.CreateBullets(1,player1.position, player1.angle);
             }
 
             if (player2.FireWeapon())
             {
-                weaponManager.CreateBullets(player2.position, player2.angle);
+                weaponManager.CreateBullets(2,player2.position, player2.angle);
             }
         }
 

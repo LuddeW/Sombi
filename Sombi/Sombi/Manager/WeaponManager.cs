@@ -32,9 +32,16 @@ namespace Sombi
 
         }
 
-        public void CreateBullets(Vector2 position, float angle)
+        public void CreateBullets(int PlayerID, Vector2 position, float angle)
         {
-
+            if (PlayerID == 1)
+            {
+                bulletManager.AddBullets(position, angle, playerOneWeapon.damage);
+            }
+            if (PlayerID == 2)
+            {
+                bulletManager.AddBullets(position, angle, playerTwoWeapon.damage);
+            }
         }
     }
 }

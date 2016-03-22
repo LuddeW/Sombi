@@ -9,18 +9,13 @@ namespace Sombi
     abstract class Weapon
     {
         protected float rateOfFire; //time between shots fired
-        protected float damage;
+        public int damage;
         
 
         public Weapon()
         {
             
         }
-        //public void Draw(SpriteBatch spriteBatch);
-        //protected virtual void Update(GameTime gameTime)
-        //{
-
-        //}
 
         protected abstract void Update(GameTime gameTime);
 

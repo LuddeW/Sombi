@@ -18,11 +18,23 @@ namespace Sombi
 
         public void Update(GameTime gameTime)
         {
-
+            foreach (Bullet b in bullets)
+            {
+                b.Update(gameTime);
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
+            foreach (Bullet b in bullets)
+            {
+                b.Draw(spriteBatch);
+            }
+        }
 
+        public void AddBullets(Vector2 position, float angle, int damage)
+        {
+            Bullet b = new Bullet();
+            bullets.Add(b);
         }
     }
 }
