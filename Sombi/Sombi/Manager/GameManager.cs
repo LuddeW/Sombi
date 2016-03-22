@@ -12,9 +12,9 @@ namespace Sombi
     class GameManager
     {
         const int TILE_SIZE = 50;
-
         PlayerManager playerManager;
         ContentManager contentManager;
+        EnemyManager enemyManager;
         Vector2 testMapPos;
         // TextureLibrary textureLibrary;
         Tile[,] tiles;
@@ -24,21 +24,24 @@ namespace Sombi
         {
             this.contentManager = contentManager;
             playerManager = new PlayerManager();
-            //textureLibrary = new TextureLibrary();
+            enemyManager = new EnemyManager();
             TextureLibrary.LoadContent(contentManager);
             testMapPos = Vector2.Zero;
             CreateGridFactory();
+            enemyManager.AddZombie(new Vector2(50, 50));  //Endast för TEST!!
         }
 
         public void Update(GameTime gameTime)
         {
             playerManager.Update(gameTime);
+            enemyManager.Update(gameTime);
         }
         
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(TextureLibrary.testMapTex, testMapPos, Color.White);
             playerManager.Draw(spriteBatch);
+            enemyManager.Draw(spriteBatch);
         }
 
         private void CreateTileMatrix(char objectChar)
@@ -57,8 +60,7 @@ namespace Sombi
                         case '1':
                             tiles[i, k] = new Tile(new Vector2(i, k), false);
                             break;
-                    }
-                    
+                    }                  
                 }
             }
         }
