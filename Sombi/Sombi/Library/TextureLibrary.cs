@@ -14,11 +14,13 @@ namespace Sombi
         public static Texture2D player1Tex { get; private set; }
         public static Texture2D player2Tex { get; private set; }
         public static Texture2D zombieTex { get; private set; }
+        public static Texture2D BulletBlue { get; private set; }
 
         public static void LoadContent(ContentManager Content)
         {
             //tileTex = Content.Load<Texture2D>("tile");
-            testMapTex = Content.Load<Texture2D>("TestMap2");
+            BulletBlue = Content.Load<Texture2D>(@"BulletBlue");
+            testMapTex = Content.Load<Texture2D>(@"TestMap2");
             player1Tex = Content.Load<Texture2D>(@"Player1");
             player2Tex = Content.Load<Texture2D>(@"Player2");
             zombieTex = Content.Load<Texture2D>(@"GreenZombie1");

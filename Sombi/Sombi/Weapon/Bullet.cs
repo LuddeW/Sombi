@@ -22,11 +22,11 @@ namespace Sombi
 
         public override void Update(GameTime gameTime)
         {
-            pos += velocity * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            pos += velocity * speed;
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TextureLibrary.zombieTex, pos, Color.White);
+            spriteBatch.Draw(TextureLibrary.BulletBlue, pos, Color.White);
         }
     }
 }
