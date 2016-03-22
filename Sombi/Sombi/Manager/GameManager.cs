@@ -12,28 +12,34 @@ namespace Sombi
     {
         PlayerManager playerManager;
         ContentManager contentManager;
+        EnemyManager enemyManager;
+
         Vector2 testMapPos;
-       // TextureLibrary textureLibrary;
 
 
         public GameManager(ContentManager contentManager)
         {
             this.contentManager = contentManager;
             playerManager = new PlayerManager();
-            //textureLibrary = new TextureLibrary();
+            enemyManager = new EnemyManager();
             TextureLibrary.LoadContent(contentManager);
             testMapPos = Vector2.Zero;
+
+
+            enemyManager.AddZombie(new Vector2(50, 50));  //Endast för TEST!!
         }
 
         public void Update(GameTime gameTime)
         {
             playerManager.Update(gameTime);
+            enemyManager.Update(gameTime);
         }
         
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(TextureLibrary.testMapTex, testMapPos, Color.White);
             playerManager.Draw(spriteBatch);
+            enemyManager.Draw(spriteBatch);
         }
     }
 }
