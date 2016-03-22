@@ -35,12 +35,14 @@ namespace Sombi
             {
                 weaponManager.CreateBullets(2,player2.position, player2.angle);
             }
+            weaponManager.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             player1.Draw(spriteBatch);
             player2.Draw(spriteBatch);
+            weaponManager.Draw(spriteBatch);
         }
 
     }

@@ -7,21 +7,26 @@ using System.Text;
 
 namespace Sombi
 {
-    class Bullet
+    class Bullet : MovingObject
     {
-
-        public Bullet()
+        float angle;
+        int damage;
+        Vector2 velocity;
+        public Bullet(Vector2 pos,float speed,float angle,int damage) : base(pos,speed)
         {
-
+            this.angle = angle;
+            this.damage = damage;
+            velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
 
         }
-        public void Update(GameTime gameTime)
-        {
 
+        public override void Update(GameTime gameTime)
+        {
+            pos += velocity * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-
+            spriteBatch.Draw(TextureLibrary.zombieTex, pos, Color.White);
         }
     }
 }

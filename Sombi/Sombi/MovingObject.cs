@@ -9,10 +9,10 @@ namespace Sombi
 {
     abstract class MovingObject : GameObject
     {
-        Vector2 velocity;
-        public MovingObject(Vector2 pos, Vector2 velocity) : base(pos)
+        protected float speed;
+        public MovingObject(Vector2 pos, float speed) : base(pos)
         {
-            this.velocity = velocity;
+            this.speed = speed;
         }
     }
 }

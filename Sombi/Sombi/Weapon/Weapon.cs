@@ -10,6 +10,7 @@ namespace Sombi
     {
         protected float rateOfFire; //time between shots fired
         public int damage;
+        public float speed;
         
 
         public Weapon()

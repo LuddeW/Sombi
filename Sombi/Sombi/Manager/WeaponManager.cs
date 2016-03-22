@@ -25,22 +25,22 @@ namespace Sombi
 
         public void Update(GameTime gameTime)
         {
-
+            bulletManager.Update(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-
+            bulletManager.Draw(spriteBatch);
         }
 
         public void CreateBullets(int PlayerID, Vector2 position, float angle)
         {
             if (PlayerID == 1)
             {
-                bulletManager.AddBullets(position, angle, playerOneWeapon.damage);
+                bulletManager.AddBullets(position, angle, playerOneWeapon.damage,playerOneWeapon.speed);
             }
             if (PlayerID == 2)
             {
-                bulletManager.AddBullets(position, angle, playerTwoWeapon.damage);
+                bulletManager.AddBullets(position, angle, playerTwoWeapon.damage,playerTwoWeapon.speed);
             }
         }
     }
