@@ -39,7 +39,7 @@ namespace Sombi
         public void Draw(SpriteBatch spriteBatch)
         {
 
-            spriteBatch.Draw(TextureLibrary.testMapTex, new Vector2(pos.X + 25, pos.Y + 25), new Rectangle(0, 0, 55, 50), Color.White);
+            spriteBatch.Draw(TextureLibrary.zombieTex, new Vector2(pos.X + 25, pos.Y + 25), new Rectangle(0, 0, 71, 44), Color.White);
         }
     }
 }
