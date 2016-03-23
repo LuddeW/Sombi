@@ -10,7 +10,7 @@ namespace Sombi
 {
     class SoundLibrary
     {
-        public Song song1;
+        public Song menuSong;
         public SoundEffect shotGunFire;
         public SoundEffectInstance shotGunFireInstance;
         public SoundEffect rifleFire;
@@ -20,7 +20,7 @@ namespace Sombi
 
         public void LoadContent(ContentManager content)
         {
-            song1 = content.Load<Song>("BackgroundMusic");
+            menuSong = content.Load<Song>("menuMusic");
             shotGunFire = content.Load<SoundEffect>("shotgun");
             rifleFire = content.Load<SoundEffect>("rifle");
             explosiveFire = content.Load<SoundEffect>("explosive");

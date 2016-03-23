@@ -55,7 +55,7 @@ namespace Sombi
                 }
             }
 
-            Console.WriteLine((int)((pos.X + 25) / 50) + (int)direction.X);
+           // Console.WriteLine((int)((pos.X + 25) / 50) + (int)direction.X);
           
         }
         public void handleBulletHit(float damage)

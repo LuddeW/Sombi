@@ -41,16 +41,6 @@ namespace Sombi
         {
            StreamReader sr = new StreamReader(@"Testmap.txt");
            List<string> stringList = new List<string>();
-           /* int row = 0;
-            while (!sr.EndOfStream)
-            {
-                string objectStr = sr.ReadLine();
-                for (int col = 0; col < objectStr.Length; col++)
-                {
-                    CreateTileMatrix(objectStr[col]);
-                }
-                row++;
-            }*/
             
             while (!sr.EndOfStream)
             {
