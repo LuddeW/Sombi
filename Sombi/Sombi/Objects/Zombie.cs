@@ -32,7 +32,7 @@ namespace Sombi
                     direction.X *= -1;
                 }
             }
-            else if (direction.X <= 0)
+            else if (direction.X < 0)
             {
                 if (Grid.grid[(int)((pos.X + (TextureLibrary.zombieTex.Width / 3)) / 50) + (int)direction.X, (int)(pos.Y) / 50].passable != true)
                 {
@@ -47,9 +47,9 @@ namespace Sombi
                     direction.Y *= -1;
                 }
             }
-            else if (direction.Y <= 0)
+            else if (direction.Y < 0)
             {
-                if (Grid.grid[(int)((pos.X) / 50) + (int)direction.X, ((int)(pos.Y + TextureLibrary.zombieTex.Height) / 50) + (int)direction.Y].passable != true)
+                if (Grid.grid[(int)((pos.X) / 50), ((int)(pos.Y + TextureLibrary.zombieTex.Height) / 50) + (int)direction.Y].passable != true)
                 {
                     direction.Y *= -1;
                 }
@@ -64,8 +64,7 @@ namespace Sombi
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-
-            spriteBatch.Draw(TextureLibrary.testMapTex, new Vector2(pos.X, pos.Y), new Rectangle(0, 0, 55, 50), Color.White);
+            spriteBatch.Draw(TextureLibrary.zombieTex, new Vector2(pos.X, pos.Y), new Rectangle(0, 0, (int)TextureLibrary.zombieTex.Width / 3, TextureLibrary.zombieTex.Height), Color.White);
         }
     }
 }
