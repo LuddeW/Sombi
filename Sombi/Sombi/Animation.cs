@@ -9,6 +9,11 @@ namespace Sombi
     class Animation
     {
         Texture2D texture;
+        public Texture2D Texture
+        {
+            get { return texture; } // returna bild
+        }
+
         public int frameWidth; // Bredd
 
         public int frameHeight // Höjd
