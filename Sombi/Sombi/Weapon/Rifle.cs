@@ -12,6 +12,7 @@ namespace Sombi
         public Rifle() : base()
         {
             speed = 15.0f;
+            damage = 1;
         }
        
         protected override void Update(GameTime gameTime)
