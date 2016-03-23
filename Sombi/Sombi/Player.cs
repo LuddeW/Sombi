@@ -18,6 +18,7 @@ namespace Sombi
     {
         public Vector2 position;
         Vector2 velocity;
+        Vector2 direction;
         public float angle;
         float maxspeed;
         GamePadState gamePadState;
@@ -51,6 +52,7 @@ namespace Sombi
             {
                 KeyBoardMovement();
             }
+            Collide();
 
         }
 
@@ -93,19 +95,57 @@ namespace Sombi
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
                 position.Y -= 1f;
+                direction.Y = -1;
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
                 position.X -= 1f;
+                direction.X = -1;
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
                 position.Y += 1f;
+                direction.Y = 1;
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
                 position.X += 1f;
+                direction.X = 1;
             }
+        }
+
+        private void Collide()
+        {
+            if (direction.X > 0)
+            {
+                if (Grid.grid[(int)((position.X) / 50) + (int)direction.X, (int)(position.Y) / 50].passable != true)
+                {
+                    position.X += direction.X * -1;
+                }
+            }
+            else if (direction.X < 0)
+            {
+                if (Grid.grid[(int)((position.X + (TextureLibrary.player1Tex.Width / 3)) / 50) + (int)direction.X, (int)(position.Y) / 50].passable != true)
+                {
+                    position.X += direction.X * -1;
+                }
+            }
+
+            if (direction.Y > 0)
+            {
+                if (Grid.grid[(int)((position.X) / 50), ((int)(position.Y) / 50) + (int)direction.Y].passable != true)
+                {
+                    position.Y += direction.Y * -1;
+                }
+            }
+            else if (direction.Y < 0)
+            {
+                if (Grid.grid[(int)((position.X) / 50), ((int)(position.Y + TextureLibrary.player1Tex.Height) / 50) + (int)direction.Y].passable != true)
+                {
+                    position.Y += direction.Y * -1;
+                }
+            }
+            
         }
 
     }
