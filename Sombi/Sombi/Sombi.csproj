@@ -38,6 +38,8 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Animation.cs" />
+    <Compile Include="AnimationPlayer.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Library\SoundLibrary.cs" />
@@ -52,8 +54,6 @@
     <Compile Include="Manager\WeaponManager.cs" />
     <Compile Include="Map\Grid.cs" />
     <Compile Include="Map\Tile.cs" />
-    <Compile Include="Objects\Animation.cs" />
-    <Compile Include="Objects\AnimationPlayer.cs" />
     <Compile Include="Objects\GameObject.cs" />
     <Compile Include="Objects\MovingObject.cs" />
     <Compile Include="Objects\Package.cs" />

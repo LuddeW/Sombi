@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Sombi.Objects;
 
 namespace Sombi
 {
@@ -31,7 +30,7 @@ namespace Sombi
 
         public void LoadContent()
         {
-            walkAnimation = new Animation(TextureLibrary.zombieTex, 71, 0.1f, true);
+            walkAnimation = new Animation(TextureLibrary.zombieTex, 71, 0.1f, true);           
         }
 
         public void Update(GameTime gameTime)
