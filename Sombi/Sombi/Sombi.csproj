@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="Camera.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Library\GlobalValues.cs" />
     <Compile Include="Library\SoundLibrary.cs" />
     <Compile Include="Library\TextureLibrary.cs" />
     <Compile Include="Manager\BulletManager.cs" />
