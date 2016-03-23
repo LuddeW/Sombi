@@ -77,7 +77,7 @@ namespace Sombi
 
         public bool FireWeapon() //Fire weapon when button is pressed
         {
-            if (gamePadState.Triggers.Right > 0.5f)
+            if (gamePadState.Triggers.Right > 0.5f || Keyboard.GetState().IsKeyDown(Keys.Space))
             {
                 return true;
             }
