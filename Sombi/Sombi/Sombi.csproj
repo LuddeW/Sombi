@@ -38,11 +38,8 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Animator.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="GameObject.cs" />
-    <Compile Include="Grid.cs" />
     <Compile Include="Library\SoundLibrary.cs" />
     <Compile Include="Library\TextureLibrary.cs" />
     <Compile Include="Manager\BulletManager.cs" />
@@ -53,19 +50,20 @@
     <Compile Include="Manager\PlayerManager.cs" />
     <Compile Include="Manager\SoundManager.cs" />
     <Compile Include="Manager\WeaponManager.cs" />
-    <Compile Include="MovingObject.cs" />
-    <Compile Include="Package.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Map\Grid.cs" />
+    <Compile Include="Map\Tile.cs" />
+    <Compile Include="Objects\GameObject.cs" />
+    <Compile Include="Objects\MovingObject.cs" />
+    <Compile Include="Objects\Package.cs" />
+    <Compile Include="Objects\Player.cs" />
+    <Compile Include="Objects\Zombie.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StationaryObject.cs" />
-    <Compile Include="Tile.cs" />
     <Compile Include="Weapon\Bullet.cs" />
     <Compile Include="Weapon\Explosives.cs" />
     <Compile Include="Weapon\Rifle.cs" />
     <Compile Include="Weapon\Shotgun.cs" />
     <Compile Include="Weapon\Weapon.cs" />
-    <Compile Include="Zombie.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
