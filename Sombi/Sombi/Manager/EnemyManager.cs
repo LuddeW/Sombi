@@ -17,6 +17,7 @@ namespace Sombi
             {
                 z.Update(gameTime);
             }
+            ClearZombies();
         }
         public void AddZombie(Vector2 startPos)
         {
