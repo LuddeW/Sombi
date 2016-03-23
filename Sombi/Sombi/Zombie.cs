@@ -25,12 +25,12 @@ namespace Sombi
         public void Update(GameTime gameTime)
         {
             pos += direction * velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (this.pos.X > 400 || this.pos.X < 20)
+            if (Grid.grid[(int)((pos.X +25) / 50) + (int)direction.X, (int)(pos.Y + 25) / 50].passable != true)
             {
-                velocity *= -1;
+                direction.X *= -1;
             }
-
+            Console.WriteLine((int)((pos.X + 25) / 50) + (int)direction.X);
+          
         }
         public void handleBulletHit(float damage)
         {
@@ -39,7 +39,7 @@ namespace Sombi
         public void Draw(SpriteBatch spriteBatch)
         {
 
-            spriteBatch.Draw(TextureLibrary.zombieTex, pos, new Rectangle(0, 0, 55, 50), Color.White);
+            spriteBatch.Draw(TextureLibrary.testMapTex, new Vector2(pos.X + 25, pos.Y + 25), new Rectangle(0, 0, 55, 50), Color.White);
         }
     }
 }

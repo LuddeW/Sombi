@@ -7,9 +7,9 @@ using System.Text;
 
 namespace Sombi
 {
-    class Tile
+    public class Tile
     {
-        bool passable;
+        public bool passable;
         Vector2 pos;
 
         public Tile(Vector2 index, bool passable)

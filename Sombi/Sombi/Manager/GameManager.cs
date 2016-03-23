@@ -17,19 +17,19 @@ namespace Sombi
         EnemyManager enemyManager;
         Vector2 testMapPos;
         // TextureLibrary textureLibrary;
-        Tile[,] tiles;
-        Grid grid;
+        
+        
 
 
         public GameManager(ContentManager contentManager)
         {
             this.contentManager = contentManager;
-            grid = new Grid();
+            Grid.CreateGridFactory();
             playerManager = new PlayerManager();
             enemyManager = new EnemyManager();
             TextureLibrary.LoadContent(contentManager);
             testMapPos = Vector2.Zero;
-            enemyManager.AddZombie(new Vector2(50, 50));  //Endast för TEST!!
+            enemyManager.AddZombie(new Vector2(400, 100));  //Endast för TEST!!
         }
 
         public void Update(GameTime gameTime)
