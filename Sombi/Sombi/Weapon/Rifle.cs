@@ -11,7 +11,7 @@ namespace Sombi
     {
         public Rifle() : base()
         {
-            speed = 15.0f;
+            speed = 5.0f;
             damage = 1;
         }
        
