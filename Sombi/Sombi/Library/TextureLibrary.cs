@@ -24,6 +24,7 @@ namespace Sombi
             player1Tex = Content.Load<Texture2D>(@"Player1");
             player2Tex = Content.Load<Texture2D>(@"Player2");
             zombieTex = Content.Load<Texture2D>(@"ZombieSheet");
+           
         }
     }
 }

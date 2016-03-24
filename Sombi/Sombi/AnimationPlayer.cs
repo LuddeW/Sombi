@@ -64,7 +64,7 @@ namespace Sombi
             {
                 Rectangle rectangle = new Rectangle(frameIndex * animation.frameWidth, 0, animation.frameWidth, animation.frameHeight);
 
-                spriteBatch.Draw(animation.Texture, position, rectangle, Color.White, rotation, Origin, 1f, spriteEffects, 0f);
+                spriteBatch.Draw(animation.Texture, position, rectangle, Color.White, rotation, Vector2.Zero, 1f, spriteEffects, 0f);
             }
         }
     }

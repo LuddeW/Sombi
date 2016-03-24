@@ -28,7 +28,7 @@ namespace Sombi
 
         public void Load()
         {
-            walkAnimation = new Animation(TextureLibrary.zombieTex, 69, 0.3f, true);
+            walkAnimation = new Animation(TextureLibrary.zombieTex, 69, 0.05f, true);
         }
 
         public void Update(GameTime gameTime)
