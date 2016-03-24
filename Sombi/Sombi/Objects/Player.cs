@@ -96,6 +96,7 @@ namespace Sombi
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
                 position.Y -= 1f;
+                direction.Y = -1;
                 angle = MathHelper.ToRadians(270);
             }
            
@@ -116,7 +117,7 @@ namespace Sombi
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
                 position.X += 1f;
-		direction.X = 1;               
+		        direction.X = 1;               
                 angle = MathHelper.ToRadians(0);
                 
             }
@@ -151,6 +152,8 @@ namespace Sombi
                 if (Grid.grid[(int)((position.X) / 50), ((int)(position.Y + TextureLibrary.player1Tex.Height) / 50) + (int)direction.Y].passable != true)
                 {
                     position.Y += direction.Y * -1;
+
+             
                 }
             }
             
