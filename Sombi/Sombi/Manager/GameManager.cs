@@ -29,7 +29,7 @@ namespace Sombi
             enemyManager = new EnemyManager();
             TextureLibrary.LoadContent(contentManager);
             testMapPos = Vector2.Zero;
-            enemyManager.AddZombie(new Vector2(400, 100));  //Endast för TEST!!
+            enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
         }
 
         public void Update(GameTime gameTime)

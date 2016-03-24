@@ -16,13 +16,13 @@ namespace Sombi
         
 
 
-        public static void CreateTileMatrix(char objectChar)
+       /* public static void CreateTileMatrix(char objectChar)
         {
             int boardSize = 20;
             grid = new Tile[boardSize, boardSize];
-            for (int i = 0; i < grid.GetLength(0); i++)
+            for (int i = 0; i < boardSize; i++)
             {
-                for (int k = 0; k < grid.GetLength(1); k++)
+                for (int k = 0; k < boardSize; k++)
                 {
                     switch (objectChar)
                     {
@@ -35,7 +35,7 @@ namespace Sombi
                     }
                 }
             }
-        }
+        }*/
 
         public static void CreateGridFactory()
         {
@@ -54,10 +54,10 @@ namespace Sombi
                     switch (stringList[i][k])
                     {
                         case '0':
-                            grid[i, k] = new Tile(new Vector2(i, k), true);
+                            grid[k, i] = new Tile(new Vector2(k, i), true);
                             break;
                         case '1':
-                            grid[i, k] = new Tile(new Vector2(i, k), false);
+                            grid[k, i] = new Tile(new Vector2(k, i), false);
                             break;
                     }
                 }

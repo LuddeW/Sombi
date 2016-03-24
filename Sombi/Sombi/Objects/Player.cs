@@ -141,7 +141,7 @@ namespace Sombi
 
             if (direction.Y > 0)
             {
-                if (Grid.grid[(int)((position.X) / 50), ((int)(position.Y) / 50) + (int)direction.Y].passable != true)
+                if (Grid.grid[(int)(position.X / 50), ((int)(position.Y) / 50) + (int)direction.Y].passable != true)
                 {
                     position.Y += direction.Y * -1;
                 }
