@@ -55,27 +55,6 @@ namespace Sombi
                     frameIndex = (frameIndex + 1) % animation.frameCount;
                 else frameIndex = Math.Min((frameIndex + 1), (animation.frameCount - 1));
             }
-
-
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
-            {
-                rotation = MathHelper.ToRadians(0);
-            }
-
-            else if (Keyboard.GetState().IsKeyDown(Keys.Left))
-            {
-                rotation = MathHelper.ToRadians(180);
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
-            {
-                rotation = MathHelper.ToRadians(-90);
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.Down))
-            {
-                rotation = MathHelper.ToRadians(90);
-            }
-
-
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position, SpriteEffects spriteEffects)

@@ -9,8 +9,10 @@ namespace Sombi
 {
     class EnemyManager
     {
-
+        
         List<Zombie> zombies = new List<Zombie>();
+
+        
         public void Update(GameTime gameTime)
         {
             foreach (Zombie z in zombies)
@@ -19,10 +21,13 @@ namespace Sombi
             }
             ClearZombies();
         }
+        
         public void AddZombie(Vector2 startPos)
         {
             Zombie z = new Zombie(startPos);
             zombies.Add(z);
+
+            z.Load();
         }
         public void ClearZombies()
         {
