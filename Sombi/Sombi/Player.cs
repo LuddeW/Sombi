@@ -12,7 +12,6 @@ namespace Sombi
     {
         One,
         Two,
-
     }
 
     class Player
@@ -96,29 +95,22 @@ namespace Sombi
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
                 position.Y -= 1f;
-                angle = MathHelper.ToRadians(270);
+                direction.Y = -1;
             }
-           
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
-                position.X -= 1f;    
-		        direction.X = -1;            
-                angle = MathHelper.ToRadians(180);
-                
+                position.X -= 1f;
+                direction.X = -1;
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                position.Y += 1f;  
+                position.Y += 1f;
                 direction.Y = 1;
-                angle = MathHelper.ToRadians(90);
-                
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
                 position.X += 1f;
-		direction.X = 1;               
-                angle = MathHelper.ToRadians(0);
-                
+                direction.X = 1;
             }
         }
 
