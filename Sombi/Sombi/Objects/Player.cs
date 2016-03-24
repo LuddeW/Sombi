@@ -66,6 +66,22 @@ namespace Sombi
         {
             velocity.X = gamePadState.ThumbSticks.Left.X * maxspeed;
             velocity.Y = -gamePadState.ThumbSticks.Left.Y * maxspeed;
+            if (velocity.Y < 0) // CLEAR UP THIS CODE 
+            {
+                direction.Y = -1;
+            }
+            if (velocity.Y > 0)
+            {
+                direction.Y = 1;
+            }
+            if (velocity.X < 0)
+            {
+                direction.X = -1;
+            }
+            if (velocity.X > 1)
+            {
+                direction.X = 1;
+            }
             position += velocity;
         }
 
