@@ -8,11 +8,13 @@ namespace Sombi
 {
     abstract class Weapon
     {
-        protected float fireRate; //time between shots fired
+        public float fireRate;
         public int damage;
-        public float speed;
-        public float range;
-
+        public float projectileSpeed;
+        public float weaponRange;
+        public float areaOfEffect;
+        public float projectileSpread;
+        public int numberOfProjectiles;
         
 
         public Weapon()

@@ -11,8 +11,12 @@ namespace Sombi
     {
         public Rifle() : base()
         {
-            speed = 5.0f;
-            damage = 1;
+            projectileSpeed = 15.0f;
+            weaponRange = 3;
+            damage = 20;
+            fireRate = 3;
+            numberOfProjectiles = 1;
+            //projectileSpread = 1;
         }
        
         protected override void Update(GameTime gameTime)

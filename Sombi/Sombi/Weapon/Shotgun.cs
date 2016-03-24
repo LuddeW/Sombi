@@ -9,9 +9,14 @@ namespace Sombi
 {
     class Shotgun : Weapon
     {
-        public Shotgun()
+        public Shotgun() : base()
         {
-
+            projectileSpeed = 15.0f;
+            weaponRange = 1.5f;
+            damage = 10;
+            fireRate = 1;
+            numberOfProjectiles = 4;
+            //projectileSpread = 1;
         }
         protected override void Update(GameTime gameTime)
         {
