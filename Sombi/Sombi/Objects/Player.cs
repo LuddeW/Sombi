@@ -24,7 +24,6 @@ namespace Sombi
         float maxspeed;
         GamePadState gamePadState;
         GamePadState circularGamePadState;
-        WeaponManager weaponManager;
         Weapon playerWeapon;
         PlayerID playerID = PlayerID.One;
 

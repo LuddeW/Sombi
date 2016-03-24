@@ -20,6 +20,16 @@ namespace Sombi
 
         }
 
+        public Vector2 Pos
+        {
+            get
+            {
+                return pos;
+
+            }
+            set { }
+        }
+
         public override void Update(GameTime gameTime)
         {
             pos += velocity * speed;

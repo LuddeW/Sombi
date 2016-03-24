@@ -42,6 +42,7 @@
     <Compile Include="AnimationPlayer.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Library\GlobalValues.cs" />
     <Compile Include="Objects\GameObject.cs" />
     <Compile Include="Map\Grid.cs" />
     <Compile Include="Library\SoundLibrary.cs" />
