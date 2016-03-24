@@ -16,6 +16,8 @@ namespace Sombi
         ContentManager contentManager;
         EnemyManager enemyManager;
         Vector2 testMapPos;
+
+        Package package;
         // TextureLibrary textureLibrary;
         
         
@@ -30,6 +32,7 @@ namespace Sombi
             TextureLibrary.LoadContent(contentManager);
             testMapPos = Vector2.Zero;
             enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
+            package = new Package();
         }
 
         public void Update(GameTime gameTime)
@@ -43,6 +46,7 @@ namespace Sombi
             spriteBatch.Draw(TextureLibrary.testMapTex, testMapPos, Color.White);
             playerManager.Draw(spriteBatch);
             enemyManager.Draw(spriteBatch);
+            package.Draw(spriteBatch); // Den svarta marken är package!
         }
     }
 }

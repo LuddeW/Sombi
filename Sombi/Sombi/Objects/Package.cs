@@ -9,17 +9,17 @@ namespace Sombi
 {
     class Package
     {
+        public Package()
+        {
 
-        Texture2D tex;
-
-
+        }
         public void Update(GameTime gameTime)
         {
 
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tex, new Vector2(50, 50), Color.Green);
+            spriteBatch.Draw(TextureLibrary.tileTex, new Vector2(50, 50), Color.Black);
         }
     }
 }
