@@ -93,17 +93,17 @@ namespace Sombi
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
                 position.Y -= 1f;
-                angle = MathHelper.ToRadians(-90);
+                angle = MathHelper.ToRadians(270);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
                 position.X -= 1f;
-                angle = MathHelper.ToRadians(-180);
+                angle = MathHelper.ToRadians(180);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
                 position.Y += 1f;
-                angle = MathHelper.ToRadians(-270);
+                angle = MathHelper.ToRadians(90);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
