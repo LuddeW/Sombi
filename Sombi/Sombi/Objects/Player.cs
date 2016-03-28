@@ -21,6 +21,7 @@ namespace Sombi
         Vector2 velocity;
         Vector2 direction;
         public float angle;
+        public float playerSpeed;
         float maxspeed;
         GamePadState gamePadState;
         GamePadState circularGamePadState;
@@ -34,6 +35,7 @@ namespace Sombi
             velocity = Vector2.Zero;
             maxspeed = 3.0f;
             playerWeapon = weapon;
+            playerSpeed = 1.8f;
             
         }
 
@@ -110,28 +112,28 @@ namespace Sombi
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                position.Y -= 1f;
+                position.Y -= playerSpeed;
                 direction.Y = -1;
                 angle = MathHelper.ToRadians(270);
             }
            
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
-                position.X -= 1f;    
+                position.X -= playerSpeed;    
 		        direction.X = -1;            
                 angle = MathHelper.ToRadians(180);
                 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                position.Y += 1f;  
+                position.Y += playerSpeed;  
                 direction.Y = 1;
                 angle = MathHelper.ToRadians(90);
                 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-                position.X += 1f;
+                position.X += playerSpeed;
 		        direction.X = 1;               
                 angle = MathHelper.ToRadians(0);
                 
