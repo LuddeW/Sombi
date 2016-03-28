@@ -12,7 +12,6 @@ namespace Sombi
     {
         One,
         Two,
-
     }
 
     class Player
@@ -25,23 +24,31 @@ namespace Sombi
         GamePadState gamePadState;
         GamePadState circularGamePadState;
         Weapon playerWeapon;
-        PlayerID playerID = PlayerID.One;
+        PlayerID playerID;
 
 
-        public Player(Weapon weapon)
+        public Player(Weapon weapon, Vector2 position, int ID)
         {
             position = new Vector2(175,190);
+
+            this.position = position;
             velocity = Vector2.Zero;
-            maxspeed = 3.0f;
+            maxspeed = 2.0f;
             playerWeapon = weapon;
-            
+            if (ID == 1)
+            {
+                playerID = PlayerID.One;
+            }
+            else
+            {
+                playerID = PlayerID.Two;
+            }
+
         }
 
         public void Update(GameTime gameTime)
         {
-            gamePadState = GamePad.GetState(PlayerIndex.One);
-            circularGamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
-
+            UpdateGamepad();
             if (gamePadState.IsConnected)
             {
                 UpdatePosition();
@@ -62,10 +69,26 @@ namespace Sombi
 
         }
 
+        private void UpdateGamepad()
+        {
+            if (playerID == PlayerID.One)
+            {
+                gamePadState = GamePad.GetState(PlayerIndex.One);
+                circularGamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
+            }
+            else
+            {
+                gamePadState = GamePad.GetState(PlayerIndex.Two);
+                circularGamePadState = GamePad.GetState(PlayerIndex.Two, GamePadDeadZone.Circular);
+            }
+        }
+
         private void UpdatePosition() //Update Velocity and Position based on controller input
         {
+
             velocity.X = gamePadState.ThumbSticks.Left.X * maxspeed;
             velocity.Y = -gamePadState.ThumbSticks.Left.Y * maxspeed;
+
             if (velocity.Y < 0) // CLEAR UP THIS CODE 
             {
                 direction.Y = -1;
@@ -82,14 +105,13 @@ namespace Sombi
             {
                 direction.X = 1;
             }
-            position += velocity;
         }
 
         private void UpdateRotation() //Rotate sprite based on controller input
         {
             if (circularGamePadState.ThumbSticks.Right.X != 0 && circularGamePadState.ThumbSticks.Right.Y != 0)
             {
-                angle = (float)Math.Atan2(circularGamePadState.ThumbSticks.Right.X, circularGamePadState.ThumbSticks.Right.Y) -(float)Math.PI/2;
+                angle = (float)Math.Atan2(circularGamePadState.ThumbSticks.Right.X, circularGamePadState.ThumbSticks.Right.Y) - (float)Math.PI / 2;
             }
         }
 
@@ -114,27 +136,27 @@ namespace Sombi
                 direction.Y = -1;
                 angle = MathHelper.ToRadians(270);
             }
-           
+
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
-                position.X -= 1f;    
-		        direction.X = -1;            
+                position.X -= 1f;
+                direction.X = -1;
                 angle = MathHelper.ToRadians(180);
-                
+
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                position.Y += 1f;  
+                position.Y += 1f;
                 direction.Y = 1;
                 angle = MathHelper.ToRadians(90);
-                
+
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
                 position.X += 1f;
-		        direction.X = 1;               
+                direction.X = 1;
                 angle = MathHelper.ToRadians(0);
-                
+
             }
         }
 
@@ -147,12 +169,21 @@ namespace Sombi
                     velocity = new Vector2(0, 0);
                     position.X += direction.X * -1;
                 }
+                else
+                {
+                    position += velocity;
+                }
             }
             else if (direction.X < 0)
             {
                 if (Grid.grid[(int)((position.X + (TextureLibrary.player1Tex.Width / 3)) / 50) + (int)direction.X, (int)(position.Y) / 50].passable != true)
                 {
                     position.X += direction.X * -1;
+
+                }
+                else
+                {
+                    position += velocity;
                 }
             }
 
@@ -162,17 +193,23 @@ namespace Sombi
                 {
                     position.Y += direction.Y * -1;
                 }
+                else
+                {
+                    position += velocity;
+                }
             }
             else if (direction.Y < 0)
             {
                 if (Grid.grid[(int)((position.X) / 50), ((int)(position.Y + TextureLibrary.player1Tex.Height) / 50) + (int)direction.Y].passable != true)
                 {
                     position.Y += direction.Y * -1;
-
-             
+                }
+                else
+                {
+                    position += velocity;
                 }
             }
-            
+
         }
 
     }

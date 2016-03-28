@@ -16,8 +16,8 @@ namespace Sombi
         public PlayerManager()
         {
             weaponManager = new WeaponManager();
-            player1 = new Player(weaponManager.playerOneWeapon);
-            player2 = new Player(weaponManager.playerTwoWeapon);
+            player1 = new Player(weaponManager.playerOneWeapon, new Vector2(150,150),1);
+            player2 = new Player(weaponManager.playerTwoWeapon, new Vector2(500,150),2);
            
         }
 
