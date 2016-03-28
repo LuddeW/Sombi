@@ -10,7 +10,7 @@ namespace Sombi
     class Bullet : MovingObject
     {
         float angle;
-        int damage;
+        public int damage;
         Vector2 velocity;
         public Bullet(Vector2 pos,float speed,float angle,int damage) : base(pos,speed)
         {

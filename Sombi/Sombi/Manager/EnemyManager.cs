@@ -10,16 +10,17 @@ namespace Sombi
     class EnemyManager
     {
         
-        List<Zombie> zombies = new List<Zombie>();
+        public List<Zombie> zombies = new List<Zombie>();
 
         
         public void Update(GameTime gameTime)
         {
+            ClearZombies();
             foreach (Zombie z in zombies)
             {
                 z.Update(gameTime);
             }
-            ClearZombies();
+        
         }
         
         public void AddZombie(Vector2 startPos)
@@ -31,11 +32,13 @@ namespace Sombi
         }
         public void ClearZombies()
         {
-            for (int i = zombies.Count; i < 1; i--)
+            for (int i = zombies.Count - 1; i >= 0; i--)
             {
                 if (zombies[i].health < 1)
                 {
+                    
                     zombies.RemoveAt(i);
+
                 }
             }
         }

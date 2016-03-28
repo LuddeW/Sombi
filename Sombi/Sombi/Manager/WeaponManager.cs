@@ -9,7 +9,7 @@ namespace Sombi
 {
     class WeaponManager
     {
-        BulletManager bulletManager;
+        public BulletManager bulletManager;
         public Weapon playerOneWeapon;
         public Weapon playerTwoWeapon;
 

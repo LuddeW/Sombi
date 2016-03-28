@@ -31,7 +31,11 @@ namespace Sombi
             enemyManager = new EnemyManager();
             TextureLibrary.LoadContent(contentManager);
             testMapPos = Vector2.Zero;
+
             enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
+            enemyManager.AddZombie(new Vector2(100, 100));
+            enemyManager.AddZombie(new Vector2(700, 500));
+
             package = new Package();
         }
 
@@ -39,6 +43,7 @@ namespace Sombi
         {
             playerManager.Update(gameTime);
             enemyManager.Update(gameTime);
+            CheckForBulletCollisions();
         }
         
         public void Draw(SpriteBatch spriteBatch)
@@ -48,5 +53,23 @@ namespace Sombi
             enemyManager.Draw(spriteBatch);
             package.Draw(spriteBatch); // Den svarta marken är package!
         }
+        public void CheckForBulletCollisions()      //Vet inte om den ska ligga här?
+        {
+            for (int i = 0; i < enemyManager.zombies.Count; i++)
+            {
+                for (int k = 0; k < playerManager.weaponManager.bulletManager.bullets.Count; k++)
+                {
+                    if (enemyManager.zombies[i].GetHitbox().Contains(playerManager.weaponManager.bulletManager.bullets[k].Pos))
+                    {
+                        enemyManager.zombies[i].handleBulletHit(playerManager.weaponManager.bulletManager.bullets[k].damage);
+               
+                        playerManager.weaponManager.bulletManager.bullets.RemoveAt(k);
+                     
+                        
+                    }
+                }
+            }
+        }
+
     }
 }

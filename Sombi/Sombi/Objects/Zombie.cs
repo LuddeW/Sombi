@@ -45,9 +45,9 @@ namespace Sombi
                 animationPlayer.PlayAnimation(walkAnimation);
 
             animationPlayer.Update(gameTime);
-          
+            
         }
-        public void handleBulletHit(float damage)
+        public void handleBulletHit(int damage)
         {
             this.health -= damage;
         }
@@ -87,5 +87,11 @@ namespace Sombi
                 }
             }
         }
+        public Rectangle GetHitbox()
+        {
+            Rectangle hb = new Rectangle((int)pos.X, (int)pos.Y, 50, 50);
+            return hb;
+        }
     }
+    
 }
