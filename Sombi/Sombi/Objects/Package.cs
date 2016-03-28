@@ -19,7 +19,7 @@ namespace Sombi
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TextureLibrary.tileTex, new Vector2(50, 50), Color.Black);
+            spriteBatch.Draw(TextureLibrary.tileTex, new Vector2(50, 50), Color.Red);
         }
     }
 }
