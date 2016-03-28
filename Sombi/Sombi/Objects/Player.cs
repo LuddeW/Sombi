@@ -133,42 +133,29 @@ namespace Sombi
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                position.Y -= playerSpeed;
+                position.Y -= 1;
                 direction.Y = -1;
                 angle = MathHelper.ToRadians(270);
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
-            {
-
-                position.X -= playerSpeed;    
-		        direction.X = -1;            
-
-                //position.X -= 1f;
-              
-
+            {  
+                position.X -= 1f;
+		        direction.X = -1;             
                 angle = MathHelper.ToRadians(180);
 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-
-                position.Y += playerSpeed;  
-
-                //position.Y += 1f;
-
+                position.Y += 1f;
                 direction.Y = 1;
                 angle = MathHelper.ToRadians(90);
 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-
-                position.X += playerSpeed;
-		        direction.X = 1;               
-                //position.X += 1f;
-               
-
+                position.X += 1f;
+		        direction.X = 1;             
                 angle = MathHelper.ToRadians(0);
 
             }
@@ -180,7 +167,6 @@ namespace Sombi
             {
                 if (Grid.grid[(int)((position.X) / 50) + (int)direction.X, (int)(position.Y) / 50].passable != true)
                 {
-                    velocity = new Vector2(0, 0);
                     position.X += direction.X * -1;
                 }
                 else
