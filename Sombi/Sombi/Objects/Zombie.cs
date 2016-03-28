@@ -14,12 +14,12 @@ namespace Sombi
         Vector2 direction;
         float velocity;
         int activationRange;
-
+        SpriteEffects zombieSpriteEffects;
         Animation walkAnimation;
         AnimationPlayer animationPlayer;
         public Zombie(Vector2 startPos)
         {
-            this.velocity = 100;
+            this.velocity = 50;
             this.pos = startPos;
             this.direction = new Vector2(0, 1);
             this.health = 70;
@@ -28,6 +28,7 @@ namespace Sombi
 
         public void Load()
         {
+            walkAnimation = new Animation(TextureLibrary.zombieTex, 72, 0.2f, true);
             walkAnimation = new Animation(TextureLibrary.fastZombieTex, 50, 0.08f, true);
         }
 
@@ -54,7 +55,7 @@ namespace Sombi
         public void Draw(SpriteBatch spriteBatch)
         {
             //spriteBatch.Draw(TextureLibrary.zombieTex, new Vector2(pos.X, pos.Y), new Rectangle(0, 0, (int)TextureLibrary.zombieTex.Width / 3, TextureLibrary.zombieTex.Height), Color.White);
-            animationPlayer.Draw(spriteBatch, pos, SpriteEffects.None);
+            animationPlayer.Draw(spriteBatch, pos, zombieSpriteEffects);
         }
         public void FindWallThroughMatrix()
         {
@@ -77,6 +78,7 @@ namespace Sombi
                 if (Grid.grid[(int)((pos.X) / 50), ((int)(pos.Y) / 50) + (int)direction.Y].passable != true)
                 {
                     direction.Y *= -1;
+                    zombieSpriteEffects = SpriteEffects.FlipVertically;
                 }
             }
             else if (direction.Y < 0)
@@ -84,6 +86,7 @@ namespace Sombi
                 if (Grid.grid[(int)((pos.X) / 50), ((int)(pos.Y + 50) / 50) + (int)direction.Y].passable != true)
                 {
                     direction.Y *= -1;
+                    zombieSpriteEffects = SpriteEffects.None;
                 }
             }
         }

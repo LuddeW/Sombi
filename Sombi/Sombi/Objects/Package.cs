@@ -7,19 +7,23 @@ using System.Text;
 
 namespace Sombi
 {
-    class Package
+    class Package : GameObject
     {
-        public Package()
+        Vector2 packagePos;
+        public Package(Vector2 packagePos)
+            : base(packagePos)
+        {
+            this.packagePos = packagePos;
+        }
+
+        public override void Update(GameTime gameTime)
         {
 
         }
-        public void Update(GameTime gameTime)
-        {
 
-        }
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TextureLibrary.tileTex, new Vector2(50, 50), Color.Red);
+            spriteBatch.Draw(TextureLibrary.tileTex, packagePos, Color.Red);
         }
     }
 }

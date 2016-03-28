@@ -33,17 +33,25 @@ namespace Sombi
             testMapPos = Vector2.Zero;
 
             enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
+
             enemyManager.AddZombie(new Vector2(100, 100));
             enemyManager.AddZombie(new Vector2(700, 500));
 
             package = new Package();
+
+            package = new Package(new Vector2(50,50));
+
         }
 
         public void Update(GameTime gameTime)
         {
             playerManager.Update(gameTime);
             enemyManager.Update(gameTime);
+
             CheckForBulletCollisions();
+
+            package.Update(gameTime);
+
         }
         
         public void Draw(SpriteBatch spriteBatch)
