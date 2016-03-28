@@ -37,7 +37,7 @@ namespace Sombi
             enemyManager.AddZombie(new Vector2(100, 100));
             enemyManager.AddZombie(new Vector2(700, 500));
 
-            package = new Package();
+            
 
             package = new Package(new Vector2(50,50));
 
