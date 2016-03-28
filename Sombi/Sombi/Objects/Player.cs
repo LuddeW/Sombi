@@ -29,8 +29,6 @@ namespace Sombi
 
         public Player(Weapon weapon, Vector2 position, int ID)
         {
-            position = new Vector2(175,190);
-
             this.position = position;
             velocity = Vector2.Zero;
             maxspeed = 2.0f;
