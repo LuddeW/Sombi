@@ -12,7 +12,6 @@ namespace Sombi
     {
         One,
         Two,
-
     }
 
     class Player
@@ -25,23 +24,29 @@ namespace Sombi
         GamePadState gamePadState;
         GamePadState circularGamePadState;
         Weapon playerWeapon;
-        PlayerID playerID = PlayerID.One;
+        PlayerID playerID;
 
 
-        public Player(Weapon weapon)
+        public Player(Weapon weapon, Vector2 position, int ID)
         {
-            position = new Vector2(150, 190);
+            this.position = position;
             velocity = Vector2.Zero;
             maxspeed = 2.0f;
             playerWeapon = weapon;
+            if (ID == 1)
+            {
+                playerID = PlayerID.One;
+            }
+            else
+            {
+                playerID = PlayerID.Two;
+            }
 
         }
 
         public void Update(GameTime gameTime)
         {
-            gamePadState = GamePad.GetState(PlayerIndex.One);
-            circularGamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
-
+            UpdateGamepad();
             if (gamePadState.IsConnected)
             {
                 UpdatePosition();
@@ -60,6 +65,20 @@ namespace Sombi
         {
             spriteBatch.Draw(TextureLibrary.player1Tex, position, null, Color.White, angle, new Vector2(TextureLibrary.player1Tex.Width / 2, TextureLibrary.player1Tex.Height / 2), 1f, SpriteEffects.None, 0f);
 
+        }
+
+        private void UpdateGamepad()
+        {
+            if (playerID == PlayerID.One)
+            {
+                gamePadState = GamePad.GetState(PlayerIndex.One);
+                circularGamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
+            }
+            else
+            {
+                gamePadState = GamePad.GetState(PlayerIndex.Two);
+                circularGamePadState = GamePad.GetState(PlayerIndex.Two, GamePadDeadZone.Circular);
+            }
         }
 
         private void UpdatePosition() //Update Velocity and Position based on controller input
