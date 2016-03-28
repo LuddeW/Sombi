@@ -181,6 +181,7 @@ namespace Sombi
             {
                 if (Grid.grid[(int)((position.X) / 50) + (int)direction.X, (int)(position.Y) / 50].passable != true)
                 {
+                    velocity = new Vector2(0, 0);
                     position.X += direction.X * -1;
                 }
                 else
