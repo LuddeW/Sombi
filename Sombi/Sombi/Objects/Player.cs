@@ -30,7 +30,7 @@ namespace Sombi
 
         public Player(Weapon weapon)
         {
-            position = new Vector2(190,190);
+            position = new Vector2(175,190);
             velocity = Vector2.Zero;
             maxspeed = 3.0f;
             playerWeapon = weapon;
@@ -144,6 +144,7 @@ namespace Sombi
             {
                 if (Grid.grid[(int)((position.X) / 50) + (int)direction.X, (int)(position.Y) / 50].passable != true)
                 {
+                    velocity = new Vector2(0, 0);
                     position.X += direction.X * -1;
                 }
             }
