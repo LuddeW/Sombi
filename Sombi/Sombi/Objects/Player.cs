@@ -144,8 +144,8 @@ namespace Sombi
                 position.X -= playerSpeed;    
 		        direction.X = -1;            
 
-                position.X -= 1f;
-                direction.X = -1;
+                //position.X -= 1f;
+              
 
                 angle = MathHelper.ToRadians(180);
 
@@ -155,7 +155,7 @@ namespace Sombi
 
                 position.Y += playerSpeed;  
 
-                position.Y += 1f;
+                //position.Y += 1f;
 
                 direction.Y = 1;
                 angle = MathHelper.ToRadians(90);
@@ -166,9 +166,8 @@ namespace Sombi
 
                 position.X += playerSpeed;
 		        direction.X = 1;               
-
-                position.X += 1f;
-                direction.X = 1;
+                //position.X += 1f;
+               
 
                 angle = MathHelper.ToRadians(0);
 
