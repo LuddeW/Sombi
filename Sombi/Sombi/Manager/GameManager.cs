@@ -32,13 +32,14 @@ namespace Sombi
             TextureLibrary.LoadContent(contentManager);
             testMapPos = Vector2.Zero;
             enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
-            package = new Package();
+            package = new Package(new Vector2(50,50));
         }
 
         public void Update(GameTime gameTime)
         {
             playerManager.Update(gameTime);
             enemyManager.Update(gameTime);
+            package.Update(gameTime);
         }
         
         public void Draw(SpriteBatch spriteBatch)
