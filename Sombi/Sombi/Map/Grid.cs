@@ -39,7 +39,8 @@ namespace Sombi
 
         public static void CreateGridFactory()
         {
-           StreamReader sr = new StreamReader(@"Testmap.txt");
+           var stream = TitleContainer.OpenStream(@"Content\Testmap.txt");
+           StreamReader sr = new StreamReader(stream);
            List<string> stringList = new List<string>();
             
             while (!sr.EndOfStream)
