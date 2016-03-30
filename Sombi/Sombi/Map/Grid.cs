@@ -13,30 +13,6 @@ namespace Sombi
 
         public static Tile[,] grid;
         
-        
-
-
-       /* public static void CreateTileMatrix(char objectChar)
-        {
-            int boardSize = 20;
-            grid = new Tile[boardSize, boardSize];
-            for (int i = 0; i < boardSize; i++)
-            {
-                for (int k = 0; k < boardSize; k++)
-                {
-                    switch (objectChar)
-                    {
-                        case '0':
-                            grid[i, k] = new Tile(new Vector2(i, k), true);
-                            break;
-                        case '1':
-                            grid[i, k] = new Tile(new Vector2(i, k), false);
-                            break;
-                    }
-                }
-            }
-        }*/
-
         public static void CreateGridFactory()
         {
            StreamReader sr = new StreamReader(@"Content\Testmap.txt");
