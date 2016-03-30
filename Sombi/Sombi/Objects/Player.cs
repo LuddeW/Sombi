@@ -29,7 +29,6 @@ namespace Sombi
         Rectangle hitBox;
         public bool dead = false;
 
-
         public Player(Weapon weapon, Vector2 position, int ID)
         {
             this.position = position;
@@ -38,14 +37,7 @@ namespace Sombi
             playerWeapon = weapon;
             playerSpeed = 1.8f;
             hitBox = new Rectangle((int)position.X, (int)position.Y, TextureLibrary.player1Tex.Width, TextureLibrary.player2Tex.Height);
-            if (ID == 1)
-            {
-                playerID = PlayerID.One;
-            }
-            else
-            {
-                playerID = PlayerID.Two;
-            }
+            SetPlayerID(ID);
         }
 
         public Rectangle HitBox
@@ -68,9 +60,7 @@ namespace Sombi
                 KeyBoardMovement();
             }
             Collide();
-            hitBox.X = (int)position.X;
-            hitBox.Y = (int)position.Y;
-
+            UpdateHitbox();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -79,6 +69,24 @@ namespace Sombi
             {
                 spriteBatch.Draw(TextureLibrary.player1Tex, position, null, Color.White, angle, new Vector2(TextureLibrary.player1Tex.Width / 2, TextureLibrary.player1Tex.Height / 2), 1f, SpriteEffects.None, 0f);
             }           
+        }
+
+        private void SetPlayerID(int ID)
+        {
+            if (ID == 1)
+            {
+                playerID = PlayerID.One;
+            }
+            else
+            {
+                playerID = PlayerID.Two;
+            }
+        }
+
+        private void UpdateHitbox()
+        {
+            hitBox.X = (int)position.X;
+            hitBox.Y = (int)position.Y;
         }
 
         private void UpdateGamepad()
