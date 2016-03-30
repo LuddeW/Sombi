@@ -21,7 +21,6 @@ namespace Sombi
             {
                 b.Update(gameTime);
             }
-
         }
         public void Draw(SpriteBatch spriteBatch)
         {
