@@ -26,10 +26,11 @@ namespace Sombi
         public GameManager(ContentManager contentManager)
         {
             this.contentManager = contentManager;
+            TextureLibrary.LoadContent(contentManager);
             Grid.CreateGridFactory();
             playerManager = new PlayerManager();
             enemyManager = new EnemyManager();
-            TextureLibrary.LoadContent(contentManager);
+            
             testMapPos = Vector2.Zero;
 
             enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
@@ -49,6 +50,7 @@ namespace Sombi
             enemyManager.Update(gameTime);
 
             CheckForBulletCollisions();
+            CheckPlayerZombieCollisions();
 
             package.Update(gameTime);
 
@@ -70,12 +72,24 @@ namespace Sombi
                     if (enemyManager.zombies[i].GetHitbox().Contains(playerManager.weaponManager.bulletManager.bullets[k].Pos))
                     {
                         enemyManager.zombies[i].handleBulletHit(playerManager.weaponManager.bulletManager.bullets[k].damage);
-               
-                        playerManager.weaponManager.bulletManager.bullets.RemoveAt(k);
-                     
                         
+                        playerManager.weaponManager.bulletManager.bullets.RemoveAt(k);   
                     }
                 }
+            }
+        }
+
+        public void CheckPlayerZombieCollisions()
+        {
+            for (int i = 0; i < enemyManager.zombies.Count; i++)
+            {
+                for (int j = 0; j < playerManager.players.Count; j++)
+			    {
+			        if (enemyManager.zombies[i].GetHitbox().Intersects(playerManager.players[j].HitBox))
+                    {
+                        playerManager.players[j].dead = true;
+                    }
+			    }
             }
         }
 

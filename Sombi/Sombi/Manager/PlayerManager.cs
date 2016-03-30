@@ -11,13 +11,17 @@ namespace Sombi
     {
         Player player1;
         Player player2;
+        public List<Player> players;
         public WeaponManager weaponManager;
 
         public PlayerManager()
         {
             weaponManager = new WeaponManager();
-            player1 = new Player(weaponManager.playerOneWeapon, new Vector2(150,150),1);
+            players = new List<Player>();
+            player1 = new Player(weaponManager.playerOneWeapon, new Vector2(250,100),1);
             player2 = new Player(weaponManager.playerTwoWeapon, new Vector2(500,150),2);
+            players.Add(player1);
+            players.Add(player2);
            
         }
 
