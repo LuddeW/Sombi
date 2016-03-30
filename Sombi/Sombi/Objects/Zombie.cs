@@ -12,6 +12,7 @@ namespace Sombi
         public float health;
         Vector2 pos;
         Vector2 direction;
+        Vector2 currentTile;
         float velocity;
         int activationRange;
         SpriteEffects zombieSpriteEffects;
@@ -30,6 +31,7 @@ namespace Sombi
         {
             walkAnimation = new Animation(TextureLibrary.zombieTex, 72, 0.2f, true);
             walkAnimation = new Animation(TextureLibrary.fastZombieTex, 50, 0.08f, true);
+            currentTile = new Vector2(0, 0);
         }
 
         public void Update(GameTime gameTime)
@@ -59,36 +61,66 @@ namespace Sombi
         }
         public void FindWallThroughMatrix()
         {
+            currentTile = new Vector2((int)(pos.X + 25) / 50, (int)(pos.Y + 25) / 50);
+
             if (direction.X > 0)
             {
-                if (Grid.grid[(int)((pos.X) / 50) + (int)direction.X, (int)(pos.Y) / 50].passable != true)
+                
+
+                if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable != true)
                 {
-                    direction.X *= -1;
+                    FindNewRandomDirection();
                 }
             }
             else if (direction.X < 0)
             {
-                if (Grid.grid[(int)((pos.X + 50) / 50) + (int)direction.X, (int)(pos.Y) / 50].passable != true)
+                if (Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].passable != true)
                 {
-                    direction.X *= -1;
+                    FindNewRandomDirection();
                 }
             }
             if (direction.Y > 0)
             {
-                if (Grid.grid[(int)((pos.X) / 50), ((int)(pos.Y) / 50) + (int)direction.Y].passable != true)
+                if (Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable != true)
                 {
-                    direction.Y *= -1;
-                    zombieSpriteEffects = SpriteEffects.FlipVertically;
+                    FindNewRandomDirection();
                 }
             }
             else if (direction.Y < 0)
             {
-                if (Grid.grid[(int)((pos.X) / 50), ((int)(pos.Y + 50) / 50) + (int)direction.Y].passable != true)
+                if (Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].passable != true)
                 {
-                    direction.Y *= -1;
-                    zombieSpriteEffects = SpriteEffects.None;
+                    FindNewRandomDirection();
                 }
             }
+        }
+        public void FindNewRandomDirection()
+        {
+            if (Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].passable == true)
+            {
+                direction.X = 0;
+                direction.Y = -1;
+            }
+            else if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable == true)
+            {
+                direction.X = 1;
+                direction.Y = 0;
+            }
+            else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable == true)
+            {
+                direction.X = 0;
+                direction.Y = 1;
+            }
+            else if (Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].passable == true)
+            {
+                direction.X = -1;
+                direction.Y = 0;
+            }
+
+
+            
+
+
         }
         public Rectangle GetHitbox()
         {
