@@ -96,26 +96,66 @@ namespace Sombi
         }
         public void FindNewRandomDirection()
         {
-            if (Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].passable == true)
+            int random = GlobalValues.rnd.Next(1, 3);
+
+            switch (random)
             {
-                direction.X = 0;
-                direction.Y = -1;
+                case 1:
+                    if (Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].passable == true)
+                    {
+                        direction.X = 0;
+                        direction.Y = -1;
+                        zombieSpriteEffects = SpriteEffects.None;
+                        zombieSpriteEffects = SpriteEffects.FlipVertically;
+                    }
+                    else if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable == true)
+                    {
+                        direction.X = 1;
+                        direction.Y = 0;
+                    }
+                    else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable == true)
+                    {
+                        direction.X = 0;
+                        direction.Y = 1;
+                        zombieSpriteEffects = SpriteEffects.None;
+                    }
+                    else if (Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].passable == true)
+                    {
+                        direction.X = -1;
+                        direction.Y = 0;
+                    }
+                    break;
+                case 2:
+                    if (Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].passable == true)
+                    {
+                        direction.X = -1;
+                        direction.Y = 0;
+                        zombieSpriteEffects = SpriteEffects.None;
+                        zombieSpriteEffects = SpriteEffects.FlipHorizontally;
+                    }
+                    else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].passable == true)
+                    {
+                        direction.X = 0;
+                        direction.Y = -1;
+                    }
+                    else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable == true)
+                    {
+                        direction.X = 0;
+                        direction.Y = 1;
+                        zombieSpriteEffects = SpriteEffects.None;
+                    }
+                    else if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable == true)
+                    {
+                        direction.X = 1;
+                        direction.Y = 0;
+
+                    }
+
+                    break;
+                default:
+                    break;
             }
-            else if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable == true)
-            {
-                direction.X = 1;
-                direction.Y = 0;
-            }
-            else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable == true)
-            {
-                direction.X = 0;
-                direction.Y = 1;
-            }
-            else if (Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].passable == true)
-            {
-                direction.X = -1;
-                direction.Y = 0;
-            }
+
 
 
             
