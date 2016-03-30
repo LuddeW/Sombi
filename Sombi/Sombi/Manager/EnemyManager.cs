@@ -12,15 +12,13 @@ namespace Sombi
         
         public List<Zombie> zombies = new List<Zombie>();
 
-        
         public void Update(GameTime gameTime)
         {
             ClearZombies();
             foreach (Zombie z in zombies)
             {
                 z.Update(gameTime);
-            }
-        
+            }        
         }
         
         public void AddZombie(Vector2 startPos)
