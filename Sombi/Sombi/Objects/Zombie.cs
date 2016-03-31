@@ -9,12 +9,13 @@ namespace Sombi
 {
     class Zombie
     {
+        bool haveTarget;
         public float health;
-        Vector2 pos;
+        public Vector2 pos;
         Vector2 direction;
         Vector2 currentTile;
         float velocity;
-        int activationRange;
+        public int activationRange;
         Animation walkAnimation;
         AnimationPlayer animationPlayer;
         public Zombie(Vector2 startPos)
@@ -22,8 +23,10 @@ namespace Sombi
             this.velocity = 50;
             this.pos = startPos;
             this.direction = new Vector2(0, 1);
+            
             this.health = 70;
-            this.activationRange = 250;
+            this.activationRange = 900;
+            this.haveTarget = false;
         }
 
         public void Load()
@@ -64,8 +67,6 @@ namespace Sombi
 
             if (direction.X > 0)
             {
-
-
                 if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable != true)
                 {
                     FindNewRandomDirection();
@@ -150,17 +151,14 @@ namespace Sombi
                         direction.Y = 0;
                         animationPlayer.rotation = MathHelper.ToRadians(270);
                     }
-
                     break;
                 default:
                     break;
             }
-
-
-
-
-
-
+        }
+        public void SetChasingDirection(Vector2 playerPos)
+        {
+            this.direction = Vector2.Normalize(playerPos - this.pos);
         }
         public Rectangle GetHitbox()
         {
