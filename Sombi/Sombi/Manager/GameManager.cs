@@ -15,6 +15,7 @@ namespace Sombi
         PlayerManager playerManager;
         ContentManager contentManager;
         EnemyManager enemyManager;
+        HUDManager hudManager;
         Vector2 testMapPos;
 
         Package package;
@@ -30,6 +31,7 @@ namespace Sombi
             Grid.CreateGridFactory();
             playerManager = new PlayerManager();
             enemyManager = new EnemyManager();
+            hudManager = new HUDManager(playerManager.players);
             
             testMapPos = Vector2.Zero;
             enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
@@ -46,6 +48,7 @@ namespace Sombi
         public void Update(GameTime gameTime)
         {
             enemyManager.Update(gameTime);
+            hudManager.Update(gameTime);
 
             CheckForBulletCollisions();
 
@@ -65,7 +68,11 @@ namespace Sombi
             package.Draw(spriteBatch);
             spriteBatch.Draw(TextureLibrary.testMapTex, testMapPos, Color.White);
             enemyManager.Draw(spriteBatch);
+
             playerManager.Draw(spriteBatch);
+
+            hudManager.Draw(spriteBatch);
+
         }
         public void CheckForBulletCollisions()      //Vet inte om den ska ligga här?
         {
@@ -92,7 +99,7 @@ namespace Sombi
 			    {
 			        if (enemyManager.zombies[i].GetHitbox().Intersects(playerManager.players[j].HitBox))
                     {
-                        playerManager.players[j].dead = true;
+                        playerManager.players[j].handleBulletHit(1000);
                     }
 
                     if (Vector2.Distance(enemyManager.zombies[i].pos, playerManager.players[j].position) < enemyManager.zombies[i].activationRange)

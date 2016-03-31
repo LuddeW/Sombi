@@ -10,12 +10,16 @@ namespace Sombi
     class EnemyManager
     {
 
+
+        int maxzombies = 10;
+
+
         public List<Zombie> zombies = new List<Zombie>();
         public List<BloodStain> blodPositions = new List<BloodStain>();
         public void Update(GameTime gameTime)
         {
             ClearZombies();
-            if (zombies.Count < 10) // just for moar zoambiez
+            if (zombies.Count < maxzombies) // just for moar zoambiez
             {
                 AddZombie(new Vector2(900, 900));
             }
@@ -39,6 +43,9 @@ namespace Sombi
                 {
                     blodPositions.Add(new BloodStain(zombies[i].pos));
                     zombies.RemoveAt(i);
+
+
+                    maxzombies++;
 
                 }
             }

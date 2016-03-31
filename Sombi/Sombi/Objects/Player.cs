@@ -29,7 +29,7 @@ namespace Sombi
         PlayerID playerID;
         public int ID;
         Rectangle hitBox;
-        int health;
+        public int health;
         public bool dead = false;
 
         public Player(Weapon weapon, Vector2 position, int ID)

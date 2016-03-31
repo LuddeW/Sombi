@@ -151,3 +151,9 @@
 /processorParam:TextureFormat=Color
 /build:DryBlood3.png
 
+#begin HUDText.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:HUDText.spritefont
+
