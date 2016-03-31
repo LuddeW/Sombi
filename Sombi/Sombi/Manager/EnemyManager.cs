@@ -11,7 +11,7 @@ namespace Sombi
     {
         
         public List<Zombie> zombies = new List<Zombie>();
-
+        //public List<Vector2> blodPositions = new List<Vector2>();
         public void Update(GameTime gameTime)
         {
             ClearZombies();
@@ -46,6 +46,11 @@ namespace Sombi
             {
                 z.Draw(spriteBatch);
             }
+
+            //foreach (Vector2 pos in blodPositions)
+            //{
+            //    spriteBatch.Draw(TextureLibrary.bloodPuddle[GlobalValues.rnd.Next(0,3)], pos, Color.White);
+            //}
         }
     }
 }

@@ -45,7 +45,6 @@ namespace Sombi
 
         public void Update(GameTime gameTime)
         {
-            playerManager.Update(gameTime);
             enemyManager.Update(gameTime);
 
             CheckForBulletCollisions();
@@ -53,6 +52,7 @@ namespace Sombi
             CheckPlayerZombieCollisions();
 
             CheckPlayerBulletCollisions();
+            playerManager.Update(gameTime);
 
             
             package.Update(gameTime);
@@ -78,6 +78,9 @@ namespace Sombi
                         enemyManager.zombies[i].handleBulletHit(playerManager.weaponManager.bulletManager.bullets[k].damage);
 
                         playerManager.weaponManager.bulletManager.bullets.RemoveAt(k);
+                        //enemyManager.blodPositions.Add(enemyManager.zombies[i].pos);
+                        
+                       
                     }
                 }
             }

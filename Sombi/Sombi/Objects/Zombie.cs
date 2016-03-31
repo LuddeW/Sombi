@@ -10,7 +10,7 @@ namespace Sombi
     class Zombie
     {
         public float health;
-        Vector2 pos;
+        public Vector2 pos;
         Vector2 direction;
         Vector2 currentTile;
         float velocity;
