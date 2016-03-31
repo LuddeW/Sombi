@@ -116,9 +116,11 @@ namespace Sombi
         {
             foreach (Player player in playerManager.players)
             {
-                if (player.HitBox.Intersects(package.hitBox))
+                if (player.HitBox.Intersects(package.hitBox) && !package.taken)
                 {
                     Console.WriteLine("Got Package");
+                    player.cash += 100;
+                    package.taken = true;
                 }
             }
         }

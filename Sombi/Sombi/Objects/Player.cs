@@ -22,6 +22,7 @@ namespace Sombi
         public float angle;
         public float playerSpeed;
         float maxspeed;
+        public int cash;
         GamePadState gamePadState;
         GamePadState circularGamePadState;
         Weapon playerWeapon;
@@ -42,6 +43,7 @@ namespace Sombi
             this.ID = ID;
             hitBox = new Rectangle((int)position.X, (int)position.Y, TextureLibrary.player1Tex.Width, TextureLibrary.player2Tex.Height);
             SetPlayerID(ID);
+            cash = 0;
         }
 
         public Rectangle HitBox
