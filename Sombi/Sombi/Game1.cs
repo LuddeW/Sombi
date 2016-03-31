@@ -8,8 +8,7 @@ namespace Sombi
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        
+        SpriteBatch spriteBatch;        
         GameManager gameManager;
 
         public Game1()

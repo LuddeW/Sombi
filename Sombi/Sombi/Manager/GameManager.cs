@@ -54,7 +54,7 @@ namespace Sombi
 
             CheckPlayerBulletCollisions();
 
-            
+            GetChest();
             package.Update(gameTime);
 
 
@@ -108,6 +108,17 @@ namespace Sombi
                         playerManager.players[i].handleBulletHit(playerManager.weaponManager.bulletManager.bullets[k].damage);
                         playerManager.weaponManager.bulletManager.bullets.RemoveAt(k);
                     }
+                }
+            }
+        }
+
+        private void GetChest()
+        {
+            foreach (Player player in playerManager.players)
+            {
+                if (player.HitBox.Intersects(package.hitBox))
+                {
+                    Console.WriteLine("Got Package");
                 }
             }
         }

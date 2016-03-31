@@ -10,10 +10,12 @@ namespace Sombi
     class Package : GameObject
     {
         Vector2 packagePos;
+        public Rectangle hitBox;
         public Package(Vector2 packagePos)
             : base(packagePos)
         {
             this.packagePos = packagePos;
+            hitBox = new Rectangle((int)packagePos.X, (int)packagePos.Y, GlobalValues.TILE_SIZE, GlobalValues.TILE_SIZE);
         }
 
         public override void Update(GameTime gameTime)
