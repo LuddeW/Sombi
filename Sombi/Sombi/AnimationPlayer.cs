@@ -30,15 +30,13 @@ namespace Sombi
             get { return new Vector2(animation.frameWidth / 2, animation.frameHeight / 2); }
         }
 
-        private float rotation;
+        public float rotation;
         public void PlayAnimation(Animation newAnimation)
         {
-            // Sänder igenom en animation och animerar den.
             if (animation == newAnimation)
                 return;
 
             animation = newAnimation;
-            // sätter till noll för att den ska börja om animationen
             frameIndex = 0;
             timer = 0;
 
@@ -54,17 +52,17 @@ namespace Sombi
                 if (animation.IsLooping) // Loopar den så sätt frameIndex
                     frameIndex = (frameIndex + 1) % animation.frameCount;
                 else frameIndex = Math.Min((frameIndex + 1), (animation.frameCount - 1));
-            }
+            }            
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position, SpriteEffects spriteEffects)
-        {
+        {         
             // rectangle är source rectangle som tar från din spritesheet.
             if (animation != null)
             {
                 Rectangle rectangle = new Rectangle(frameIndex * animation.frameWidth, 0, animation.frameWidth, animation.frameHeight);
 
-                spriteBatch.Draw(animation.Texture, position, rectangle, Color.White, rotation, Vector2.Zero, 1f, spriteEffects, 0f);
+                spriteBatch.Draw(animation.Texture, position, rectangle, Color.White, rotation, Origin, 1f, spriteEffects, 0f);
             }
         }
     }

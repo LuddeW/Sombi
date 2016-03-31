@@ -15,7 +15,6 @@ namespace Sombi
         Vector2 currentTile;
         float velocity;
         int activationRange;
-        SpriteEffects zombieSpriteEffects;
         Animation walkAnimation;
         AnimationPlayer animationPlayer;
         public Zombie(Vector2 startPos)
@@ -30,7 +29,7 @@ namespace Sombi
         public void Load()
         {
             walkAnimation = new Animation(TextureLibrary.zombieTex, 72, 0.2f, true);
-            walkAnimation = new Animation(TextureLibrary.fastZombieTex, 50, 0.08f, true);
+            //walkAnimation = new Animation(TextureLibrary.fastZombieTex, 50, 0.08f, true);
             currentTile = new Vector2(0, 0);
         }
 
@@ -40,7 +39,7 @@ namespace Sombi
 
             FindWallThroughMatrix();
 
-           // Console.WriteLine((int)((pos.X + 25) / 50) + (int)direction.X);
+            // Console.WriteLine((int)((pos.X + 25) / 50) + (int)direction.X);
 
             if (pos.X != 0)
                 animationPlayer.PlayAnimation(walkAnimation);
@@ -48,7 +47,7 @@ namespace Sombi
                 animationPlayer.PlayAnimation(walkAnimation);
 
             animationPlayer.Update(gameTime);
-            
+
         }
         public void handleBulletHit(int damage)
         {
@@ -57,7 +56,7 @@ namespace Sombi
         public void Draw(SpriteBatch spriteBatch)
         {
             //spriteBatch.Draw(TextureLibrary.zombieTex, new Vector2(pos.X, pos.Y), new Rectangle(0, 0, (int)TextureLibrary.zombieTex.Width / 3, TextureLibrary.zombieTex.Height), Color.White);
-            animationPlayer.Draw(spriteBatch, pos, zombieSpriteEffects);
+            animationPlayer.Draw(spriteBatch, pos);
         }
         public void FindWallThroughMatrix()
         {
@@ -65,7 +64,7 @@ namespace Sombi
 
             if (direction.X > 0)
             {
-                
+
 
                 if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable != true)
                 {
@@ -105,24 +104,25 @@ namespace Sombi
                     {
                         direction.X = 0;
                         direction.Y = -1;
-                        zombieSpriteEffects = SpriteEffects.None;
-                        zombieSpriteEffects = SpriteEffects.FlipVertically;
+                        AnimationPlayer.rotation = MathHelper.ToRadians(180);
                     }
                     else if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable == true)
                     {
                         direction.X = 1;
                         direction.Y = 0;
+                        AnimationPlayer.rotation = MathHelper.ToRadians(270);
                     }
                     else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable == true)
                     {
                         direction.X = 0;
                         direction.Y = 1;
-                        zombieSpriteEffects = SpriteEffects.None;
+                        AnimationPlayer.rotation = MathHelper.ToRadians(0); 
                     }
                     else if (Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].passable == true)
                     {
                         direction.X = -1;
                         direction.Y = 0;
+                        AnimationPlayer.rotation = MathHelper.ToRadians(90);                            
                     }
                     break;
                 case 2:
@@ -130,25 +130,25 @@ namespace Sombi
                     {
                         direction.X = -1;
                         direction.Y = 0;
-                        zombieSpriteEffects = SpriteEffects.None;
-                        zombieSpriteEffects = SpriteEffects.FlipHorizontally;
+                        AnimationPlayer.rotation = MathHelper.ToRadians(90);
                     }
                     else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].passable == true)
                     {
                         direction.X = 0;
                         direction.Y = -1;
+                        AnimationPlayer.rotation = MathHelper.ToRadians(180);
                     }
                     else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable == true)
                     {
                         direction.X = 0;
                         direction.Y = 1;
-                        zombieSpriteEffects = SpriteEffects.None;
+                        AnimationPlayer.rotation = MathHelper.ToRadians(0);
                     }
                     else if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable == true)
                     {
                         direction.X = 1;
                         direction.Y = 0;
-
+                        AnimationPlayer.rotation = MathHelper.ToRadians(270);
                     }
 
                     break;
@@ -158,7 +158,7 @@ namespace Sombi
 
 
 
-            
+
 
 
         }
@@ -168,5 +168,5 @@ namespace Sombi
             return hb;
         }
     }
-    
+
 }
