@@ -21,6 +21,7 @@ namespace Sombi
             {
                 b.Update(gameTime);
             }
+            RemoveBullets();
 
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -29,20 +30,20 @@ namespace Sombi
             {
                 b.Draw(spriteBatch);
             }
-            RemoveBullets();
+            
         }
 
-        public void AddBullets(Vector2 position, float angle, int damage,float speed)
+        public void AddBullets(Vector2 position, float angle, int damage,float speed, int range)
         {
-            Bullet b = new Bullet(position,speed,angle,damage);
+            Bullet b = new Bullet(position,speed,angle,damage, range);
             bullets.Add(b);
         }
 
         private void RemoveBullets()
         {
-            for (int i = bullets.Count - 1; i > 0; i--)
+            for (int i = bullets.Count - 1; i >= 0; i--)
             {
-                if (!GlobalValues.windowBounds.Contains(bullets[i].Pos))
+                if (!GlobalValues.windowBounds.Contains(bullets[i].Pos) || !Grid.grid[(int)bullets[i].Pos.X / 50, (int)bullets[i].Pos.Y / 50].passable || bullets[i].distanceTraveled > bullets[i].range)
                 {
                     bullets.Remove(bullets[i]);
                 }

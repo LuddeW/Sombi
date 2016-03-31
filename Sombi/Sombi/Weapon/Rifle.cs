@@ -12,7 +12,7 @@ namespace Sombi
         public Rifle() : base()
         {
             projectileSpeed = 15.0f;
-            weaponRange = 3;
+            weaponRange = 150;
             damage = 20;
             fireRate = 3;
             numberOfProjectiles = 1;
