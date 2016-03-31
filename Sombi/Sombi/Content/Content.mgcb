@@ -79,3 +79,9 @@
 /processorParam:TextureFormat=Color
 /build:Package.PNG
 
+#begin Rifle1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Rifle1.wav
+

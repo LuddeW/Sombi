@@ -8,9 +8,12 @@ using System.Text;
 
 namespace Sombi
 {
-    class SoundManager
+    public class SoundManager
     {
-        SoundLibrary soundLibrary = new SoundLibrary();
+        public static SoundEffectInstance shotGunFireInstance;
+        public static SoundEffectInstance rifleFireInstance;
+        public static SoundEffectInstance explosiveFireInstance;
+        //SoundLibrary soundLibrary = new SoundLibrary();
         //public static Song song { get; private set; }
 
         //public static void LoadContent(ContentManager content)
@@ -34,7 +37,7 @@ namespace Sombi
         //    }
         //}
 
-        public void PlaySound(SoundEffectInstance sound)
+        public static void PlaySound(SoundEffectInstance sound)
         {
             if (sound != null)
             {
@@ -44,56 +47,46 @@ namespace Sombi
                 }
             }
         }
-        public void StopSound(SoundEffectInstance sound)
+        public static void StopSound(SoundEffectInstance sound)
         {
             if (sound.State == SoundState.Playing)
             {
                 sound.Stop();
             }
         }
-
-
         //Instanser av ljud
-        public SoundEffectInstance ShotGunFire
+        //public SoundEffectInstance ShotGunFire
+        //{
+        //    get
+        //    {
+        //        if (SoundLibrary.shotGunFireInstance == null)
+        //        {
+        //            SoundLibrary.shotGunFireInstance = SoundLibrary.shotGunFire.CreateInstance();
+        //        }
+        //        return SoundLibrary.shotGunFireInstance;
+        //    }
+        //}
+        public static SoundEffectInstance RifleFire
         {
             get
             {
-                if (soundLibrary.shotGunFireInstance == null)
+                if (rifleFireInstance == null)
                 {
-                    soundLibrary.shotGunFireInstance = soundLibrary.shotGunFire.CreateInstance();
+                    rifleFireInstance = SoundLibrary.rifleFire.CreateInstance();
                 }
-                return soundLibrary.shotGunFireInstance;
+                return rifleFireInstance;
             }
         }
-        public SoundEffectInstance RifleFire
-        {
-            get
-            {
-                if (soundLibrary.rifleFireInstance == null)
-                {
-                    soundLibrary.rifleFireInstance = soundLibrary.rifleFire.CreateInstance();
-                }
-                return soundLibrary.rifleFireInstance;
-            }
-        }
-        public SoundEffectInstance ExplosiveFire
-        {
-            get
-            {
-                if (soundLibrary.explosiveFireInstance == null)
-                {
-                    soundLibrary.explosiveFireInstance = soundLibrary.explosiveFire.CreateInstance();
-                }
-                return soundLibrary.explosiveFireInstance;
-            }
-        }
-
-
-
-
-
-
-
-
+        //public SoundEffectInstance ExplosiveFire
+        //{
+        //    get
+        //    {
+        //        if (SoundLibrary.explosiveFireInstance == null)
+        //        {
+        //            SoundLibrary.explosiveFireInstance = SoundLibrary.explosiveFire.CreateInstance();
+        //        }
+        //        return SoundLibrary.explosiveFireInstance;
+        //    }
+        //}        
     }
 }
