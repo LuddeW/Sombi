@@ -15,6 +15,10 @@ namespace Sombi
         public void Update(GameTime gameTime)
         {
             ClearZombies();
+            if (zombies.Count < 10) // just for moar zoambiez
+            {
+                AddZombie(new Vector2(900,900));
+            }
             foreach (Zombie z in zombies)
             {
                 z.Update(gameTime);
@@ -25,7 +29,6 @@ namespace Sombi
         {
             Zombie z = new Zombie(startPos);
             zombies.Add(z);
-
             z.Load();
         }
         public void ClearZombies()
@@ -34,9 +37,7 @@ namespace Sombi
             {
                 if (zombies[i].health < 1)
                 {
-                    
                     zombies.RemoveAt(i);
-
                 }
             }
         }
