@@ -1,19 +1,21 @@
-﻿using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Media;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Media;
 using System.Text;
 
 namespace Sombi
 {
     public class SoundManager
     {
+        //SoundLibrary soundLibrary = new SoundLibrary();
+
         public static SoundEffectInstance shotGunFireInstance;
         public static SoundEffectInstance rifleFireInstance;
         public static SoundEffectInstance explosiveFireInstance;
-        //SoundLibrary soundLibrary = new SoundLibrary();
+        
         //public static Song song { get; private set; }
 
         //public static void LoadContent(ContentManager content)
@@ -54,7 +56,7 @@ namespace Sombi
                 sound.Stop();
             }
         }
-        //Instanser av ljud
+        
         //public SoundEffectInstance ShotGunFire
         //{
         //    get

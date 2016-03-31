@@ -152,7 +152,7 @@ namespace Sombi
         {
             if (gamePadState.Triggers.Right > 0.5f || Keyboard.GetState().IsKeyDown(Keys.Space))
             {
-                //SoundManager.PlaySound(SoundManager.RifleFire);
+                SoundManager.PlaySound(SoundManager.RifleFire);
                 return true;
             }
 

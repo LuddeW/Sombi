@@ -28,6 +28,7 @@ namespace Sombi
         {
             this.contentManager = contentManager;
             TextureLibrary.LoadContent(contentManager);
+            SoundLibrary.LoadContent(contentManager);
             Grid.CreateGridFactory();
             playerManager = new PlayerManager();
             enemyManager = new EnemyManager();

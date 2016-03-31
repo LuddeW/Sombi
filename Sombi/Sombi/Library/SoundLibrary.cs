@@ -12,25 +12,24 @@ namespace Sombi
     {
         public static Song menuSong;
         public static SoundEffect shotGunFire;
-        public static SoundEffectInstance shotGunFireInstance;
+        //public static SoundEffectInstance shotGunFireInstance;
         public static SoundEffect rifleFire;
-        public static SoundEffectInstance rifleFireInstance;
+        //public static SoundEffectInstance rifleFireInstance;
         public static SoundEffect explosiveFire;
-        public static SoundEffectInstance explosiveFireInstance;
-
-        public static void LoadContent(ContentManager content)
+        //public static SoundEffectInstance explosiveFireInstance;
+        public static void LoadContent(ContentManager Content)
         {
-            menuSong = content.Load<Song>("menuMusic");
-            SoundEffect.MasterVolume = 0.5f;
+            //menuSong = Content.Load<Song>("menuMusic");
+            //SoundEffect.MasterVolume = 0.5f;
 
-            shotGunFire = content.Load<SoundEffect>("shotgun");
+            //shotGunFire = Content.Load<SoundEffect>("shotgun");
+            //SoundEffect.MasterVolume = 0.5f;
+
+            rifleFire = Content.Load<SoundEffect>(@"Rifle1");
             SoundEffect.MasterVolume = 0.5f;
             
-            rifleFire = content.Load<SoundEffect>(@"Rifle1");
-            SoundEffect.MasterVolume = 0.5f;
-            
-            explosiveFire = content.Load<SoundEffect>("explosive");
-            SoundEffect.MasterVolume = 0.5f;
+            //explosiveFire = Content.Load<SoundEffect>("explosive");
+            //SoundEffect.MasterVolume = 0.5f;
         }
     }
 }
