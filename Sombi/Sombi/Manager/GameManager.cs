@@ -52,6 +52,8 @@ namespace Sombi
 
             CheckPlayerZombieCollisions();
 
+            CheckPlayerBulletCollisions();
+
 
             package.Update(gameTime);
 
@@ -76,11 +78,6 @@ namespace Sombi
                         enemyManager.zombies[i].handleBulletHit(playerManager.weaponManager.bulletManager.bullets[k].damage);
 
                         playerManager.weaponManager.bulletManager.bullets.RemoveAt(k);
-
-
-                        
-                        playerManager.weaponManager.bulletManager.bullets.RemoveAt(k);   
-
                     }
                 }
             }
@@ -97,6 +94,21 @@ namespace Sombi
                         playerManager.players[j].dead = true;
                     }
 			    }
+            }
+        }
+
+        public void CheckPlayerBulletCollisions()
+        {
+            for (int i = 0; i < playerManager.players.Count; i++)
+            {
+                for (int k = 0; k < playerManager.weaponManager.bulletManager.bullets.Count; k++)
+                {
+                    if (playerManager.players[i].HitBox.Contains(playerManager.weaponManager.bulletManager.bullets[k].Pos))
+                    {
+                        playerManager.players[i].handleBulletHit(playerManager.weaponManager.bulletManager.bullets[k].damage);
+                        playerManager.weaponManager.bulletManager.bullets.RemoveAt(k);
+                    }
+                }
             }
         }
 
