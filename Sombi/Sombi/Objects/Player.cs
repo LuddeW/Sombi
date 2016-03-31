@@ -57,6 +57,7 @@ namespace Sombi
             if (health <= 0)
             {
                 dead = true;
+                
             }
             if (!dead)
             {
@@ -150,9 +151,8 @@ namespace Sombi
 
         public bool FireWeapon() //Fire weapon when button is pressed
         {
-            if (gamePadState.Triggers.Right > 0.5f || Keyboard.GetState().IsKeyDown(Keys.Space) && !dead)
+            if (gamePadState.Triggers.Right > 0.5f || Keyboard.GetState().IsKeyDown(Keys.Space))
             {
-                SoundManager.PlaySound(SoundManager.RifleFire);
                 return true;
             }
 

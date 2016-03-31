@@ -41,9 +41,8 @@ namespace Sombi
             if (PlayerID == 2)
             {
                 bulletManager.AddBullets(position, angle, playerTwoWeapon.damage,playerTwoWeapon.projectileSpeed, playerTwoWeapon.weaponRange, PlayerID);
-
-
             }
+            SoundManager.PlaySound(SoundManager.RifleFire);
         }
     }
 }
