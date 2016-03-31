@@ -54,7 +54,7 @@ namespace Sombi
             CheckPlayerBulletCollisions();
             playerManager.Update(gameTime);
 
-            
+            GetChest();
             package.Update(gameTime);
 
 
@@ -96,6 +96,12 @@ namespace Sombi
                     {
                         playerManager.players[j].dead = true;
                     }
+
+                    if (Vector2.Distance(enemyManager.zombies[i].pos, playerManager.players[j].position) < enemyManager.zombies[i].activationRange)
+                    {
+                        enemyManager.zombies[i].SetChasingDirection(playerManager.players[j].position);
+                    }
+
 			    }
             }
         }
@@ -111,6 +117,19 @@ namespace Sombi
                         playerManager.players[i].handleBulletHit(playerManager.weaponManager.bulletManager.bullets[k].damage);
                         playerManager.weaponManager.bulletManager.bullets.RemoveAt(k);
                     }
+                }
+            }
+        }
+
+        private void GetChest()
+        {
+            foreach (Player player in playerManager.players)
+            {
+                if (player.HitBox.Intersects(package.hitBox) && !package.taken)
+                {
+                    Console.WriteLine("Got Package");
+                    player.cash += 100;
+                    package.taken = true;
                 }
             }
         }

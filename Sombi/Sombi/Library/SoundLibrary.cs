@@ -8,24 +8,29 @@ using System.Text;
 
 namespace Sombi
 {
-    class SoundLibrary
+    public class SoundLibrary
     {
-        public Song menuSong;
-        public SoundEffect shotGunFire;
-        public SoundEffectInstance shotGunFireInstance;
-        public SoundEffect rifleFire;
-        public SoundEffectInstance rifleFireInstance;
-        public SoundEffect explosiveFire;
-        public SoundEffectInstance explosiveFireInstance;
+        public static Song menuSong;
+        public static SoundEffect shotGunFire;
+        public static SoundEffectInstance shotGunFireInstance;
+        public static SoundEffect rifleFire;
+        public static SoundEffectInstance rifleFireInstance;
+        public static SoundEffect explosiveFire;
+        public static SoundEffectInstance explosiveFireInstance;
 
-        public void LoadContent(ContentManager content)
+        public static void LoadContent(ContentManager content)
         {
             menuSong = content.Load<Song>("menuMusic");
+            SoundEffect.MasterVolume = 0.5f;
+
             shotGunFire = content.Load<SoundEffect>("shotgun");
-            rifleFire = content.Load<SoundEffect>("rifle");
+            SoundEffect.MasterVolume = 0.5f;
+            
+            rifleFire = content.Load<SoundEffect>(@"Rifle1");
+            SoundEffect.MasterVolume = 0.5f;
+            
             explosiveFire = content.Load<SoundEffect>("explosive");
+            SoundEffect.MasterVolume = 0.5f;
         }
-
-
     }
 }

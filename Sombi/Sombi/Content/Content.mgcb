@@ -79,6 +79,7 @@
 /processorParam:TextureFormat=Color
 /build:Package.PNG
 
+<<<<<<< HEAD
 #begin BloodPuddle1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -144,4 +145,11 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
 /build:DryBlood3.png
+=======
+#begin Rifle1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Rifle1.wav
+>>>>>>> origin/master
 
