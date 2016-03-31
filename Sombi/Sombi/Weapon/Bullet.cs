@@ -18,10 +18,7 @@ namespace Sombi
         public int ID;
 
         public Bullet(Vector2 pos,float speed,float angle,int damage, int range, int ID) : base(pos,speed)
-
-
-     
-
+    
         {
             this.angle = angle;
             this.damage = damage;
