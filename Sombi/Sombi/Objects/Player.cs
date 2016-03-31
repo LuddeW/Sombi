@@ -26,6 +26,7 @@ namespace Sombi
         GamePadState circularGamePadState;
         Weapon playerWeapon;
         PlayerID playerID;
+        public int ID;
         Rectangle hitBox;
         int health;
         public bool dead = false;
@@ -38,6 +39,7 @@ namespace Sombi
             playerWeapon = weapon;
             playerSpeed = 1.8f;
             health = 1000;
+            this.ID = ID;
             hitBox = new Rectangle((int)position.X, (int)position.Y, TextureLibrary.player1Tex.Width, TextureLibrary.player2Tex.Height);
             SetPlayerID(ID);
         }

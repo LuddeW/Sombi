@@ -31,9 +31,9 @@ namespace Sombi
             RemoveBullets();
         }
 
-        public void AddBullets(Vector2 position, float angle, int damage,float speed)
+        public void AddBullets(Vector2 position, float angle, int damage,float speed, int ID)
         {
-            Bullet b = new Bullet(position,speed,angle,damage);
+            Bullet b = new Bullet(position,speed,angle,damage,ID);
             bullets.Add(b);
         }
 

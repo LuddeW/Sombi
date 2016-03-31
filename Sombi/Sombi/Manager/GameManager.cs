@@ -103,7 +103,7 @@ namespace Sombi
             {
                 for (int k = 0; k < playerManager.weaponManager.bulletManager.bullets.Count; k++)
                 {
-                    if (playerManager.players[i].HitBox.Contains(playerManager.weaponManager.bulletManager.bullets[k].Pos))
+                    if (playerManager.players[i].HitBox.Contains(playerManager.weaponManager.bulletManager.bullets[k].Pos) && playerManager.players[i].ID != playerManager.weaponManager.bulletManager.bullets[k].ID)
                     {
                         playerManager.players[i].handleBulletHit(playerManager.weaponManager.bulletManager.bullets[k].damage);
                         playerManager.weaponManager.bulletManager.bullets.RemoveAt(k);
