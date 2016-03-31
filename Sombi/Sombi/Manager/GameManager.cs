@@ -133,8 +133,10 @@ namespace Sombi
                 if (player.HitBox.Intersects(package.hitBox) && !package.taken)
                 {
                     Console.WriteLine("Got Package");
-                    player.cash += 100;
+                    foreach (Player p in playerManager.players)
                     package.taken = true;
+                    playerManager.players[0].cash += 100;
+                    playerManager.players[1].cash += 100;
                 }
             }
         }
