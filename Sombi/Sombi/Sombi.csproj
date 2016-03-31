@@ -77,15 +77,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\BloodPuddle1.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\BloodPuddle2.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Bloodpuddle3.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\BulletBlue.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -107,9 +98,6 @@
     <Content Include="Content\ZombieSheet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\DryBlood1.png" />
-    <Content Include="Content\DryBlood2.png" />
-    <Content Include="Content\DryBlood3.png" />
     <Content Include="Icon.ico" />
     <Content Include="Content\ZombieSheet2.png" />
     <Content Include="Content\Package.PNG" />
