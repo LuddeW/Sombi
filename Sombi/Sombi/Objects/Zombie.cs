@@ -29,7 +29,7 @@ namespace Sombi
         public void Load()
         {
             walkAnimation = new Animation(TextureLibrary.zombieTex, 72, 0.2f, true);
-            //walkAnimation = new Animation(TextureLibrary.fastZombieTex, 50, 0.08f, true);
+            walkAnimation = new Animation(TextureLibrary.fastZombieTex, 50, 0.08f, true);
             currentTile = new Vector2(0, 0);
         }
 
@@ -104,25 +104,25 @@ namespace Sombi
                     {
                         direction.X = 0;
                         direction.Y = -1;
-                        AnimationPlayer.rotation = MathHelper.ToRadians(180);
+                        animationPlayer.rotation = MathHelper.ToRadians(180);
                     }
                     else if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable == true)
                     {
                         direction.X = 1;
                         direction.Y = 0;
-                        AnimationPlayer.rotation = MathHelper.ToRadians(270);
+                        animationPlayer.rotation = MathHelper.ToRadians(270);
                     }
                     else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable == true)
                     {
                         direction.X = 0;
                         direction.Y = 1;
-                        AnimationPlayer.rotation = MathHelper.ToRadians(0); 
+                        animationPlayer.rotation = MathHelper.ToRadians(0); 
                     }
                     else if (Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].passable == true)
                     {
                         direction.X = -1;
                         direction.Y = 0;
-                        AnimationPlayer.rotation = MathHelper.ToRadians(90);                            
+                        animationPlayer.rotation = MathHelper.ToRadians(90);                            
                     }
                     break;
                 case 2:
@@ -130,25 +130,25 @@ namespace Sombi
                     {
                         direction.X = -1;
                         direction.Y = 0;
-                        AnimationPlayer.rotation = MathHelper.ToRadians(90);
+                        animationPlayer.rotation = MathHelper.ToRadians(90);
                     }
                     else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].passable == true)
                     {
                         direction.X = 0;
                         direction.Y = -1;
-                        AnimationPlayer.rotation = MathHelper.ToRadians(180);
+                        animationPlayer.rotation = MathHelper.ToRadians(180);
                     }
                     else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable == true)
                     {
                         direction.X = 0;
                         direction.Y = 1;
-                        AnimationPlayer.rotation = MathHelper.ToRadians(0);
+                        animationPlayer.rotation = MathHelper.ToRadians(0);
                     }
                     else if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable == true)
                     {
                         direction.X = 1;
                         direction.Y = 0;
-                        AnimationPlayer.rotation = MathHelper.ToRadians(270);
+                        animationPlayer.rotation = MathHelper.ToRadians(270);
                     }
 
                     break;

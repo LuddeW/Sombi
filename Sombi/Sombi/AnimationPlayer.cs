@@ -55,14 +55,14 @@ namespace Sombi
             }            
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, SpriteEffects spriteEffects)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {         
             // rectangle är source rectangle som tar från din spritesheet.
             if (animation != null)
             {
                 Rectangle rectangle = new Rectangle(frameIndex * animation.frameWidth, 0, animation.frameWidth, animation.frameHeight);
 
-                spriteBatch.Draw(animation.Texture, position, rectangle, Color.White, rotation, Origin, 1f, spriteEffects, 0f);
+                spriteBatch.Draw(animation.Texture, position, rectangle, Color.White, rotation, Origin, 1f, SpriteEffects.None, 0f);
             }
         }
     }
