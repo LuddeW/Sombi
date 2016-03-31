@@ -9,22 +9,22 @@ namespace Sombi
 {
     class EnemyManager
     {
-        
+
         public List<Zombie> zombies = new List<Zombie>();
-        //public List<Vector2> blodPositions = new List<Vector2>();
+        public List<BloodStain> blodPositions = new List<BloodStain>();
         public void Update(GameTime gameTime)
         {
             ClearZombies();
             if (zombies.Count < 10) // just for moar zoambiez
             {
-                AddZombie(new Vector2(900,900));
+                AddZombie(new Vector2(900, 900));
             }
             foreach (Zombie z in zombies)
             {
                 z.Update(gameTime);
-            }        
+            }
         }
-        
+
         public void AddZombie(Vector2 startPos)
         {
             Zombie z = new Zombie(startPos);
@@ -37,21 +37,24 @@ namespace Sombi
             {
                 if (zombies[i].health < 1)
                 {
+                    blodPositions.Add(new BloodStain(zombies[i].pos));
                     zombies.RemoveAt(i);
+
                 }
             }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
+            foreach (BloodStain bs in blodPositions)
+            {
+                bs.Draw(spriteBatch);
+            }
+
             foreach (Zombie z in zombies)
             {
                 z.Draw(spriteBatch);
             }
 
-            //foreach (Vector2 pos in blodPositions)
-            //{
-            //    spriteBatch.Draw(TextureLibrary.bloodPuddle[GlobalValues.rnd.Next(0,3)], pos, Color.White);
-            //}
         }
     }
 }

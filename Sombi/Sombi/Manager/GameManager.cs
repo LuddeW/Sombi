@@ -64,8 +64,8 @@ namespace Sombi
         {
             package.Draw(spriteBatch);
             spriteBatch.Draw(TextureLibrary.testMapTex, testMapPos, Color.White);
-            playerManager.Draw(spriteBatch);
             enemyManager.Draw(spriteBatch);
+            playerManager.Draw(spriteBatch);
         }
         public void CheckForBulletCollisions()      //Vet inte om den ska ligga här?
         {
@@ -78,9 +78,7 @@ namespace Sombi
                         enemyManager.zombies[i].handleBulletHit(playerManager.weaponManager.bulletManager.bullets[k].damage);
 
                         playerManager.weaponManager.bulletManager.bullets.RemoveAt(k);
-                        //enemyManager.blodPositions.Add(enemyManager.zombies[i].pos);
-                        
-                       
+                                
                     }
                 }
             }
