@@ -36,11 +36,14 @@ namespace Sombi
         {
             if (PlayerID == 1)
             {
-                bulletManager.AddBullets(position, angle, playerOneWeapon.damage,playerOneWeapon.projectileSpeed, playerOneWeapon.weaponRange);
+
+                bulletManager.AddBullets(position, angle, playerOneWeapon.damage,playerOneWeapon.projectileSpeed, playerOneWeapon.weaponRange, PlayerID);
             }
             if (PlayerID == 2)
             {
-                bulletManager.AddBullets(position, angle, playerTwoWeapon.damage,playerTwoWeapon.projectileSpeed, playerTwoWeapon.weaponRange);
+                bulletManager.AddBullets(position, angle, playerTwoWeapon.damage,playerTwoWeapon.projectileSpeed, playerTwoWeapon.weaponRange, PlayerID);
+
+
             }
         }
     }

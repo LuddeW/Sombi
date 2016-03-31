@@ -23,7 +23,7 @@ namespace Sombi
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TextureLibrary.tileTex, packagePos, Color.Red);
+            spriteBatch.Draw(TextureLibrary.tileTex, packagePos, Color.White);
         }
     }
 }

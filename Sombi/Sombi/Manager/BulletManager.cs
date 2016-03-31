@@ -21,7 +21,9 @@ namespace Sombi
             {
                 b.Update(gameTime);
             }
+
             RemoveBullets();
+
 
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -33,9 +35,11 @@ namespace Sombi
             
         }
 
-        public void AddBullets(Vector2 position, float angle, int damage,float speed, int range)
+
+        public void AddBullets(Vector2 position, float angle, int damage,float speed, int range, int ID)
         {
             Bullet b = new Bullet(position,speed,angle,damage, range);
+
             bullets.Add(b);
         }
 

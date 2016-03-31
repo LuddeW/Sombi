@@ -26,7 +26,9 @@ namespace Sombi
         GamePadState circularGamePadState;
         Weapon playerWeapon;
         PlayerID playerID;
+        public int ID;
         Rectangle hitBox;
+        int health;
         public bool dead = false;
 
         public Player(Weapon weapon, Vector2 position, int ID)
@@ -36,6 +38,8 @@ namespace Sombi
             maxspeed = 2.0f;
             playerWeapon = weapon;
             playerSpeed = 1.8f;
+            health = 1000;
+            this.ID = ID;
             hitBox = new Rectangle((int)position.X, (int)position.Y, TextureLibrary.player1Tex.Width, TextureLibrary.player2Tex.Height);
             SetPlayerID(ID);
         }
@@ -48,19 +52,26 @@ namespace Sombi
 
         public void Update(GameTime gameTime)
         {
-            UpdateGamepad();
-            if (gamePadState.IsConnected)
+            if (health <= 0)
             {
-                UpdatePosition();
-                UpdateRotation();
-                FireWeapon();
+                dead = true;
             }
-            else
+            if (!dead)
             {
-                KeyBoardMovement();
+                UpdateGamepad();
+                if (gamePadState.IsConnected)
+                {
+                    UpdatePosition();
+                    UpdateRotation();
+                    FireWeapon();
+                }
+                else
+                {
+                    KeyBoardMovement();
+                }
+                Collide();
+                UpdateHitbox();
             }
-            Collide();
-            UpdateHitbox();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -229,6 +240,10 @@ namespace Sombi
                 }
             }
 
+        }
+        public void handleBulletHit(int damage)
+        {
+            health -= damage;
         }
 
     }
