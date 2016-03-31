@@ -85,13 +85,6 @@
 /processorParam:Quality=Best
 /build:Rifle1.wav
 
-<<<<<<< HEAD
-#begin HUDText.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:TextureFormat=Compressed
-/build:HUDText.spritefont
-=======
 #begin BloodPuddle1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -157,5 +150,10 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
 /build:DryBlood3.png
->>>>>>> origin/master
+
+#begin HUDText.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:HUDText.spritefont
 
