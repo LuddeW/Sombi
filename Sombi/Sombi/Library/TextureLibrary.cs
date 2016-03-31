@@ -17,8 +17,7 @@ namespace Sombi
         public static Texture2D fastZombieTex { get; private set; }
         public static Texture2D BulletBlue { get; private set; }
         public static SpriteFont HUDText { get; private set; }
-        public static Texture2D[] bloodPuddle = new Texture2D[3];
-        public static Texture2D[] dryPuddle = new Texture2D[3];
+        public static Texture2D[] bloodStain = new Texture2D[3];
 
         public static void LoadContent(ContentManager Content)
         {
@@ -31,12 +30,9 @@ namespace Sombi
             fastZombieTex = Content.Load<Texture2D>(@"ZombieSheet2");
             HUDText = Content.Load<SpriteFont>(@"HUDText");
            
-            bloodPuddle[0] = Content.Load<Texture2D>(@"BloodPuddle1");
-            bloodPuddle[1] = Content.Load<Texture2D>(@"BloodPuddle2");
-            bloodPuddle[2] = Content.Load<Texture2D>(@"BloodPuddle3");
-            dryPuddle[0] = Content.Load<Texture2D>(@"DryBlood1");
-            dryPuddle[1] = Content.Load<Texture2D>(@"DryBlood2");
-            dryPuddle[2] = Content.Load<Texture2D>(@"DryBlood3");
+            bloodStain[0] = Content.Load<Texture2D>(@"BlodStain1");
+            bloodStain[1] = Content.Load<Texture2D>(@"BloodStain2");
+            bloodStain[2] = Content.Load<Texture2D>(@"BloodStain3");
         }
     }
 }
