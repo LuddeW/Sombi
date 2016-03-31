@@ -79,7 +79,6 @@
     <Content Include="Content\BulletBlue.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Grid.PNG" />
     <Content Include="Content\Player1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -97,6 +96,7 @@
     </Content>
     <Content Include="Icon.ico" />
     <Content Include="Content\ZombieSheet2.png" />
+    <Content Include="Content\Package.PNG" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />

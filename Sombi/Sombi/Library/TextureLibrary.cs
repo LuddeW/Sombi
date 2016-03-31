@@ -9,7 +9,7 @@ namespace Sombi
 {
     public class TextureLibrary
     {
-        public static Texture2D tileTex { get; private set; }
+        public static Texture2D packageTex { get; private set; }
         public static Texture2D testMapTex;
         public static Texture2D player1Tex { get; private set; }
         public static Texture2D player2Tex { get; private set; }
@@ -19,7 +19,7 @@ namespace Sombi
 
         public static void LoadContent(ContentManager Content)
         {
-            tileTex = Content.Load<Texture2D>("Grid");
+            packageTex = Content.Load<Texture2D>("Package");
             BulletBlue = Content.Load<Texture2D>(@"BulletBlue");
             testMapTex = Content.Load<Texture2D>(@"TestMap2");
             player1Tex = Content.Load<Texture2D>(@"Player1");
