@@ -9,13 +9,14 @@ namespace Sombi
 {
     class EnemyManager
     {
-        
+        int maxzombies = 10;
+
         public List<Zombie> zombies = new List<Zombie>();
 
         public void Update(GameTime gameTime)
         {
             ClearZombies();
-            if (zombies.Count < 10) // just for moar zoambiez
+            if (zombies.Count < maxzombies) // just for moar zoambiez
             {
                 AddZombie(new Vector2(900,900));
             }
@@ -38,6 +39,7 @@ namespace Sombi
                 if (zombies[i].health < 1)
                 {
                     zombies.RemoveAt(i);
+                    maxzombies++;
                 }
             }
         }

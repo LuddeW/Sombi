@@ -85,3 +85,9 @@
 /processorParam:Quality=Best
 /build:Rifle1.wav
 
+#begin HUDText.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:HUDText.spritefont
+
