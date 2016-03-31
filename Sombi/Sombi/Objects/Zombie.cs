@@ -25,7 +25,7 @@ namespace Sombi
             this.direction = new Vector2(0, 1);
             
             this.health = 70;
-            this.activationRange = 900;
+            this.activationRange = 250;
             this.haveTarget = false;
         }
 
