@@ -10,17 +10,15 @@ namespace Sombi
     class PackageManager
     {
         Package package;
-
-        PlayerManager playerManager;
-        public PackageManager(PlayerManager playerManager)
+        
+        public PackageManager()
         {
             package = new Package(new Vector2(50, 50));
-            this.playerManager = playerManager;
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, List<Player> players)
         {
-            GetChest();
+            GetChest(players);
             package.Update(gameTime);
         }
 
@@ -29,11 +27,11 @@ namespace Sombi
             package.Draw(spriteBatch);
         }
 
-        private void GetChest()
+        private void GetChest(List<Player> players)
         {
             
 
-            foreach (Player player in playerManager.players)
+            foreach (Player player in players)
             {
                 if (player.HitBox.Intersects(package.hitBox) && !package.taken)
                 {
@@ -41,9 +39,8 @@ namespace Sombi
                     package.taken = true;
                     if (package.taken == true)
                     {
-
-                        playerManager.players[0].cash += 100;
-                        playerManager.players[1].cash += 100;
+                        players[0].cash += 100;
+                        players[1].cash += 100;
                     }
                 }
             }

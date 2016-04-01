@@ -39,7 +39,7 @@ namespace Sombi
             enemyManager.AddZombie(new Vector2(100, 100));
             enemyManager.AddZombie(new Vector2(700, 500));
 
-            packageManager = new PackageManager(playerManager);
+            packageManager = new PackageManager();
         }
 
         public void Update(GameTime gameTime)
@@ -53,7 +53,7 @@ namespace Sombi
 
             CheckPlayerBulletCollisions();
             playerManager.Update(gameTime);
-            packageManager.Update(gameTime);
+            packageManager.Update(gameTime, playerManager.players);
 
 
         }
