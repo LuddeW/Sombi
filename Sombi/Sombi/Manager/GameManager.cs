@@ -16,6 +16,7 @@ namespace Sombi
         ContentManager contentManager;
         EnemyManager enemyManager;
         HUDManager hudManager;
+        FPSManager fpsManager;
         Vector2 testMapPos;
 
         Package package;
@@ -33,6 +34,7 @@ namespace Sombi
             playerManager = new PlayerManager();
             enemyManager = new EnemyManager();
             hudManager = new HUDManager(playerManager.players);
+            fpsManager = new FPSManager();
             
             testMapPos = Vector2.Zero;
             enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
@@ -50,7 +52,7 @@ namespace Sombi
         {
             enemyManager.Update(gameTime);
             hudManager.Update(gameTime);
-
+            fpsManager.Update(gameTime);
             CheckForBulletCollisions();
 
             CheckPlayerZombieCollisions();
@@ -69,7 +71,7 @@ namespace Sombi
             package.Draw(spriteBatch);
             spriteBatch.Draw(TextureLibrary.testMapTex, testMapPos, Color.White);
             enemyManager.Draw(spriteBatch);
-
+            fpsManager.Draw(spriteBatch);
             playerManager.Draw(spriteBatch);
 
             hudManager.Draw(spriteBatch);
