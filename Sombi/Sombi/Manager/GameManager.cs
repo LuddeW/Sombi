@@ -108,6 +108,12 @@ namespace Sombi
                     if (Vector2.Distance(enemyManager.zombies[i].pos, playerManager.players[j].position) < enemyManager.zombies[i].activationRange)
                     {
                         enemyManager.zombies[i].SetChasingDirection(playerManager.players[j].position);
+                        
+                    }
+                    else if (Vector2.Distance(enemyManager.zombies[i].pos, playerManager.players[j].position) > enemyManager.zombies[i].activationRange)
+                    {
+                        enemyManager.zombies[i].ResetTarget();
+
                     }
 
 			    }

@@ -38,6 +38,7 @@ namespace Sombi
 
         public void Update(GameTime gameTime)
         {
+            CalculateCurrentTile();
             pos += direction * velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             FindWallThroughMatrix();
@@ -63,34 +64,63 @@ namespace Sombi
         }
         public void FindWallThroughMatrix()
         {
-            currentTile = new Vector2((int)(pos.X + 25) / 50, (int)(pos.Y + 25) / 50);
+            
 
             if (direction.X > 0)
             {
                 if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable != true)
                 {
-                    FindNewRandomDirection();
+                    if (!haveTarget)
+                    {
+                        FindNewRandomDirection();
+                    }
+                    else
+                    {
+                        direction.X = 0;
+                    }
+                    
                 }
             }
             else if (direction.X < 0)
             {
                 if (Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].passable != true)
                 {
-                    FindNewRandomDirection();
+                    if (!haveTarget)
+                    {
+                        FindNewRandomDirection();
+                    }
+                    else
+                    {
+                        direction.X = 0;
+                    }
                 }
             }
             if (direction.Y > 0)
             {
                 if (Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable != true)
                 {
-                    FindNewRandomDirection();
+                    if (!haveTarget)
+                    {
+                        FindNewRandomDirection();
+                    }
+                    else
+                    {
+                        direction.Y = 0;
+                    }
                 }
             }
             else if (direction.Y < 0)
             {
                 if (Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].passable != true)
                 {
-                    FindNewRandomDirection();
+                    if (!haveTarget)
+                    {
+                        FindNewRandomDirection();
+                    }
+                    else
+                    {
+                        direction.Y = 0;
+                    }
                 }
             }
         }
@@ -158,6 +188,7 @@ namespace Sombi
         }
         public void SetChasingDirection(Vector2 playerPos)
         {
+            this.haveTarget = true;
             this.direction = Vector2.Normalize(playerPos - this.pos);
             FindWallThroughMatrix();
         }
@@ -165,6 +196,29 @@ namespace Sombi
         {
             Rectangle hb = new Rectangle((int)pos.X, (int)pos.Y, 50, 50);
             return hb;
+        }
+        public void CalculateCurrentTile()
+        {
+            if (direction.X > 0)
+            {
+                currentTile = new Vector2((int)(pos.X ) / 50, (int)(pos.Y) / 50);
+            }
+            else if (direction.X < 0)
+            {
+                currentTile = new Vector2((int)(pos.X + 30) / 50, (int)(pos.Y) / 50);          //plusa på tex.width ist
+            }
+            if (direction.Y > 0)
+            {
+                currentTile = new Vector2((int)(pos.X) / 50, (int)(pos.Y + 30) / 50);
+            }
+            else if (direction.Y < 0)
+            {
+                currentTile = new Vector2((int)(pos.X) / 50, (int)(pos.Y) / 50);
+            }
+        }
+        public void ResetTarget()
+        {
+            this.haveTarget = false;
         }
     }
 
