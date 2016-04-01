@@ -159,6 +159,7 @@ namespace Sombi
         public void SetChasingDirection(Vector2 playerPos)
         {
             this.direction = Vector2.Normalize(playerPos - this.pos);
+            FindWallThroughMatrix();
         }
         public Rectangle GetHitbox()
         {
