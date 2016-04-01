@@ -15,7 +15,7 @@ namespace Sombi
 
         public BloodStain(Vector2 pos)
         {
-            this.bloodNr = GlobalValues.rnd.Next(0, 10);
+            this.bloodNr = GlobalValues.rnd.Next(0, 3);
             this.pos = pos;
         }
 
