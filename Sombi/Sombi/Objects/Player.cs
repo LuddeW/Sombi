@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Design;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
@@ -31,6 +32,7 @@ namespace Sombi
         Rectangle hitBox;
         public int health;
         public bool dead = false;
+        
 
         public Player(Weapon weapon, Vector2 position, int ID)
         {
@@ -82,6 +84,7 @@ namespace Sombi
             if (!dead)
             {
                 spriteBatch.Draw(TextureLibrary.player1Tex, position, null, Color.White, angle, new Vector2(TextureLibrary.player1Tex.Width / 2, TextureLibrary.player1Tex.Height / 2), 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(TextureLibrary.player1Tex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
             }           
         }
 
@@ -99,8 +102,9 @@ namespace Sombi
 
         private void UpdateHitbox()
         {
-            hitBox.X = (int)position.X;
-            hitBox.Y = (int)position.Y;
+            hitBox.X = (int)position.X - (TextureLibrary.player1Tex.Width / 2);
+            hitBox.Y = (int)position.Y - (TextureLibrary.player1Tex.Height / 2);
+            
         }
 
         private void UpdateGamepad()
