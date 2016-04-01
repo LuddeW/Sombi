@@ -124,3 +124,15 @@
 /processorParam:TextureFormat=Color
 /build:BloodStain3.png
 
+#begin LMG1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LMG1.wav
+
+#begin 50Cal1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:50Cal1.wav
+

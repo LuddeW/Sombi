@@ -32,8 +32,8 @@ namespace Sombi
 
         public void Load()
         {
-            walkAnimation = new Animation(TextureLibrary.zombieTex, 72, 0.2f, true);
             walkAnimation = new Animation(TextureLibrary.fastZombieTex, 50, 0.08f, true);
+            walkAnimation = new Animation(TextureLibrary.zombieTex, 72, 0.2f, true);
             currentTile = new Vector2(0, 0);
         }
 
