@@ -18,12 +18,13 @@ namespace Sombi
         public int activationRange;
         Animation walkAnimation;
         AnimationPlayer animationPlayer;
+        Rectangle hb;
         public Zombie(Vector2 startPos)
         {
             this.velocity = 50;
             this.pos = startPos;
             this.direction = new Vector2(0, 1);
-            
+            hb = new Rectangle((int)pos.X, (int)pos.Y, 50, 50);
             this.health = 70;
             this.activationRange = 250;
             this.haveTarget = false;
@@ -40,7 +41,8 @@ namespace Sombi
         {
             CalculateCurrentTile();
             pos += direction * velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
+            hb.X = (int)pos.X - TextureLibrary.zombieTex.Width/7;
+            hb.Y = (int)pos.Y - TextureLibrary.zombieTex.Height/2;
             FindWallThroughMatrix();
 
             // Console.WriteLine((int)((pos.X + 25) / 50) + (int)direction.X);
@@ -194,7 +196,6 @@ namespace Sombi
         }
         public Rectangle GetHitbox()
         {
-            Rectangle hb = new Rectangle((int)pos.X, (int)pos.Y, 50, 50);
             return hb;
         }
         public void CalculateCurrentTile()
