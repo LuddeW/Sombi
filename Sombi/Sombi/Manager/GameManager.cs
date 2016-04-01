@@ -35,6 +35,7 @@ namespace Sombi
             enemyManager.AddZombie(new Vector2(100, 100));
             enemyManager.AddZombie(new Vector2(700, 500));
 
+            packageManager = new PackageManager(playerManager);
         }
 
         public void Update(GameTime gameTime)
