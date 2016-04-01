@@ -17,7 +17,7 @@ namespace Sombi
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferHeight = 1000;
             graphics.PreferredBackBufferWidth = 1000;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             graphics.ApplyChanges();
         }
 
