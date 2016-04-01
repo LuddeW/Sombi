@@ -61,6 +61,7 @@ namespace Sombi
             {
                 z.Draw(spriteBatch);
             }
+            spriteBatch.DrawString(TextureLibrary.HUDText, "Number of Zombies: " + zombies.Count, new Vector2(450, 1), Color.Black);
 
         }
     }
