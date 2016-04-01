@@ -25,7 +25,7 @@ namespace Sombi
             //shotGunFire = Content.Load<SoundEffect>("shotgun");
             //SoundEffect.MasterVolume = 0.5f;
 
-            rifleFire = Content.Load<SoundEffect>(@"Rifle1");
+            rifleFire = Content.Load<SoundEffect>(@"50Cal1");
             SoundEffect.MasterVolume = 0.5f;
             
             //explosiveFire = Content.Load<SoundEffect>("explosive");
