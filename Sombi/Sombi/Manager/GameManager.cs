@@ -49,10 +49,10 @@ namespace Sombi
             enemyManager.Update(gameTime);
             hudManager.Update(gameTime);
             fpsManager.Update(gameTime);
-            CheckForBulletCollisions();
+
 
             CheckPlayerZombieCollisions();
-
+            CheckForBulletCollisions();
             CheckPlayerBulletCollisions();
             playerManager.Update(gameTime);
             packageManager.Update(gameTime, playerManager.players);
