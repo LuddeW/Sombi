@@ -34,10 +34,12 @@ namespace Sombi
             
 
             testMapPos = Vector2.Zero;
-            enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
 
-            enemyManager.AddZombie(new Vector2(100, 100));
-            enemyManager.AddZombie(new Vector2(700, 500));
+            enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
+            enemyManager.AddZombie(new Vector2(100, 200));  //TEST
+            enemyManager.AddZombie(new Vector2(100, 100));      //SPAWNAR ZOMBIES HÄR!!
+            enemyManager.AddZombie(new Vector2(200, 100));          //DOM FÅR INTE SPAWNA PÅ VARANDRA
+            enemyManager.AddZombie(new Vector2(100, 500));
 
             packageManager = new PackageManager();
         }

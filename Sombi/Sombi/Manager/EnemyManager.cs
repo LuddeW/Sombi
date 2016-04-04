@@ -19,10 +19,10 @@ namespace Sombi
         public void Update(GameTime gameTime)
         {
             ClearZombies();
-            if (zombies.Count < maxzombies) // just for moar zoambiez
+           /* if (zombies.Count < maxzombies) // just for moar zoambiez
             {
                 AddZombie(new Vector2(900, 900));
-            }
+            }*/
             foreach (Zombie z in zombies)
             {
                 z.Update(gameTime);
@@ -41,6 +41,7 @@ namespace Sombi
             {
                 if (zombies[i].health < 1)
                 {
+                    Grid.SetCurrentTilePassable(true, zombies[i].currentTile);
                     blodPositions.Add(new BloodStain(zombies[i].pos));
                     zombies.RemoveAt(i);
 
