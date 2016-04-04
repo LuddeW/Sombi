@@ -43,7 +43,7 @@ namespace Sombi
             playerSpeed = 1.8f;
             health = 1000;
             this.ID = ID;
-            hitBox = new Rectangle((int)position.X, (int)position.Y, TextureLibrary.player1Tex.Width, TextureLibrary.player2Tex.Height);
+            hitBox = new Rectangle((int)position.X, (int)position.Y, TextureLibrary.sourceRectTex.Width, TextureLibrary.sourceRectTex.Height);
             SetPlayerID(ID);
             cash = 0;
         }
@@ -84,7 +84,7 @@ namespace Sombi
             if (!dead)
             {
                 spriteBatch.Draw(TextureLibrary.player1Tex, position, null, Color.White, angle, new Vector2(TextureLibrary.player1Tex.Width / 2, TextureLibrary.player1Tex.Height / 2), 1f, SpriteEffects.None, 0f);
-                spriteBatch.Draw(TextureLibrary.player1Tex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
+                spriteBatch.Draw(TextureLibrary.sourceRectTex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
             }           
         }
 
@@ -102,8 +102,13 @@ namespace Sombi
 
         private void UpdateHitbox()
         {
-            hitBox.X = (int)position.X - (TextureLibrary.player1Tex.Width / 2);
-            hitBox.Y = (int)position.Y - (TextureLibrary.player1Tex.Height / 2);
+            hitBox.X = (int)position.X - (TextureLibrary.sourceRectTex.Width) + 5;
+            hitBox.Y = (int)position.Y - (TextureLibrary.sourceRectTex.Height) + 20;
+            if (direction.X == -1)
+            {
+                hitBox.X = (int)position.X - (TextureLibrary.sourceRectTex.Width) +25;
+                hitBox.Y = (int)position.Y - (TextureLibrary.sourceRectTex.Height) + 15;
+            }
             
         }
 
