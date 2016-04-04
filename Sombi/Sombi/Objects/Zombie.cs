@@ -68,7 +68,7 @@ namespace Sombi
         {
             if (direction.X > 0)
             {
-                if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable != true)
+                if (!Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable || Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].hasZombie)
                 {
                     if (!haveTarget)
                     {
@@ -83,7 +83,7 @@ namespace Sombi
             }
             else if (direction.X < 0)
             {
-                if (Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].passable != true)
+                if (!Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].passable || Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].hasZombie)
                 {
                     if (!haveTarget)
                     {
@@ -97,7 +97,7 @@ namespace Sombi
             }
             if (direction.Y > 0)
             {
-                if (Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable != true)
+                if (!Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable || Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].hasZombie)
                 {
                     if (!haveTarget)
                     {
@@ -111,7 +111,7 @@ namespace Sombi
             }
             else if (direction.Y < 0)
             {
-                if (Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].passable != true)
+                if (!Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].passable || Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].hasZombie)
                 {
                     if (!haveTarget)
                     {
@@ -131,25 +131,25 @@ namespace Sombi
             switch (random)
             {
                 case 1:
-                    if (Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].passable == true)
+                    if (Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].passable && !Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].hasZombie)
                     {
                         direction.X = 0;
                         direction.Y = -1;
                         animationPlayer.rotation = MathHelper.ToRadians(180);
                     }
-                    else if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable == true)
+                    else if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable && !Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].hasZombie)
                     {
                         direction.X = 1;
                         direction.Y = 0;
                         animationPlayer.rotation = MathHelper.ToRadians(270);
                     }
-                    else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable == true)
+                    else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable && !Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].hasZombie)
                     {
                         direction.X = 0;
                         direction.Y = 1;
                         animationPlayer.rotation = MathHelper.ToRadians(0); 
                     }
-                    else if (Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].passable == true)
+                    else if (Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].passable && !Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].hasZombie)
                     {
                         direction.X = -1;
                         direction.Y = 0;
@@ -157,25 +157,25 @@ namespace Sombi
                     }
                     break;
                 case 2:
-                    if (Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].passable == true)
+                    if (Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].passable && !Grid.grid[(int)currentTile.X - 1, (int)currentTile.Y].hasZombie)
                     {
                         direction.X = -1;
                         direction.Y = 0;
-                        animationPlayer.rotation = MathHelper.ToRadians(90);
+                        animationPlayer.rotation = MathHelper.ToRadians(90);                            
                     }
-                    else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].passable == true)
+                    else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].passable && !Grid.grid[(int)currentTile.X, (int)currentTile.Y - 1].hasZombie)
                     {
                         direction.X = 0;
                         direction.Y = -1;
                         animationPlayer.rotation = MathHelper.ToRadians(180);
                     }
-                    else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable == true)
+                    else if (Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].passable && !Grid.grid[(int)currentTile.X, (int)currentTile.Y + 1].hasZombie)
                     {
                         direction.X = 0;
                         direction.Y = 1;
                         animationPlayer.rotation = MathHelper.ToRadians(0);
                     }
-                    else if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable == true)
+                    else if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable && !Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].hasZombie)
                     {
                         direction.X = 1;
                         direction.Y = 0;
@@ -201,27 +201,27 @@ namespace Sombi
             
             if (direction.X > 0)
             {
-                Grid.SetCurrentTilePassable(true, currentTile);
+                Grid.SetCurrentTileHasZombie(false, currentTile);
                 currentTile = new Vector2((int)(pos.X ) / 50, (int)(pos.Y) / 50);
-                Grid.SetCurrentTilePassable(false, currentTile);
+                Grid.SetCurrentTileHasZombie(true, currentTile);
             }
             else if (direction.X < 0)
             {
-                Grid.SetCurrentTilePassable(true, currentTile);
+                Grid.SetCurrentTileHasZombie(false, currentTile);
                 currentTile = new Vector2((int)(pos.X + 30) / 50, (int)(pos.Y) / 50);          //plusa på tex.width ist
-                Grid.SetCurrentTilePassable(false, currentTile);
+                Grid.SetCurrentTileHasZombie(true, currentTile);
             }
             if (direction.Y > 0)
             {
-                Grid.SetCurrentTilePassable(true, currentTile);
+                Grid.SetCurrentTileHasZombie(false, currentTile);
                 currentTile = new Vector2((int)(pos.X) / 50, (int)(pos.Y + 30) / 50);
-                Grid.SetCurrentTilePassable(false, currentTile);
+                Grid.SetCurrentTileHasZombie(true, currentTile);
             }
             else if (direction.Y < 0)
             {
-                Grid.SetCurrentTilePassable(true, currentTile);
+                Grid.SetCurrentTileHasZombie(false, currentTile);
                 currentTile = new Vector2((int)(pos.X) / 50, (int)(pos.Y) / 50);
-                Grid.SetCurrentTilePassable(false, currentTile);
+                Grid.SetCurrentTileHasZombie(true, currentTile);
             }
         }
         public void ResetTarget()

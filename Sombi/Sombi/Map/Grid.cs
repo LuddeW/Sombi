@@ -44,6 +44,10 @@ namespace Sombi
         {
             grid[(int)index.X, (int)index.Y].passable = b;
         }
+        public static void SetCurrentTileHasZombie(bool b, Vector2 index)
+        {
+            grid[(int)index.X, (int)index.Y].hasZombie = b;
+        }
 
         public void Draw(SpriteBatch sb)
         {

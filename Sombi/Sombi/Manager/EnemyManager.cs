@@ -42,7 +42,7 @@ namespace Sombi
             {
                 if (zombies[i].health < 1)
                 {
-                    Grid.SetCurrentTilePassable(true, zombies[i].currentTile);
+                    Grid.SetCurrentTileHasZombie(false, zombies[i].currentTile);
                     blodPositions.Add(new BloodStain(zombies[i].pos));
                     zombies.RemoveAt(i);
 
