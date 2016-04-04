@@ -38,8 +38,14 @@ namespace Sombi
             enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
             enemyManager.AddZombie(new Vector2(100, 200));  //TEST
             enemyManager.AddZombie(new Vector2(100, 100));      //SPAWNAR ZOMBIES HÄR!!
-            enemyManager.AddZombie(new Vector2(200, 100));          //DOM FÅR INTE SPAWNA PÅ VARANDRA
+            enemyManager.AddZombie(new Vector2(100, 400));          //DOM FÅR INTE SPAWNA PÅ VARANDRA
             enemyManager.AddZombie(new Vector2(100, 500));
+            enemyManager.AddZombie(new Vector2(900, 500));
+            enemyManager.AddZombie(new Vector2(900, 700));
+            enemyManager.AddZombie(new Vector2(900, 800));
+            enemyManager.AddZombie(new Vector2(500, 500));
+
+
 
             packageManager = new PackageManager();
         }
