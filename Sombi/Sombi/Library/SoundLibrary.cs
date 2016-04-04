@@ -19,13 +19,15 @@ namespace Sombi
         //public static SoundEffectInstance explosiveFireInstance;
         public static void LoadContent(ContentManager Content)
         {
-            //menuSong = Content.Load<Song>("menuMusic");
-            //SoundEffect.MasterVolume = 0.5f;
+            menuSong = Content.Load<Song>("MachinimaSound.com_-_Neuro_Rhythm");
+            MediaPlayer.Play(menuSong);
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Volume = 0.4f;
 
             //shotGunFire = Content.Load<SoundEffect>("shotgun");
             //SoundEffect.MasterVolume = 0.5f;
 
-            rifleFire = Content.Load<SoundEffect>(@"50Cal1");
+            rifleFire = Content.Load<SoundEffect>(@"LMG1");
             SoundEffect.MasterVolume = 0.5f;
             
             //explosiveFire = Content.Load<SoundEffect>("explosive");
