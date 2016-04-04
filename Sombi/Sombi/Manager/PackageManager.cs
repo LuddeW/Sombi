@@ -25,7 +25,10 @@ namespace Sombi
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            package.Draw(spriteBatch);
+            if (!package.taken)
+            {
+                package.Draw(spriteBatch);
+            }            
         }
 
         private void GetChest(List<Player> players)
