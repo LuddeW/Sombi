@@ -19,7 +19,7 @@ namespace Sombi
         //public static SoundEffectInstance explosiveFireInstance;
         public static void LoadContent(ContentManager Content)
         {
-            menuSong = Content.Load<Song>("MachinimaSound.com_-_Neuro_Rhythm");
+            menuSong = Content.Load<Song>("Neuro_Rhythm");
             MediaPlayer.Play(menuSong);
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Volume = 0.4f;

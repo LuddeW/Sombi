@@ -12,20 +12,24 @@ namespace Sombi
         public BulletManager bulletManager;
         public Weapon playerOneWeapon;
         public Weapon playerTwoWeapon;
-
+        private float timeSinceLastShot;
+        private float timeBetweenBullets;
+        private float timeSinceLastBullet;
 
         public WeaponManager()
         {
             this.bulletManager = new BulletManager();
             playerOneWeapon = new Rifle();
             playerTwoWeapon = new Rifle();
+            timeSinceLastBullet = 100f;
         }
-
 
 
         public void Update(GameTime gameTime)
         {
             bulletManager.Update(gameTime);
+            timeSinceLastShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            timeSinceLastBullet += (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -36,13 +40,30 @@ namespace Sombi
         {
             if (PlayerID == 1)
             {
-                bulletManager.AddBullets(position, angle, playerOneWeapon.damage,playerOneWeapon.projectileSpeed, playerOneWeapon.weaponRange, PlayerID);
+                if (timeSinceLastBullet > playerOneWeapon.fireRate)
+                {
+                    for (int i = 0; i < 6; i++)
+                    {
+                        bulletManager.AddBullets(position, angle, playerOneWeapon.damage, playerOneWeapon.projectileSpeed, playerOneWeapon.weaponRange, PlayerID);
+                    }
+                    timeSinceLastBullet = 0f;
+                    SoundManager.PlaySound(SoundManager.RifleFire);
+                }
             }
             if (PlayerID == 2)
             {
-                bulletManager.AddBullets(position, angle, playerTwoWeapon.damage,playerTwoWeapon.projectileSpeed, playerTwoWeapon.weaponRange, PlayerID);
+                if (timeSinceLastBullet > playerTwoWeapon.fireRate)
+                {
+                    for (int i = 0; i < 6; i++)
+                    {
+                        bulletManager.AddBullets(position, angle, playerTwoWeapon.damage, playerTwoWeapon.projectileSpeed, playerTwoWeapon.weaponRange, PlayerID);
+                    }
+                    timeSinceLastBullet = 0f;
+                    SoundManager.PlaySound(SoundManager.RifleFire);
+                }
+
             }
-            SoundManager.PlaySound(SoundManager.RifleFire);
+
         }
     }
 }

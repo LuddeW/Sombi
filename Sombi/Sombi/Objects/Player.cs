@@ -84,7 +84,7 @@ namespace Sombi
             if (!dead)
             {
                 spriteBatch.Draw(TextureLibrary.player1Tex, position, null, Color.White, angle, new Vector2(TextureLibrary.player1Tex.Width / 2, TextureLibrary.player1Tex.Height / 2), 1f, SpriteEffects.None, 0f);
-                spriteBatch.Draw(TextureLibrary.player1Tex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
+                //spriteBatch.Draw(TextureLibrary.player1Tex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
             }           
         }
 
