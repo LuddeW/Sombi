@@ -12,5 +12,6 @@ namespace Sombi
 
         public static Random rnd = new Random();
         public static Rectangle windowBounds = new Rectangle(0, 0, 1000, 1000);
+        public static Vector2 screenBounds = new Vector2(1000,1000);
     }
 }

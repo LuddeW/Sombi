@@ -40,6 +40,10 @@ namespace Sombi
             }
 
         }
+        public static void SetCurrentTilePassable(bool b, Vector2 index)
+        {
+            grid[(int)index.X, (int)index.Y].passable = b;
+        }
 
         public void Draw(SpriteBatch sb)
         {

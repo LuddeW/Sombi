@@ -13,7 +13,7 @@ namespace Sombi
         public float health;
         public Vector2 pos;
         Vector2 direction;
-        Vector2 currentTile;
+        public Vector2 currentTile;
         float velocity;
         public int activationRange;
         Animation walkAnimation;
@@ -33,7 +33,7 @@ namespace Sombi
         public void Load()
         {
             walkAnimation = new Animation(TextureLibrary.fastZombieTex, 50, 0.08f, true);
-            //walkAnimation = new Animation(TextureLibrary.zombieTex, 72, 0.2f, true);
+            walkAnimation = new Animation(TextureLibrary.zombieTex, 72, 0.2f, true);
             currentTile = new Vector2(0, 0);
         }
 
@@ -66,8 +66,6 @@ namespace Sombi
         }
         public void FindWallThroughMatrix()
         {
-            
-
             if (direction.X > 0)
             {
                 if (Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable != true)
@@ -200,21 +198,30 @@ namespace Sombi
         }
         public void CalculateCurrentTile()
         {
+            
             if (direction.X > 0)
             {
+                Grid.SetCurrentTilePassable(true, currentTile);
                 currentTile = new Vector2((int)(pos.X ) / 50, (int)(pos.Y) / 50);
+                Grid.SetCurrentTilePassable(false, currentTile);
             }
             else if (direction.X < 0)
             {
+                Grid.SetCurrentTilePassable(true, currentTile);
                 currentTile = new Vector2((int)(pos.X + 30) / 50, (int)(pos.Y) / 50);          //plusa på tex.width ist
+                Grid.SetCurrentTilePassable(false, currentTile);
             }
             if (direction.Y > 0)
             {
+                Grid.SetCurrentTilePassable(true, currentTile);
                 currentTile = new Vector2((int)(pos.X) / 50, (int)(pos.Y + 30) / 50);
+                Grid.SetCurrentTilePassable(false, currentTile);
             }
             else if (direction.Y < 0)
             {
+                Grid.SetCurrentTilePassable(true, currentTile);
                 currentTile = new Vector2((int)(pos.X) / 50, (int)(pos.Y) / 50);
+                Grid.SetCurrentTilePassable(false, currentTile);
             }
         }
         public void ResetTarget()
