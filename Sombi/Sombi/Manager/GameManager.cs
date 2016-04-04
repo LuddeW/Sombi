@@ -46,16 +46,18 @@ namespace Sombi
 
         public void Update(GameTime gameTime)
         {
-            enemyManager.Update(gameTime);
+            
+            enemyManager.Update(gameTime, playerManager.weaponManager.bulletManager.bullets);
+            playerManager.Update(gameTime);
+            packageManager.Update(gameTime, playerManager.players);
             hudManager.Update(gameTime);
             fpsManager.Update(gameTime);
 
 
             CheckPlayerZombieCollisions();
-            CheckForBulletCollisions();
+          
             CheckPlayerBulletCollisions();
-            playerManager.Update(gameTime);
-            packageManager.Update(gameTime, playerManager.players);
+
 
 
         }
@@ -70,22 +72,6 @@ namespace Sombi
 
             hudManager.Draw(spriteBatch);
 
-        }
-        public void CheckForBulletCollisions()      //Vet inte om den ska ligga här?
-        {
-            for (int i = 0; i < enemyManager.zombies.Count; i++)
-            {
-                for (int k = 0; k < playerManager.weaponManager.bulletManager.bullets.Count; k++)
-                {
-                    if (enemyManager.zombies[i].GetHitbox().Contains(playerManager.weaponManager.bulletManager.bullets[k].Pos))
-                    {
-                        enemyManager.zombies[i].handleBulletHit(playerManager.weaponManager.bulletManager.bullets[k].damage);
-
-                        playerManager.weaponManager.bulletManager.bullets.RemoveAt(k);
-
-                    }
-                }
-            }
         }
 
         public void CheckPlayerZombieCollisions()
