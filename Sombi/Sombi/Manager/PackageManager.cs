@@ -36,11 +36,7 @@ namespace Sombi
                 {
                     Console.WriteLine("Got Package");
                     package.taken = true;
-                    //if (package.taken == true)
-                    //{
-                    //    players[0].cash += 100;
-                    //    players[1].cash += 100;
-                    //}
+                    player.gotPackage = true;                   
                 }
             }
         }
@@ -51,7 +47,7 @@ namespace Sombi
             {
                 foreach (Player player in players)
                 {
-                    if (player.position.X / 50 > 17 && player.position.Y / 50 < 2 )
+                    if (player.position.X / 50 > 17 && player.position.Y / 50 < 2 && player.gotPackage)
                     {
                         players[0].cash += 100;
                         players[1].cash += 100;

@@ -32,7 +32,7 @@ namespace Sombi
         Rectangle hitBox;
         public int health;
         public bool dead = false;
-        
+        public bool gotPackage = false;
 
         public Player(Weapon weapon, Vector2 position, int ID)
         {
