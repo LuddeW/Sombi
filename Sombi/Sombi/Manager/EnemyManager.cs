@@ -63,7 +63,7 @@ namespace Sombi
             {
                 z.Draw(spriteBatch);
             }
-            spriteBatch.DrawString(TextureLibrary.HUDText, "Number of Zombies killed: " + zombies.Count, new Vector2(450, 15), Color.Black);
+            spriteBatch.DrawString(TextureLibrary.HUDText, "Number of Zombies: " + zombies.Count, new Vector2(450, 15), Color.Black);
 
         }
         public void CheckForBulletCollisions(List<Bullet> bulletList)
