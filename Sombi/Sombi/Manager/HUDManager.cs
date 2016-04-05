@@ -14,11 +14,8 @@ namespace Sombi
 
         public HUDManager(List<Player> players)
         {
-            this.players = players;
-            
+            this.players = players;   
         }
-
-
 
         public void Update(GameTime gameTime)
         {
