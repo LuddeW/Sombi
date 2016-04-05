@@ -33,7 +33,7 @@ namespace Sombi
         public void Load()
         {
             walkAnimation = new Animation(TextureLibrary.fastZombieTex, 50, 0.08f, true);
-            walkAnimation = new Animation(TextureLibrary.zombieTex, 72, 0.2f, true);
+            walkAnimation = new Animation(TextureLibrary.zombieTex, 50, 0.2f, true);
             currentTile = new Vector2(0, 0);
         }
 
@@ -63,7 +63,7 @@ namespace Sombi
         {
             //spriteBatch.Draw(TextureLibrary.zombieTex, new Vector2(pos.X, pos.Y), new Rectangle(0, 0, (int)TextureLibrary.zombieTex.Width / 3, TextureLibrary.zombieTex.Height), Color.White);
             animationPlayer.Draw(spriteBatch, pos);
-            spriteBatch.Draw(TextureLibrary.sourceRectTex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
+            //spriteBatch.Draw(TextureLibrary.sourceRectTex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
 
         }
         public void FindWallThroughMatrix()
