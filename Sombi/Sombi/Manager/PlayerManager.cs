@@ -25,6 +25,18 @@ namespace Sombi
            
         }
 
+        public bool GameOver()
+        {
+            if (player1.dead && player2.dead)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void Update(GameTime gameTime)
         {
             player1.Update(gameTime);

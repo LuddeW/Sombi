@@ -9,6 +9,12 @@ using System.Text;
 
 namespace Sombi
 {
+    enum GameState
+    {
+        Menu,
+        Playing,
+        Paused,
+    }
     class GameManager
     {
         const int TILE_SIZE = 50;
@@ -19,6 +25,8 @@ namespace Sombi
         FPSManager fpsManager;
         Vector2 testMapPos;
         PackageManager packageManager;
+        HighscoreManager highscoreManager;
+        GameState currentGameState = GameState.Playing;
 
         public GameManager(ContentManager contentManager)
         {
@@ -29,33 +37,58 @@ namespace Sombi
             playerManager = new PlayerManager();
             enemyManager = new EnemyManager();
             hudManager = new HUDManager(playerManager.players);
-
             fpsManager = new FPSManager();
-            
-
+            highscoreManager = new HighscoreManager();
             testMapPos = Vector2.Zero;
 
             enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
             enemyManager.AddZombie(new Vector2(100, 200));  //TEST
             enemyManager.AddZombie(new Vector2(100, 100));      //SPAWNAR ZOMBIES HÄR!!
-            enemyManager.AddZombie(new Vector2(200, 100));          //DOM FÅR INTE SPAWNA PÅ VARANDRA
+            enemyManager.AddZombie(new Vector2(100, 400));          //DOM FÅR INTE SPAWNA PÅ VARANDRA
             enemyManager.AddZombie(new Vector2(100, 500));
+            enemyManager.AddZombie(new Vector2(900, 500));
+            enemyManager.AddZombie(new Vector2(900, 700));
+            enemyManager.AddZombie(new Vector2(900, 800));
+            enemyManager.AddZombie(new Vector2(500, 500));
+
+
 
             packageManager = new PackageManager();
         }
 
         public void Update(GameTime gameTime)
         {
-            enemyManager.Update(gameTime);
-            hudManager.Update(gameTime);
-            fpsManager.Update(gameTime);
+            switch (currentGameState)
+            {
+                case GameState.Menu:
+                    {
+                        break;
+                    }
+
+                case GameState.Playing:
+                    {
+                        enemyManager.Update(gameTime, playerManager.weaponManager.bulletManager.bullets);
+                        playerManager.Update(gameTime);
+                        packageManager.Update(gameTime, playerManager.players);
+                        hudManager.Update(gameTime);
+                        fpsManager.Update(gameTime);
+                        CheckPlayerZombieCollisions();
+                        CheckPlayerBulletCollisions();
+                        if (playerManager.GameOver())
+                        {
+                            currentGameState = GameState.Menu;
+                        }
+                        break;
+                    }
+
+                case GameState.Paused:
+                    {
+                        break;
+                    }
+
+            }
 
 
-            CheckPlayerZombieCollisions();
-            CheckForBulletCollisions();
-            CheckPlayerBulletCollisions();
-            playerManager.Update(gameTime);
-            packageManager.Update(gameTime, playerManager.players);
 
 
         }
@@ -67,24 +100,10 @@ namespace Sombi
             enemyManager.Draw(spriteBatch);
             fpsManager.Draw(spriteBatch);
             playerManager.Draw(spriteBatch);
-
             hudManager.Draw(spriteBatch);
-
-        }
-        public void CheckForBulletCollisions()      //Vet inte om den ska ligga här?
-        {
-            for (int i = 0; i < enemyManager.zombies.Count; i++)
+            if(playerManager.GameOver())
             {
-                for (int k = 0; k < playerManager.weaponManager.bulletManager.bullets.Count; k++)
-                {
-                    if (enemyManager.zombies[i].GetHitbox().Contains(playerManager.weaponManager.bulletManager.bullets[k].Pos))
-                    {
-                        enemyManager.zombies[i].handleBulletHit(playerManager.weaponManager.bulletManager.bullets[k].damage);
-
-                        playerManager.weaponManager.bulletManager.bullets.RemoveAt(k);
-
-                    }
-                }
+                spriteBatch.DrawString(TextureLibrary.HUDText, "YOU LOSE SUCKAH", new Vector2(450, 500), Color.Black);
             }
         }
 
@@ -102,7 +121,7 @@ namespace Sombi
                     if (Vector2.Distance(enemyManager.zombies[i].pos, playerManager.players[j].position) < enemyManager.zombies[i].activationRange)
                     {
                         enemyManager.zombies[i].SetChasingDirection(playerManager.players[j].position);
-                        
+
                     }
                     else if (Vector2.Distance(enemyManager.zombies[i].pos, playerManager.players[j].position) > enemyManager.zombies[i].activationRange)
                     {

@@ -16,8 +16,9 @@ namespace Sombi
 
         public List<Zombie> zombies = new List<Zombie>();
         public List<BloodStain> blodPositions = new List<BloodStain>();
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, List<Bullet> bulletList)
         {
+            CheckForBulletCollisions(bulletList);
             ClearZombies();
            /* if (zombies.Count < maxzombies) // just for moar zoambiez
             {
@@ -41,10 +42,10 @@ namespace Sombi
             {
                 if (zombies[i].health < 1)
                 {
-                    Grid.SetCurrentTilePassable(true, zombies[i].currentTile);
+                    Grid.SetCurrentTileHasZombie(false, zombies[i].currentTile);
                     blodPositions.Add(new BloodStain(zombies[i].pos));
                     zombies.RemoveAt(i);
-
+                    HighscoreManager.score++;
 
                     maxzombies++;
 
@@ -62,8 +63,24 @@ namespace Sombi
             {
                 z.Draw(spriteBatch);
             }
-            spriteBatch.DrawString(TextureLibrary.HUDText, "Number of Zombies killed: " + zombies.Count, new Vector2(450, 15), Color.Black);
+            spriteBatch.DrawString(TextureLibrary.HUDText, "Number of Zombies: " + zombies.Count, new Vector2(450, 15), Color.Black);
 
+        }
+        public void CheckForBulletCollisions(List<Bullet> bulletList)
+        {
+            for (int i = 0; i < zombies.Count; i++)
+            {
+                for (int k = 0; k < bulletList.Count; k++)
+                {
+                    if (zombies[i].GetHitbox().Contains(bulletList[k].Pos))
+                    {
+                        zombies[i].handleBulletHit(bulletList[k].damage);
+
+                        bulletList.RemoveAt(k);
+
+                    }
+                }
+            }
         }
     }
 }
