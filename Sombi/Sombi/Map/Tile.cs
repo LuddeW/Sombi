@@ -32,11 +32,6 @@ namespace Sombi
         {
             return this.passable;
         }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-
-        }
     }
     
 }
