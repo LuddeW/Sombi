@@ -54,6 +54,7 @@ namespace Sombi
                     {
                         players[0].cash += 100;
                         players[1].cash += 100;
+                        HighscoreManager.score += 100;
                         package.taken = false;
                         Console.WriteLine(package.taken);
                     }

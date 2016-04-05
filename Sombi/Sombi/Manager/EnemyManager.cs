@@ -45,7 +45,7 @@ namespace Sombi
                     Grid.SetCurrentTileHasZombie(false, zombies[i].currentTile);
                     blodPositions.Add(new BloodStain(zombies[i].pos));
                     zombies.RemoveAt(i);
-
+                    HighscoreManager.score++;
 
                     maxzombies++;
 

@@ -30,6 +30,7 @@ namespace Sombi
             spriteBatch.DrawString(TextureLibrary.HUDText, "Cash: " + players[0].cash, new Vector2(0,14), Color.Black);
             spriteBatch.DrawString(TextureLibrary.HUDText, "Health: " + players[1].health, new Vector2(910,0), Color.Black);
             spriteBatch.DrawString(TextureLibrary.HUDText, "Cash: " + players[1].cash, new Vector2(910, 14), Color.Black);
+            spriteBatch.DrawString(TextureLibrary.HUDText, "Score: " + HighscoreManager.score, new Vector2(450, 30), Color.Black);
         }
     }
 }
