@@ -77,6 +77,7 @@ namespace Sombi
                         if (playerManager.GameOver())
                         {
                             currentGameState = GameState.Menu;
+                            highscoreManager.WriteScore();
                         }
                         break;
                     }
