@@ -19,6 +19,7 @@ namespace Sombi
         FPSManager fpsManager;
         Vector2 testMapPos;
         PackageManager packageManager;
+        HighscoreManager highscoreManager;
 
         public GameManager(ContentManager contentManager)
         {
@@ -29,8 +30,8 @@ namespace Sombi
             playerManager = new PlayerManager();
             enemyManager = new EnemyManager();
             hudManager = new HUDManager(playerManager.players);
-
             fpsManager = new FPSManager();
+            highscoreManager = new HighscoreManager();
             
 
             testMapPos = Vector2.Zero;
