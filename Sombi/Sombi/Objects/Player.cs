@@ -102,13 +102,31 @@ namespace Sombi
 
         private void UpdateHitbox()
         {
-            hitBox.X = (int)position.X - (TextureLibrary.sourceRectTex.Width) + 5;
-            hitBox.Y = (int)position.Y - (TextureLibrary.sourceRectTex.Height) + 20;
-            if (direction.X == -1)
-            {
-                hitBox.X = (int)position.X - (TextureLibrary.sourceRectTex.Width) +25;
-                hitBox.Y = (int)position.Y - (TextureLibrary.sourceRectTex.Height) + 15;
-            }
+            //if (direction.X == 0 && direction.Y == 0)
+            //{
+                hitBox.X = (int)position.X - ((TextureLibrary.player1Tex.Width) / 2) + 10;
+                hitBox.Y = (int)position.Y - ((TextureLibrary.player1Tex.Height) / 2);
+            //}
+            //else if (direction.X == -1)
+            //{
+            //    hitBox.X = (int)position.X - (TextureLibrary.sourceRectTex.Width) + 30;
+            //    hitBox.Y = (int)position.Y - (TextureLibrary.sourceRectTex.Height) + 15;
+            //}
+            //else if (direction.X == 1)
+            //{
+            //    hitBox.X = (int)position.X - (TextureLibrary.sourceRectTex.Width);
+            //    hitBox.Y = (int)position.Y - (TextureLibrary.sourceRectTex.Height) + 20;
+            //}
+            //else if (direction.Y == -1)
+            //{
+            //    hitBox.X = (int)position.X - (TextureLibrary.sourceRectTex.Width) + 20;
+            //    hitBox.Y = (int)position.Y - (TextureLibrary.sourceRectTex.Height) + 25;
+            //}
+            //else if (direction.Y == 1)
+            //{
+            //    hitBox.X = (int)position.X - (TextureLibrary.sourceRectTex.Width);
+            //    hitBox.Y = (int)position.Y - (TextureLibrary.sourceRectTex.Height) + 5;
+            //}
             
         }
 
@@ -148,6 +166,15 @@ namespace Sombi
             {
                 direction.X = 1;
             }
+
+            //if (velocity.X == 0)
+            //{
+            //    direction.X = 0;
+            //}
+            //if (velocity.Y == 0)
+            //{
+            //    direction.Y = 0;
+            //}
         }
 
         private void UpdateRotation() //Rotate sprite based on controller input
