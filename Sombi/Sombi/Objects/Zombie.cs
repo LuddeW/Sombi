@@ -210,13 +210,13 @@ namespace Sombi
             else if (direction.X < 0)
             {
                 Grid.SetCurrentTileHasZombie(false, currentTile);
-                currentTile = new Vector2((int)(pos.X + 30) / 50, (int)(pos.Y) / 50);          //plusa på tex.width ist
+                currentTile = new Vector2((int)(pos.X) / 50, (int)(pos.Y) / 50);          //plusa på tex.width ist
                 Grid.SetCurrentTileHasZombie(true, currentTile);
             }
             if (direction.Y > 0)
             {
                 Grid.SetCurrentTileHasZombie(false, currentTile);
-                currentTile = new Vector2((int)(pos.X) / 50, (int)(pos.Y + 30) / 50);
+                currentTile = new Vector2((int)(pos.X) / 50, (int)(pos.Y) / 50);
                 Grid.SetCurrentTileHasZombie(true, currentTile);
             }
             else if (direction.Y < 0)
