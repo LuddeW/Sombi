@@ -19,6 +19,13 @@ namespace Sombi
         public static Texture2D fastZombieTex { get; private set; }
         public static Texture2D BulletBlue { get; private set; }
         public static SpriteFont HUDText { get; private set; }
+
+        public static Texture2D startButton { get; private set; }
+        public static Texture2D settingButton { get; private set; }
+        public static Texture2D highscoreButton { get; private set; }
+        public static Texture2D exitButton { get; private set; }
+        public static Texture2D logoTex { get; private set; }
+
         public static Texture2D[] bloodStain = new Texture2D[10];
 
         public static void LoadContent(ContentManager Content)
@@ -32,6 +39,7 @@ namespace Sombi
             zombieTex = Content.Load<Texture2D>(@"ZombieSheet");
             fastZombieTex = Content.Load<Texture2D>(@"ZombieSheet2");
             HUDText = Content.Load<SpriteFont>(@"HUDText");
+
            
             bloodStain[0] = Content.Load<Texture2D>(@"BlodStain1");
             bloodStain[1] = Content.Load<Texture2D>(@"BloodStain2");
@@ -43,6 +51,12 @@ namespace Sombi
             bloodStain[7] = Content.Load<Texture2D>(@"BloodStain8");
             bloodStain[8] = Content.Load<Texture2D>(@"BloodStain9");
             bloodStain[9] = Content.Load<Texture2D>(@"BloodStain10");
+
+            startButton = Content.Load<Texture2D>(@"Play");
+            settingButton = Content.Load<Texture2D>(@"Settings");
+            highscoreButton = Content.Load<Texture2D>(@"Highscore");
+            exitButton = Content.Load<Texture2D>(@"Exit");
+            logoTex = Content.Load<Texture2D>(@"Logo");
         }
     }
 }

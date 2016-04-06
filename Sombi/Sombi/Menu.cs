@@ -8,30 +8,18 @@ namespace Sombi
 {
     class Menu
     {
-        const int PLATFORM_WIDTH = 200;
-        const int PLATFORM_HEIGHT = 100;
-        const int NUMBER_OF_PLATTFORMS = 4;
-
-        int startIndex;
-        int settingsIndex;
-        int highscoreIndex;
-        int exitIndex;
-        Rectangle[] PlatformRectangle;
-
+        public Rectangle startRect;
+        public Rectangle settingRect;
+        public Rectangle highscoreRect;
+        public Rectangle exitRect;
+        public Rectangle logoRect;
         public Menu()
         {
-            startIndex = 0;
-            settingsIndex = 1;
-            highscoreIndex = 2;
-            exitIndex = 3;
-            PlatformRectangle = new Rectangle[NUMBER_OF_PLATTFORMS];
-            int platformPosX = 400 - PLATFORM_WIDTH / 2;
-            int platformPosY = 400 / 2 - NUMBER_OF_PLATTFORMS / 2 * PLATFORM_HEIGHT - (NUMBER_OF_PLATTFORMS % 2) * PLATFORM_HEIGHT / 2;
-            for (int i = 0; i < NUMBER_OF_PLATTFORMS; i++)
-            {
-                PlatformRectangle[i] = new Rectangle(platformPosX, platformPosY, PLATFORM_WIDTH, PLATFORM_HEIGHT);
-                platformPosY += PLATFORM_HEIGHT * 2;
-            }
+            startRect = new Rectangle((int)GlobalValues.screenBounds.X / 2 - TextureLibrary.startButton.Width / 2, (int)GlobalValues.screenBounds.Y / 2 - TextureLibrary.startButton.Height / 2 - 200, TextureLibrary.startButton.Width, TextureLibrary.startButton.Height);
+            settingRect = new Rectangle((int)GlobalValues.screenBounds.X / 2 - TextureLibrary.settingButton.Width / 2, (int)GlobalValues.screenBounds.Y / 2 - TextureLibrary.settingButton.Height / 2, TextureLibrary.settingButton.Width, TextureLibrary.settingButton.Height);
+            highscoreRect = new Rectangle((int)GlobalValues.screenBounds.X / 2 - TextureLibrary.highscoreButton.Width / 2, (int)GlobalValues.screenBounds.Y / 2 - TextureLibrary.highscoreButton.Height / 2 + 200, TextureLibrary.highscoreButton.Width, TextureLibrary.highscoreButton.Height);
+            exitRect = new Rectangle((int)GlobalValues.screenBounds.X / 2 - TextureLibrary.exitButton.Width / 2, (int)GlobalValues.screenBounds.Y / 2 - TextureLibrary.exitButton.Height / 2 + 400, TextureLibrary.exitButton.Width, TextureLibrary.exitButton.Height);
+            logoRect = new Rectangle((int)GlobalValues.screenBounds.X / 2 - TextureLibrary.logoTex.Width / 2, 0, TextureLibrary.logoTex.Width, TextureLibrary.logoTex.Height);
         }
 
     }

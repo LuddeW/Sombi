@@ -27,6 +27,7 @@ namespace Sombi
         Vector2 testMapPos;
         PackageManager packageManager;
         HighscoreManager highscoreManager;
+        MenuManager menuManager;
         GameState currentGameState = GameState.Playing;
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
@@ -55,7 +56,7 @@ namespace Sombi
             enemyManager.AddZombie(new Vector2(500, 500));
 
 
-
+            menuManager = new MenuManager(playerManager.players);
             packageManager = new PackageManager();
         }
 
@@ -67,6 +68,7 @@ namespace Sombi
             {
                 case GameState.Menu:
                     {
+                        //menuManager.Update(gameTime);
                         break;
                     }
 
@@ -82,7 +84,7 @@ namespace Sombi
                         hudManager.Update(gameTime);
                         fpsManager.Update(gameTime);
                         CheckPlayerZombieCollisions();
-                        CheckPlayerBulletCollisions();
+                        CheckPlayerBulletCollisions();                     
                         if (playerManager.GameOver())
                         {
                             currentGameState = GameState.Menu;
@@ -109,7 +111,13 @@ namespace Sombi
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            
+            packageManager.Draw(spriteBatch);
+            spriteBatch.Draw(TextureLibrary.testMapTex, testMapPos, Color.White);
+            enemyManager.Draw(spriteBatch);
+            fpsManager.Draw(spriteBatch);
+            playerManager.Draw(spriteBatch);
+            hudManager.Draw(spriteBatch);
+            //menuManager.Draw(spriteBatch);
             if (playerManager.GameOver())
             {
                 spriteBatch.DrawString(TextureLibrary.HUDText, "Bajs-curious", new Vector2(450, 500), Color.Black);
