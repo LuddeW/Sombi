@@ -109,20 +109,36 @@ namespace Sombi
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            packageManager.Draw(spriteBatch);
-            spriteBatch.Draw(TextureLibrary.testMapTex, testMapPos, Color.White);
-            enemyManager.Draw(spriteBatch);
-            fpsManager.Draw(spriteBatch);
-            playerManager.Draw(spriteBatch);
-            hudManager.Draw(spriteBatch);
+            
             if (playerManager.GameOver())
             {
-                spriteBatch.DrawString(TextureLibrary.HUDText, "YOU LOSE SUCKAH", new Vector2(450, 500), Color.Black);
+                spriteBatch.DrawString(TextureLibrary.HUDText, "Bajs-curious", new Vector2(450, 500), Color.Black);
             }
             switch (currentGameState)
             {
+                case GameState.Menu:
+                {
+
+                    break;               
+                }
+                case GameState.Playing:
+                {
+                    packageManager.Draw(spriteBatch);
+                    spriteBatch.Draw(TextureLibrary.testMapTex, testMapPos, Color.White);
+                    enemyManager.Draw(spriteBatch);
+                    fpsManager.Draw(spriteBatch);
+                    playerManager.Draw(spriteBatch);
+                    hudManager.Draw(spriteBatch);
+                    break;
+                }
                 case GameState.Paused:
                 {
+                    packageManager.Draw(spriteBatch);
+                    spriteBatch.Draw(TextureLibrary.testMapTex, testMapPos, Color.White);
+                    enemyManager.Draw(spriteBatch);
+                    fpsManager.Draw(spriteBatch);
+                    playerManager.Draw(spriteBatch);
+                    hudManager.Draw(spriteBatch);
                     spriteBatch.DrawString(TextureLibrary.HUDText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
                     break;
                 }
