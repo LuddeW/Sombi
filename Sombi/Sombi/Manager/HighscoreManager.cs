@@ -37,7 +37,7 @@ namespace Sombi
         public void WriteScore()
         {
             string textScore = score.ToString();
-            StreamWriter file = new StreamWriter(@"Content\Highscore.txt");
+            StreamWriter file = new StreamWriter("Highscore.txt");
             file.WriteLine(textScore);
             file.Close();
         }

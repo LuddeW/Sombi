@@ -48,10 +48,5 @@ namespace Sombi
         {
             grid[(int)index.X, (int)index.Y].hasZombie = b;
         }
-
-        public void Draw(SpriteBatch sb)
-        {
-           
-        }
     }
 }
