@@ -48,7 +48,7 @@ namespace Sombi
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Gray);
+            GraphicsDevice.Clear(Color.White);
             spriteBatch.Begin();
             gameManager.Draw(spriteBatch);
             spriteBatch.End();
