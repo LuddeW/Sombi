@@ -18,8 +18,8 @@ namespace Sombi
         {
             weaponManager = new WeaponManager();
             players = new List<Player>();
-            player1 = new Player(weaponManager.playerOneWeapon, new Vector2(250,100),1);
-            player2 = new Player(weaponManager.playerTwoWeapon, new Vector2(500,150),2);
+            player1 = new Player(weaponManager.playerOneWeapon, new Vector2(300,100),1);
+            player2 = new Player(weaponManager.playerTwoWeapon, new Vector2(500,100),2);
             players.Add(player1);
             players.Add(player2);
            
