@@ -28,7 +28,7 @@ namespace Sombi
         PackageManager packageManager;
         HighscoreManager highscoreManager;
         MenuManager menuManager;
-        GameState currentGameState = GameState.Menu;
+        GameState currentGameState = GameState.Playing;
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
 
