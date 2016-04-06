@@ -28,7 +28,7 @@ namespace Sombi
         PackageManager packageManager;
         HighscoreManager highscoreManager;
         MenuManager menuManager;
-        GameState currentGameState = GameState.Playing;
+        GameState currentGameState = GameState.Menu;
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
 
@@ -68,7 +68,7 @@ namespace Sombi
             {
                 case GameState.Menu:
                     {
-                        //menuManager.Update(gameTime);
+                        menuManager.Update(gameTime);
                         break;
                     }
 
@@ -112,7 +112,6 @@ namespace Sombi
         public void Draw(SpriteBatch spriteBatch)
         {
 
-            //menuManager.Draw(spriteBatch);
             if (playerManager.GameOver())
             {
                 spriteBatch.DrawString(TextureLibrary.HUDText, "Bajs-curious", new Vector2(450, 500), Color.Black);
@@ -121,7 +120,7 @@ namespace Sombi
             {
                 case GameState.Menu:
                 {
-
+                    menuManager.Draw(spriteBatch);
                     break;               
                 }
                 case GameState.Playing:
