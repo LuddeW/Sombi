@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +29,8 @@ namespace Sombi
         HighscoreManager highscoreManager;
         MenuManager menuManager;
         GameState currentGameState = GameState.Playing;
+        KeyboardState currentKeyboard;
+        KeyboardState oldKeyboard;
 
         public GameManager(ContentManager contentManager)
         {
@@ -43,9 +46,9 @@ namespace Sombi
             testMapPos = Vector2.Zero;
 
             enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
-            enemyManager.AddZombie(new Vector2(100, 200));  //TEST
-            enemyManager.AddZombie(new Vector2(100, 100));      //SPAWNAR ZOMBIES HÄR!!
-            enemyManager.AddZombie(new Vector2(100, 400));          //DOM FÅR INTE SPAWNA PÅ VARANDRA
+            enemyManager.AddZombie(new Vector2(800, 200));  //TEST
+            enemyManager.AddZombie(new Vector2(900, 100));      //SPAWNAR ZOMBIES HÄR!!
+            enemyManager.AddZombie(new Vector2(100, 600));          //DOM FÅR INTE SPAWNA PÅ VARANDRA
             enemyManager.AddZombie(new Vector2(100, 500));
             enemyManager.AddZombie(new Vector2(900, 500));
             enemyManager.AddZombie(new Vector2(900, 700));
@@ -59,6 +62,8 @@ namespace Sombi
 
         public void Update(GameTime gameTime)
         {
+            oldKeyboard = currentKeyboard;
+            currentKeyboard = Keyboard.GetState();
             switch (currentGameState)
             {
                 case GameState.Menu:
@@ -69,6 +74,10 @@ namespace Sombi
 
                 case GameState.Playing:
                     {
+                        if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
+                        {
+                            currentGameState = GameState.Paused;
+                        }
                         enemyManager.Update(gameTime, playerManager.weaponManager.bulletManager.bullets);
                         playerManager.Update(gameTime);
                         packageManager.Update(gameTime, playerManager.players);
@@ -79,12 +88,17 @@ namespace Sombi
                         if (playerManager.GameOver())
                         {
                             currentGameState = GameState.Menu;
+                            highscoreManager.WriteScore();
                         }
                         break;
                     }
 
                 case GameState.Paused:
                     {
+                        if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
+                        {
+                            currentGameState = GameState.Playing;
+                        }
                         break;
                     }
 
@@ -104,9 +118,17 @@ namespace Sombi
             playerManager.Draw(spriteBatch);
             hudManager.Draw(spriteBatch);
             //menuManager.Draw(spriteBatch);
-            if(playerManager.GameOver())
+            if (playerManager.GameOver())
             {
                 spriteBatch.DrawString(TextureLibrary.HUDText, "YOU LOSE SUCKAH", new Vector2(450, 500), Color.Black);
+            }
+            switch (currentGameState)
+            {
+                case GameState.Paused:
+                {
+                    spriteBatch.DrawString(TextureLibrary.HUDText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
+                    break;
+                }
             }
         }
 
