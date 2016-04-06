@@ -206,8 +206,6 @@ namespace Sombi
             {
                 menuManager.start = false;
                 currentGameState = GameState.Menu;
-                playerManager.players[0].dead = false;
-                playerManager.players[1].dead = false;
             }
         }
     }
