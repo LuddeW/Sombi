@@ -69,6 +69,8 @@ namespace Sombi
                 case GameState.Menu:
                     {
                         menuManager.Update(gameTime);
+                        playerManager.Update(gameTime);
+                        StartGame();
                         break;
                     }
 
@@ -121,6 +123,7 @@ namespace Sombi
                 case GameState.Menu:
                 {
                     menuManager.Draw(spriteBatch);
+                        playerManager.Draw(spriteBatch);
                     break;               
                 }
                 case GameState.Playing:
@@ -185,6 +188,14 @@ namespace Sombi
                         playerManager.weaponManager.bulletManager.bullets.RemoveAt(k);
                     }
                 }
+            }
+        }
+
+        private void StartGame()
+        {
+            if (menuManager.start)
+            {
+                currentGameState = GameState.Playing;
             }
         }
     }

@@ -10,13 +10,23 @@ namespace Sombi
     class MenuManager
     {
         Menu menu;
-        public MenuManager(List<Player> player)
+        List<Player> players;
+        public bool start;
+        public MenuManager(List<Player> players)
         {
             menu = new Menu();
+            this.players = players;
+            start = false;
         }
         public void Update(GameTime gameTime)
         {
-
+            foreach (Player player in players)
+            {
+                if (player.HitBox.Intersects(menu.startRect))
+                {
+                    start = true;
+                }
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
