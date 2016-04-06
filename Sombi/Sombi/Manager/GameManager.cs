@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +28,8 @@ namespace Sombi
         PackageManager packageManager;
         HighscoreManager highscoreManager;
         GameState currentGameState = GameState.Playing;
+        KeyboardState currentKeyboard;
+        KeyboardState oldKeyboard;
 
         public GameManager(ContentManager contentManager)
         {
@@ -58,6 +61,8 @@ namespace Sombi
 
         public void Update(GameTime gameTime)
         {
+            oldKeyboard = currentKeyboard;
+            currentKeyboard = Keyboard.GetState();
             switch (currentGameState)
             {
                 case GameState.Menu:
@@ -67,6 +72,10 @@ namespace Sombi
 
                 case GameState.Playing:
                     {
+                        if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
+                        {
+                            currentGameState = GameState.Paused;
+                        }
                         enemyManager.Update(gameTime, playerManager.weaponManager.bulletManager.bullets);
                         playerManager.Update(gameTime);
                         packageManager.Update(gameTime, playerManager.players);
@@ -84,6 +93,10 @@ namespace Sombi
 
                 case GameState.Paused:
                     {
+                        if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
+                        {
+                            currentGameState = GameState.Playing;
+                        }
                         break;
                     }
 
@@ -102,9 +115,17 @@ namespace Sombi
             fpsManager.Draw(spriteBatch);
             playerManager.Draw(spriteBatch);
             hudManager.Draw(spriteBatch);
-            if(playerManager.GameOver())
+            if (playerManager.GameOver())
             {
                 spriteBatch.DrawString(TextureLibrary.HUDText, "YOU LOSE SUCKAH", new Vector2(450, 500), Color.Black);
+            }
+            switch (currentGameState)
+            {
+                case GameState.Paused:
+                {
+                    spriteBatch.DrawString(TextureLibrary.HUDText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
+                    break;
+                }
             }
         }
 
