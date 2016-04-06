@@ -11,12 +11,11 @@ namespace Sombi
     {
         Menu menu;
         List<Player> players;
-        public bool start;
+        public bool start = false;
         public MenuManager(List<Player> players)
         {
             menu = new Menu();
             this.players = players;
-            start = false;
         }
         public void Update(GameTime gameTime)
         {
@@ -25,6 +24,8 @@ namespace Sombi
                 if (player.HitBox.Intersects(menu.startRect))
                 {
                     start = true;
+                    Grid.menu = false;
+                    Grid.CreateGridFactory();
                 }
             }
         }

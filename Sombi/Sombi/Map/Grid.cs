@@ -12,29 +12,59 @@ namespace Sombi
     {
 
         public static Tile[,] grid;
-        
+        public static bool menu = true;
+
         public static void CreateGridFactory()
         {
-           StreamReader sr = new StreamReader(@"Content\Testmap.txt");
-           List<string> stringList = new List<string>();
-            
-            while (!sr.EndOfStream)
+            if (!menu)
             {
-                stringList.Add(sr.ReadLine());
-            }
-            grid = new Tile[20, 20];
-            for (int i = 0; i < grid.GetLength(0); i++)
-            {
-                for (int k = 0; k < grid.GetLength(1); k++)
+                StreamReader sr = new StreamReader(@"Content\Testmap.txt");
+                List<string> stringList = new List<string>();
+
+                while (!sr.EndOfStream)
                 {
-                    switch (stringList[i][k])
+                    stringList.Add(sr.ReadLine());
+                }
+                grid = new Tile[20, 20];
+                for (int i = 0; i < grid.GetLength(0); i++)
+                {
+                    for (int k = 0; k < grid.GetLength(1); k++)
                     {
-                        case '0':
-                            grid[k, i] = new Tile(new Vector2(k, i), true);
-                            break;
-                        case '1':
-                            grid[k, i] = new Tile(new Vector2(k, i), false);
-                            break;
+                        switch (stringList[i][k])
+                        {
+                            case '0':
+                                grid[k, i] = new Tile(new Vector2(k, i), true);
+                                break;
+                            case '1':
+                                grid[k, i] = new Tile(new Vector2(k, i), false);
+                                break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                StreamReader sr = new StreamReader(@"Content\Menumap.txt");
+                List<string> stringList = new List<string>();
+
+                while (!sr.EndOfStream)
+                {
+                    stringList.Add(sr.ReadLine());
+                }
+                grid = new Tile[20, 20];
+                for (int i = 0; i < grid.GetLength(0); i++)
+                {
+                    for (int k = 0; k < grid.GetLength(1); k++)
+                    {
+                        switch (stringList[i][k])
+                        {
+                            case '0':
+                                grid[k, i] = new Tile(new Vector2(k, i), true);
+                                break;
+                            case '1':
+                                grid[k, i] = new Tile(new Vector2(k, i), false);
+                                break;
+                        }
                     }
                 }
             }

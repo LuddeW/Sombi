@@ -86,7 +86,8 @@ namespace Sombi
                         hudManager.Update(gameTime);
                         fpsManager.Update(gameTime);
                         CheckPlayerZombieCollisions();
-                        CheckPlayerBulletCollisions();                     
+                        CheckPlayerBulletCollisions();
+                        ResetGame();               
                         if (playerManager.GameOver())
                         {
                             currentGameState = GameState.Menu;
@@ -123,7 +124,7 @@ namespace Sombi
                 case GameState.Menu:
                 {
                     menuManager.Draw(spriteBatch);
-                        playerManager.Draw(spriteBatch);
+                    playerManager.Draw(spriteBatch);
                     break;               
                 }
                 case GameState.Playing:
@@ -196,6 +197,17 @@ namespace Sombi
             if (menuManager.start)
             {
                 currentGameState = GameState.Playing;
+            }
+        }
+
+        private void ResetGame()
+        {
+            if (playerManager.players[0].dead && playerManager.players[0].dead)
+            {
+                menuManager.start = false;
+                currentGameState = GameState.Menu;
+                playerManager.players[0].dead = false;
+                playerManager.players[1].dead = false;
             }
         }
     }

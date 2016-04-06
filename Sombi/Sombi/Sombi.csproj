@@ -99,6 +99,9 @@
     <Content Include="Content\Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Menumap.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Neuro_Rhythm.mp3" />
     <Content Include="Content\Play.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
