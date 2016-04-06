@@ -111,12 +111,7 @@ namespace Sombi
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            packageManager.Draw(spriteBatch);
-            spriteBatch.Draw(TextureLibrary.testMapTex, testMapPos, Color.White);
-            enemyManager.Draw(spriteBatch);
-            fpsManager.Draw(spriteBatch);
-            playerManager.Draw(spriteBatch);
-            hudManager.Draw(spriteBatch);
+
             //menuManager.Draw(spriteBatch);
             if (playerManager.GameOver())
             {
