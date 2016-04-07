@@ -28,6 +28,7 @@ namespace Sombi
         PackageManager packageManager;
         HighscoreManager highscoreManager;
         MenuManager menuManager;
+        FloatingTextures floatingTextures;
         GameState currentGameState = GameState.Menu;
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
@@ -42,6 +43,7 @@ namespace Sombi
             enemyManager = new EnemyManager();
             hudManager = new HUDManager(playerManager.players);
             fpsManager = new FPSManager();
+            floatingTextures = new FloatingTextures();
             highscoreManager = new HighscoreManager();
             testMapPos = Vector2.Zero;
 
@@ -83,6 +85,7 @@ namespace Sombi
                         enemyManager.Update(gameTime, playerManager.weaponManager.bulletManager.bullets);
                         playerManager.Update(gameTime);
                         packageManager.Update(gameTime, playerManager.players);
+                        floatingTextures.Update();
                         hudManager.Update(gameTime);
                         fpsManager.Update(gameTime);
                         CheckPlayerZombieCollisions();
@@ -135,6 +138,7 @@ namespace Sombi
                     fpsManager.Draw(spriteBatch);
                     playerManager.Draw(spriteBatch);
                     hudManager.Draw(spriteBatch);
+                    floatingTextures.Draw(spriteBatch);
                     break;
                 }
                 case GameState.Paused:
