@@ -107,6 +107,7 @@
     <Content Include="Content\Exit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\FadeScreen.PNG" />
     <Content Include="Content\Highscore.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
