@@ -56,7 +56,7 @@ namespace Sombi
             settingButton = Content.Load<Texture2D>(@"Settings");
             highscoreButton = Content.Load<Texture2D>(@"Highscore");
             exitButton = Content.Load<Texture2D>(@"Exit");
-            logoTex = Content.Load<Texture2D>(@"Logo");
+            logoTex = Content.Load<Texture2D>(@"Logo1Sombi");
         }
     }
 }
