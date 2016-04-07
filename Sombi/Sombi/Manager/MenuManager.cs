@@ -30,18 +30,16 @@ namespace Sombi
                 if (Keyboard.GetState().IsKeyDown(Keys.Space) && player.HitBox.Intersects(menu.startRect))
                 {
                     pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    fadePercentage += 0.01f;
-                    if (pressedTime > timeToPress)
-                    {
-                        start = true;
-                        Grid.menu = false;
-                        Grid.CreateGridFactory();
+                    fadePercentage += 0.015f;
+                    //if (pressedTime > timeToPress)
+                    {                       
                         pressedTime = 0;
                         if (fadePercentage >= 1)
                         {
                             start = true;
                             Grid.menu = false;
                             Grid.CreateGridFactory();
+                            fadePercentage = 0;
                         }
                     }
                 }

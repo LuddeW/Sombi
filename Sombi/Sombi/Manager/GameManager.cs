@@ -93,12 +93,17 @@ namespace Sombi
                         playerManager.CheckPlayerBulletCollisions();             
                         if (playerManager.GameOver())
                         {
-                            Grid.menu = true;
-                            Grid.CreateGridFactory();
-                            menuManager.start = false;
-                            currentGameState = GameState.Menu;
-                            highscoreManager.WriteScore();
-                            playerManager.CreatePlayers();
+                            //fadePercentage = 0.6f;
+                            fadePercentage += 0.016f;
+                            if (fadePercentage == -1)
+                            {
+                                Grid.menu = true;
+                                Grid.CreateGridFactory();
+                                menuManager.start = false;
+                                currentGameState = GameState.Menu;
+                                highscoreManager.WriteScore();
+                                playerManager.CreatePlayers(); 
+                            }
                         }
                         break;
                     }
@@ -120,6 +125,8 @@ namespace Sombi
             if (playerManager.GameOver())
             {
                 spriteBatch.DrawString(TextureLibrary.HUDText, "Bajs-curious", new Vector2(450, 500), Color.Black);
+                Color fadeOutColor = new Color(new Vector3(255, 0, 0));
+                spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeOutColor * fadePercentage);
             }
             switch (currentGameState)
             {
@@ -138,18 +145,20 @@ namespace Sombi
                     playerManager.Draw(spriteBatch);
                     hudManager.Draw(spriteBatch);
                     floatingTextures.Draw(spriteBatch);
-                    Color fadeColor = new Color(new Vector3(0, 0, 0));
-                    spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeColor * fadePercentage);
+                    Color fadeInColor = new Color(new Vector3(0, 0, 0));
+                    spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadePercentage);
                     break;
                 }
                 case GameState.Paused:
                 {
-                    packageManager.Draw(spriteBatch);
                     spriteBatch.Draw(TextureLibrary.testMapTex, Vector2.Zero, Color.White);
+                    packageManager.Draw(spriteBatch);
                     enemyManager.Draw(spriteBatch);
-                    fpsManager.Draw(spriteBatch);
                     playerManager.Draw(spriteBatch);
                     floatingTextures.Draw(spriteBatch);
+                    Color fadePauseColor = new Color(new Vector3(0, 0, 0));
+                    spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadePauseColor * 0.5f);
+                    fpsManager.Draw(spriteBatch);
                     hudManager.Draw(spriteBatch);
                     spriteBatch.DrawString(TextureLibrary.HUDText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
                     break;

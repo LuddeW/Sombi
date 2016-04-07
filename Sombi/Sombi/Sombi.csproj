@@ -108,6 +108,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\FadeScreen.PNG" />
+    <Content Include="Content\FatZombie.png" />
     <Content Include="Content\Highscore.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
