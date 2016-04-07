@@ -13,7 +13,7 @@ namespace Sombi
         
         public PackageManager()
         {
-            package = new Package(new Vector2(50, 50));
+            package = new Package(new Vector2(850, 550));
         }
 
         public void Update(GameTime gameTime, List<Player> players)

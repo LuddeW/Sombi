@@ -31,6 +31,7 @@ namespace Sombi
         GameState currentGameState = GameState.Menu;
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
+        float fadePercentage = 1;
 
         public GameManager(ContentManager contentManager)
         {
@@ -76,6 +77,8 @@ namespace Sombi
                     }
                 case GameState.Playing:
                     {
+                        fadePercentage -= 0.008f;
+
                         if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
                         {
                             currentGameState = GameState.Paused;
@@ -101,6 +104,7 @@ namespace Sombi
                     }
                 case GameState.Paused:
                     {
+                        floatingTextures.Update();
                         if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
                         {
                             currentGameState = GameState.Playing;
@@ -127,13 +131,15 @@ namespace Sombi
                 }
                 case GameState.Playing:
                 {
-                    packageManager.Draw(spriteBatch);
                     spriteBatch.Draw(TextureLibrary.testMapTex, Vector2.Zero, Color.White);
+                    packageManager.Draw(spriteBatch);
                     enemyManager.Draw(spriteBatch);
                     fpsManager.Draw(spriteBatch);
                     playerManager.Draw(spriteBatch);
                     hudManager.Draw(spriteBatch);
                     floatingTextures.Draw(spriteBatch);
+                    Color fadeColor = new Color(new Vector3(0, 0, 0));
+                    spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeColor * fadePercentage);
                     break;
                 }
                 case GameState.Paused:
@@ -143,6 +149,7 @@ namespace Sombi
                     enemyManager.Draw(spriteBatch);
                     fpsManager.Draw(spriteBatch);
                     playerManager.Draw(spriteBatch);
+                    floatingTextures.Draw(spriteBatch);
                     hudManager.Draw(spriteBatch);
                     spriteBatch.DrawString(TextureLibrary.HUDText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
                     break;

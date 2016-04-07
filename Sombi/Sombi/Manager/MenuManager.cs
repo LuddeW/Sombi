@@ -22,7 +22,6 @@ namespace Sombi
             this.players = players;
             timeToPress = 2f;
             pressedTime = 0;
-            fadePercentage = 0;
         }
         public void Update(GameTime gameTime)
         {
@@ -31,7 +30,7 @@ namespace Sombi
                 if (Keyboard.GetState().IsKeyDown(Keys.Space) && player.HitBox.Intersects(menu.startRect))
                 {
                     pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                        fadePercentage += 0.015f;
+                    fadePercentage += 0.01f;
                     if (pressedTime > timeToPress)
                     {
                         start = true;
