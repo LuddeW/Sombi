@@ -71,6 +71,7 @@
     <Compile Include="Weapon\Explosives.cs" />
     <Compile Include="Weapon\Projectile.cs" />
     <Compile Include="Weapon\Rifle.cs" />
+    <Compile Include="Weapon\Rocket.cs" />
     <Compile Include="Weapon\Shotgun.cs" />
     <Compile Include="Weapon\Weapon.cs" />
     <Compile Include="Objects\Zombie.cs" />

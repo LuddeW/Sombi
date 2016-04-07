@@ -25,7 +25,7 @@ namespace Sombi
             }
             set { }
         }
-
+        
         public Projectile(Vector2 pos, float speed, float angle, int damage, int range, int ID) : base (pos, speed)
         {
             this.startPos = pos;
@@ -44,6 +44,9 @@ namespace Sombi
         {
             throw new NotImplementedException();
         }
+        public abstract Rectangle GetHitBox();
 
+           
+        public abstract void Explode();
     }
 }

@@ -72,11 +72,12 @@ namespace Sombi
             {
                 for (int k = 0; k < bulletList.Count; k++)
                 {
-                    if (zombies[i].GetHitbox().Contains(bulletList[k].Pos))
+                    if (zombies[i].GetHitbox().Intersects(bulletList[k].GetHitBox()))
                     {
                         zombies[i].handleBulletHit(bulletList[k].damage);
+                        bulletList[k].Explode();
 
-                        bulletList.RemoveAt(k);
+                        //bulletList.RemoveAt(k);
 
                     }
                 }

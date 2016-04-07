@@ -24,6 +24,14 @@ namespace Sombi
         {
             spriteBatch.Draw(TextureLibrary.BulletBlue, pos, Color.White);
         }
-        
+        public override void Explode()
+        {
+            
+        }
+        public override Rectangle GetHitBox()
+        {
+            Rectangle hb = new Rectangle((int)pos.X, (int)pos.Y, 4, 4);
+            return hb;
+        }
     }
 }

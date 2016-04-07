@@ -17,10 +17,11 @@ namespace Sombi
 
         public void Update(GameTime gameTime)
         {
-            foreach (Bullet b in bullets)
+            foreach (Projectile b in bullets)
             {
                 b.Update(gameTime);
             }
+            
 
             RemoveBullets();
 
@@ -28,7 +29,7 @@ namespace Sombi
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (Bullet b in bullets)
+            foreach (Projectile b in bullets)
             {
                 b.Draw(spriteBatch);
             }
@@ -39,8 +40,8 @@ namespace Sombi
         public void AddBullets(Vector2 position, float angle, int damage,float speed, int range, int ID)
         {
             Bullet b = new Bullet(position,speed,angle,damage, range, ID);
-
-            bullets.Add(b);
+            Rocket r = new Rocket(position, speed, angle, damage, range, ID);
+            bullets.Add(r);
         }
 
         private void RemoveBullets()
