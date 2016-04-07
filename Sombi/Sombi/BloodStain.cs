@@ -21,7 +21,9 @@ namespace Sombi
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TextureLibrary.bloodStain[bloodNr], pos, Color.White);
+            spriteBatch.Draw(TextureLibrary.bloodStain[bloodNr], pos, null, Color.White, 0, Vector2.Zero, 1.5f, SpriteEffects.None, 0f);
+            
+
         }
     }
 }

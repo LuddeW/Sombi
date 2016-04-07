@@ -18,6 +18,7 @@ namespace Sombi
         
         int height = 1000;
         int width = 1000;
+        float angle;
 
         public FloatingTextures()
         {
@@ -58,9 +59,10 @@ namespace Sombi
         public void Draw(SpriteBatch spriteBatch)
         {
             DrawClouds(spriteBatch);
-            spriteBatch.Draw(TextureLibrary.tankTex, new Vector2(50,50), null, Color.White, 0, Vector2.Zero, 1f, SpriteEffects.FlipVertically, 0f);
+            spriteBatch.Draw(TextureLibrary.tankTex, new Vector2(150,250), null, Color.White, angle = MathHelper.ToRadians(180), new Vector2(TextureLibrary.tankTex.Width / 2, TextureLibrary.tankTex.Height / 2), 1f, SpriteEffects.None, 0f);
             spriteBatch.Draw(TextureLibrary.busTex, new Vector2(400, 150), null, Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
+                
         public void DrawClouds(SpriteBatch spriteBatch)
         {
             foreach (Vector2 v in cloud1)
