@@ -15,7 +15,7 @@ namespace Sombi
             weaponRange = 150;
             damage = 20;
             fireRate = 2;
-            numberOfProjectiles = 1;
+            numberOfProjectilesPerFire = 6;
             //projectileSpread = 1;
         }
        

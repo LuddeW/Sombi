@@ -14,7 +14,7 @@ namespace Sombi
         public int weaponRange;
         public float areaOfEffect;
         public float projectileSpread;
-        public int numberOfProjectiles;
+        public int numberOfProjectilesPerFire;
         
 
         public Weapon()

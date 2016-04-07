@@ -15,7 +15,7 @@ namespace Sombi
             weaponRange = 75;
             damage = 10;
             fireRate = 1;
-            numberOfProjectiles = 4;
+            numberOfProjectilesPerFire = 4;
             //projectileSpread = 1;
         }
         protected override void Update(GameTime gameTime)
@@ -24,6 +24,10 @@ namespace Sombi
         }
 
         public void Draw(SpriteBatch spriteBatch)
+        {
+
+        }
+        private void SpreadBullets()
         {
 
         }

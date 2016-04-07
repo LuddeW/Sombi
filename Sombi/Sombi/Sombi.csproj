@@ -69,6 +69,7 @@
     <Compile Include="Map\Tile.cs" />
     <Compile Include="Weapon\Bullet.cs" />
     <Compile Include="Weapon\Explosives.cs" />
+    <Compile Include="Weapon\Projectile.cs" />
     <Compile Include="Weapon\Rifle.cs" />
     <Compile Include="Weapon\Shotgun.cs" />
     <Compile Include="Weapon\Weapon.cs" />

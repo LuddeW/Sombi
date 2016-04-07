@@ -42,7 +42,7 @@ namespace Sombi
             {
                 if (timeSinceLastPlayerOneBullet > playerOneWeapon.fireRate)
                 {
-                    for (int i = 0; i < 6; i++)
+                    for (int i = 0; i < playerOneWeapon.numberOfProjectilesPerFire; i++)
                     {
                         bulletManager.AddBullets(position, angle, playerOneWeapon.damage, playerOneWeapon.projectileSpeed, playerOneWeapon.weaponRange, PlayerID);
                     }
@@ -54,7 +54,7 @@ namespace Sombi
             {
                 if (timeSinceLastPlayerTwoBullet > playerTwoWeapon.fireRate)
                 {
-                    for (int i = 0; i < 6; i++)
+                    for (int i = 0; i < playerTwoWeapon.numberOfProjectilesPerFire; i++)
                     {
                         bulletManager.AddBullets(position, angle, playerTwoWeapon.damage, playerTwoWeapon.projectileSpeed, playerTwoWeapon.weaponRange, PlayerID);
                     }

@@ -7,36 +7,13 @@ using System.Text;
 
 namespace Sombi
 {
-    class Bullet : MovingObject
+    class Bullet : Projectile
     {
-        Vector2 startPos;
-        public float distanceTraveled;
-        float angle;
-        public int damage;
-        public int range;
-        Vector2 velocity;
-        public int ID;
-
-        public Bullet(Vector2 pos,float speed,float angle,int damage, int range, int ID) : base(pos,speed)
-    
+        public Bullet(Vector2 pos,float speed,float angle,int damage, int range, int ID) : base(pos, speed, angle, damage, range, ID)   
         {
-            this.angle = angle;
-            this.damage = damage;
-            this.ID = ID;
-            velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
-            this.range = range;
-            startPos = pos;
+
         }
 
-        public Vector2 Pos
-        {
-            get
-            {
-                return pos;
-
-            }
-            set { }
-        }
 
         public override void Update(GameTime gameTime)
         {
@@ -47,5 +24,6 @@ namespace Sombi
         {
             spriteBatch.Draw(TextureLibrary.BulletBlue, pos, Color.White);
         }
+        
     }
 }

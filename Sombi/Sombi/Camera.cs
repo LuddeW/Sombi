@@ -11,12 +11,6 @@ namespace Sombi
 
 
 
-
-
-
-
-
-
         public void Update(GameTime gameTime)
         {
 

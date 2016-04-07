@@ -16,7 +16,7 @@ namespace Sombi
 
         public List<Zombie> zombies = new List<Zombie>();
         public List<BloodStain> blodPositions = new List<BloodStain>();
-        public void Update(GameTime gameTime, List<Bullet> bulletList)
+        public void Update(GameTime gameTime, List<Projectile> bulletList)
         {
             CheckForBulletCollisions(bulletList);
             ClearZombies();
@@ -66,7 +66,7 @@ namespace Sombi
             spriteBatch.DrawString(TextureLibrary.HUDText, "Number of Zombies: " + zombies.Count, new Vector2(450, 15), Color.Black);
 
         }
-        public void CheckForBulletCollisions(List<Bullet> bulletList)
+        public void CheckForBulletCollisions(List<Projectile> bulletList)
         {
             for (int i = 0; i < zombies.Count; i++)
             {

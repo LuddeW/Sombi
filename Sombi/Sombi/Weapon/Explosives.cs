@@ -16,7 +16,7 @@ namespace Sombi
             damage = 70;
             fireRate = 0.33f;
             areaOfEffect = 1f;
-            numberOfProjectiles = 1;
+            numberOfProjectilesPerFire = 1;
             //projectileSpread = 1;
         }
 
