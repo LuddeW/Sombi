@@ -26,9 +26,6 @@ namespace Sombi
         {
             if (player1.dead && player2.dead)
             {
-                
-                Grid.menu = true;
-                Grid.CreateGridFactory();
                 return true;
             }
             else
