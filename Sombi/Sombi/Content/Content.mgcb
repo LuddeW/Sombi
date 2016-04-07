@@ -296,7 +296,11 @@
 /processorParam:TextureFormat=Color
 /build:Settings.png
 
+<<<<<<< HEAD
 #begin Cloud1.PNG
+=======
+#begin Logo1Sombi.png
+>>>>>>> origin/master
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -305,6 +309,7 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
+<<<<<<< HEAD
 /build:Cloud1.PNG
 
 #begin Cloud2.PNG
@@ -339,4 +344,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
 /build:Cloud4.PNG
+=======
+/build:Logo1Sombi.png
+>>>>>>> origin/master
 
