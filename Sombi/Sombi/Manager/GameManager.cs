@@ -70,6 +70,7 @@ namespace Sombi
                     {
                         menuManager.Update(gameTime);
                         playerManager.Update(gameTime);
+                        floatingTextures.Update();
                         StartGame();
                         break;
                     }
@@ -86,12 +87,15 @@ namespace Sombi
                         hudManager.Update(gameTime);
                         fpsManager.Update(gameTime);
                         enemyManager.CheckPlayerZombieCollisions(playerManager.players);
-                        playerManager.CheckPlayerBulletCollisions();
-                        ResetGame();               
+                        playerManager.CheckPlayerBulletCollisions();             
                         if (playerManager.GameOver())
                         {
+                            Grid.menu = true;
+                            Grid.CreateGridFactory();
+                            menuManager.start = false;
                             currentGameState = GameState.Menu;
                             highscoreManager.WriteScore();
+                            playerManager.CreatePlayers();
                         }
                         break;
                     }
@@ -150,16 +154,8 @@ namespace Sombi
         {
             if (menuManager.start)
             {
+                playerManager.CreatePlayers();
                 currentGameState = GameState.Playing;
-            }
-        }
-
-        private void ResetGame()
-        {
-            if (playerManager.players[0].dead && playerManager.players[1].dead)
-            {
-                menuManager.start = false;
-                currentGameState = GameState.Menu;
             }
         }
     }

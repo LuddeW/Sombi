@@ -340,7 +340,11 @@
 /processorParam:TextureFormat=Color
 /build:tank1.png
 
+<<<<<<< HEAD
 #begin RocketExplosionTest.png
+=======
+#begin FadeScreen.PNG
+>>>>>>> origin/master
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -349,5 +353,9 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
+<<<<<<< HEAD
 /build:RocketExplosionTest.png
+=======
+/build:FadeScreen.PNG
+>>>>>>> origin/master
 
