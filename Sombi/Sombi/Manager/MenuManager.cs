@@ -34,6 +34,7 @@ namespace Sombi
                         start = true;
                         Grid.menu = false;
                         Grid.CreateGridFactory();
+                        pressedTime = 0;
                     }
                 }
             }           
