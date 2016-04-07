@@ -153,6 +153,7 @@ namespace Sombi
         {
             if (menuManager.start)
             {
+                playerManager.CreatePlayers();
                 currentGameState = GameState.Playing;
             }
         }
