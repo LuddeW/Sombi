@@ -202,7 +202,7 @@ namespace Sombi
 
         private void ResetGame()
         {
-            if (playerManager.players[0].dead && playerManager.players[0].dead)
+            if (playerManager.players[0].dead && playerManager.players[1].dead)
             {
                 menuManager.start = false;
                 currentGameState = GameState.Menu;
