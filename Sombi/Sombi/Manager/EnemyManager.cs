@@ -82,5 +82,31 @@ namespace Sombi
                 }
             }
         }
+
+        public void CheckPlayerZombieCollisions(List<Player> players)
+        {
+            for (int i = 0; i < zombies.Count; i++)
+            {
+                for (int j = 0; j < players.Count; j++)
+                {
+                    if (zombies[i].GetHitbox().Intersects(players[j].HitBox))
+                    {
+                        players[j].handleBulletHit(1000);
+                    }
+
+                    if (Vector2.Distance(zombies[i].pos, players[j].position) < zombies[i].activationRange)
+                    {
+                        zombies[i].SetChasingDirection(players[j].position);
+
+                    }
+                    else if (Vector2.Distance(zombies[i].pos, players[j].position) > zombies[i].activationRange)
+                    {
+                        zombies[i].ResetTarget();
+
+                    }
+
+                }
+            }
+        }
     }
 }

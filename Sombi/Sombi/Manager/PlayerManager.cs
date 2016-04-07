@@ -64,5 +64,20 @@ namespace Sombi
             weaponManager.Draw(spriteBatch);
         }
 
+        public void CheckPlayerBulletCollisions()
+        {
+            for (int i = 0; i < players.Count; i++)
+            {
+                for (int k = 0; k < weaponManager.bulletManager.bullets.Count; k++)
+                {
+                    if (players[i].HitBox.Contains(weaponManager.bulletManager.bullets[k].Pos) && players[i].ID != weaponManager.bulletManager.bullets[k].ID)
+                    {
+                        players[i].handleBulletHit(weaponManager.bulletManager.bullets[k].damage);
+                        weaponManager.bulletManager.bullets.RemoveAt(k);
+                    }
+                }
+            }
+        }
+
     }
 }
