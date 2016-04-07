@@ -15,7 +15,7 @@ namespace Sombi
         public bool start = false;
         private float timeToPress;
         private float pressedTime;
-        float fadePercentage = 0;
+        float fadePercentage = 1;
         public MenuManager(List<Player> players)
         {
             menu = new Menu();
@@ -25,16 +25,22 @@ namespace Sombi
         }
         public void Update(GameTime gameTime)
         {
+            if (fadePercentage >= 0)
+            {
+                fadePercentage -= 0.005f;
+            }
+            else
+                fadePercentage = 0;
             foreach (Player player in players)
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.Space) && player.HitBox.Intersects(menu.startRect))
                 {
                     pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    fadePercentage += 0.015f;
+                    fadePercentage += 0.03f;
                     //if (pressedTime > timeToPress)
                     {                       
                         pressedTime = 0;
-                        if (fadePercentage >= 1)
+                        if (fadePercentage > 1)
                         {
                             start = true;
                             Grid.menu = false;

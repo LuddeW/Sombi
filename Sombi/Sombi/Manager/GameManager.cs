@@ -31,7 +31,8 @@ namespace Sombi
         GameState currentGameState = GameState.Menu;
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
-        float fadePercentage = 1;
+        float fadeInPercentage = 1;
+        float fadeOutPercentage = 0;
 
         public GameManager(ContentManager contentManager)
         {
@@ -77,7 +78,7 @@ namespace Sombi
                     }
                 case GameState.Playing:
                     {
-                        fadePercentage -= 0.008f;
+                        fadeInPercentage -= 0.008f;
 
                         if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
                         {
@@ -94,8 +95,10 @@ namespace Sombi
                         if (playerManager.GameOver())
                         {
                             //fadePercentage = 0.6f;
-                            fadePercentage += 0.016f;
-                            if (fadePercentage == -1)
+                            fadeOutPercentage += 0.01f;
+                            fadeInPercentage += 0.02f;
+
+                            if (fadeOutPercentage >= 2)
                             {
                                 Grid.menu = true;
                                 Grid.CreateGridFactory();
@@ -126,7 +129,9 @@ namespace Sombi
             {
                 spriteBatch.DrawString(TextureLibrary.HUDText, "Bajs-curious", new Vector2(450, 500), Color.Black);
                 Color fadeOutColor = new Color(new Vector3(255, 0, 0));
-                spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeOutColor * fadePercentage);
+                spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeOutColor * fadeOutPercentage);
+                Color fadeInColor = new Color(new Vector3(0, 0, 0));
+                spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadeInPercentage);
             }
             switch (currentGameState)
             {
@@ -146,7 +151,7 @@ namespace Sombi
                     hudManager.Draw(spriteBatch);
                     floatingTextures.Draw(spriteBatch);
                     Color fadeInColor = new Color(new Vector3(0, 0, 0));
-                    spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadePercentage);
+                    spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadeInPercentage);
                     break;
                 }
                 case GameState.Paused:
