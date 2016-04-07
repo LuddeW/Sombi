@@ -77,7 +77,7 @@ namespace Sombi
             exitButton = Content.Load<Texture2D>(@"Exit");            
             
             //Spritefonts
-            logoTex = Content.Load<Texture2D>(@"Logo");
+            //logoTex = Content.Load<Texture2D>(@"Logo");
             HUDText = Content.Load<SpriteFont>(@"HUDText");
             
             //Miscellaneous
