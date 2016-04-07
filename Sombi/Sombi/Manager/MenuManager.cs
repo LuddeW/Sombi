@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,22 +13,30 @@ namespace Sombi
         Menu menu;
         List<Player> players;
         public bool start = false;
+        private float timeToPress;
+        private float pressedTime;
         public MenuManager(List<Player> players)
         {
             menu = new Menu();
             this.players = players;
+            timeToPress = 2f;
+            pressedTime = 0;
         }
         public void Update(GameTime gameTime)
         {
             foreach (Player player in players)
             {
-                if (player.HitBox.Intersects(menu.startRect))
+                if (Keyboard.GetState().IsKeyDown(Keys.Space) && player.HitBox.Intersects(menu.startRect))
                 {
-                    start = true;
-                    Grid.menu = false;
-                    Grid.CreateGridFactory();
+                    pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    if (pressedTime > timeToPress)
+                    {
+                        start = true;
+                        Grid.menu = false;
+                        Grid.CreateGridFactory();
+                    }
                 }
-            }
+            }           
         }
         public void Draw(SpriteBatch spriteBatch)
         {
