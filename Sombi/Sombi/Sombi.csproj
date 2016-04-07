@@ -88,6 +88,8 @@
     <Content Include="Content\BulletBlue.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Bus1.png" />
+    <Content Include="Content\Car1.png" />
     <Content Include="Content\Cloud1.PNG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -135,6 +137,7 @@
     <Content Include="Content\Settings.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\tank1.png" />
     <Content Include="Content\Testmap.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

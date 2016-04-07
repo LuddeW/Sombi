@@ -18,6 +18,11 @@ namespace Sombi
                 
         //Structures and Objects
         public static Texture2D packageTex { get; private set; }
+        public static Texture2D tankTex { get; private set; }
+        public static Texture2D carTex { get; private set; }
+        public static Texture2D busTex { get; private set; }
+
+        //Floating Objects
         public static Texture2D cloud1Tex { get; private set; }
         public static Texture2D cloud2Tex { get; private set; }
         public static Texture2D cloud3Tex { get; private set; }
@@ -51,6 +56,11 @@ namespace Sombi
             
             //Structures and Objects
             packageTex = Content.Load<Texture2D>("Package");
+            tankTex = Content.Load<Texture2D>("tank1");
+            carTex = Content.Load<Texture2D>("Car1");
+            busTex = Content.Load<Texture2D>("Bus1");
+
+            //Floating Objects
             cloud1Tex = Content.Load<Texture2D>("Cloud1");
             cloud2Tex = Content.Load<Texture2D>("Cloud2");
             cloud3Tex = Content.Load<Texture2D>("Cloud3");
@@ -71,19 +81,17 @@ namespace Sombi
             
             //Map and UI
             testMapTex = Content.Load<Texture2D>(@"TestMap2");
+            logoTex = Content.Load<Texture2D>(@"Logo1Sombi");
             startButton = Content.Load<Texture2D>(@"Play");
             settingButton = Content.Load<Texture2D>(@"Settings");
             highscoreButton = Content.Load<Texture2D>(@"Highscore");
             exitButton = Content.Load<Texture2D>(@"Exit");            
-            
+                        
             //Spritefonts
-            //logoTex = Content.Load<Texture2D>(@"Logo");
             HUDText = Content.Load<SpriteFont>(@"HUDText");
             
             //Miscellaneous
             sourceRectTex = Content.Load<Texture2D>(@"Rectangle");
-            exitButton = Content.Load<Texture2D>(@"Exit");
-            logoTex = Content.Load<Texture2D>(@"Logo1Sombi");
         }
     }
 }
