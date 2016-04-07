@@ -70,6 +70,7 @@ namespace Sombi
                     {
                         menuManager.Update(gameTime);
                         playerManager.Update(gameTime);
+                        floatingTextures.Update();
                         StartGame();
                         break;
                     }
