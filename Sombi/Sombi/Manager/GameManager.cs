@@ -92,6 +92,9 @@ namespace Sombi
                         {
                             currentGameState = GameState.Menu;
                             highscoreManager.WriteScore();
+                            playerManager.CreatePlayers();
+                            playerManager.players[0].dead = false;
+                            playerManager.players[1].dead = false;
                         }
                         break;
                     }
