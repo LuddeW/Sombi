@@ -71,19 +71,18 @@ namespace Sombi
             
             //Map and UI
             testMapTex = Content.Load<Texture2D>(@"TestMap2");
+            logoTex = Content.Load<Texture2D>(@"Logo1Sombi");
             startButton = Content.Load<Texture2D>(@"Play");
             settingButton = Content.Load<Texture2D>(@"Settings");
             highscoreButton = Content.Load<Texture2D>(@"Highscore");
             exitButton = Content.Load<Texture2D>(@"Exit");            
             
             //Spritefonts
-            logoTex = Content.Load<Texture2D>(@"Logo");
             HUDText = Content.Load<SpriteFont>(@"HUDText");
             
             //Miscellaneous
             sourceRectTex = Content.Load<Texture2D>(@"Rectangle");
             exitButton = Content.Load<Texture2D>(@"Exit");
-            logoTex = Content.Load<Texture2D>(@"Logo1Sombi");
         }
     }
 }
