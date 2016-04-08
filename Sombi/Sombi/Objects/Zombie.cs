@@ -42,8 +42,8 @@ namespace Sombi
         {
             CalculateCurrentTile();
             pos += direction * velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            hitBox.X = (int)pos.X - TextureLibrary.zombieTex.Width/7;
-            hitBox.Y = (int)pos.Y - TextureLibrary.zombieTex.Height/2;
+            hitBox.X = (int)pos.X - TextureLibrary.fatZombieTex.Width / 12;
+            hitBox.Y = (int)pos.Y - TextureLibrary.fatZombieTex.Height / 3;
             FindWallThroughMatrix();
 
             // Console.WriteLine((int)((pos.X + 25) / 50) + (int)direction.X);
@@ -61,10 +61,9 @@ namespace Sombi
             this.health -= damage;
         }
         public void Draw(SpriteBatch spriteBatch)
-        {
-            //spriteBatch.Draw(TextureLibrary.zombieTex, new Vector2(pos.X, pos.Y), new Rectangle(0, 0, (int)TextureLibrary.zombieTex.Width / 3, TextureLibrary.zombieTex.Height), Color.White);
+        {            
             animationPlayer.Draw(spriteBatch, pos);
-            //spriteBatch.Draw(TextureLibrary.sourceRectTex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
+            spriteBatch.Draw(TextureLibrary.sourceRectTex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
 
         }
         public void FindWallThroughMatrix()
