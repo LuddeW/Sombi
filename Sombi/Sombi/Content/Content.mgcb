@@ -384,11 +384,7 @@
 /processorParam:TextureFormat=Color
 /build:FatZombie.png
 
-<<<<<<< HEAD
-#begin explosiononerow.png
-=======
 #begin TestHud.png
->>>>>>> origin/master
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -397,9 +393,16 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-<<<<<<< HEAD
-/build:explosiononerow.png
-=======
 /build:TestHud.png
->>>>>>> origin/master
+
+#begin explosiononerow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:explosiononerow.png
 
