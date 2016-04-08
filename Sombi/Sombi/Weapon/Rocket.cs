@@ -13,7 +13,6 @@ namespace Sombi
         private float explodeTimer = 0;
         Animation animation;
         AnimationPlayer animationPlayer;
-        bool exploding = false;
         private Rectangle explodingHb;
         public Rocket(Vector2 pos, float speed, float angle, int damage, int range, int ID)
             : base(pos, speed, angle, damage, range, ID)

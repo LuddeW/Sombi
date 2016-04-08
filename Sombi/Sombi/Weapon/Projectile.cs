@@ -15,6 +15,7 @@ namespace Sombi
         public float timeToLiveAfterImpact;
         public int damage;
         public int range;
+        public bool exploding;
         public Vector2 velocity;
         public int ID;
         public Vector2 Pos
