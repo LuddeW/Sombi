@@ -95,10 +95,10 @@ namespace Sombi
                         if (playerManager.GameOver())
                         {
                             //fadePercentage = 0.6f;
-                            fadeOutPercentage += 0.008f;
+                            fadeOutPercentage += 0.01f;
                             fadeInPercentage += 0.02f;
 
-                            if (fadeOutPercentage >= 2)
+                            if (fadeOutPercentage >= 3)
                             {
                                 Grid.menu = true;
                                 Grid.CreateGridFactory();
