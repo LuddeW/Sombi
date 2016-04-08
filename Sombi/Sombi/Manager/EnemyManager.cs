@@ -76,8 +76,11 @@ namespace Sombi
                     {
                         zombies[i].handleBulletHit(bulletList[k].damage);
                         bulletList[k].Explode();
-
-                        //bulletList.RemoveAt(k);
+                        if (bulletList[k].timeToLiveAfterImpact == 0)
+                        {
+                            bulletList.RemoveAt(k);
+                        }
+                       
 
                     }
                 }

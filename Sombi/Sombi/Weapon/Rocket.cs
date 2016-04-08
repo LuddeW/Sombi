@@ -9,14 +9,18 @@ namespace Sombi
 {
     class Rocket : Projectile
     {
-        private float explodeDuration = 3;
+        private float explodeDuration = 2;
         private float explodeTimer = 0;
+        Animation animation;
+        AnimationPlayer animationPlayer;
         bool exploding = false;
         private Rectangle explodingHb;
         public Rocket(Vector2 pos, float speed, float angle, int damage, int range, int ID)
             : base(pos, speed, angle, damage, range, ID)
         {
             this.explodingHb = new Rectangle((int)this.pos.X, (int)this.pos.Y, 4, 4);
+            animation = new Animation(TextureLibrary.rocketExplosion, 125, 0.1f, false);
+            this.timeToLiveAfterImpact = 1;
         }
 
 
@@ -28,18 +32,25 @@ namespace Sombi
             explodingHb.Y = (int)pos.Y - (explodingHb.Height / 2);
             if (exploding && explodeTimer < explodeDuration)
             {
+                timeToLiveAfterImpact -= (float)gameTime.ElapsedGameTime.TotalSeconds;
                 explodeTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                explodingHb.Width += 50;
-                explodingHb.Height += 50;
+                animationPlayer.PlayAnimation(animation);
+                animationPlayer.Update(gameTime);
+                
                 
             }
+
+
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TextureLibrary.rocketExplosion, explodingHb, Color.White);
+            animationPlayer.Draw(spriteBatch, pos);
         }
         public override void Explode()
         {
+            this.speed = 0;
+            explodingHb.Width = 50;
+            explodingHb.Height = 50;
             exploding = true;
         }
         public override Rectangle GetHitBox()

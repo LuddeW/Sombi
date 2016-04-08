@@ -24,7 +24,7 @@ namespace Sombi
             
 
             RemoveBullets();
-
+            RemoveExplosions();
 
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -48,11 +48,24 @@ namespace Sombi
         {
             for (int i = bullets.Count - 1; i >= 0; i--)
             {
-                if (!GlobalValues.windowBounds.Contains(bullets[i].Pos) || !Grid.grid[(int)bullets[i].Pos.X / 50, (int)bullets[i].Pos.Y / 50].passable || bullets[i].distanceTraveled > bullets[i].range)
+                if (!GlobalValues.windowBounds.Contains(bullets[i].Pos) || !Grid.grid[(int)bullets[i].Pos.X / 50, (int)bullets[i].Pos.Y / 50].passable || bullets[i].distanceTraveled > bullets[i].range && bullets[i].timeToLiveAfterImpact <= 0)
                 {
+                   //bullets[i].Explode();
                     bullets.Remove(bullets[i]);
+                }
+
+            }
+        }
+        private void RemoveExplosions()
+        {
+            for (int i = 0; i < bullets.Count; i++)
+            {
+                if (bullets[i].timeToLiveAfterImpact < 0)
+                {
+                    bullets.RemoveAt(i);
                 }
             }
         }
+        
     }
 }

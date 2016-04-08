@@ -12,6 +12,7 @@ namespace Sombi
         public Vector2 startPos;
         public float distanceTraveled;
         public float angle;
+        public float timeToLiveAfterImpact;
         public int damage;
         public int range;
         public Vector2 velocity;
@@ -31,6 +32,7 @@ namespace Sombi
             this.startPos = pos;
             this.angle = angle;
             this.damage = damage;
+            timeToLiveAfterImpact = 0;
             this.ID = ID;
             velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
             this.range = range;
