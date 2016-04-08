@@ -20,10 +20,10 @@ namespace Sombi
         {
             CheckForBulletCollisions(bulletList);
             ClearZombies();
-           /* if (zombies.Count < maxzombies) // just for moar zoambiez
+            if (zombies.Count < maxzombies) // just for moar zoambiez
             {
-                AddZombie(new Vector2(900, 900));
-            }*/
+                AddZombie(new Vector2(900, 500));
+            }
             foreach (Zombie z in zombies)
             {
                 z.Update(gameTime);

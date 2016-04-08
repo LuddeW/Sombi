@@ -15,6 +15,8 @@ namespace Sombi
         public static Texture2D player2Tex { get; private set; }
         public static Texture2D zombieTex { get; private set; }
         public static Texture2D fastZombieTex { get; private set; }
+        public static Texture2D fatZombieTex { get; private set; }
+
                 
         //Structures and Objects
         public static Texture2D packageTex { get; private set; }
@@ -54,7 +56,8 @@ namespace Sombi
             player1Tex = Content.Load<Texture2D>(@"Player1");
             player2Tex = Content.Load<Texture2D>(@"Player2");
             zombieTex = Content.Load<Texture2D>(@"ZombieSheet");
-            fastZombieTex = Content.Load<Texture2D>(@"FatZombie");
+            fastZombieTex = Content.Load<Texture2D>(@"ZombieSheet2");
+            fatZombieTex = Content.Load<Texture2D>(@"FatZombie");
             
             //Structures and Objects
             packageTex = Content.Load<Texture2D>("Package");
