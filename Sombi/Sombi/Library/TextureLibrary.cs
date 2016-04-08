@@ -46,6 +46,7 @@ namespace Sombi
 
         //Miscellaneous
         public static Texture2D sourceRectTex { get; private set; }
+        public static Texture2D fadeScreenTex { get; private set; }
 
         public static void LoadContent(ContentManager Content)
         {
@@ -53,7 +54,7 @@ namespace Sombi
             player1Tex = Content.Load<Texture2D>(@"Player1");
             player2Tex = Content.Load<Texture2D>(@"Player2");
             zombieTex = Content.Load<Texture2D>(@"ZombieSheet");
-            fastZombieTex = Content.Load<Texture2D>(@"ZombieSheet2");
+            fastZombieTex = Content.Load<Texture2D>(@"FatZombie");
             
             //Structures and Objects
             packageTex = Content.Load<Texture2D>("Package");
@@ -94,6 +95,7 @@ namespace Sombi
             
             //Miscellaneous
             sourceRectTex = Content.Load<Texture2D>(@"Rectangle");
+            fadeScreenTex = Content.Load<Texture2D>("FadeScreen");
         }
     }
 }

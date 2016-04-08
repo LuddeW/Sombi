@@ -15,6 +15,7 @@ namespace Sombi
         public bool start = false;
         private float timeToPress;
         private float pressedTime;
+        float fadePercentage = 1;
         public MenuManager(List<Player> players)
         {
             menu = new Menu();
@@ -24,19 +25,31 @@ namespace Sombi
         }
         public void Update(GameTime gameTime)
         {
+            if (fadePercentage >= 0)
+            {
+                fadePercentage -= 0.005f;
+            }
+            else
+                fadePercentage = 0;
             foreach (Player player in players)
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.Space) && player.HitBox.Intersects(menu.startRect))
                 {
                     pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    if (pressedTime > timeToPress)
-                    {
-                        start = true;
-                        Grid.menu = false;
-                        Grid.CreateGridFactory();
+                    fadePercentage += 0.03f;
+                    //if (pressedTime > timeToPress)
+                    {                       
+                        pressedTime = 0;
+                        if (fadePercentage > 1)
+                        {
+                            start = true;
+                            Grid.menu = false;
+                            Grid.CreateGridFactory();
+                            fadePercentage = 1;
+                        }
                     }
                 }
-            }           
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -45,6 +58,8 @@ namespace Sombi
             spriteBatch.Draw(TextureLibrary.highscoreButton, menu.highscoreRect, Color.White);
             spriteBatch.Draw(TextureLibrary.exitButton, menu.exitRect, Color.White);
             spriteBatch.Draw(TextureLibrary.logoTex, menu.logoRect, Color.White);
+            Color fadeColor = new Color(new Vector3(0, 0, 0));
+            spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeColor * fadePercentage);
         }
     }
 }
