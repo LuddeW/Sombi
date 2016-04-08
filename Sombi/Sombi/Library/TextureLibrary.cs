@@ -32,6 +32,7 @@ namespace Sombi
 
         //Map and UI
         public static Texture2D testMapTex;
+        public static Texture2D HUD { get; private set; }
         public static Texture2D startButton { get; private set; }
         public static Texture2D settingButton { get; private set; }
         public static Texture2D highscoreButton { get; private set; }
@@ -88,6 +89,7 @@ namespace Sombi
             //Map and UI
             testMapTex = Content.Load<Texture2D>(@"TestMap2");
             logoTex = Content.Load<Texture2D>(@"Logo1Sombi");
+            HUD = Content.Load<Texture2D>(@"TestHud");
             startButton = Content.Load<Texture2D>(@"Play");
             settingButton = Content.Load<Texture2D>(@"Settings");
             highscoreButton = Content.Load<Texture2D>(@"Highscore");

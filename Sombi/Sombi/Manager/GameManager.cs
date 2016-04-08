@@ -152,8 +152,8 @@ namespace Sombi
             enemyManager.Draw(spriteBatch);
             fpsManager.Draw(spriteBatch);
             playerManager.Draw(spriteBatch);
-            hudManager.Draw(spriteBatch);
             floatingTextures.Draw(spriteBatch);
+            hudManager.Draw(spriteBatch);
             Color fadeInColor = new Color(new Vector3(0, 0, 0));
             spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadeInPercentage);
         }
@@ -175,10 +175,9 @@ namespace Sombi
             enemyManager.CheckPlayerZombieCollisions(playerManager.players);
             playerManager.CheckPlayerBulletCollisions();
             if (playerManager.GameOver())
-            {
-                //fadePercentage = 0.6f;
-                fadeOutPercentage += 0.01f;
-                fadeInPercentage += 0.02f;
+            {                
+                fadeOutPercentage += 0.016f;
+                fadeInPercentage += 0.025f;
 
                 if (fadeOutPercentage >= 3)
                 {
