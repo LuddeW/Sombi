@@ -95,7 +95,7 @@ namespace Sombi
                         if (playerManager.GameOver())
                         {
                             //fadePercentage = 0.6f;
-                            fadeOutPercentage += 0.01f;
+                            fadeOutPercentage += 0.008f;
                             fadeInPercentage += 0.02f;
 
                             if (fadeOutPercentage >= 2)
@@ -129,9 +129,9 @@ namespace Sombi
             {
                 spriteBatch.DrawString(TextureLibrary.HUDText, "Bajs-curious", new Vector2(450, 500), Color.Black);
                 Color fadeOutColor = new Color(new Vector3(255, 0, 0));
-                spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeOutColor * fadeOutPercentage);
                 Color fadeInColor = new Color(new Vector3(0, 0, 0));
                 spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadeInPercentage);
+                spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeOutColor * fadeOutPercentage);
             }
             switch (currentGameState)
             {
