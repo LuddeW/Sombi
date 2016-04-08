@@ -45,7 +45,7 @@ namespace Sombi
                             start = true;
                             Grid.menu = false;
                             Grid.CreateGridFactory();
-                            fadePercentage = 0;
+                            fadePercentage = 1;
                         }
                     }
                 }
