@@ -36,7 +36,7 @@ namespace Sombi
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TextureLibrary.rocketTestExplosion, explodingHb, Color.White);
+            spriteBatch.Draw(TextureLibrary.rocketExplosion, explodingHb, Color.White);
         }
         public override void Explode()
         {
