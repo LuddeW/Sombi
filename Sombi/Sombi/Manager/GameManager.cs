@@ -70,44 +70,12 @@ namespace Sombi
             {
                 case GameState.Menu:
                     {
-                        menuManager.Update(gameTime);
-                        playerManager.Update(gameTime);
-                        floatingTextures.Update();
-                        StartGame();
+                        MenuUpdate(gameTime);
                         break;
                     }
                 case GameState.Playing:
                     {
-                        fadeInPercentage -= 0.008f;
-
-                        if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
-                        {
-                            currentGameState = GameState.Paused;
-                        }
-                        enemyManager.Update(gameTime, playerManager.weaponManager.bulletManager.bullets);
-                        playerManager.Update(gameTime);
-                        packageManager.Update(gameTime, playerManager.players);
-                        floatingTextures.Update();
-                        hudManager.Update(gameTime);
-                        fpsManager.Update(gameTime);
-                        enemyManager.CheckPlayerZombieCollisions(playerManager.players);
-                        playerManager.CheckPlayerBulletCollisions();             
-                        if (playerManager.GameOver())
-                        {
-                            //fadePercentage = 0.6f;
-                            fadeOutPercentage += 0.01f;
-                            fadeInPercentage += 0.02f;
-
-                            if (fadeOutPercentage >= 3)
-                            {
-                                Grid.menu = true;
-                                Grid.CreateGridFactory();
-                                menuManager.start = false;
-                                currentGameState = GameState.Menu;
-                                highscoreManager.WriteScore();
-                                playerManager.CreatePlayers(); 
-                            }
-                        }
+                        PlayingUpdate(gameTime);
                         break;
                     }
                 case GameState.Paused:
@@ -137,35 +105,18 @@ namespace Sombi
             {
                 case GameState.Menu:
                 {
-                    menuManager.Draw(spriteBatch);
-                    playerManager.Draw(spriteBatch);
+                    MenuDraw(spriteBatch);
                     break;               
                 }
                 case GameState.Playing:
                 {
-                    spriteBatch.Draw(TextureLibrary.testMapTex, Vector2.Zero, Color.White);
-                    packageManager.Draw(spriteBatch);
-                    enemyManager.Draw(spriteBatch);
-                    fpsManager.Draw(spriteBatch);
-                    playerManager.Draw(spriteBatch);
-                    hudManager.Draw(spriteBatch);
-                    floatingTextures.Draw(spriteBatch);
-                    Color fadeInColor = new Color(new Vector3(0, 0, 0));
-                    spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadeInPercentage);
+                        PlayingDraw(spriteBatch);   
                     break;
                 }
                 case GameState.Paused:
                 {
-                    spriteBatch.Draw(TextureLibrary.testMapTex, Vector2.Zero, Color.White);
-                    packageManager.Draw(spriteBatch);
-                    enemyManager.Draw(spriteBatch);
-                    playerManager.Draw(spriteBatch);
-                    floatingTextures.Draw(spriteBatch);
-                    Color fadePauseColor = new Color(new Vector3(0, 0, 0));
-                    spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadePauseColor * 0.5f);
-                    fpsManager.Draw(spriteBatch);
-                    hudManager.Draw(spriteBatch);
-                    spriteBatch.DrawString(TextureLibrary.HUDText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
+                        PauseDraw(spriteBatch);
+                    
                     break;
                 }
             }
@@ -178,6 +129,73 @@ namespace Sombi
                 playerManager.CreatePlayers();
                 currentGameState = GameState.Playing;
             }
+        }
+
+        private void MenuDraw(SpriteBatch spriteBatch)
+        {
+            menuManager.Draw(spriteBatch);
+            playerManager.Draw(spriteBatch);
+        }
+
+        private void MenuUpdate(GameTime gameTime)
+        {
+            menuManager.Update(gameTime);
+            playerManager.Update(gameTime);
+            floatingTextures.Update();
+            StartGame();
+        }
+
+        private void PlayingDraw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(TextureLibrary.testMapTex, Vector2.Zero, Color.White);
+            packageManager.Draw(spriteBatch);
+            enemyManager.Draw(spriteBatch);
+            fpsManager.Draw(spriteBatch);
+            playerManager.Draw(spriteBatch);
+            hudManager.Draw(spriteBatch);
+            floatingTextures.Draw(spriteBatch);
+            Color fadeInColor = new Color(new Vector3(0, 0, 0));
+            spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadeInPercentage);
+        }
+
+        private void PlayingUpdate(GameTime gameTime)
+        {
+            fadeInPercentage -= 0.008f;
+
+            if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
+            {
+                currentGameState = GameState.Paused;
+            }
+            enemyManager.Update(gameTime, playerManager.weaponManager.bulletManager.bullets);
+            playerManager.Update(gameTime);
+            packageManager.Update(gameTime, playerManager.players);
+            floatingTextures.Update();
+            hudManager.Update(gameTime);
+            fpsManager.Update(gameTime);
+            enemyManager.CheckPlayerZombieCollisions(playerManager.players);
+            playerManager.CheckPlayerBulletCollisions();
+            if (playerManager.GameOver())
+            {
+                //fadePercentage = 0.6f;
+                fadeOutPercentage += 0.01f;
+                fadeInPercentage += 0.02f;
+
+                if (fadeOutPercentage >= 3)
+                {
+                    Grid.menu = true;
+                    Grid.CreateGridFactory();
+                    menuManager.start = false;
+                    currentGameState = GameState.Menu;
+                    highscoreManager.WriteScore();
+                    playerManager.CreatePlayers();
+                }
+            }
+        }
+
+        private void PauseDraw(SpriteBatch spriteBatch)
+        {
+            PlayingDraw(spriteBatch);
+            spriteBatch.DrawString(TextureLibrary.HUDText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
         }
     }
 }

@@ -362,11 +362,7 @@
 /processorParam:TextureFormat=Color
 /build:RocketExplosionTest.png
 
-<<<<<<< HEAD
 #begin ExplosionSombi.png
-=======
-#begin FatZombie.png
->>>>>>> origin/master
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -375,9 +371,16 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:TextureFormat=Color
-<<<<<<< HEAD
 /build:ExplosionSombi.png
-=======
+
+#begin FatZombie.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
 /build:FatZombie.png
->>>>>>> origin/master
 
