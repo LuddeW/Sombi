@@ -12,6 +12,7 @@ namespace Sombi
         private float explodeDuration = 2;
         private float explodeTimer = 0;
         Animation animation;
+        private int AOE;
         AnimationPlayer animationPlayer;
         private Rectangle explodingHb;
         public Rocket(Vector2 pos, float speed, float angle, int damage, int range, int ID)
@@ -20,6 +21,7 @@ namespace Sombi
             this.explodingHb = new Rectangle((int)this.pos.X, (int)this.pos.Y, 4, 4);
             animation = new Animation(TextureLibrary.rocketExplosion, 125, 0.1f, false);
             this.timeToLiveAfterImpact = 1;
+            AOE = 100;
         }
 
 
@@ -48,8 +50,8 @@ namespace Sombi
         public override void Explode()
         {
             this.speed = 0;
-            explodingHb.Width = 50;
-            explodingHb.Height = 50;
+            explodingHb.Width = AOE;
+            explodingHb.Height = AOE;
             exploding = true;
         }
         public override Rectangle GetHitBox()
