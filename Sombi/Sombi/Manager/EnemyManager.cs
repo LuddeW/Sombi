@@ -95,10 +95,10 @@ namespace Sombi
                 {
                     if (zombies[i].GetHitbox().Intersects(players[j].HitBox))
                     {
-                        players[j].handleBulletHit(1000);
+                        players[j].handleBulletHit(10);
                     }
 
-                    if (Vector2.Distance(zombies[i].pos, players[j].position) < zombies[i].activationRange)
+                    if (Vector2.Distance(zombies[i].pos, players[j].position) < zombies[i].activationRange && !players[j].eaten)
                     {
                         zombies[i].SetChasingDirection(players[j].position);
 

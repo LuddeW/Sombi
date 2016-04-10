@@ -32,6 +32,7 @@ namespace Sombi
         Rectangle hitBox;
         public int health;
         public bool dead = false;
+        public bool eaten = false;
         public bool gotPackage = false;
 
         public Player(Weapon weapon, Vector2 position, int ID)
@@ -59,8 +60,13 @@ namespace Sombi
             if (health <= 0)
             {
                 dead = true;
-                
             }
+            if (health <= -1000)
+            {
+                eaten = true;
+                health = -1000;
+            }
+
             if (!dead)
             {
                 UpdateGamepad();
@@ -249,7 +255,10 @@ namespace Sombi
         }
         public void handleBulletHit(int damage)
         {
-            health -= damage;
+            if (!eaten)
+            {
+                health -= damage;
+            }
         }
 
     }
