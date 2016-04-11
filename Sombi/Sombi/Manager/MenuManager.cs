@@ -13,6 +13,9 @@ namespace Sombi
         Menu menu;
         List<Player> players;
         public bool start = false;
+        public bool settings = false;
+        public bool highscore = false;
+        public bool exit = false;
         private float timeToPress;
         private float pressedTime;
         float fadePercentage = 1;
@@ -30,7 +33,25 @@ namespace Sombi
                 fadePercentage -= 0.005f;
             }
             else
+            {
                 fadePercentage = 0;
+            }
+            CheckStart(gameTime);
+            CheckExit(gameTime);
+        }
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(TextureLibrary.startButton, menu.startRect, Color.White);
+            spriteBatch.Draw(TextureLibrary.settingButton, menu.settingRect, Color.White);
+            spriteBatch.Draw(TextureLibrary.highscoreButton, menu.highscoreRect, Color.White);
+            spriteBatch.Draw(TextureLibrary.exitButton, menu.exitRect, Color.White);
+            spriteBatch.Draw(TextureLibrary.logoTex, menu.logoRect, Color.White);
+            Color fadeColor = new Color(new Vector3(0, 0, 0));
+            spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeColor * fadePercentage);
+        }
+
+        private void CheckStart(GameTime gameTime)
+        {
             foreach (Player player in players)
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.Space) && player.HitBox.Intersects(menu.startRect))
@@ -38,7 +59,7 @@ namespace Sombi
                     pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     fadePercentage += 0.03f;
                     //if (pressedTime > timeToPress)
-                    {                       
+                    {
                         pressedTime = 0;
                         if (fadePercentage > 1)
                         {
@@ -51,15 +72,28 @@ namespace Sombi
                 }
             }
         }
-        public void Draw(SpriteBatch spriteBatch)
+        private void CheckExit(GameTime gameTime)
         {
-            spriteBatch.Draw(TextureLibrary.startButton, menu.startRect, Color.White);
-            spriteBatch.Draw(TextureLibrary.settingButton, menu.settingRect, Color.White);
-            spriteBatch.Draw(TextureLibrary.highscoreButton, menu.highscoreRect, Color.White);
-            spriteBatch.Draw(TextureLibrary.exitButton, menu.exitRect, Color.White);
-            spriteBatch.Draw(TextureLibrary.logoTex, menu.logoRect, Color.White);
-            Color fadeColor = new Color(new Vector3(0, 0, 0));
-            spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeColor * fadePercentage);
+            foreach (Player player in players)
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.Space) && player.HitBox.Intersects(menu.exitRect))
+                {
+                    pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    fadePercentage += 0.03f;
+                    //if (pressedTime > timeToPress)
+                    {
+                        pressedTime = 0;
+                        if (fadePercentage > 1)
+                        {
+                            exit = true;
+                        }
+                    }
+                }
+            }
         }
+
+
     }
+
+
 }

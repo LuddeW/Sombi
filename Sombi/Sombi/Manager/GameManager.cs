@@ -31,10 +31,11 @@ namespace Sombi
         GameState currentGameState = GameState.Menu;
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
+        Game1 game;
         float fadeInPercentage = 1;
         float fadeOutPercentage = 0;
 
-        public GameManager(ContentManager contentManager)
+        public GameManager(ContentManager contentManager, Game1 game)
         {
             this.contentManager = contentManager;
             TextureLibrary.LoadContent(contentManager);
@@ -48,7 +49,7 @@ namespace Sombi
             highscoreManager = new HighscoreManager();
             menuManager = new MenuManager(playerManager.players);
             packageManager = new PackageManager();
-           
+            this.game = game;
 
             enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
             enemyManager.AddZombie(new Vector2(800, 200));  //TEST
@@ -131,6 +132,14 @@ namespace Sombi
             }
         }
 
+        private void ExitGame()
+        {
+            if (menuManager.exit)
+            {
+                game.Exit();
+            }
+        }
+
         private void MenuDraw(SpriteBatch spriteBatch)
         {
             menuManager.Draw(spriteBatch);
@@ -143,6 +152,7 @@ namespace Sombi
             playerManager.Update(gameTime);
             floatingTextures.Update();
             StartGame();
+            ExitGame();
         }
 
         private void PlayingDraw(SpriteBatch spriteBatch)
