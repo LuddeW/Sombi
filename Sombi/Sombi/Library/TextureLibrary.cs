@@ -33,20 +33,25 @@ namespace Sombi
 
         //Map and UI
         public static Texture2D testMapTex;
-        public static Texture2D HUD { get; private set; }
+        //public static Texture2D HUD { get; private set; }
+        public static Texture2D player1ScoreHud { get; private set; }
+        public static Texture2D player2ScoreHud { get; private set; }
+        public static Texture2D weaponHud { get; private set; }
+        
+        //Menu
         public static Texture2D startButton { get; private set; }
         public static Texture2D settingButton { get; private set; }
         public static Texture2D highscoreButton { get; private set; }
         public static Texture2D exitButton { get; private set; }
+        public static Texture2D logoTex { get; private set; }
         
         //Projectiles and Blood
-        public static Texture2D BulletBlue { get; private set; }
+        public static Texture2D bulletBlue { get; private set; }
         public static Texture2D[] bloodStain = new Texture2D[10];
         public static Texture2D rocketExplosion { get; private set; }
         
         //Spritefonts
-        public static SpriteFont HUDText { get; private set; }
-        public static Texture2D logoTex { get; private set; }
+        public static SpriteFont HudText { get; private set; }
 
         //Miscellaneous
         public static Texture2D sourceRectTex { get; private set; }
@@ -75,7 +80,7 @@ namespace Sombi
             cloud4Tex = Content.Load<Texture2D>("Cloud4");
 
             //Projectiles and Blood
-            BulletBlue = Content.Load<Texture2D>(@"BulletBlue");
+            bulletBlue = Content.Load<Texture2D>(@"BulletBlue");
             bloodStain[0] = Content.Load<Texture2D>(@"BlodStain1");
             bloodStain[1] = Content.Load<Texture2D>(@"BloodStain2");
             bloodStain[2] = Content.Load<Texture2D>(@"BloodStain3");
@@ -90,15 +95,20 @@ namespace Sombi
             
             //Map and UI
             testMapTex = Content.Load<Texture2D>(@"TestMap2");
+            //HUD = Content.Load<Texture2D>(@"TestHud");
+            player1ScoreHud = Content.Load<Texture2D>("Player1ScoreHUD");
+            player2ScoreHud = Content.Load<Texture2D>("Player2ScoreHUD");
+            weaponHud = Content.Load<Texture2D>("WeaponHUD");
+            
+            //Menu
             logoTex = Content.Load<Texture2D>(@"Logo1Sombi");
-            HUD = Content.Load<Texture2D>(@"TestHud");
             startButton = Content.Load<Texture2D>(@"Play");
             settingButton = Content.Load<Texture2D>(@"Settings");
             highscoreButton = Content.Load<Texture2D>(@"Highscore");
             exitButton = Content.Load<Texture2D>(@"Exit");            
                         
             //Spritefonts
-            HUDText = Content.Load<SpriteFont>(@"HUDText");
+            HudText = Content.Load<SpriteFont>(@"HUDText");
             
             //Miscellaneous
             sourceRectTex = Content.Load<Texture2D>(@"Rectangle");

@@ -33,7 +33,7 @@ namespace Sombi
         public void Draw(SpriteBatch spriteBatch)
         {
             totalFrames++;
-            spriteBatch.DrawString(TextureLibrary.HUDText, "FPS: " + fps, new Vector2(450, 0), Color.Black);
+            spriteBatch.DrawString(TextureLibrary.HudText, "FPS: " + fps, new Vector2(450, 0), Color.Black);
         }
     }
 }
