@@ -76,7 +76,7 @@ namespace Sombi
         {
             players.Clear();
             player1 = new Player(weaponManager.playerOneWeapon, new Vector2(300, 100), 1);
-            player2 = new Player(weaponManager.playerTwoWeapon, new Vector2(500, 100), 2);
+            player2 = new Player(weaponManager.playerTwoWeapon, new Vector2(500, 200), 2);
             players.Add(player1);
             players.Add(player2);
         }
@@ -99,9 +99,8 @@ namespace Sombi
         }
         public void CreateOnePlayer()
         {
-            players.Clear();
-            player1 = new Player(weaponManager.playerOneWeapon, new Vector2(300, 100), 1);
-            players.Add(player1);
+            CreatePlayers();
+            player2.dead = true;
         }
 
     }

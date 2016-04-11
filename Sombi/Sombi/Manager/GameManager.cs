@@ -129,7 +129,15 @@ namespace Sombi
         {
             if (menuManager.start)
             {
-                playerManager.CreatePlayers();
+                if (menuManager.numberOfPlayers == 1)
+                {
+                    playerManager.CreateOnePlayer();
+                }
+                else if (menuManager.numberOfPlayers == 2)
+                {
+                    playerManager.CreatePlayers();
+                }
+                
                 currentGameState = GameState.Playing;
             }
         }
