@@ -63,7 +63,7 @@ namespace Sombi
         public void Draw(SpriteBatch spriteBatch)
         {            
             animationPlayer.Draw(spriteBatch, pos);
-            spriteBatch.Draw(TextureLibrary.sourceRectTex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
+            //spriteBatch.Draw(TextureLibrary.sourceRectTex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
 
         }
         public void FindWallThroughMatrix()
