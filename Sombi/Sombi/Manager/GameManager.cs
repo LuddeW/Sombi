@@ -129,7 +129,15 @@ namespace Sombi
         {
             if (menuManager.start)
             {
-                playerManager.CreatePlayers();
+                if (menuManager.numberOfPlayers == 1)
+                {
+                    playerManager.CreateOnePlayer();
+                }
+                else if (menuManager.numberOfPlayers == 2)
+                {
+                    playerManager.CreatePlayers();
+                }
+                
                 currentGameState = GameState.Playing;
             }
         }
@@ -184,7 +192,7 @@ namespace Sombi
             fpsManager.Draw(spriteBatch);
             playerManager.Draw(spriteBatch);
             floatingTextures.Draw(spriteBatch);
-            hudManager.Draw(spriteBatch);
+            hudManager.Draw(spriteBatch, menuManager.numberOfPlayers);
             Color fadeInColor = new Color(new Vector3(0, 0, 0));
             spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadeInPercentage);
         }

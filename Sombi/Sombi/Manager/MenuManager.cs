@@ -19,6 +19,8 @@ namespace Sombi
         private float timeToPress;
         private float pressedTime;
         float fadePercentage = 1;
+        public int numberOfPlayers;
+
         public MenuManager(List<Player> players)
         {
             menu = new Menu();
@@ -54,10 +56,11 @@ namespace Sombi
 
         private void CheckStart(GameTime gameTime)
         {
-            foreach (Player player in players)
+            for (int i = 0; i < players.Count; i++)
             {
-                if (Keyboard.GetState().IsKeyDown(Keys.Space) && player.HitBox.Intersects(menu.startRect))
+                if (Keyboard.GetState().IsKeyDown(Keys.Space) && players[0].HitBox.Intersects(menu.startRect) && !players[1].HitBox.Intersects(menu.startRect))
                 {
+                    numberOfPlayers = 1;
                     pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     fadePercentage += 0.03f;
                     //if (pressedTime > timeToPress)
@@ -72,8 +75,27 @@ namespace Sombi
                         }
                     }
                 }
-            }
+
+                else if (Keyboard.GetState().IsKeyDown(Keys.Space) && players[0].HitBox.Intersects(menu.startRect) && players[1].HitBox.Intersects(menu.startRect))
+                {
+                    numberOfPlayers = 2;
+                    pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    fadePercentage += 0.03f;
+                    //if (pressedTime > timeToPress)
+                    {
+                        pressedTime = 0;
+                        if (fadePercentage > 1)
+                        {
+                            start = true;
+                            Grid.menu = false;
+                            Grid.CreateGridFactory();
+                            fadePercentage = 1;
+                        }
+                    }
+                }
+            }                        
         }
+
         private void CheckExit(GameTime gameTime)
         {
             foreach (Player player in players)
