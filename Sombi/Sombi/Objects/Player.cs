@@ -23,6 +23,8 @@ namespace Sombi
         public float angle;
         public float playerSpeed;
         float maxspeed;
+        float timeToRevive;
+        float reviveTime;
         public int cash;
         GamePadState gamePadState;
         GamePadState circularGamePadState;
@@ -31,6 +33,7 @@ namespace Sombi
         public int ID;
         Rectangle hitBox;
         public int health;
+        public bool revive = false;
         public bool dead = false;
         public bool eaten = false;
         public bool gotPackage = false;
@@ -43,6 +46,8 @@ namespace Sombi
             playerWeapon = weapon;
             playerSpeed = 1.8f;
             health = 1000;
+            timeToRevive = 3.0f;
+            reviveTime = 0.0f;
             this.ID = ID;
             hitBox = new Rectangle((int)position.X, (int)position.Y, TextureLibrary.sourceRectTex.Width, TextureLibrary.sourceRectTex.Height);
             SetPlayerID(ID);
@@ -83,7 +88,7 @@ namespace Sombi
                 Collide();
                 UpdateHitbox();
             }
-            Revive();
+            Revive(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -262,15 +267,20 @@ namespace Sombi
             }
         }
 
-        public bool Revive()
+        private void Revive(GameTime gameTime)
         {
             if (gamePadState.IsButtonDown(Buttons.A) || Keyboard.GetState().IsKeyDown(Keys.A))
             {
-                return true;
+                reviveTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-            else
+            if (gamePadState.IsButtonUp(Buttons.A) || Keyboard.GetState().IsKeyUp(Keys.A))
             {
-                return false;
+                reviveTime = 0;
+                revive = false;
+            }
+            if (reviveTime >= timeToRevive)
+            {
+                revive = true;
             }
         }
 

@@ -85,12 +85,12 @@ namespace Sombi
         {
             if (player1.HitBox.Intersects(player2.HitBox))
             {
-                if (player1.Revive() && player2.dead && !player2.eaten)
+                if (player1.revive && player2.dead && !player2.eaten)
                 {
                     player2.health = 500;
                     player2.dead = false;
                 }
-                if (player2.Revive() && player1.dead && !player1.eaten)
+                if (player2.revive && player1.dead && !player1.eaten)
                 {
                     player1.health = 500;
                     player1.dead = false;
