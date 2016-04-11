@@ -80,5 +80,12 @@ namespace Sombi
             players.Add(player2);
         }
 
+        public void CreateOnePlayer()
+        {
+            players.Clear();
+            player1 = new Player(weaponManager.playerOneWeapon, new Vector2(300, 100), 1);
+            players.Add(player1);
+        }
+
     }
 }
