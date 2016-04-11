@@ -25,7 +25,7 @@ namespace Sombi
                 {
                     stringList.Add(sr.ReadLine());
                 }
-                grid = new Tile[20, 20];
+                grid = new Tile[39, 39];
                 for (int i = 0; i < grid.GetLength(0); i++)
                 {
                     for (int k = 0; k < grid.GetLength(1); k++)
@@ -51,7 +51,7 @@ namespace Sombi
                 {
                     stringList.Add(sr.ReadLine());
                 }
-                grid = new Tile[20, 20];
+                grid = new Tile[38, 38];
                 for (int i = 0; i < grid.GetLength(0); i++)
                 {
                     for (int k = 0; k < grid.GetLength(1); k++)
