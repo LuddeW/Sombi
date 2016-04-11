@@ -83,6 +83,7 @@ namespace Sombi
                 Collide();
                 UpdateHitbox();
             }
+            Revive();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -258,6 +259,18 @@ namespace Sombi
             if (!eaten)
             {
                 health -= damage;
+            }
+        }
+
+        public bool Revive()
+        {
+            if (gamePadState.IsButtonDown(Buttons.A) || Keyboard.GetState().IsKeyDown(Keys.A))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 

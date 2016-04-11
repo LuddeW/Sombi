@@ -49,6 +49,7 @@ namespace Sombi
                 weaponManager.CreateBullets(2,player2.position, player2.angle);
             }
             weaponManager.Update(gameTime);
+            Revive();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -80,6 +81,23 @@ namespace Sombi
             player2 = new Player(weaponManager.playerTwoWeapon, new Vector2(500, 100), 2);
             players.Add(player1);
             players.Add(player2);
+        }
+
+        private void Revive()
+        {
+            if (player1.HitBox.Intersects(player2.HitBox))
+            {
+                if (player1.Revive() && player2.dead && !player2.eaten)
+                {
+                    player2.health = 500;
+                    player2.dead = false;
+                }
+                if (player2.Revive() && player1.dead && !player1.eaten)
+                {
+                    player1.health = 500;
+                    player1.dead = false;
+                }
+            }
         }
 
     }
