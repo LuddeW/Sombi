@@ -101,6 +101,7 @@ namespace Sombi
         {
             CreatePlayers();
             player2.dead = true;
+            players.Remove(player2);
         }
 
     }
