@@ -12,7 +12,9 @@ namespace Sombi
 {
     enum GameState
     {
-        Menu,
+        MainMenu,
+        Settings,
+        Highscore,
         Playing,
         Paused,
     }
@@ -28,7 +30,7 @@ namespace Sombi
         HighscoreManager highscoreManager;
         MenuManager menuManager;
         FloatingTextures floatingTextures;
-        GameState currentGameState = GameState.Menu;
+        GameState currentGameState = GameState.MainMenu;
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
         Game1 game;
@@ -69,7 +71,7 @@ namespace Sombi
             currentKeyboard = Keyboard.GetState();
             switch (currentGameState)
             {
-                case GameState.Menu:
+                case GameState.MainMenu:
                     {
                         MenuUpdate(gameTime);
                         break;
@@ -104,7 +106,7 @@ namespace Sombi
             }
             switch (currentGameState)
             {
-                case GameState.Menu:
+                case GameState.MainMenu:
                 {
                     MenuDraw(spriteBatch);
                     break;               
@@ -132,6 +134,22 @@ namespace Sombi
             }
         }
 
+        private void Settings()
+        {
+            if (menuManager.settings)
+            {
+                currentGameState = GameState.Settings;
+            }
+        }
+
+        private void Highscore()
+        {
+            if (menuManager.highscore)
+            {
+                currentGameState = GameState.Highscore;
+            }
+        }
+
         private void ExitGame()
         {
             if (menuManager.exit)
@@ -153,6 +171,9 @@ namespace Sombi
             floatingTextures.Update();
             StartGame();
             ExitGame();
+            Settings();
+            Highscore();
+            
         }
 
         private void PlayingDraw(SpriteBatch spriteBatch)
@@ -194,7 +215,7 @@ namespace Sombi
                     Grid.menu = true;
                     Grid.CreateGridFactory();
                     menuManager.start = false;
-                    currentGameState = GameState.Menu;
+                    currentGameState = GameState.MainMenu;
                     highscoreManager.WriteScore();
                     playerManager.CreatePlayers();
                 }

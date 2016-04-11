@@ -38,6 +38,8 @@ namespace Sombi
             }
             CheckStart(gameTime);
             CheckExit(gameTime);
+            CheckSettings(gameTime);
+            CheckHighscore(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -91,7 +93,45 @@ namespace Sombi
                 }
             }
         }
+        private void CheckSettings(GameTime gameTime)
+        {
+            foreach (Player player in players)
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.Space) && player.HitBox.Intersects(menu.settingRect))
+                {
+                    pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    fadePercentage += 0.03f;
+                    //if (pressedTime > timeToPress)
+                    {
+                        pressedTime = 0;
+                        if (fadePercentage > 1)
+                        {
+                            settings = true;
+                        }
+                    }
+                }
+            }
+        }
 
+        private void CheckHighscore(GameTime gameTime)
+        {
+            foreach (Player player in players)
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.Space) && player.HitBox.Intersects(menu.highscoreRect))
+                {
+                    pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    fadePercentage += 0.03f;
+                    //if (pressedTime > timeToPress)
+                    {
+                        pressedTime = 0;
+                        if (fadePercentage > 1)
+                        {
+                            highscore = true;
+                        }
+                    }
+                }
+            }
+        }
 
     }
 
