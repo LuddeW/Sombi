@@ -20,10 +20,10 @@ namespace Sombi
         {
             CheckForBulletCollisions(bulletList);
             ClearZombies();
-            if (zombies.Count < maxzombies) // just for moar zoambiez
-            {
-                AddZombie(new Vector2(900, 500));
-            }
+            //if (zombies.Count < maxzombies) // just for moar zoambiez
+            //{
+            //    AddZombie(new Vector2(900, 500));
+            //}
             foreach (Zombie z in zombies)
             {
                 z.Update(gameTime);
@@ -63,7 +63,7 @@ namespace Sombi
             {
                 z.Draw(spriteBatch);
             }
-            spriteBatch.DrawString(TextureLibrary.HUDText, "Number of Zombies: " + zombies.Count, new Vector2(450, 15), Color.Black);
+            spriteBatch.DrawString(TextureLibrary.HudText, "Number of Zombies: " + zombies.Count, new Vector2(450, 15), Color.Black);
 
         }
         public void CheckForBulletCollisions(List<Projectile> bulletList)

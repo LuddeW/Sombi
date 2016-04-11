@@ -22,7 +22,7 @@ namespace Sombi
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TextureLibrary.BulletBlue, pos, Color.White);
+            spriteBatch.Draw(TextureLibrary.bulletBlue, pos, Color.White);
         }
         public override void Explode()
         {

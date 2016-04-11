@@ -15,8 +15,8 @@ namespace Sombi
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            graphics.PreferredBackBufferHeight = (int)GlobalValues.screenBounds.X;
-            graphics.PreferredBackBufferWidth = (int)GlobalValues.screenBounds.Y;
+            graphics.PreferredBackBufferWidth = (int)GlobalValues.screenBounds.X;
+            graphics.PreferredBackBufferHeight = (int)GlobalValues.screenBounds.Y;
             graphics.IsFullScreen = false;
             graphics.ApplyChanges();
         }

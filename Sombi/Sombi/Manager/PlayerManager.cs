@@ -18,8 +18,7 @@ namespace Sombi
         {
             weaponManager = new WeaponManager();
             players = new List<Player>();
-            CreatePlayers();
-           
+            CreatePlayers();           
         }
 
         public bool GameOver()
@@ -72,7 +71,6 @@ namespace Sombi
                 }
             }
         }
-
         public void CreatePlayers()
         {
             players.Clear();
