@@ -15,14 +15,14 @@ namespace Sombi
 
 
         public List<Zombie> zombies = new List<Zombie>();
-        public List<BloodStain> blodPositions = new List<BloodStain>();
+        public List<BloodStain> bloodPositions = new List<BloodStain>();
         public void Update(GameTime gameTime, List<Projectile> bulletList)
         {
             CheckForBulletCollisions(bulletList);
             ClearZombies();
             if (zombies.Count < maxzombies) // just for moar zoambiez
             {
-                AddZombie(new Vector2(900, 500));
+                AddZombie(new Vector2(1400, 500));
             }
             foreach (Zombie z in zombies)
             {
@@ -43,7 +43,7 @@ namespace Sombi
                 if (zombies[i].health < 1)
                 {
                     Grid.SetCurrentTileHasZombie(false, zombies[i].currentTile);
-                    blodPositions.Add(new BloodStain(zombies[i].pos));
+                    bloodPositions.Add(new BloodStain(zombies[i].pos));
                     zombies.RemoveAt(i);
                     HighscoreManager.score++;
 
@@ -54,7 +54,7 @@ namespace Sombi
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (BloodStain bs in blodPositions)
+            foreach (BloodStain bs in bloodPositions)
             {
                 bs.Draw(spriteBatch);
             }
