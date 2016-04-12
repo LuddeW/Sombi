@@ -25,10 +25,10 @@ namespace Sombi
                 {
                     stringList.Add(sr.ReadLine());
                 }
-                grid = new Tile[39, 39];
-                for (int i = 0; i < grid.GetLength(0); i++)
+                grid = new Tile[(int)GlobalValues.GRID_SIZE.X, (int)GlobalValues.GRID_SIZE.Y];
+                for (int i = 0; i < GlobalValues.GRID_SIZE.Y; i++)
                 {
-                    for (int k = 0; k < grid.GetLength(1); k++)
+                    for (int k = 0; k < GlobalValues.GRID_SIZE.X; k++)
                     {
                         switch (stringList[i][k])
                         {
@@ -51,15 +51,15 @@ namespace Sombi
                 {
                     stringList.Add(sr.ReadLine());
                 }
-                grid = new Tile[38, 38];
-                for (int i = 0; i < grid.GetLength(0); i++)
+                grid = new Tile[(int)GlobalValues.GRID_SIZE.X, (int)GlobalValues.GRID_SIZE.Y];
+                for (int i = 0; i < GlobalValues.GRID_SIZE.Y; i++)
                 {
-                    for (int k = 0; k < grid.GetLength(1); k++)
+                    for (int k = 0; k < GlobalValues.GRID_SIZE.X; k++)
                     {
                         switch (stringList[i][k])
                         {
                             case '0':
-                                grid[k, i] = new Tile(new Vector2(k, i), true);
+                                grid[k, i] = new Tile(new Vector2(k, k), true);
                                 break;
                             case '1':
                                 grid[k, i] = new Tile(new Vector2(k, i), false);
