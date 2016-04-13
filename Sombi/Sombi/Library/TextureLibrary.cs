@@ -60,8 +60,8 @@ namespace Sombi
         public static void LoadContent(ContentManager Content)
         {
             //Player and Enemy Sprites            
-            player1Tex = Content.Load<Texture2D>(@"Player1");
-            player2Tex = Content.Load<Texture2D>(@"Player2");
+            player1Tex = Content.Load<Texture2D>(@"Player1v2");
+            player2Tex = Content.Load<Texture2D>(@"Player2v2");
             zombieTex = Content.Load<Texture2D>(@"ZombieSheet");
             fastZombieTex = Content.Load<Texture2D>(@"ZombieSheet2");
             fatZombieTex = Content.Load<Texture2D>(@"FatZombie");
