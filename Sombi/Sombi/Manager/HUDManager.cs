@@ -34,7 +34,7 @@ namespace Sombi
                 spriteBatch.Draw(TextureLibrary.weaponHud, new Vector2(hudPos.X + GlobalValues.screenBounds.X - TextureLibrary.weaponHud.Width, hudPos.Y + GlobalValues.screenBounds.Y - TextureLibrary.weaponHud.Height), Color.White * 0.8f);
                 spriteBatch.DrawString(TextureLibrary.HudText, "Health: " + players[1].health, new Vector2(hudPos.X + GlobalValues.screenBounds.X - 165, hudPos.Y + 10), Color.Black);
                 spriteBatch.DrawString(TextureLibrary.HudText, "Cash: " + players[1].cash, new Vector2(hudPos.X + GlobalValues.screenBounds.X - 165, hudPos.Y + 25), Color.Black);
-                spriteBatch.Draw(TextureLibrary.weaponHud, new Vector2(GlobalValues.screenBounds.X - TextureLibrary.weaponHud.Width, GlobalValues.screenBounds.Y - TextureLibrary.weaponHud.Height), Color.White * 0.8f);
+                //spriteBatch.Draw(TextureLibrary.weaponHud, new Vector2(GlobalValues.screenBounds.X - TextureLibrary.weaponHud.Width, GlobalValues.screenBounds.Y - TextureLibrary.weaponHud.Height), Color.White * 0.8f);
             }            
 
             spriteBatch.DrawString(TextureLibrary.HudText, "Score: " + HighscoreManager.score, new Vector2(450, 30), Color.Black);
