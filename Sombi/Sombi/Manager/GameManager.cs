@@ -225,7 +225,7 @@ namespace Sombi
             playerManager.Update(gameTime);
             packageManager.Update(gameTime, playerManager.players, menuManager.numberOfPlayers);
             floatingTextures.Update();
-            hudManager.Update(gameTime);
+            hudManager.Update(gameTime, camera.position);
             fpsManager.Update(gameTime);
             enemyManager.CheckPlayerZombieCollisions(playerManager.players);
             playerManager.CheckPlayerBulletCollisions();

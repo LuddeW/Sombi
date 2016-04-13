@@ -8,7 +8,7 @@ namespace Sombi
 {
     public class Camera
     {
-        Vector2 position;
+        public Vector2 position;
         //Matrix viewMatrix;
 
         public Camera(int viewTileSize)
