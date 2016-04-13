@@ -45,6 +45,7 @@ namespace Sombi
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(TextureLibrary.bulletBlue, pos, Color.White);
             animationPlayer.Draw(spriteBatch, pos);
         }
         public override void Explode()
