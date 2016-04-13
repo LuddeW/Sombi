@@ -11,15 +11,15 @@ namespace Sombi
         Vector2 position;
         Matrix viewMatrix;
 
-        public Camera(int screenWidth, int viewTileSize)
+        public Camera(int viewTileSize)
         {
-            ScreenWidth = screenWidth;
+            //ScreenWidth = screenWidth;
             ViewTileSize = viewTileSize;
             //GameAreaTilesWidth = gameAreaTilesWidth;
         }
 
         public Matrix ViewMatrix { get; private set; }
-        public int ScreenWidth { get; set; }
+        //public int ScreenWidth { get; set; }
         public int ViewTileSize { get; set; }
         //public int GameAreaTilesWidth { get; set; }
 
@@ -32,16 +32,16 @@ namespace Sombi
 
         private void SinglePlayerCamera(Vector2 objectPos)
         {
-            position.X = objectPos.X - (ScreenWidth / 2);
+            position.X = objectPos.X - (GlobalValues.windowBounds.Width / 2);
             position.Y = objectPos.Y - (GlobalValues.windowBounds.Height / 2);
 
             if (position.X < 0)
             {
                 position.X = 0;
             }
-            else if (position.X > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - ScreenWidth)
+            else if (position.X > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - GlobalValues.windowBounds.Width)
             {
-                position.X = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - ScreenWidth;
+                position.X = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - GlobalValues.windowBounds.Width;
             }
 
             if (position.Y < 0)
