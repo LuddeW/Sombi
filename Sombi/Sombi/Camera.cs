@@ -6,14 +6,38 @@ using System.Text;
 
 namespace Sombi
 {
-    class Camera
+    public class Camera
     {
+        Vector2 position;
+        Matrix viewMatrix;
 
-
-
-        public void Update(GameTime gameTime)
+        public Camera(int screenWidth, int viewTileSize, int gameAreaTilesWidth)
         {
+            ScreenWidth = screenWidth;
+            ViewTileSize = viewTileSize;
+            GameAreaTilesWidth = gameAreaTilesWidth;
+        }
 
+        public Matrix ViewMatrix { get; private set; }
+        public int ScreenWidth { get; set; }
+        public int ViewTileSize { get; set; }
+        public int GameAreaTilesWidth { get; set; }
+
+        public void Update(Vector2 objectPos)
+        {
+            position.X = objectPos.X - (ScreenWidth / 2);
+
+            if (position.X < 0)
+            {
+                position.X = 0;
+            }
+            else if (position.X > GlobalValues.TILE_SIZE * 49 - ScreenWidth)
+            {
+                position.X = GlobalValues.TILE_SIZE * 49 - ScreenWidth;
+            }
+
+            ViewMatrix = Matrix.CreateTranslation(new Vector3(-position, 0));
         }
     }
 }
+
