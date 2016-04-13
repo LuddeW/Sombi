@@ -12,8 +12,8 @@ namespace Sombi
         public Explosives() : base()
         {
             projectileSpeed = 10.0f;
-            weaponRange = 12;
-            damage = 70;
+            weaponRange = 200;
+            damage = 20;
             fireRate = 0.33f;
             areaOfEffect = 1f;
             numberOfProjectilesPerFire = 1;

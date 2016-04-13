@@ -37,11 +37,10 @@ namespace Sombi
         }
 
 
-        public void AddBullets(Vector2 position, float angle, int damage,float speed, int range, int ID)
+        public void AddBullets(Projectile proj)
         {
-            Bullet b = new Bullet(position,speed,angle,damage, range, ID);
-            Rocket r = new Rocket(position, speed, angle, damage, range, ID);
-            bullets.Add(r);
+
+            bullets.Add(proj);
         }
 
         private void RemoveBullets()
