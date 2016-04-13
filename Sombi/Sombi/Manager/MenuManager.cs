@@ -56,9 +56,16 @@ namespace Sombi
 
         private void CheckStart(GameTime gameTime)
         {
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                numberOfPlayers = 1;
+                start = true;
+                Grid.menu = false;
+                Grid.CreateGridFactory();
+            }
             for (int i = 0; i < players.Count; i++)
             {
-                if (Keyboard.GetState().IsKeyDown(Keys.Space) && players[0].HitBox.Intersects(menu.startRect) && !players[1].HitBox.Intersects(menu.startRect))
+                if (players[0].GamePadState.IsButtonDown(Buttons.A) && players[0].HitBox.Intersects(menu.startRect) && !players[1].HitBox.Intersects(menu.startRect))
                 {
                     numberOfPlayers = 1;
                     pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -76,7 +83,7 @@ namespace Sombi
                     }
                 }
 
-                else if (Keyboard.GetState().IsKeyDown(Keys.Space) && players[0].HitBox.Intersects(menu.startRect) && players[1].HitBox.Intersects(menu.startRect))
+                else if (players[0].GamePadState.IsButtonDown(Buttons.A) && players[0].HitBox.Intersects(menu.startRect) && players[1].HitBox.Intersects(menu.startRect))
                 {
                     numberOfPlayers = 2;
                     pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -100,7 +107,7 @@ namespace Sombi
         {
             foreach (Player player in players)
             {
-                if (Keyboard.GetState().IsKeyDown(Keys.Space) && player.HitBox.Intersects(menu.exitRect))
+                if (player.GamePadState.IsButtonDown(Buttons.A) && player.HitBox.Intersects(menu.exitRect))
                 {
                     pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     fadePercentage += 0.03f;
@@ -119,7 +126,7 @@ namespace Sombi
         {
             foreach (Player player in players)
             {
-                if (Keyboard.GetState().IsKeyDown(Keys.Space) && player.HitBox.Intersects(menu.settingRect))
+                if (player.GamePadState.IsButtonDown(Buttons.A) && player.HitBox.Intersects(menu.settingRect))
                 {
                     pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     fadePercentage += 0.03f;
@@ -139,7 +146,7 @@ namespace Sombi
         {
             foreach (Player player in players)
             {
-                if (Keyboard.GetState().IsKeyDown(Keys.Space) && player.HitBox.Intersects(menu.highscoreRect))
+                if (player.GamePadState.IsButtonDown(Buttons.A) && player.HitBox.Intersects(menu.highscoreRect))
                 {
                     pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     fadePercentage += 0.03f;

@@ -59,6 +59,12 @@ namespace Sombi
             get { return hitBox; }
             set { }
         }
+        
+        public GamePadState GamePadState
+        {
+            get { return gamePadState; }
+            set { }
+        }
 
         public void Update(GameTime gameTime)
         {
