@@ -18,7 +18,7 @@ namespace Sombi
         public WeaponManager()
         {
             this.bulletManager = new BulletManager();
-            playerOneWeapon = new Rifle();
+            playerOneWeapon = new Explosives();
             playerTwoWeapon = new Explosives();
             timeSinceLastPlayerOneBullet = 100f;
             timeSinceLastPlayerTwoBullet = 100f;
@@ -67,11 +67,11 @@ namespace Sombi
                     Rocket r = new Rocket(position, playerTwoWeapon.projectileSpeed, angle, playerTwoWeapon.damage, playerTwoWeapon.weaponRange, PlayerID);
                     for (int i = 0; i < playerTwoWeapon.numberOfProjectilesPerFire; i++)
                     {
-                        if (playerOneWeapon is Rifle)
+                        if (playerTwoWeapon is Rifle)
                         {
                             bulletManager.AddBullets(b);
                         }
-                        else if (playerOneWeapon is Explosives)
+                        else if (playerTwoWeapon is Explosives)
                         {
                             bulletManager.AddBullets(r);
                         }
