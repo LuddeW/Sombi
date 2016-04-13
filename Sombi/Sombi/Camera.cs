@@ -59,8 +59,8 @@ namespace Sombi
 
         private void MultiPlayerCamera(Vector2 playerOnePos, Vector2 playerTwoPos)
         {
-            position.X = playerOnePos.X + playerTwoPos.X / 2 - (GlobalValues.windowBounds.Width / 2);
-            position.Y = playerOnePos.Y + playerTwoPos.Y / 2 - (GlobalValues.windowBounds.Height / 2);
+            position.X = (playerOnePos.X + playerTwoPos.X) / 2 - (GlobalValues.windowBounds.Width / 2);
+            position.Y = (playerOnePos.Y + playerTwoPos.Y) / 2 - (GlobalValues.windowBounds.Height / 2);
 
             if (position.X < 0)
             {
