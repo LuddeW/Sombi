@@ -44,7 +44,7 @@ namespace Sombi
             TextureLibrary.LoadContent(contentManager);
             SoundLibrary.LoadContent(contentManager);
             Grid.CreateGridFactory();
-            camera = new Camera((int)GlobalValues.screenBounds.X, (int)GlobalValues.GRID_SIZE.X * GlobalValues.TILE_SIZE, (int)GlobalValues.GRID_SIZE.X * GlobalValues.TILE_SIZE);
+            camera = new Camera((int)GlobalValues.screenBounds.X, (int)GlobalValues.TILE_SIZE);
             playerManager = new PlayerManager();
             enemyManager = new EnemyManager();
             hudManager = new HUDManager(playerManager.players);
@@ -181,6 +181,7 @@ namespace Sombi
 
         private void MenuUpdate(GameTime gameTime)
         {
+            camera.Update(playerManager.players[0].position);
             menuManager.Update(gameTime);
             playerManager.Update(gameTime);
             floatingTextures.Update();

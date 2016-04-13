@@ -49,7 +49,7 @@ namespace Sombi
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.White);
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, gameManager.ViewMatrix);
             gameManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
