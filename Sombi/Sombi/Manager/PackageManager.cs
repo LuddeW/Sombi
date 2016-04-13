@@ -16,10 +16,10 @@ namespace Sombi
             package = new Package(new Vector2(850, 550));
         }
 
-        public void Update(GameTime gameTime, List<Player> players)
+        public void Update(GameTime gameTime, List<Player> players, int numberOfPlayers)
         {
             GetChest(players);
-            leaveChest(players);
+            leaveChest(players, numberOfPlayers);
             package.Update(gameTime);
         }
 
@@ -44,7 +44,7 @@ namespace Sombi
             }
         }
 
-        private void leaveChest(List<Player>players)
+        private void leaveChest(List<Player>players, int numberOfPlayers)
         {
             if (package.taken)
             {
@@ -52,11 +52,21 @@ namespace Sombi
                 {
                     if (player.position.X / 50 > 17 && player.position.Y / 50 < 2 && player.gotPackage)
                     {
-                        players[0].cash += 100;
-                        players[1].cash += 100;
-                        HighscoreManager.score += 100;
-                        package.taken = false;
-                        Console.WriteLine(package.taken);
+                        if (numberOfPlayers == 2)
+                        {
+                            players[0].cash += 100;
+                            players[1].cash += 100;
+                            HighscoreManager.score += 100;
+                            package.taken = false;
+                            Console.WriteLine(package.taken);
+                        }
+                        else
+                        {
+                            players[0].cash += 100;
+                            HighscoreManager.score += 100;
+                            package.taken = false;
+                            Console.WriteLine(package.taken);
+                        }
                     }
                 }
             }

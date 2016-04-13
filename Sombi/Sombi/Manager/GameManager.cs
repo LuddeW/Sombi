@@ -207,7 +207,7 @@ namespace Sombi
             }
             enemyManager.Update(gameTime, playerManager.weaponManager.bulletManager.bullets);
             playerManager.Update(gameTime);
-            packageManager.Update(gameTime, playerManager.players);
+            packageManager.Update(gameTime, playerManager.players, menuManager.numberOfPlayers);
             floatingTextures.Update();
             hudManager.Update(gameTime);
             fpsManager.Update(gameTime);
