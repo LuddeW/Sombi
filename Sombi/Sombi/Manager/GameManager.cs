@@ -181,7 +181,7 @@ namespace Sombi
 
         private void MenuUpdate(GameTime gameTime)
         {
-            camera.Update(playerManager.players[0].position);
+            camera.Update(playerManager.players[0].position, playerManager.players[1].position);
             menuManager.Update(gameTime);
             playerManager.Update(gameTime);
             floatingTextures.Update();
@@ -194,6 +194,7 @@ namespace Sombi
 
         private void PlayingDraw(SpriteBatch spriteBatch)
         {
+            
             spriteBatch.Draw(TextureLibrary.testMapTex, Vector2.Zero, Color.White);
             packageManager.Draw(spriteBatch);
             enemyManager.Draw(spriteBatch);
@@ -207,8 +208,15 @@ namespace Sombi
 
         private void PlayingUpdate(GameTime gameTime)
         {
+            if (menuManager.numberOfPlayers == 2)
+            {
+                camera.Update(playerManager.players[0].position, playerManager.players[1].position);
+            }
+            else
+            {
+                camera.Update(playerManager.players[0].position);
+            }
             fadeInPercentage -= 0.008f;
-
             if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
             {
                 currentGameState = GameState.Paused;
