@@ -25,18 +25,23 @@ namespace Sombi
 
         public void Update(Vector2 objectPos)
         {
+            SinglePlayerCamera(objectPos);
+
+            ViewMatrix = Matrix.CreateTranslation(new Vector3(-position, 0));
+        }
+
+        private void SinglePlayerCamera(Vector2 objectPos)
+        {
             position.X = objectPos.X - (ScreenWidth / 2);
 
             if (position.X < 0)
             {
                 position.X = 0;
             }
-            else if (position.X > GlobalValues.TILE_SIZE * 49 - ScreenWidth)
+            else if (position.X > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - ScreenWidth)
             {
-                position.X = GlobalValues.TILE_SIZE * 49 - ScreenWidth;
+                position.X = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - ScreenWidth;
             }
-
-            ViewMatrix = Matrix.CreateTranslation(new Vector3(-position, 0));
         }
     }
 }

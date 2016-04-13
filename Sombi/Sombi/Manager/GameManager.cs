@@ -34,6 +34,7 @@ namespace Sombi
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
         Game1 game;
+        Camera camera;
         float fadeInPercentage = 1;
         float fadeOutPercentage = 0;
 
@@ -43,6 +44,7 @@ namespace Sombi
             TextureLibrary.LoadContent(contentManager);
             SoundLibrary.LoadContent(contentManager);
             Grid.CreateGridFactory();
+            camera = new Camera((int)GlobalValues.screenBounds.X, (int)GlobalValues.GRID_SIZE.X * GlobalValues.TILE_SIZE, (int)GlobalValues.GRID_SIZE.X * GlobalValues.TILE_SIZE);
             playerManager = new PlayerManager();
             enemyManager = new EnemyManager();
             hudManager = new HUDManager(playerManager.players);
@@ -63,6 +65,11 @@ namespace Sombi
             enemyManager.AddZombie(new Vector2(900, 800));
             enemyManager.AddZombie(new Vector2(500, 500));
 
+        }
+
+        public Matrix ViewMatrix
+        {
+            get { return camera.ViewMatrix; }
         }
 
         public void Update(GameTime gameTime)
