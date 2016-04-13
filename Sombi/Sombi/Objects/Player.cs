@@ -72,10 +72,10 @@ namespace Sombi
             {
                 dead = true;
             }
-            if (health <= -1000)
+            if (health <= -2000)
             {
                 eaten = true;
-                health = -1000;
+                health = -2000;
             }
 
             if (!dead)
@@ -279,12 +279,13 @@ namespace Sombi
             {
                 reviveTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-            if (gamePadState.IsButtonUp(Buttons.A) || Keyboard.GetState().IsKeyUp(Keys.A))
+            else
             {
                 reviveTime = 0;
                 revive = false;
             }
-            if (reviveTime >= timeToRevive)
+
+            if (reviveTime > timeToRevive)
             {
                 revive = true;
             }
