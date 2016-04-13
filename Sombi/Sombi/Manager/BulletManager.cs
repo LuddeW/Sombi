@@ -49,8 +49,12 @@ namespace Sombi
             {
                 if (!GlobalValues.windowBounds.Contains(bullets[i].Pos) || !Grid.grid[(int)bullets[i].Pos.X / 50, (int)bullets[i].Pos.Y / 50].passable || bullets[i].distanceTraveled > bullets[i].range && !bullets[i].exploding)
                 {
-                    //bullets[i].Explode();
-                    bullets.Remove(bullets[i]);
+                    bullets[i].Explode();
+                    if (bullets[i].timeToLiveAfterImpact == 0)
+                    {
+                        bullets.Remove(bullets[i]);
+                    }
+                    
                 }
 
             }

@@ -67,7 +67,12 @@ namespace Sombi
                     if (players[i].HitBox.Contains(weaponManager.bulletManager.bullets[k].Pos) && players[i].ID != weaponManager.bulletManager.bullets[k].ID)
                     {
                         players[i].handleBulletHit(weaponManager.bulletManager.bullets[k].damage);
-                        weaponManager.bulletManager.bullets.RemoveAt(k);
+                        weaponManager.bulletManager.bullets[k].Explode();
+                        if (weaponManager.bulletManager.bullets[k].timeToLiveAfterImpact == 0)
+                        {
+                            weaponManager.bulletManager.bullets.RemoveAt(k);
+                        }
+                        
                     }
                 }
             }

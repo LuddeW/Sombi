@@ -105,7 +105,7 @@ namespace Sombi
 
             if (playerManager.GameOver())
             {
-                spriteBatch.DrawString(TextureLibrary.HudText, "Bajs-curious", new Vector2(450, 500), Color.Black);
+                spriteBatch.DrawString(TextureLibrary.HudText, "Well...", new Vector2(450, 500), Color.Black);
                 Color fadeOutColor = new Color(new Vector3(255, 0, 0));
                 Color fadeInColor = new Color(new Vector3(0, 0, 0));
                 spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeOutColor * fadeOutPercentage);
