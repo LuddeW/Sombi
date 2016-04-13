@@ -24,7 +24,7 @@ namespace Sombi
         public static Texture2D tankTex { get; private set; }
         public static Texture2D carTex { get; private set; }
         public static Texture2D busTex { get; private set; }
-
+        public static Texture2D tent { get; private set; }
         //Floating Objects
         public static Texture2D cloud1Tex { get; private set; }
         public static Texture2D cloud2Tex { get; private set; }
@@ -72,6 +72,7 @@ namespace Sombi
             tankTex = Content.Load<Texture2D>("tank1");
             carTex = Content.Load<Texture2D>("Car1");
             busTex = Content.Load<Texture2D>("Bus1");
+            tent = Content.Load<Texture2D>("base");
 
             //Floating Objects
             cloud1Tex = Content.Load<Texture2D>("Cloud1");
