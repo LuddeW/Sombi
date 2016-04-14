@@ -53,7 +53,7 @@ namespace Sombi
             }
             else if (position.Y > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.cameraBounds.Y)
             {
-                position.X = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.cameraBounds.Y;
+                position.Y = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.cameraBounds.Y;
             }
         }
 
@@ -77,7 +77,7 @@ namespace Sombi
             }
             else if (position.Y > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.cameraBounds.Y)
             {
-                position.X = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.cameraBounds.Y;
+                position.Y = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.cameraBounds.Y;
             }
         }
     }

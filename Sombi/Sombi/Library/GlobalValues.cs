@@ -12,7 +12,7 @@ namespace Sombi
         public static Vector2 GRID_SIZE = new Vector2(76, 40);
 
         public static Random rnd = new Random();
-        public static Rectangle windowBounds = new Rectangle(0, 0, 3000, 3000);
+        public static Rectangle windowBounds = new Rectangle(0, 0, 3800, 2000);
         public static Vector2 cameraBounds = new Vector2(1900, 1000);
         public static Vector2 screenBounds = new Vector2(1900,1000);
         
