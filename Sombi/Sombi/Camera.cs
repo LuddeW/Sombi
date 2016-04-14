@@ -35,49 +35,49 @@ namespace Sombi
 
         private void SinglePlayerCamera(Vector2 playerOnePos)
         {
-            position.X = playerOnePos.X - (GlobalValues.windowBounds.Width / 2);
-            position.Y = playerOnePos.Y - (GlobalValues.windowBounds.Height / 2);
+            position.X = playerOnePos.X - (GlobalValues.cameraBounds.X / 2);
+            position.Y = playerOnePos.Y - (GlobalValues.cameraBounds.Y / 2);
 
             if (position.X < 0)
             {
                 position.X = 0;
             }
-            else if (position.X > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - GlobalValues.windowBounds.Width)
+            else if (position.X > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - GlobalValues.cameraBounds.X)
             {
-                position.X = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - GlobalValues.windowBounds.Width;
+                position.X = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - GlobalValues.cameraBounds.X;
             }
 
             if (position.Y < 0)
             {
                 position.Y = 0;
             }
-            else if (position.Y > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.windowBounds.Height)
+            else if (position.Y > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.cameraBounds.Y)
             {
-                position.X = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.windowBounds.Height;
+                position.X = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.cameraBounds.Y;
             }
         }
 
         private void MultiPlayerCamera(Vector2 playerOnePos, Vector2 playerTwoPos)
         {
-            position.X = (playerOnePos.X + playerTwoPos.X) / 2 - (GlobalValues.windowBounds.Width / 2);
-            position.Y = (playerOnePos.Y + playerTwoPos.Y) / 2 - (GlobalValues.windowBounds.Height / 2);
+            position.X = (playerOnePos.X + playerTwoPos.X) / 2 - (GlobalValues.cameraBounds.X / 2);
+            position.Y = (playerOnePos.Y + playerTwoPos.Y) / 2 - (GlobalValues.cameraBounds.Y / 2);
 
             if (position.X < 0)
             {
                 position.X = 0;
             }
-            else if (position.X > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - GlobalValues.windowBounds.Width)
+            else if (position.X > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - GlobalValues.cameraBounds.X)
             {
-                position.X = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - GlobalValues.windowBounds.Width;
+                position.X = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - GlobalValues.cameraBounds.X;
             }
 
             if (position.Y < 0)
             {
                 position.Y = 0;
             }
-            else if (position.Y > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.windowBounds.Height)
+            else if (position.Y > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.cameraBounds.Y)
             {
-                position.X = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.windowBounds.Height;
+                position.X = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.cameraBounds.Y;
             }
         }
     }
