@@ -32,10 +32,10 @@ namespace Sombi
                     {
                         switch (stringList[i][k])
                         {
-                            case '0':
+                            case '.':
                                 grid[k, i] = new Tile(new Vector2(k, i), true);
                                 break;
-                            case '1':
+                            case 'W':
                                 grid[k, i] = new Tile(new Vector2(k, i), false);
                                 break;
                         }
