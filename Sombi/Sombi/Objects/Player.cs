@@ -102,9 +102,9 @@ namespace Sombi
             if (!dead)
             {
                 if (playerID == PlayerID.One)
-                    spriteBatch.Draw(TextureLibrary.player1Tex, position, null, Color.White, angle, new Vector2(TextureLibrary.player1Tex.Width / 2, TextureLibrary.player1Tex.Height / 2), 1f, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(TextureLibrary.player1RifleTex, position, null, Color.White, angle, new Vector2(TextureLibrary.player1RifleTex.Width / 2, TextureLibrary.player1RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
                 if(playerID == PlayerID.Two)
-                spriteBatch.Draw(TextureLibrary.player2Tex, position, null, Color.White, angle, new Vector2(TextureLibrary.player1Tex.Width / 2, TextureLibrary.player1Tex.Height / 2), 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(TextureLibrary.player2RifleTex, position, null, Color.White, angle, new Vector2(TextureLibrary.player2RifleTex.Width / 2, TextureLibrary.player2RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
                 //spriteBatch.Draw(TextureLibrary.sourceRectTex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
             }           
         }
@@ -123,8 +123,8 @@ namespace Sombi
 
         private void UpdateHitbox()
         {
-                hitBox.X = (int)position.X - ((TextureLibrary.player1Tex.Width) / 2) + 10;
-                hitBox.Y = (int)position.Y - ((TextureLibrary.player1Tex.Height) / 2);   
+                hitBox.X = (int)position.X - ((TextureLibrary.player1RifleTex.Width) / 2) + 10;
+                hitBox.Y = (int)position.Y - ((TextureLibrary.player1RifleTex.Height) / 2);   
         }
 
         private void UpdateGamepad()
@@ -190,28 +190,28 @@ namespace Sombi
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                position.Y -= 1;
+                position.Y -= 2;
                 direction.Y = -1;
                 angle = MathHelper.ToRadians(270);
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {  
-                position.X -= 1f;
+                position.X -= 2;
 		        direction.X = -1;             
                 angle = MathHelper.ToRadians(180);
 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                position.Y += 1f;
+                position.Y += 2;
                 direction.Y = 1;
                 angle = MathHelper.ToRadians(90);
 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-                position.X += 1f;
+                position.X += 2;
 		        direction.X = 1;             
                 angle = MathHelper.ToRadians(0);
 
@@ -233,7 +233,7 @@ namespace Sombi
             }
             else if (direction.X < 0)
             {
-                if (Grid.grid[(int)((position.X + (TextureLibrary.player1Tex.Width / 3)) / 50) + (int)direction.X, (int)(position.Y) / 50].passable != true)
+                if (Grid.grid[(int)((position.X + (TextureLibrary.player1RifleTex.Width / 3)) / 50) + (int)direction.X, (int)(position.Y) / 50].passable != true)
                 {
                     position.X += direction.X * -1;
 
@@ -257,7 +257,7 @@ namespace Sombi
             }
             else if (direction.Y < 0)
             {
-                if (Grid.grid[(int)((position.X) / 50), ((int)(position.Y + TextureLibrary.player1Tex.Height) / 50) + (int)direction.Y].passable != true)
+                if (Grid.grid[(int)((position.X) / 50), ((int)(position.Y + TextureLibrary.player1RifleTex.Height) / 50) + (int)direction.Y].passable != true)
                 {
                     position.Y += direction.Y * -1;
                 }

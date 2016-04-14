@@ -116,9 +116,6 @@
     <Content Include="Content\LMG1.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Logo1Sombi.png" />
     <Content Include="Content\MedicTent.png" />
     <Content Include="Content\Menumap.txt">
@@ -128,13 +125,7 @@
     <Content Include="Content\Play.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Player1.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Player1ScoreHUD.png" />
-    <Content Include="Content\Player2.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Player2ScoreHUD.png" />
     <Content Include="Content\Rectangle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

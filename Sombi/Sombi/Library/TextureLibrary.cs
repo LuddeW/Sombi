@@ -11,8 +11,12 @@ namespace Sombi
     {
 
         //Player and Enemy Sprites
-        public static Texture2D player1Tex { get; private set; }
-        public static Texture2D player2Tex { get; private set; }
+        public static Texture2D player1RifleTex { get; private set; }
+        public static Texture2D player1ShotgunTex { get; private set; }
+        public static Texture2D player1RocketTex { get; private set; }
+        public static Texture2D player2RifleTex { get; private set; }
+        public static Texture2D player2ShotgunTex { get; private set; }
+        public static Texture2D player2RocketTex { get; private set; }
         public static Texture2D zombieTex { get; private set; }
         public static Texture2D fastZombieTex { get; private set; }
         public static Texture2D fatZombieTex { get; private set; }
@@ -60,8 +64,14 @@ namespace Sombi
         public static void LoadContent(ContentManager Content)
         {
             //Player and Enemy Sprites            
-            player1Tex = Content.Load<Texture2D>(@"Player1v2");
-            player2Tex = Content.Load<Texture2D>(@"Player2v2");
+            player1RifleTex = Content.Load<Texture2D>(@"Player1Rifle");
+            player1ShotgunTex = Content.Load<Texture2D>(@"Player1Shotgun");
+            //player1RocketTex = Content.Load<Texture2D>(@"Player1Rocket");
+
+            player2RifleTex = Content.Load<Texture2D>(@"Player2Rifle");
+            player2ShotgunTex = Content.Load<Texture2D>(@"Player2Shotgun");
+            //player2RocketTex = Content.Load<Texture2D>(@"Player2Rocket");
+
             zombieTex = Content.Load<Texture2D>(@"ZombieSheet");
             fastZombieTex = Content.Load<Texture2D>(@"ZombieSheet2");
             fatZombieTex = Content.Load<Texture2D>(@"FatZombie");

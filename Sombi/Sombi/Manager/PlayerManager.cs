@@ -14,6 +14,7 @@ namespace Sombi
         public List<Player> players;
         public WeaponManager weaponManager;
 
+
         public PlayerManager()
         {
             weaponManager = new WeaponManager();
