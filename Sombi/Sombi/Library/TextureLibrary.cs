@@ -25,6 +25,7 @@ namespace Sombi
         //Structures and Objects
         public static Texture2D packageTex { get; private set; }
         public static Texture2D medicTentTex { get; private set; }
+        public static Texture2D hqTentTex { get; private set; }
         public static Texture2D tankTex { get; private set; }
         public static Texture2D carTex { get; private set; }
         public static Texture2D busTex { get; private set; }
@@ -79,6 +80,7 @@ namespace Sombi
             //Structures and Objects
             packageTex = Content.Load<Texture2D>("Package");
             medicTentTex = Content.Load<Texture2D>("MedicTent");
+            hqTentTex = Content.Load<Texture2D>("HQtent");
             tankTex = Content.Load<Texture2D>("tank1");
             carTex = Content.Load<Texture2D>("Car1");
             busTex = Content.Load<Texture2D>("Bus1");
