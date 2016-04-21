@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace Sombi
         public Weapon playerTwoWeapon;
         private float timeSinceLastPlayerOneBullet;
         private float timeSinceLastPlayerTwoBullet;
+        KeyboardState currentKeyboard;
+        KeyboardState oldKeyboard;
 
         public WeaponManager()
         {
@@ -113,17 +116,27 @@ namespace Sombi
         }
         public void SwitchWeapon(int playerID)
         {
+            oldKeyboard = currentKeyboard;
+            currentKeyboard = Keyboard.GetState();
             switch (playerID)
             {
                 case 1:
-                    if (playerOneWeapon is Rifle)
+                    if (currentKeyboard.IsKeyDown(Keys.E) && !oldKeyboard.IsKeyDown(Keys.E))
                     {
-                        playerOneWeapon = new Explosives();
+                        if (playerOneWeapon is Rifle)
+                        {
+                            playerOneWeapon = new Explosives();
+                        }
+                        else if (playerOneWeapon is Explosives)
+                        {
+                            playerOneWeapon = new Shotgun();
+                        }
+                        else if (playerOneWeapon is Shotgun)
+                        {
+                            playerOneWeapon = new Rifle();
+                        }
                     }
-                    else if (playerOneWeapon is Explosives)
-                    {
-                        playerOneWeapon = new Rifle();
-                    }
+                    
                     break;
                 case 2:
                     if (playerTwoWeapon is Rifle)
@@ -131,6 +144,10 @@ namespace Sombi
                         playerTwoWeapon = new Explosives();
                     }
                     else if (playerTwoWeapon is Explosives)
+                    {
+                        playerTwoWeapon = new Shotgun();
+                    }
+                    else if (playerTwoWeapon is Shotgun)
                     {
                         playerTwoWeapon = new Rifle();
                     }
