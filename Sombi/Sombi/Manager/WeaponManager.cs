@@ -82,7 +82,7 @@ namespace Sombi
                       
                     }
                     timeSinceLastPlayerOneBullet = 0f;
-                    SoundManager.PlaySound(SoundManager.RifleFire);
+                    SoundLibrary.rifleFire.Play();
                 }
             }
             if (PlayerID == 2)
@@ -109,7 +109,7 @@ namespace Sombi
                         }
                     }
                     timeSinceLastPlayerTwoBullet = 0f;
-                    SoundManager.PlaySound(SoundManager.RifleFire);
+                    SoundLibrary.rifleFire.Play(); 
                 }
 
             }
