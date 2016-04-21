@@ -11,12 +11,12 @@ namespace Sombi
     {
         public Shotgun() : base()
         {
-            projectileSpeed = 15.0f;
+            projectileSpeed = 5.0f;
             weaponRange = 75;
             damage = 10;
             fireRate = 1;
-            numberOfProjectilesPerFire = 4;
-            //projectileSpread = 1;
+            numberOfProjectilesPerFire = 7;
+            projectileSpread = 40; //grader på konen
         }
         protected override void Update(GameTime gameTime)
         {

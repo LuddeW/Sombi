@@ -18,8 +18,8 @@ namespace Sombi
         public WeaponManager()
         {
             this.bulletManager = new BulletManager();
-            playerOneWeapon = new Explosives();
-            playerTwoWeapon = new Explosives();
+            playerOneWeapon = new Shotgun();
+            playerTwoWeapon = new Shotgun();
             timeSinceLastPlayerOneBullet = 100f;
             timeSinceLastPlayerTwoBullet = 100f;
         }
@@ -44,16 +44,37 @@ namespace Sombi
                 {
                     Bullet b = new Bullet(position, playerOneWeapon.projectileSpeed, angle, playerOneWeapon.damage, playerOneWeapon.weaponRange, PlayerID);
                     Rocket r = new Rocket(position, playerOneWeapon.projectileSpeed, angle, playerOneWeapon.damage, playerOneWeapon.weaponRange, PlayerID);
-                    for (int i = 0; i < playerOneWeapon.numberOfProjectilesPerFire; i++)
+                    
+                    if (playerOneWeapon is Rifle)
                     {
-                        if (playerOneWeapon is Rifle)
+                        bulletManager.AddBullets(b);
+                    }
+                    else if (playerOneWeapon is Explosives)
+                    {
+                        bulletManager.AddBullets(r);
+                    }
+                    else if (playerOneWeapon is Shotgun)
+                    {
+                        int angleIndex = 40 / playerOneWeapon.numberOfProjectilesPerFire; //Ändra 30 till spridning för vapen
+
+
+                        bulletManager.AddBullets(b);
+                        for (int i  = 0; i < playerOneWeapon.numberOfProjectilesPerFire - 1; i++)
                         {
-                            bulletManager.AddBullets(b);
-                        }
-                        else if (playerOneWeapon is Explosives)
-                        {
-                            bulletManager.AddBullets(r);
-                        }
+                            if (i % 2 == 0)
+                            {
+                                b = new Bullet(position, playerOneWeapon.projectileSpeed, angle - (float)((Math.PI / 180) * angleIndex), playerOneWeapon.damage, playerOneWeapon.weaponRange, PlayerID);
+                                
+                            }
+                            else
+                            {
+                                b = new Bullet(position, playerOneWeapon.projectileSpeed, angle + (float)((Math.PI / 180) * angleIndex), playerOneWeapon.damage, playerOneWeapon.weaponRange, PlayerID);
+                                angleIndex += angleIndex;
+                            }
+                               bulletManager.AddBullets(b);
+                               
+                         }
+                      
                     }
                     timeSinceLastPlayerOneBullet = 0f;
                     SoundManager.PlaySound(SoundManager.RifleFire);
@@ -74,6 +95,12 @@ namespace Sombi
                         else if (playerTwoWeapon is Explosives)
                         {
                             bulletManager.AddBullets(r);
+                        }
+                        else if (playerTwoWeapon is Shotgun)
+                        {
+                            Bullet b1 = new Bullet(position, playerTwoWeapon.projectileSpeed, angle - 1, playerTwoWeapon.damage, playerTwoWeapon.weaponRange, PlayerID);
+                            Bullet b2 = new Bullet(position, playerTwoWeapon.projectileSpeed, angle, playerTwoWeapon.damage, playerTwoWeapon.weaponRange, PlayerID);
+                            Bullet b3 = new Bullet(position, playerTwoWeapon.projectileSpeed, angle + 1, playerTwoWeapon.damage, playerTwoWeapon.weaponRange, PlayerID);
                         }
                     }
                     timeSinceLastPlayerTwoBullet = 0f;
