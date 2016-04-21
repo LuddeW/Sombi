@@ -38,6 +38,10 @@ namespace Sombi
         public bool eaten = false;
         public bool gotPackage = false;
 
+        public int shotgunLevel;
+        public int rifleLevel;
+        public int explosivesLevel;
+
         public Player(Weapon weapon, Vector2 position, int ID)
         {
             this.position = position;
@@ -52,6 +56,9 @@ namespace Sombi
             hitBox = new Rectangle((int)position.X, (int)position.Y, TextureLibrary.sourceRectTex.Width, TextureLibrary.sourceRectTex.Height);
             SetPlayerID(ID);
             cash = 0;
+            explosivesLevel = 1;
+            rifleLevel = 1;
+            shotgunLevel = 1;
         }
 
         public Rectangle HitBox

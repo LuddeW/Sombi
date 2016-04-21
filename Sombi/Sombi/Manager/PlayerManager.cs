@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Sombi
 {
@@ -13,6 +14,9 @@ namespace Sombi
         Player player2;
         public List<Player> players;
         public WeaponManager weaponManager;
+
+        KeyboardState currentKeyboard;
+        KeyboardState oldKeyboard;
 
 
         public PlayerManager()
@@ -48,6 +52,7 @@ namespace Sombi
             {
                 weaponManager.CreateBullets(2,player2.position, player2.angle);
             }
+            SwitchWeapon();
             weaponManager.Update(gameTime);
             Revive();
         }
@@ -108,6 +113,22 @@ namespace Sombi
             CreatePlayers();
             player2.dead = true;
             players.Remove(player2);
+        }
+        public void SwitchWeapon()
+        {
+            oldKeyboard = currentKeyboard;
+            currentKeyboard = Keyboard.GetState();
+
+
+            if (currentKeyboard.IsKeyDown(Keys.E) && !oldKeyboard.IsKeyDown(Keys.E))
+            {
+                weaponManager.SwitchWeaponRight(1, player1.shotgunLevel, player1.explosivesLevel, player1.rifleLevel);           //För player 1
+            }
+            if (currentKeyboard.IsKeyDown(Keys.Q) && !oldKeyboard.IsKeyDown(Keys.Q))
+            {
+                weaponManager.SwitchWeaponLeft(1, player1.shotgunLevel, player1.explosivesLevel, player1.rifleLevel);           
+            }
+
         }
 
     }

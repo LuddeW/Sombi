@@ -33,8 +33,8 @@ namespace Sombi
             bulletManager.Update(gameTime);
             timeSinceLastPlayerOneBullet += (float)gameTime.ElapsedGameTime.TotalSeconds;
             timeSinceLastPlayerTwoBullet += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            SwitchWeapon(1);
-            SwitchWeapon(2);
+          /*  SwitchWeapon(1);
+            SwitchWeapon(2);*/
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -116,43 +116,26 @@ namespace Sombi
 
 
         }
-        public void SwitchWeapon(int playerID)
+        public void SwitchWeaponRight(int playerID, int shotGunLevel, int explosiveLevel, int rifleLevel)
         {
-            oldKeyboard = currentKeyboard;
-            currentKeyboard = Keyboard.GetState();
+
             switch (playerID)
             {
                 case 1:
-                    if (currentKeyboard.IsKeyDown(Keys.E) && !oldKeyboard.IsKeyDown(Keys.E))
-                    {
+    
                         if (playerOneWeapon is Rifle)
                         {
-                            playerOneWeapon = new Explosives();
+                            playerOneWeapon = new Explosives(/*explosiveLevel*/);
                         }
                         else if (playerOneWeapon is Explosives)
                         {
-                            playerOneWeapon = new Shotgun();
+                            playerOneWeapon = new Shotgun(shotGunLevel);
                         }
                         else if (playerOneWeapon is Shotgun)
                         {
-                            playerOneWeapon = new Rifle();
+                            playerOneWeapon = new Rifle(rifleLevel);
                         }
-                    }
-                    else if (currentKeyboard.IsKeyDown(Keys.Q) && !oldKeyboard.IsKeyDown(Keys.Q))
-                    {
-                        if (playerOneWeapon is Rifle)
-                        {
-                            playerOneWeapon = new Shotgun();
-                        }
-                        else if (playerOneWeapon is Shotgun)
-                        {
-                            playerOneWeapon = new Explosives();
-                        }
-                        else if (playerOneWeapon is Explosives)
-                        {
-                            playerOneWeapon = new Rifle();
-                        }
-                    }
+                    
                     
                     break;
                 case 2:
@@ -172,6 +155,28 @@ namespace Sombi
                 default:
                     break;
             }
+        }
+        public void SwitchWeaponLeft(int playerID, int shotGunLevel, int explosiveLevel, int rifleLevel)
+        {
+            switch (playerID)
+            {
+                case 1:
+
+                    if (playerOneWeapon is Rifle)
+                    {
+                        playerOneWeapon = new Shotgun(shotGunLevel);
+                    }
+                    else if (playerOneWeapon is Shotgun)
+                    {
+                        playerOneWeapon = new Explosives(/*explosiveLevel*/);
+                    }
+                    else if (playerOneWeapon is Explosives)
+                    {
+                        playerOneWeapon = new Rifle(rifleLevel);
+                    }
+                    break;
+            }
+                    
         }
     }
 }
