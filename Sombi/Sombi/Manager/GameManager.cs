@@ -54,17 +54,6 @@ namespace Sombi
             menuManager = new MenuManager(playerManager.players);
             packageManager = new PackageManager();
             this.game = game;
-
-            enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
-            enemyManager.AddZombie(new Vector2(800, 200));  //TEST
-            enemyManager.AddZombie(new Vector2(900, 100));      //SPAWNAR ZOMBIES HÄR!!
-            enemyManager.AddZombie(new Vector2(100, 600));          //DOM FÅR INTE SPAWNA PÅ VARANDRA
-            enemyManager.AddZombie(new Vector2(100, 500));
-            enemyManager.AddZombie(new Vector2(900, 500));
-            enemyManager.AddZombie(new Vector2(900, 700));
-            enemyManager.AddZombie(new Vector2(900, 800));
-            enemyManager.AddZombie(new Vector2(500, 500));
-
         }
 
         public Matrix ViewMatrix
@@ -242,6 +231,7 @@ namespace Sombi
                     currentGameState = GameState.MainMenu;
                     highscoreManager.WriteScore();
                     playerManager.CreatePlayers();
+                    enemyManager.zombies.Clear();
                 }
             }
         }
