@@ -33,6 +33,8 @@ namespace Sombi
             bulletManager.Update(gameTime);
             timeSinceLastPlayerOneBullet += (float)gameTime.ElapsedGameTime.TotalSeconds;
             timeSinceLastPlayerTwoBullet += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            SwitchWeapon(1);
+            SwitchWeapon(2);
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -132,6 +134,21 @@ namespace Sombi
                             playerOneWeapon = new Shotgun();
                         }
                         else if (playerOneWeapon is Shotgun)
+                        {
+                            playerOneWeapon = new Rifle();
+                        }
+                    }
+                    else if (currentKeyboard.IsKeyDown(Keys.Q) && !oldKeyboard.IsKeyDown(Keys.Q))
+                    {
+                        if (playerOneWeapon is Rifle)
+                        {
+                            playerOneWeapon = new Shotgun();
+                        }
+                        else if (playerOneWeapon is Shotgun)
+                        {
+                            playerOneWeapon = new Explosives();
+                        }
+                        else if (playerOneWeapon is Explosives)
                         {
                             playerOneWeapon = new Rifle();
                         }
