@@ -62,6 +62,7 @@ namespace Sombi
             spriteBatch.Draw(TextureLibrary.busTex, new Vector2(400, 150), null, Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             spriteBatch.Draw(TextureLibrary.hqTentTex, new Vector2(1241, 0), null, Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             //spriteBatch.Draw(TextureLibrary.tent, new Vector2(950, 50), null, Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(TextureLibrary.Buildings, Vector2.Zero, Color.White);
             DrawClouds(spriteBatch);
         }
                 
