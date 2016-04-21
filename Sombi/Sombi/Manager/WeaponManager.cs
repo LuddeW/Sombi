@@ -122,21 +122,18 @@ namespace Sombi
             switch (playerID)
             {
                 case 1:
-    
-                        if (playerOneWeapon is Rifle)
-                        {
-                            playerOneWeapon = new Explosives(/*explosiveLevel*/);
-                        }
-                        else if (playerOneWeapon is Explosives)
-                        {
-                            playerOneWeapon = new Shotgun(shotGunLevel);
-                        }
-                        else if (playerOneWeapon is Shotgun)
-                        {
-                            playerOneWeapon = new Rifle(rifleLevel);
-                        }
-                    
-                    
+                    if (playerOneWeapon is Rifle)
+                    {
+                        playerOneWeapon = new Explosives(/*explosiveLevel*/);
+                    }
+                    else if (playerOneWeapon is Explosives)
+                    {
+                        playerOneWeapon = new Shotgun(shotGunLevel);
+                    }
+                    else if (playerOneWeapon is Shotgun)
+                    {
+                        playerOneWeapon = new Rifle(rifleLevel);
+                    }                    
                     break;
                 case 2:
                     if (playerTwoWeapon is Rifle)
