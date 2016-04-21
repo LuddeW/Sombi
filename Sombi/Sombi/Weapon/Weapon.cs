@@ -21,6 +21,10 @@ namespace Sombi
         {
             
         }
+        public Weapon(int level)
+        {
+
+        }
 
         protected abstract void Update(GameTime gameTime);
 

@@ -18,9 +18,69 @@ namespace Sombi
             numberOfProjectilesPerFire = 7;
             projectileSpread = 40; //grader på konen
         }
+        public Shotgun(int level) : base()
+        {
+            SetVariables(level);
+        }
         protected override void Update(GameTime gameTime)
         {
 
+        }
+        public void SetVariables(int level)
+        {
+            switch (level)
+            {
+                case 1:
+                    projectileSpeed = 5.0f;
+                    weaponRange = 75;
+                    damage = 10;
+                    fireRate = 1;
+                    numberOfProjectilesPerFire = 3;
+                    projectileSpread = 40;
+                    break;
+                case 2:
+                    projectileSpeed = 5.0f;
+                    weaponRange = 100;
+                    damage = 12;
+                    fireRate = 1;
+                    numberOfProjectilesPerFire = 3;
+                    projectileSpread = 40;
+                    break;
+                case 3:
+                    projectileSpeed = 5.0f;
+                    weaponRange = 100;
+                    damage = 15;
+                    fireRate = 1;
+                    numberOfProjectilesPerFire = 5;
+                    projectileSpread = 40;
+                    break;
+                case 4:
+                    projectileSpeed = 5.0f;
+                    weaponRange = 100;
+                    damage = 18;
+                    fireRate = 0.75f;
+                    numberOfProjectilesPerFire = 5;
+                    projectileSpread = 40;
+                    break;
+                case 5:
+                    projectileSpeed = 5.0f;
+                    weaponRange = 150;
+                    damage = 22;
+                    fireRate = 1;
+                    numberOfProjectilesPerFire = 5;
+                    projectileSpread = 40;
+                    break;
+                case 6:
+                    projectileSpeed = 5.0f;
+                    weaponRange = 150;
+                    damage = 25;
+                    fireRate = 0.5f;
+                    numberOfProjectilesPerFire = 7;
+                    projectileSpread = 40;
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
