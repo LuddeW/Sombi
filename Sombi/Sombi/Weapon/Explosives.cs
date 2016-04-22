@@ -20,7 +20,7 @@ namespace Sombi
             //projectileSpread = 1;
         }
 
-
+        
         protected override void Update(GameTime gameTime)
         {
 

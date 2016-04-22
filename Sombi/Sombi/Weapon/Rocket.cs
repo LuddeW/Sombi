@@ -23,6 +23,13 @@ namespace Sombi
             this.timeToLiveAfterImpact = 1;
             AOE = 100;
         }
+        public Rocket(Vector2 pos, float speed, float angle, int damage, int range, int ID, int level)
+            : base(pos, speed, angle, damage, range, ID)
+        {
+            this.explodingHb = new Rectangle((int)this.pos.X, (int)this.pos.Y, 4, 4);
+            animation = new Animation(TextureLibrary.rocketExplosion, 125, 0.1f, false);
+            SetVariables(level);
+        }
 
 
         public override void Update(GameTime gameTime)
@@ -58,6 +65,38 @@ namespace Sombi
         public override Rectangle GetHitBox()
         {
             return explodingHb;
+        }
+        public void SetVariables(int level)
+        {
+            switch (level)
+            {
+                case 1:
+                    this.timeToLiveAfterImpact = 1;
+                    AOE = 50;
+                    break;
+                case 2:
+                    this.timeToLiveAfterImpact = 1;
+                    AOE = 75;
+                    break;
+                case 3:
+                    this.timeToLiveAfterImpact = 1;
+                    AOE = 100;
+                    break;
+                case 4:
+                    this.timeToLiveAfterImpact = 1;
+                    AOE = 125;
+                    break;
+                case 5:
+                    this.timeToLiveAfterImpact = 1;
+                    AOE = 150;
+                    break;
+                case 6:
+                    this.timeToLiveAfterImpact = 1;
+                    AOE = 175;
+                    break;
+                default:
+                    break;
+            }
         }
 
     }

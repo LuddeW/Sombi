@@ -41,14 +41,14 @@ namespace Sombi
             bulletManager.Draw(spriteBatch);
         }
 
-        public void CreateBullets(int PlayerID, Vector2 position, float angle)
+        public void CreateBullets(int PlayerID, Vector2 position, float angle, int explosivesLevel)
         {
             if (PlayerID == 1)
             {
                 if (timeSinceLastPlayerOneBullet > playerOneWeapon.fireRate)
                 {
                     Bullet b = new Bullet(position, playerOneWeapon.projectileSpeed, angle, playerOneWeapon.damage, playerOneWeapon.weaponRange, PlayerID);
-                    Rocket r = new Rocket(position, playerOneWeapon.projectileSpeed, angle, playerOneWeapon.damage, playerOneWeapon.weaponRange, PlayerID);
+                    Rocket r = new Rocket(position, playerOneWeapon.projectileSpeed, angle, playerOneWeapon.damage, playerOneWeapon.weaponRange, PlayerID, explosivesLevel);
                     
                     if (playerOneWeapon is Rifle)
                     {
