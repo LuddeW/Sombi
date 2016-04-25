@@ -13,7 +13,7 @@ namespace Sombi
         
         public PackageManager()
         {
-            package = new Package(new Vector2(850, 550));
+            //package = new Package(new Vector2(850, 550));
         }
 
         public void Update(GameTime gameTime, List<Player> players, int numberOfPlayers)
@@ -21,6 +21,11 @@ namespace Sombi
             GetChest(players);
             leaveChest(players, numberOfPlayers);
             package.Update(gameTime);
+        }
+        public void AddPackage()
+        {
+            int spawnIndex = GlobalValues.rnd.Next(0, Grid.packageSpawnPoints.Count);
+            package = new Package(Grid.packageSpawnPoints[spawnIndex]);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -58,14 +63,14 @@ namespace Sombi
                             players[1].cash += 100;
                             HighscoreManager.score += 100;
                             package.taken = false;
-                            Console.WriteLine(package.taken);
+                            AddPackage();
                         }
                         else
                         {
                             players[0].cash += 100;
                             HighscoreManager.score += 100;
                             package.taken = false;
-                            Console.WriteLine(package.taken);
+                            AddPackage();
                         }
                     }
                 }

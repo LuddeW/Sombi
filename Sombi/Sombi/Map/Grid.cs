@@ -14,10 +14,12 @@ namespace Sombi
         public static Tile[,] grid;
         public static bool menu = true;
         public static List<Vector2> spawnPoints;
+        public static List<Vector2> packageSpawnPoints;
 
         public static void CreateGridFactory()
         {
             spawnPoints = new List<Vector2>();
+            packageSpawnPoints = new List<Vector2>();
             if (!menu)
             {
 
@@ -44,6 +46,10 @@ namespace Sombi
                             case 'S':
                                 grid[k, i] = new Tile(new Vector2(k, i), true);
                                 spawnPoints.Add(new Vector2(k * 50, i * 50));
+                                break;
+                            case 'P':
+                                grid[k, i] = new Tile(new Vector2(k, i), true);
+                                packageSpawnPoints.Add(new Vector2(k * 50, i * 50));
                                 break;
                         }
                     }

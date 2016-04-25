@@ -145,6 +145,7 @@ namespace Sombi
             if (menuManager.start)
             {
                 enemyManager.AddZombiesToRandomLocation(6);
+                packageManager.AddPackage();
 
                 if (menuManager.numberOfPlayers == 1)
                 {
