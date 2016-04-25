@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Sombi
 {
-    class Zombie
+    class Zombie : GameObject
     {
         bool haveTarget;
         public float health;
@@ -19,10 +19,10 @@ namespace Sombi
         Animation walkAnimation;
         AnimationPlayer animationPlayer;
         Rectangle hitBox;
-        public Zombie(Vector2 startPos)
+        public Zombie(Vector2 startPos) : base(startPos)
         {
             this.velocity = 50;
-            this.pos = startPos;
+            //this.pos = startPos;
             this.direction = new Vector2(0, 1);
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, 50, 50);
             this.health = 70;
@@ -38,7 +38,7 @@ namespace Sombi
             currentTile = new Vector2(0, 0);
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             CalculateCurrentTile();
             pos += direction * velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -60,7 +60,7 @@ namespace Sombi
         {
             this.health -= damage;
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {            
             animationPlayer.Draw(spriteBatch, pos);
             //spriteBatch.Draw(TextureLibrary.sourceRectTex, new Vector2(hitBox.X, hitBox.Y), Color.Red);

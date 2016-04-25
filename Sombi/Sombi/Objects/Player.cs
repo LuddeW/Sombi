@@ -15,7 +15,7 @@ namespace Sombi
         Two,
     }
 
-    class Player
+    class Player : GameObject
     {
         public Vector2 position;
         Vector2 velocity;
@@ -42,9 +42,9 @@ namespace Sombi
         public int rifleLevel;
         public int explosivesLevel;
 
-        public Player(Weapon weapon, Vector2 position, int ID)
+        public Player(Weapon weapon, Vector2 position, int ID) : base(position)
         {
-            this.position = position;
+            //this.position = position;
             velocity = Vector2.Zero;
             maxspeed = 2.0f;
             playerWeapon = weapon;
@@ -73,7 +73,7 @@ namespace Sombi
             set { }
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             if (health <= 0)
             {
@@ -104,7 +104,7 @@ namespace Sombi
             Revive(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             if (!dead)
             {
