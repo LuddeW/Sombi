@@ -16,7 +16,7 @@ namespace Sombi
             : base(packagePos)
         {
             this.packagePos = packagePos;
-            hitBox = new Rectangle((int)packagePos.X, (int)packagePos.Y, GlobalValues.TILE_SIZE, GlobalValues.TILE_SIZE);
+            hitBox = new Rectangle((int)packagePos.X, (int)packagePos.Y, GlobalValues.tileSize, GlobalValues.tileSize);
             taken = false;
         }
 

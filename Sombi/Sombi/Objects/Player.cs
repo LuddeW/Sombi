@@ -195,28 +195,28 @@ namespace Sombi
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                pos.Y -= 2;
+                pos.Y -= playerSpeed;
                 direction.Y = -1;
                 angle = MathHelper.ToRadians(270);
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
-            {  
-                pos.X -= 2;
+            {
+                pos.X -= playerSpeed;
 		        direction.X = -1;             
                 angle = MathHelper.ToRadians(180);
 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                pos.Y += 2;
+                pos.Y += playerSpeed;
                 direction.Y = 1;
                 angle = MathHelper.ToRadians(90);
 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-                pos.X += 2;
+                pos.X += playerSpeed;
 		        direction.X = 1;             
                 angle = MathHelper.ToRadians(0);
 

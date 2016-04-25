@@ -42,18 +42,18 @@ namespace Sombi
             {
                 position.X = 0;
             }
-            else if (position.X > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - GlobalValues.cameraBounds.X)
+            else if (position.X > GlobalValues.tileSize * GlobalValues.gridSize.X - GlobalValues.cameraBounds.X)
             {
-                position.X = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - GlobalValues.cameraBounds.X;
+                position.X = GlobalValues.tileSize * GlobalValues.gridSize.X - GlobalValues.cameraBounds.X;
             }
 
             if (position.Y < 0)
             {
                 position.Y = 0;
             }
-            else if (position.Y > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.cameraBounds.Y)
+            else if (position.Y > GlobalValues.tileSize * GlobalValues.gridSize.Y - GlobalValues.cameraBounds.Y)
             {
-                position.Y = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.cameraBounds.Y;
+                position.Y = GlobalValues.tileSize * GlobalValues.gridSize.Y - GlobalValues.cameraBounds.Y;
             }
         }
 
@@ -66,18 +66,18 @@ namespace Sombi
             {
                 position.X = 0;
             }
-            else if (position.X > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - GlobalValues.cameraBounds.X)
+            else if (position.X > GlobalValues.tileSize * GlobalValues.gridSize.X - GlobalValues.cameraBounds.X)
             {
-                position.X = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.X - GlobalValues.cameraBounds.X;
+                position.X = GlobalValues.tileSize * GlobalValues.gridSize.X - GlobalValues.cameraBounds.X;
             }
 
             if (position.Y < 0)
             {
                 position.Y = 0;
             }
-            else if (position.Y > GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.cameraBounds.Y)
+            else if (position.Y > GlobalValues.tileSize * GlobalValues.gridSize.Y - GlobalValues.cameraBounds.Y)
             {
-                position.Y = GlobalValues.TILE_SIZE * GlobalValues.GRID_SIZE.Y - GlobalValues.cameraBounds.Y;
+                position.Y = GlobalValues.tileSize * GlobalValues.gridSize.Y - GlobalValues.cameraBounds.Y;
             }
         }
     }

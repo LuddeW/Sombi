@@ -30,10 +30,10 @@ namespace Sombi
                 {
                     stringList.Add(sr.ReadLine());
                 }
-                grid = new Tile[(int)GlobalValues.GRID_SIZE.X, (int)GlobalValues.GRID_SIZE.Y];
-                for (int i = 0; i < GlobalValues.GRID_SIZE.Y; i++)
+                grid = new Tile[(int)GlobalValues.gridSize.X, (int)GlobalValues.gridSize.Y];
+                for (int i = 0; i < GlobalValues.gridSize.Y; i++)
                 {
-                    for (int k = 0; k < GlobalValues.GRID_SIZE.X; k++)
+                    for (int k = 0; k < GlobalValues.gridSize.X; k++)
                     {
                         switch (stringList[i][k])
                         {
