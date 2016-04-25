@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace Sombi
 {
@@ -32,6 +34,15 @@ namespace Sombi
         public void Update()
         {
 
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.DrawString(TextureLibrary.HudText, highScores[0].ToString(), new Vector2(100, 100), Color.Black);
+            spriteBatch.DrawString(TextureLibrary.HudText, highScores[0].ToString(), new Vector2(100, 200), Color.Black);
+            spriteBatch.DrawString(TextureLibrary.HudText, highScores[0].ToString(), new Vector2(100, 300), Color.Black);
+            spriteBatch.DrawString(TextureLibrary.HudText, highScores[0].ToString(), new Vector2(100, 400), Color.Black);
+            spriteBatch.DrawString(TextureLibrary.HudText, highScores[0].ToString(), new Vector2(100, 500), Color.Black);
         }
 
         public void WriteScore()

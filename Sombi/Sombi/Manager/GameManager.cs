@@ -119,11 +119,7 @@ namespace Sombi
                 }
                 case GameState.Highscore:
                 {
-                    spriteBatch.DrawString(TextureLibrary.HudText,highscoreManager.HighScores[0].ToString(), new Vector2(100,100), Color.Black);
-                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[1].ToString(), new Vector2(100, 200), Color.Black);
-                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[2].ToString(), new Vector2(100, 300), Color.Black);
-                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[3].ToString(), new Vector2(100, 400), Color.Black);
-                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[4].ToString(), new Vector2(100, 500), Color.Black);
+                    highscoreManager.Draw(spriteBatch);
                     break;
                 }
                 case GameState.Playing:
