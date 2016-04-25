@@ -50,7 +50,7 @@ namespace Sombi
             {
                 foreach (Player player in players)
                 {
-                    if (player.position.X / 50 > 29 && player.position.Y / 50 < 4 && player.gotPackage)
+                    if (player.pos.X / 50 > 29 && player.pos.Y / 50 < 4 && player.gotPackage)
                     {
                         if (numberOfPlayers == 2)
                         {

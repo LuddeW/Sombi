@@ -181,7 +181,7 @@ namespace Sombi
 
         private void MenuUpdate(GameTime gameTime)
         {
-            camera.Update(playerManager.players[0].position, playerManager.players[1].position);
+            camera.Update(playerManager.players[0].pos, playerManager.players[1].pos);
             menuManager.Update(gameTime);
             playerManager.Update(gameTime);
             floatingTextures.Update();
@@ -210,11 +210,11 @@ namespace Sombi
         {
             if (menuManager.numberOfPlayers == 2)
             {
-                camera.Update(playerManager.players[0].position, playerManager.players[1].position);
+                camera.Update(playerManager.players[0].pos, playerManager.players[1].pos);
             }
             else
             {
-                camera.Update(playerManager.players[0].position);
+                camera.Update(playerManager.players[0].pos);
             }
             fadeInPercentage -= 0.008f;
             if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))

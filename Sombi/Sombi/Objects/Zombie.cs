@@ -11,7 +11,6 @@ namespace Sombi
     {
         bool haveTarget;
         public float health;
-        public Vector2 pos;
         Vector2 direction;
         public Vector2 currentTile;
         float velocity;

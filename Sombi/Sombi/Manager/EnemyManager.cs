@@ -98,12 +98,12 @@ namespace Sombi
                         players[j].handleBulletHit(10);
                     }
 
-                    if (Vector2.Distance(zombies[i].pos, players[j].position) < zombies[i].activationRange && !players[j].eaten)
+                    if (Vector2.Distance(zombies[i].pos, players[j].pos) < zombies[i].activationRange && !players[j].eaten)
                     {
-                        zombies[i].SetChasingDirection(players[j].position);
+                        zombies[i].SetChasingDirection(players[j].pos);
 
                     }
-                    else if (Vector2.Distance(zombies[i].pos, players[j].position) > zombies[i].activationRange)
+                    else if (Vector2.Distance(zombies[i].pos, players[j].pos) > zombies[i].activationRange)
                     {
                         zombies[i].ResetTarget();
 

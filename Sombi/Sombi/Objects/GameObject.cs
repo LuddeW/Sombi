@@ -9,7 +9,7 @@ namespace Sombi
 {
     abstract class GameObject
     {
-        protected Vector2 pos;
+        public Vector2 pos;
 
         public GameObject(Vector2 pos)
         {

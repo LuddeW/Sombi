@@ -45,12 +45,12 @@ namespace Sombi
 
             if (player1.FireWeapon() && !player1.dead)
             {
-                weaponManager.CreateBullets(1,player1.position, player1.angle, player1.explosivesLevel);
+                weaponManager.CreateBullets(1,player1.pos, player1.angle, player1.explosivesLevel);
             }
 
             if (player2.FireWeapon() && !player2.dead)
             {
-                weaponManager.CreateBullets(2,player2.position, player2.angle, player2.explosivesLevel);
+                weaponManager.CreateBullets(2,player2.pos, player2.angle, player2.explosivesLevel);
             }
             SwitchWeapon();
             weaponManager.Update(gameTime);
