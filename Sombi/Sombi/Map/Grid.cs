@@ -13,11 +13,14 @@ namespace Sombi
 
         public static Tile[,] grid;
         public static bool menu = true;
+        public static List<Vector2> spawnPoints;
 
         public static void CreateGridFactory()
         {
+            spawnPoints = new List<Vector2>();
             if (!menu)
             {
+
                 StreamReader sr = new StreamReader(@"Content\Testmap.txt");
                 List<string> stringList = new List<string>();
 
@@ -37,6 +40,10 @@ namespace Sombi
                                 break;
                             case 'W':
                                 grid[k, i] = new Tile(new Vector2(k, i), false);
+                                break;
+                            case 'S':
+                                grid[k, i] = new Tile(new Vector2(k, i), true);
+                                spawnPoints.Add(new Vector2(k * 50, i * 50));
                                 break;
                         }
                     }
