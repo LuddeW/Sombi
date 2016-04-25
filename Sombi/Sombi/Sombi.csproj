@@ -88,6 +88,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Base.png" />
+    <Content Include="Content\Buildings.png" />
     <Content Include="Content\BulletBlue.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
