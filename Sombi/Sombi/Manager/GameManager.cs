@@ -55,15 +55,6 @@ namespace Sombi
             packageManager = new PackageManager();
             this.game = game;
 
-            enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
-            enemyManager.AddZombie(new Vector2(800, 200));  //TEST
-            enemyManager.AddZombie(new Vector2(900, 100));      //SPAWNAR ZOMBIES HÄR!!
-            enemyManager.AddZombie(new Vector2(100, 600));          //DOM FÅR INTE SPAWNA PÅ VARANDRA
-            enemyManager.AddZombie(new Vector2(100, 500));
-            enemyManager.AddZombie(new Vector2(900, 500));
-            enemyManager.AddZombie(new Vector2(900, 700));
-            enemyManager.AddZombie(new Vector2(900, 800));
-            enemyManager.AddZombie(new Vector2(500, 500));
 
         }
 
@@ -136,6 +127,8 @@ namespace Sombi
         {
             if (menuManager.start)
             {
+                enemyManager.AddZombiesToRandomLocation(6);
+
                 if (menuManager.numberOfPlayers == 1)
                 {
                     playerManager.CreateOnePlayer();

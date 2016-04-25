@@ -11,7 +11,7 @@ namespace Sombi
     {
 
 
-        int maxzombies = 10;
+        //int maxzombies = 10;
 
 
         public List<Zombie> zombies = new List<Zombie>();
@@ -20,10 +20,6 @@ namespace Sombi
         {
             CheckForBulletCollisions(bulletList);
             ClearZombies();
-            if (zombies.Count < maxzombies) // just for moar zoambiez
-            {
-                AddZombie(new Vector2(1400, 500));
-            }
             foreach (Zombie z in zombies)
             {
                 z.Update(gameTime);
@@ -47,9 +43,20 @@ namespace Sombi
                     zombies.RemoveAt(i);
                     HighscoreManager.score++;
 
-                    maxzombies++;
+                    //maxzombies++;
 
                 }
+            }
+        }
+        public void AddZombiesToRandomLocation(int nrOfZombiesToAdd)
+        {
+            int spawnIndex;
+
+            for (int i = 0; i < nrOfZombiesToAdd; i++)
+            {
+                spawnIndex = GlobalValues.rnd.Next(0, Grid.spawnPoints.Count);
+
+                AddZombie(Grid.spawnPoints[spawnIndex]);
             }
         }
         public void Draw(SpriteBatch spriteBatch)
