@@ -51,6 +51,7 @@ namespace Sombi
             fpsManager = new FPSManager();
             floatingTextures = new FloatingTextures();
             highscoreManager = new HighscoreManager();
+            highscoreManager.ReadScore();
             menuManager = new MenuManager(playerManager.players);
             packageManager = new PackageManager();
             this.game = game;
@@ -71,6 +72,14 @@ namespace Sombi
                 case GameState.MainMenu:
                     {
                         MenuUpdate(gameTime);
+                        if (currentKeyboard.IsKeyDown(Keys.A)) ///enbart för test, tas bort sen
+                        {
+                            currentGameState = GameState.Highscore;
+                        }
+                        break;
+                    }
+                case GameState.Highscore:
+                    {
                         break;
                     }
                 case GameState.Playing:
@@ -108,9 +117,18 @@ namespace Sombi
                     MenuDraw(spriteBatch);
                     break;               
                 }
+                case GameState.Highscore:
+                {
+                    spriteBatch.DrawString(TextureLibrary.HudText,highscoreManager.HighScores[0].ToString(), new Vector2(100,100), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[1].ToString(), new Vector2(100, 200), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[2].ToString(), new Vector2(100, 300), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[3].ToString(), new Vector2(100, 400), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[4].ToString(), new Vector2(100, 500), Color.Black);
+                    break;
+                }
                 case GameState.Playing:
                 {
-                        PlayingDraw(spriteBatch);   
+                    PlayingDraw(spriteBatch);   
                     break;
                 }
                 case GameState.Paused:
@@ -153,6 +171,7 @@ namespace Sombi
         {
             if (menuManager.highscore)
             {
+                highscoreManager.ReadScore();
                 currentGameState = GameState.Highscore;
             }
         }
