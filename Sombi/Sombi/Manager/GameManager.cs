@@ -55,7 +55,6 @@ namespace Sombi
             packageManager = new PackageManager();
             this.game = game;
 
-
         }
 
         public Matrix ViewMatrix
@@ -235,6 +234,7 @@ namespace Sombi
                     currentGameState = GameState.MainMenu;
                     highscoreManager.WriteScore();
                     playerManager.CreatePlayers();
+                    enemyManager.zombies.Clear();
                 }
             }
         }
