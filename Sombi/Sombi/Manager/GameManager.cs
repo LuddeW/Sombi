@@ -258,7 +258,7 @@ namespace Sombi
         private void PauseDraw(SpriteBatch spriteBatch)
         {
             PlayingDraw(spriteBatch);
-            spriteBatch.DrawString(TextureLibrary.HudText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
+            spriteBatch.DrawString(TextureLibrary.pauseText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(camera.position.X + GlobalValues.screenBounds.X / 2, camera.position.Y + GlobalValues.screenBounds.Y / 2), Color.Red);
         }
     }
 }

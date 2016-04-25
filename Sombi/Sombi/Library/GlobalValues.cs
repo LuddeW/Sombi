@@ -15,6 +15,8 @@ namespace Sombi
         public static Rectangle windowBounds = new Rectangle(0, 0, (int)gridSize.X * tileSize, (int)gridSize.Y * tileSize);
         public static Vector2 cameraBounds = new Vector2(1900, 1000);
         public static Vector2 screenBounds = new Vector2(1900,1000);
+        public static Color billBoardColor = new Color(225, 229, 38, 255);
+
         
     }
 }

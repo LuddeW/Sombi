@@ -494,3 +494,15 @@
 /processorParam:TextureFormat=Color
 /build:Buildings.png
 
+#begin PauseFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:PauseFont.spritefont
+
+#begin BillboardFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:BillboardFont.spritefont
+

@@ -58,6 +58,8 @@ namespace Sombi
         
         //Spritefonts
         public static SpriteFont HudText { get; private set; }
+        public static SpriteFont pauseText { get; private set; }
+        public static SpriteFont billBoardText { get; private set; }
 
         //Miscellaneous
         public static Texture2D sourceRectTex { get; private set; }
@@ -124,6 +126,8 @@ namespace Sombi
                         
             //Spritefonts
             HudText = Content.Load<SpriteFont>(@"HUDText");
+            billBoardText = Content.Load<SpriteFont>("BillboardFont");
+            pauseText = Content.Load<SpriteFont>("pauseFont");
             
             //Miscellaneous
             sourceRectTex = Content.Load<Texture2D>(@"Rectangle");

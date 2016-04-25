@@ -46,7 +46,7 @@ namespace Sombi
             velocity = Vector2.Zero;
             maxspeed = 2.0f;
             playerWeapon = weapon;
-            playerSpeed = 1.8f;
+            playerSpeed = 2.0f;
             health = 1000;
             timeToRevive = 3.0f;
             reviveTime = 0.0f;
