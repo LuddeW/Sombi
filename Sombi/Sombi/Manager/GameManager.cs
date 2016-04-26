@@ -17,6 +17,7 @@ namespace Sombi
         Highscore,
         Playing,
         Paused,
+        LevelUp,
     }
     class GameManager
     {
@@ -70,32 +71,40 @@ namespace Sombi
             switch (currentGameState)
             {
                 case GameState.MainMenu:
+                {
+                    MenuUpdate(gameTime);
+                    if (currentKeyboard.IsKeyDown(Keys.A) && !oldKeyboard.IsKeyDown(Keys.A)) ///enbart för test, tas bort sen
                     {
-                        MenuUpdate(gameTime);
-                        if (currentKeyboard.IsKeyDown(Keys.A)) ///enbart för test, tas bort sen
-                        {
-                            currentGameState = GameState.Highscore;
-                        }
-                        break;
+                        currentGameState = GameState.Highscore;
                     }
+                    break;
+                }
                 case GameState.Highscore:
-                    {
-                        break;
-                    }
-                case GameState.Playing:
-                    {
-                        PlayingUpdate(gameTime);
-                        break;
-                    }
-                case GameState.Paused:
-                    {
-                        floatingTextures.Update();
-                        if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
+                {
+                        if (currentKeyboard.IsKeyDown(Keys.A) && !oldKeyboard.IsKeyDown(Keys.A)) // enbart för test, tas bort sen lolololo
                         {
-                            currentGameState = GameState.Playing;
+                            currentGameState = GameState.MainMenu;
                         }
                         break;
+                }
+                case GameState.Playing:
+                {
+                    PlayingUpdate(gameTime);
+                    break;
+                }
+                case GameState.Paused:
+                {
+                    floatingTextures.Update();
+                    if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
+                    {
+                       currentGameState = GameState.Playing;
                     }
+                    break;
+                }
+                case GameState.LevelUp:
+                {
+                    break;
+                }
             }
         }
 
@@ -132,6 +141,10 @@ namespace Sombi
                         PauseDraw(spriteBatch);
                     
                     break;
+                }
+                case GameState.LevelUp:
+                {
+                        break;
                 }
             }
         }
