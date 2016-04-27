@@ -84,7 +84,7 @@ namespace Sombi
                 }
                 case GameState.Highscore:
                 {
-                        if (currentKeyboard.IsKeyDown(Keys.A) && !oldKeyboard.IsKeyDown(Keys.A)) // enbart för test, tas bort sen lolololo
+                        if (currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B)) // enbart för test, tas bort sen lolololo
                         {
                             currentGameState = GameState.MainMenu;
                         }
