@@ -26,6 +26,7 @@ namespace Sombi
         float reviveTime;
         public int cash;
         GamePadState gamePadState;
+        GamePadState oldgamePadState;
         GamePadState circularGamePadState;
         Weapon playerWeapon;
         PlayerID playerID;
@@ -68,6 +69,12 @@ namespace Sombi
         public GamePadState GamePadState
         {
             get { return gamePadState; }
+            set { }
+        }
+
+        public GamePadState OldGamePadState
+        {
+            get { return oldgamePadState; }
             set { }
         }
 
@@ -140,11 +147,13 @@ namespace Sombi
         {
             if (playerID == PlayerID.One)
             {
+                oldgamePadState = gamePadState;
                 gamePadState = GamePad.GetState(PlayerIndex.One);
                 circularGamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
             }
             else
             {
+                oldgamePadState = gamePadState;
                 gamePadState = GamePad.GetState(PlayerIndex.Two);
                 circularGamePadState = GamePad.GetState(PlayerIndex.Two, GamePadDeadZone.Circular);
             }

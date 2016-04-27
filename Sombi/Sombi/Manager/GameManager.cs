@@ -29,6 +29,7 @@ namespace Sombi
         PackageManager packageManager;
         HighscoreManager highscoreManager;
         MenuManager menuManager;
+        LevelMenuManager levelMenuManager;
         FloatingTextures floatingTextures;
         GameState currentGameState = GameState.MainMenu;
         KeyboardState currentKeyboard;
@@ -53,6 +54,7 @@ namespace Sombi
             highscoreManager = new HighscoreManager();
             highscoreManager.ReadScore();
             menuManager = new MenuManager(playerManager.players);
+            levelMenuManager = new LevelMenuManager();
             packageManager = new PackageManager();
             this.game = game;
 
@@ -71,8 +73,19 @@ namespace Sombi
             {
                 case GameState.MainMenu:
                     {
+
                         MenuUpdate(gameTime);
                         if (currentKeyboard.IsKeyDown(Keys.A)) ///enbart för test, tas bort sen
+
+                        currentGameState = GameState.Highscore;
+                    }
+                        
+                        break;
+                }
+                case GameState.Highscore:
+                {
+                        if (currentKeyboard.IsKeyDown(Keys.A) && !oldKeyboard.IsKeyDown(Keys.A)) // enbart för test, tas bort sen lolololo
+
                         {
                             currentGameState = GameState.Highscore;
                         }
@@ -83,10 +96,21 @@ namespace Sombi
                         break;
                     }
                 case GameState.Playing:
+
                     {
                         PlayingUpdate(gameTime);
                         break;
                     }
+
+                {
+                        if (currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B)) ///enbart för test, tas bort sen
+                        {
+                            currentGameState = GameState.LevelUp;
+                        }
+                        PlayingUpdate(gameTime);
+                    break;
+                }
+
                 case GameState.Paused:
                     {
                         floatingTextures.Update();
@@ -96,6 +120,19 @@ namespace Sombi
                         }
                         break;
                     }
+
+                    break;
+                }
+                case GameState.LevelUp:
+                {
+                        levelMenuManager.Update(ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel);
+                        if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
+                        {
+                            currentGameState = GameState.Playing;
+                        }
+                        break;
+                }
+
             }
         }
 
@@ -137,6 +174,13 @@ namespace Sombi
                     
                     break;
                 }
+
+                case GameState.LevelUp:
+                {
+                        levelMenuManager.Draw(spriteBatch);
+                        break;
+                }
+
             }
         }
 
