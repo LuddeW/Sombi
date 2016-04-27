@@ -43,6 +43,8 @@
     <Compile Include="BloodStain.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="FloatingTextures.cs" />
+    <Compile Include="LevelMenu.cs" />
+    <Compile Include="Objects\LevelMenuManager.cs" />
     <Compile Include="Manager\HighscoreManager.cs" />
     <Compile Include="Manager\FPSManager.cs" />
     <Compile Include="Game1.cs" />

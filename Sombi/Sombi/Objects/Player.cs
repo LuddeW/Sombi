@@ -104,6 +104,10 @@ namespace Sombi
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            if (reviveTime > 0 && reviveTime <3)
+            {
+                spriteBatch.DrawString(TextureLibrary.pauseText, (3 - (int)reviveTime).ToString(), pos - new Vector2(6, 45), Color.Green);
+            }
             if (!dead)
             {
                 if (playerID == PlayerID.One)
