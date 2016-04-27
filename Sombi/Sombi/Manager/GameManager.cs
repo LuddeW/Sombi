@@ -46,7 +46,7 @@ namespace Sombi
             TextureLibrary.LoadContent(contentManager);
             SoundLibrary.LoadContent(contentManager);
             Grid.CreateGridFactory();
-            camera = new Camera((int)GlobalValues.tileSize);
+            camera = new Camera((int)GlobalValues.TILE_SIZE);
             playerManager = new PlayerManager();
             enemyManager = new EnemyManager();
             hudManager = new HUDManager(playerManager.players);
@@ -73,50 +73,62 @@ namespace Sombi
             switch (currentGameState)
             {
                 case GameState.MainMenu:
-                {
-                    MenuUpdate(gameTime);
-                    if (currentKeyboard.IsKeyDown(Keys.A) && !oldKeyboard.IsKeyDown(Keys.A)) ///enbart för test, tas bort sen
                     {
-                        currentGameState = GameState.Highscore;
+
+                        MenuUpdate(gameTime);
+                        if (currentKeyboard.IsKeyDown(Keys.A)) ///enbart för test, tas bort sen
+                        {
+                            currentGameState = GameState.Highscore;
+                        }
+
                     }
-                        
-                        break;
-                }
+
+                    break;
+
                 case GameState.Highscore:
-                {
+                    {
                         if (currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B)) // enbart för test, tas bort sen lolololo
                         {
-                            currentGameState = GameState.MainMenu;
+                            currentGameState = GameState.Highscore;
                         }
                         break;
-                }
+                    }
+  
                 case GameState.Playing:
-                {
+
+                    {
+                        PlayingUpdate(gameTime);
                         if (currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B)) ///enbart för test, tas bort sen
                         {
                             currentGameState = GameState.LevelUp;
                         }
                         PlayingUpdate(gameTime);
-                    break;
-                }
-                case GameState.Paused:
-                {
-                    floatingTextures.Update();
-                    if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
-                    {
-                       currentGameState = GameState.Playing;
+                        break;                  
                     }
+
+                case GameState.Paused:
+                    {
+                        floatingTextures.Update();
+                        if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
+                        {
+                            currentGameState = GameState.Playing;
+                        }
+                        break;
+                    }
+
                     break;
-                }
+
                 case GameState.LevelUp:
-                {
+                    {
                         levelMenuManager.Update(ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel);
                         if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
                         {
                             currentGameState = GameState.Playing;
                         }
                         break;
-                }
+                    }
+
+            
             }
         }
 
@@ -140,7 +152,11 @@ namespace Sombi
                 }
                 case GameState.Highscore:
                 {
-                    highscoreManager.Draw(spriteBatch);
+                    spriteBatch.DrawString(TextureLibrary.HudText,highscoreManager.HighScores[0].ToString(), new Vector2(100,100), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[1].ToString(), new Vector2(100, 200), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[2].ToString(), new Vector2(100, 300), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[3].ToString(), new Vector2(100, 400), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[4].ToString(), new Vector2(100, 500), Color.Black);
                     break;
                 }
                 case GameState.Playing:
@@ -154,11 +170,13 @@ namespace Sombi
                     
                     break;
                 }
+
                 case GameState.LevelUp:
                 {
                         levelMenuManager.Draw(spriteBatch);
                         break;
                 }
+
             }
         }
 
@@ -223,7 +241,7 @@ namespace Sombi
             ExitGame();
             Settings();
             Highscore();
-            
+                       
         }
 
         private void PlayingDraw(SpriteBatch spriteBatch)
@@ -284,7 +302,7 @@ namespace Sombi
         private void PauseDraw(SpriteBatch spriteBatch)
         {
             PlayingDraw(spriteBatch);
-            spriteBatch.DrawString(TextureLibrary.pauseText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(camera.position.X + GlobalValues.screenBounds.X / 2, camera.position.Y + GlobalValues.screenBounds.Y / 2), Color.Red);
+            spriteBatch.DrawString(TextureLibrary.HudText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
         }
     }
 }

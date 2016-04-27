@@ -48,7 +48,7 @@ namespace Sombi
                 }
             }
         }
-        public void AddZombiesToRandomLocation(int nrOfZombiesToAdd)
+        public void AddZombiesToRandomLocation(int nrOfZombiesToAdd)//All zombies at once
         {
             int spawnIndex;
 
@@ -59,6 +59,7 @@ namespace Sombi
                 AddZombie(Grid.spawnPoints[spawnIndex]);
             }
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (BloodStain bs in bloodPositions)
