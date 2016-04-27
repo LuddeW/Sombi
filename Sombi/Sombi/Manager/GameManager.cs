@@ -101,7 +101,6 @@ namespace Sombi
                         {
                             currentGameState = GameState.LevelUp;
                         }
-                        PlayingUpdate(gameTime);
                         break;                  
                     }
 
