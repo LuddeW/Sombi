@@ -48,23 +48,23 @@ namespace Sombi
         public void WriteScore()
         {
             string textScore = score.ToString();
-            StreamWriter file = new StreamWriter("Highscore.txt",true);
-            file.WriteLine(textScore);
-            file.Close();
+            //StreamWriter file = new StreamWriter("Highscore.txt",true);
+            //file.WriteLine(textScore);
+            //file.Close();
             SortList();
         }
 
         public void ReadScore()
         {
-            StreamReader file = new StreamReader("Highscore.txt");
-            while (!file.EndOfStream)
-            {
-                string test = file.ReadLine();
-                int testInt = Int32.Parse(test);
-                highScores.Add(testInt);
-            }
+            //StreamReader file = new StreamReader("Highscore.txt");
+            //while (!file.EndOfStream)
+            //{
+            //    string test = file.ReadLine();
+            //    int testInt = Int32.Parse(test);
+            //    highScores.Add(testInt);
+            //}
             SortList();
-            file.Close();
+            //file.Close();
         }
 
         private void SortList()

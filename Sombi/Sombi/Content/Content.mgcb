@@ -583,3 +583,15 @@
 /processorParam:TextureFormat=Color
 /build:Rocket.png
 
+#begin Explosion.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Explosion.wav
+
+#begin FireRocket.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FireRocket.wav
+

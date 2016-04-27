@@ -17,6 +17,10 @@ namespace Sombi
         //public static SoundEffectInstance rifleFireInstance;
         public static SoundEffect explosiveFire;
         //public static SoundEffectInstance explosiveFireInstance;
+        public static SoundEffect explosion;
+        public static SoundEffectInstance explosionInstance;
+
+
         public static void LoadContent(ContentManager Content)
         {
             menuSong = Content.Load<Song>("Neuro_Rhythm");
@@ -29,9 +33,40 @@ namespace Sombi
 
             rifleFire = Content.Load<SoundEffect>(@"LMG1");
             SoundEffect.MasterVolume = 0.5f;
-            
-            //explosiveFire = Content.Load<SoundEffect>("explosive");
-            //SoundEffect.MasterVolume = 0.5f;
+
+            explosiveFire = Content.Load<SoundEffect>("FireRocket");
+            SoundEffect.MasterVolume = 0.5f;
+
+            explosion = Content.Load<SoundEffect>("Explosion");
+            SoundEffect.MasterVolume = 0.5f;
+        }
+        public static SoundEffectInstance Explosion
+        {
+            get
+            {
+                if (explosionInstance == null)
+                {
+                    explosionInstance = explosion.CreateInstance();
+                }
+                return explosionInstance;
+            }
+        }
+        public static void PlaySound(SoundEffectInstance sound)
+        {
+            if (sound != null)
+            {
+                if (sound.State == SoundState.Stopped)
+                {
+                    sound.Play();
+                }
+            }
+        }
+        public static void StopSound(SoundEffectInstance sound)
+        {
+            if (sound.State == SoundState.Playing)
+            {
+                sound.Stop();
+            }
         }
     }
 }
