@@ -55,7 +55,8 @@ namespace Sombi
         public static Texture2D bulletBlue { get; private set; }
         public static Texture2D[] bloodStain = new Texture2D[10];
         public static Texture2D rocketExplosion { get; private set; }
-        
+        public static Texture2D rocket { get; private set; }
+
         //Spritefonts
         public static SpriteFont HudText { get; private set; }
         public static SpriteFont pauseText { get; private set; }
@@ -114,7 +115,8 @@ namespace Sombi
             bloodStain[8] = Content.Load<Texture2D>(@"BloodStain9");
             bloodStain[9] = Content.Load<Texture2D>(@"BloodStain10");
             rocketExplosion = Content.Load<Texture2D>(@"ExplosionSombi");
-            
+            rocket = Content.Load<Texture2D>(@"Rocket");
+
             //Map and UI
             testMapTex = Content.Load<Texture2D>(@"TestMap2");
             //HUD = Content.Load<Texture2D>(@"TestHud");
