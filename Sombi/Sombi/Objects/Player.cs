@@ -37,6 +37,7 @@ namespace Sombi
         public bool dead = false;
         public bool eaten = false;
         public bool gotPackage = false;
+        public bool isShooting = false;
 
         public int shotgunLevel;
         public int rifleLevel;
@@ -46,23 +47,23 @@ namespace Sombi
         AnimationPlayer animationplayer;
         WeaponManager weaponManager;
 
-        public Player(Weapon weapon, Vector2 position, int ID) : base(position)
-        {        
+        public Player(Weapon weapon, Vector2 position, int ID)
+            : base(position)
+        {
             playerWeapon = weapon;
             this.ID = ID;
             hitBox = new Rectangle((int)position.X, (int)position.Y, TextureLibrary.sourceRectTex.Width, TextureLibrary.sourceRectTex.Height);
             SetPlayerID(ID);
             weaponManager = new WeaponManager();
-            LoadContent();
         }
 
         public void LoadContent()
         {
-            rifleShootingAnimation = new Animation(TextureLibrary.player1RifleSheet ,63 ,0.1f ,true);
-            velocity = Vector2.Zero;    
+            rifleShootingAnimation = new Animation(TextureLibrary.player1RifleSheet, 63, 0.1f, true);
+            velocity = Vector2.Zero;
             maxspeed = 2.0f;
             playerSpeed = 1.8f;
-            playerWeapon = weapon;
+            //playerWeapon = weapon;
             playerSpeed = 2.0f;
             health = 1000;
             timeToRevive = 3.0f;
@@ -71,11 +72,6 @@ namespace Sombi
             explosivesLevel = 1;
             rifleLevel = 1;
             shotgunLevel = 1;
-
-            if (weaponManager.rifleIsShooting == true)
-            {
-                animationplayer.PlayAnimation(rifleShootingAnimation);
-            }
         }
 
         public Rectangle HitBox
@@ -83,7 +79,7 @@ namespace Sombi
             get { return hitBox; }
             set { }
         }
-        
+
         public GamePadState GamePadState
         {
             get { return gamePadState; }
@@ -98,6 +94,8 @@ namespace Sombi
 
         public override void Update(GameTime gameTime)
         {
+            UpdateAnimation();
+
             if (health <= 0)
             {
                 dead = true;
@@ -129,7 +127,7 @@ namespace Sombi
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (reviveTime > 0 && reviveTime <3)
+            if (reviveTime > 0 && reviveTime < 3)
             {
                 spriteBatch.DrawString(TextureLibrary.pauseText, (3 - (int)reviveTime).ToString(), pos - new Vector2(6, 45), Color.Green);
             }
@@ -137,10 +135,15 @@ namespace Sombi
             {
                 if (playerID == PlayerID.One)
                     spriteBatch.Draw(TextureLibrary.player1RifleTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player1RifleTex.Width / 2, TextureLibrary.player1RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
-                if(playerID == PlayerID.Two)
-                spriteBatch.Draw(TextureLibrary.player2RifleTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player2RifleTex.Width / 2, TextureLibrary.player2RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
+                if (playerID == PlayerID.Two)
+                    spriteBatch.Draw(TextureLibrary.player2RifleTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player2RifleTex.Width / 2, TextureLibrary.player2RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
                 //spriteBatch.Draw(TextureLibrary.sourceRectTex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
-            }           
+                //animationplayer.Draw(spriteBatch, pos);
+            }
+            //if (isShooting == true && weaponManager.rifleIsShooting == true)
+            //{
+            //    animationplayer.Draw(spriteBatch, pos);
+            //}
         }
 
         private void SetPlayerID(int ID)
@@ -155,10 +158,18 @@ namespace Sombi
             }
         }
 
+        private void UpdateAnimation()
+        {
+            if (isShooting == true && weaponManager.rifleIsShooting == true)
+            {
+                animationplayer.PlayAnimation(rifleShootingAnimation);
+            }
+        }
+
         private void UpdateHitbox()
         {
-                hitBox.X = (int)pos.X - ((TextureLibrary.player1RifleTex.Width) / 2) + 10;
-                hitBox.Y = (int)pos.Y - ((TextureLibrary.player1RifleTex.Height) / 2);   
+            hitBox.X = (int)pos.X - ((TextureLibrary.player1RifleTex.Width) / 2) + 10;
+            hitBox.Y = (int)pos.Y - ((TextureLibrary.player1RifleTex.Height) / 2);
         }
 
         private void UpdateGamepad()
@@ -213,11 +224,12 @@ namespace Sombi
         {
             if (gamePadState.Triggers.Right > 0.5f || Keyboard.GetState().IsKeyDown(Keys.Space))
             {
+                isShooting = true;
                 return true;
             }
-
             else
             {
+                isShooting = false;
                 return false;
             }
         }
@@ -234,7 +246,7 @@ namespace Sombi
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
                 pos.X -= playerSpeed;
-		        direction.X = -1;             
+                direction.X = -1;
                 angle = MathHelper.ToRadians(180);
 
             }
@@ -248,7 +260,7 @@ namespace Sombi
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
                 pos.X += playerSpeed;
-		        direction.X = 1;             
+                direction.X = 1;
                 angle = MathHelper.ToRadians(0);
 
             }
@@ -304,6 +316,7 @@ namespace Sombi
             }
 
         }
+
         public void handleBulletHit(int damage)
         {
             if (!eaten)

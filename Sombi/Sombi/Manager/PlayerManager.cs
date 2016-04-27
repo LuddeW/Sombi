@@ -90,6 +90,8 @@ namespace Sombi
             player2 = new Player(weaponManager.playerTwoWeapon, new Vector2(150, 200), 2);
             players.Add(player1);
             players.Add(player2);
+            player1.LoadContent();
+            player2.LoadContent();
         }
 
         private void Revive()

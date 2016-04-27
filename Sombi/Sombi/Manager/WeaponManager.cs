@@ -17,7 +17,7 @@ namespace Sombi
         private float timeSinceLastPlayerTwoBullet;
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
-        public bool rifleIsShooting;
+        public bool rifleIsShooting = false;
 
         public WeaponManager()
         {
