@@ -128,7 +128,14 @@ namespace Sombi
             {
                 weaponManager.SwitchWeaponLeft(1, player1.shotgunLevel, player1.explosivesLevel, player1.rifleLevel);           
             }
-
+            if (player1.GamePadState.IsButtonDown(Buttons.RightShoulder) && !player1.OldGamePadState.IsButtonDown(Buttons.RightShoulder))
+            {
+                weaponManager.SwitchWeaponRight(1, player1.shotgunLevel, player1.explosivesLevel, player1.rifleLevel);
+            }
+            if (player1.GamePadState.IsButtonDown(Buttons.LeftShoulder) && !player1.OldGamePadState.IsButtonDown(Buttons.LeftShoulder))
+            {
+                weaponManager.SwitchWeaponLeft(1, player1.shotgunLevel, player1.explosivesLevel, player1.rifleLevel);
+            }
         }
 
     }
