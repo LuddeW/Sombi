@@ -43,7 +43,10 @@ namespace Sombi
         public static Texture2D player1ScoreHud { get; private set; }
         public static Texture2D player2ScoreHud { get; private set; }
         public static Texture2D weaponHud { get; private set; }
-        
+        public static Texture2D rifleLevel { get; private set; }
+        public static Texture2D shotgunLevel { get; private set; }
+        public static Texture2D rocketLevel { get; private set; }
+
         //Menu
         public static Texture2D startButton { get; private set; }
         public static Texture2D settingButton { get; private set; }
@@ -123,6 +126,9 @@ namespace Sombi
             player1ScoreHud = Content.Load<Texture2D>("Player1ScoreHUD");
             player2ScoreHud = Content.Load<Texture2D>("Player2ScoreHUD");
             weaponHud = Content.Load<Texture2D>("WeaponHUD");
+            rifleLevel = Content.Load<Texture2D>("RifleLevel");
+            shotgunLevel = Content.Load<Texture2D>("ShotgunLevel");
+            rocketLevel = Content.Load<Texture2D>("RocketLevel");
             
             //Menu
             logoTex = Content.Load<Texture2D>(@"Logo1Sombi");

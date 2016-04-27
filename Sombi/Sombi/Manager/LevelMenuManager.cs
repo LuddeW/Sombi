@@ -38,11 +38,18 @@ namespace Sombi
             {
                 for (int k = 0; k < levelMenu.numberOfRows; k++)
                 {
-                    spriteBatch.Draw(TextureLibrary.busTex, levelMenu.hitbox[i, k], Color.White);
+                    spriteBatch.Draw(TextureLibrary.rifleLevel, levelMenu.hitbox[0, k], Color.White);
+                    //spriteBatch.DrawString(TextureLibrary.HudText, "Level 1", levelMenu.hitbox[i, 1], Color.White);
+                    spriteBatch.Draw(TextureLibrary.shotgunLevel, levelMenu.hitbox[1, k], Color.White);
+                    spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[2, k], Color.White);
+
+                    spriteBatch.Draw(TextureLibrary.rifleLevel, levelMenu.hitbox[3, k], Color.White);
+                    spriteBatch.Draw(TextureLibrary.shotgunLevel, levelMenu.hitbox[4, k], Color.White);
+                    spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[5, k], Color.White);
                 }
             }
-            spriteBatch.Draw(TextureLibrary.busTex, levelMenu.hitbox[(int)player1Active.X, (int)player1Active.Y], Color.Black);
-            spriteBatch.Draw(TextureLibrary.busTex, levelMenu.hitbox[(int)player2Active.X, (int)player2Active.Y], Color.Black);
+            spriteBatch.Draw(TextureLibrary.sourceRectTex, levelMenu.hitbox[(int)player1Active.X, (int)player1Active.Y], Color.Black * 0.2f);
+            spriteBatch.Draw(TextureLibrary.sourceRectTex, levelMenu.hitbox[(int)player2Active.X, (int)player2Active.Y], Color.Black * 0.2f);
         }
 
         private void MoveActive()

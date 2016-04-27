@@ -30,11 +30,11 @@ namespace Sombi
                 {
                     if (i >= 3)
                     {
-                        hitbox[i, k] = new Rectangle(x + 200 * (i + 1), y * (k + 1), 100, 50);
+                        hitbox[i, k] = new Rectangle(x + 200 * (i + 1), y * (k + 1), 110, 54);
                     }
                     else
                     {
-                        hitbox[i, k] = new Rectangle(x * (i + 1), y * (k + 1), 100, 50);
+                        hitbox[i, k] = new Rectangle(x * (i + 1), y * (k + 1), 110, 54);
                     }
 
                     hitbox[i, k].X += 100;
