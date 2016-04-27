@@ -70,11 +70,11 @@ namespace Sombi
             //Player and Enemy Sprites            
             player1RifleTex = Content.Load<Texture2D>(@"Player1Rifle");
             player1ShotgunTex = Content.Load<Texture2D>(@"Player1Shotgun");
-            //player1RocketTex = Content.Load<Texture2D>(@"Player1Rocket");
+            player1RocketTex = Content.Load<Texture2D>(@"Player1Rocket");
 
             player2RifleTex = Content.Load<Texture2D>(@"Player2Rifle");
             player2ShotgunTex = Content.Load<Texture2D>(@"Player2Shotgun");
-            //player2RocketTex = Content.Load<Texture2D>(@"Player2Rocket");
+            player2RocketTex = Content.Load<Texture2D>(@"Player2Rocket");
 
             zombieTex = Content.Load<Texture2D>(@"ZombieSheet");
             fastZombieTex = Content.Load<Texture2D>(@"ZombieSheet2");
