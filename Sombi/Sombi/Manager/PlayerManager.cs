@@ -10,8 +10,8 @@ namespace Sombi
 {
     class PlayerManager
     {
-        Player player1;
-        Player player2;
+        public Player player1;
+        public Player player2;
         public List<Player> players;
         public WeaponManager weaponManager;
 

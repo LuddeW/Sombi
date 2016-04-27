@@ -30,6 +30,7 @@ namespace Sombi
         PackageManager packageManager;
         HighscoreManager highscoreManager;
         MenuManager menuManager;
+        LevelMenuManager levelMenuManager;
         FloatingTextures floatingTextures;
         GameState currentGameState = GameState.MainMenu;
         KeyboardState currentKeyboard;
@@ -54,6 +55,7 @@ namespace Sombi
             highscoreManager = new HighscoreManager();
             highscoreManager.ReadScore();
             menuManager = new MenuManager(playerManager.players);
+            levelMenuManager = new LevelMenuManager();
             packageManager = new PackageManager();
             this.game = game;
 
@@ -77,7 +79,8 @@ namespace Sombi
                     {
                         currentGameState = GameState.Highscore;
                     }
-                    break;
+                        
+                        break;
                 }
                 case GameState.Highscore:
                 {
@@ -89,7 +92,11 @@ namespace Sombi
                 }
                 case GameState.Playing:
                 {
-                    PlayingUpdate(gameTime);
+                        if (currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B)) ///enbart för test, tas bort sen
+                        {
+                            currentGameState = GameState.LevelUp;
+                        }
+                        PlayingUpdate(gameTime);
                     break;
                 }
                 case GameState.Paused:
@@ -103,7 +110,12 @@ namespace Sombi
                 }
                 case GameState.LevelUp:
                 {
-                    break;
+                        levelMenuManager.Update(ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel);
+                        if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
+                        {
+                            currentGameState = GameState.Playing;
+                        }
+                        break;
                 }
             }
         }
@@ -144,6 +156,7 @@ namespace Sombi
                 }
                 case GameState.LevelUp:
                 {
+                        levelMenuManager.Draw(spriteBatch);
                         break;
                 }
             }
