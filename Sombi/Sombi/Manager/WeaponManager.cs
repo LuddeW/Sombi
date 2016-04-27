@@ -22,7 +22,7 @@ namespace Sombi
         public WeaponManager()
         {
             this.bulletManager = new BulletManager();
-            playerOneWeapon = new Shotgun(6);
+            playerOneWeapon = new Explosives();
             playerTwoWeapon = new Shotgun();
             timeSinceLastPlayerOneBullet = 100f;
             timeSinceLastPlayerTwoBullet = 100f;

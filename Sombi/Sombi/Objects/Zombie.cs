@@ -20,7 +20,7 @@ namespace Sombi
         Rectangle hitBox;
         public Zombie(Vector2 startPos) : base(startPos)
         {
-            this.velocity = 50;
+            this.velocity = (float)GlobalValues.rnd.Next(35, 65);
             //this.pos = startPos;
             this.direction = new Vector2(0, 1);
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, 50, 50);

@@ -26,6 +26,7 @@ namespace Sombi
         float reviveTime;
         public int cash;
         GamePadState gamePadState;
+        GamePadState oldgamePadState;
         GamePadState circularGamePadState;
         Weapon playerWeapon;
         PlayerID playerID;
@@ -61,6 +62,8 @@ namespace Sombi
             velocity = Vector2.Zero;    
             maxspeed = 2.0f;
             playerSpeed = 1.8f;
+            playerWeapon = weapon;
+            playerSpeed = 2.0f;
             health = 1000;
             timeToRevive = 3.0f;
             reviveTime = 0.0f;
@@ -84,6 +87,12 @@ namespace Sombi
         public GamePadState GamePadState
         {
             get { return gamePadState; }
+            set { }
+        }
+
+        public GamePadState OldGamePadState
+        {
+            get { return oldgamePadState; }
             set { }
         }
 
@@ -120,6 +129,10 @@ namespace Sombi
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            if (reviveTime > 0 && reviveTime <3)
+            {
+                spriteBatch.DrawString(TextureLibrary.pauseText, (3 - (int)reviveTime).ToString(), pos - new Vector2(6, 45), Color.Green);
+            }
             if (!dead)
             {
                 if (playerID == PlayerID.One)
@@ -152,11 +165,13 @@ namespace Sombi
         {
             if (playerID == PlayerID.One)
             {
+                oldgamePadState = gamePadState;
                 gamePadState = GamePad.GetState(PlayerIndex.One);
                 circularGamePadState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
             }
             else
             {
+                oldgamePadState = gamePadState;
                 gamePadState = GamePad.GetState(PlayerIndex.Two);
                 circularGamePadState = GamePad.GetState(PlayerIndex.Two, GamePadDeadZone.Circular);
             }
@@ -211,28 +226,28 @@ namespace Sombi
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                pos.Y -= 2;
+                pos.Y -= playerSpeed;
                 direction.Y = -1;
                 angle = MathHelper.ToRadians(270);
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
-            {  
-                pos.X -= 2;
+            {
+                pos.X -= playerSpeed;
 		        direction.X = -1;             
                 angle = MathHelper.ToRadians(180);
 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                pos.Y += 2;
+                pos.Y += playerSpeed;
                 direction.Y = 1;
                 angle = MathHelper.ToRadians(90);
 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-                pos.X += 2;
+                pos.X += playerSpeed;
 		        direction.X = 1;             
                 angle = MathHelper.ToRadians(0);
 

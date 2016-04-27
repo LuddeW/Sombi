@@ -17,6 +17,7 @@ namespace Sombi
         Highscore,
         Playing,
         Paused,
+        LevelUp,
     }
     class GameManager
     {
@@ -29,6 +30,7 @@ namespace Sombi
         PackageManager packageManager;
         HighscoreManager highscoreManager;
         MenuManager menuManager;
+        LevelMenuManager levelMenuManager;
         FloatingTextures floatingTextures;
         GameState currentGameState = GameState.MainMenu;
         KeyboardState currentKeyboard;
@@ -51,19 +53,11 @@ namespace Sombi
             fpsManager = new FPSManager();
             floatingTextures = new FloatingTextures();
             highscoreManager = new HighscoreManager();
+            highscoreManager.ReadScore();
             menuManager = new MenuManager(playerManager.players);
+            levelMenuManager = new LevelMenuManager();
             packageManager = new PackageManager();
             this.game = game;
-
-            enemyManager.AddZombie(new Vector2(400, 500));  //Endast för TEST!!
-            enemyManager.AddZombie(new Vector2(800, 200));  //TEST
-            enemyManager.AddZombie(new Vector2(900, 100));      //SPAWNAR ZOMBIES HÄR!!
-            enemyManager.AddZombie(new Vector2(100, 600));          //DOM FÅR INTE SPAWNA PÅ VARANDRA
-            enemyManager.AddZombie(new Vector2(100, 500));
-            enemyManager.AddZombie(new Vector2(900, 500));
-            enemyManager.AddZombie(new Vector2(900, 700));
-            enemyManager.AddZombie(new Vector2(900, 800));
-            enemyManager.AddZombie(new Vector2(500, 500));
 
         }
 
@@ -80,14 +74,36 @@ namespace Sombi
             {
                 case GameState.MainMenu:
                     {
+
                         MenuUpdate(gameTime);
+                        if (currentKeyboard.IsKeyDown(Keys.A)) ///enbart för test, tas bort sen
+                        {
+                            currentGameState = GameState.Highscore;
+                        }
+
+                    }
+                    break;
+
+                case GameState.Highscore:
+                    {
+                        if (currentKeyboard.IsKeyDown(Keys.A) && !oldKeyboard.IsKeyDown(Keys.A)) // enbart för test, tas bort sen lolololo
+                        {
+                            currentGameState = GameState.Highscore;
+                        }
                         break;
                     }
+  
                 case GameState.Playing:
+
                     {
                         PlayingUpdate(gameTime);
-                        break;
+                        if (currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B)) ///enbart för test, tas bort sen
+                        {
+                            currentGameState = GameState.LevelUp;
+                        }
+                        break;                  
                     }
+
                 case GameState.Paused:
                     {
                         floatingTextures.Update();
@@ -97,6 +113,18 @@ namespace Sombi
                         }
                         break;
                     }
+
+                case GameState.LevelUp:
+                    {
+                        levelMenuManager.Update(ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel);
+                        if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
+                        {
+                            currentGameState = GameState.Playing;
+                        }
+                        break;
+                    }
+
+            
             }
         }
 
@@ -105,7 +133,7 @@ namespace Sombi
 
             if (playerManager.GameOver())
             {
-                spriteBatch.DrawString(TextureLibrary.HudText, "Well...", new Vector2(450, 500), Color.Black);
+                spriteBatch.DrawString(TextureLibrary.HudText, "Well....", new Vector2(450, 500), Color.Black);
                 Color fadeOutColor = new Color(new Vector3(255, 0, 0));
                 Color fadeInColor = new Color(new Vector3(0, 0, 0));
                 spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeOutColor * fadeOutPercentage);
@@ -118,9 +146,18 @@ namespace Sombi
                     MenuDraw(spriteBatch);
                     break;               
                 }
+                case GameState.Highscore:
+                {
+                    spriteBatch.DrawString(TextureLibrary.HudText,highscoreManager.HighScores[0].ToString(), new Vector2(100,100), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[1].ToString(), new Vector2(100, 200), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[2].ToString(), new Vector2(100, 300), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[3].ToString(), new Vector2(100, 400), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[4].ToString(), new Vector2(100, 500), Color.Black);
+                    break;
+                }
                 case GameState.Playing:
                 {
-                        PlayingDraw(spriteBatch);   
+                    PlayingDraw(spriteBatch);   
                     break;
                 }
                 case GameState.Paused:
@@ -129,6 +166,13 @@ namespace Sombi
                     
                     break;
                 }
+
+                case GameState.LevelUp:
+                {
+                        levelMenuManager.Draw(spriteBatch);
+                        break;
+                }
+
             }
         }
 
@@ -136,6 +180,9 @@ namespace Sombi
         {
             if (menuManager.start)
             {
+                enemyManager.AddZombiesToRandomLocation(12 * GlobalValues.difficultyLevel);
+                packageManager.AddPackage();
+
                 if (menuManager.numberOfPlayers == 1)
                 {
                     playerManager.CreateOnePlayer();
@@ -161,6 +208,7 @@ namespace Sombi
         {
             if (menuManager.highscore)
             {
+                highscoreManager.ReadScore();
                 currentGameState = GameState.Highscore;
             }
         }
@@ -189,7 +237,7 @@ namespace Sombi
             ExitGame();
             Settings();
             Highscore();
-            
+                       
         }
 
         private void PlayingDraw(SpriteBatch spriteBatch)
@@ -242,6 +290,7 @@ namespace Sombi
                     currentGameState = GameState.MainMenu;
                     highscoreManager.WriteScore();
                     playerManager.CreatePlayers();
+                    enemyManager.zombies.Clear();
                 }
             }
         }

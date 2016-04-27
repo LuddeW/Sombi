@@ -58,6 +58,8 @@ namespace Sombi
         
         //Spritefonts
         public static SpriteFont HudText { get; private set; }
+        public static SpriteFont pauseText { get; private set; }
+        public static SpriteFont billBoardText { get; private set; }
 
         //Miscellaneous
         public static Texture2D sourceRectTex { get; private set; }
@@ -68,12 +70,16 @@ namespace Sombi
             //Player and Enemy Sprites            
             player1RifleTex = Content.Load<Texture2D>(@"Player1Rifle");
             player1ShotgunTex = Content.Load<Texture2D>(@"Player1Shotgun");
+
             //player1RocketTex = Content.Load<Texture2D>(@"Player1Rocket");
             player1RifleSheet = Content.Load<Texture2D>(@"Player1RifleSheet");
 
+            player1RocketTex = Content.Load<Texture2D>(@"Player1Rocket");
+
+
             player2RifleTex = Content.Load<Texture2D>(@"Player2Rifle");
             player2ShotgunTex = Content.Load<Texture2D>(@"Player2Shotgun");
-            //player2RocketTex = Content.Load<Texture2D>(@"Player2Rocket");
+            player2RocketTex = Content.Load<Texture2D>(@"Player2Rocket");
 
             zombieTex = Content.Load<Texture2D>(@"ZombieSheet");
             fastZombieTex = Content.Load<Texture2D>(@"ZombieSheet2");
@@ -125,6 +131,8 @@ namespace Sombi
                         
             //Spritefonts
             HudText = Content.Load<SpriteFont>(@"HUDText");
+            billBoardText = Content.Load<SpriteFont>("BillboardFont");
+            pauseText = Content.Load<SpriteFont>("pauseFont");
             
             //Miscellaneous
             sourceRectTex = Content.Load<Texture2D>(@"Rectangle");

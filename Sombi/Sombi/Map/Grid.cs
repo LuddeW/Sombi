@@ -13,11 +13,16 @@ namespace Sombi
 
         public static Tile[,] grid;
         public static bool menu = true;
+        public static List<Vector2> spawnPoints;
+        public static List<Vector2> packageSpawnPoints;
 
         public static void CreateGridFactory()
         {
+            spawnPoints = new List<Vector2>();
+            packageSpawnPoints = new List<Vector2>();
             if (!menu)
             {
+
                 StreamReader sr = new StreamReader(@"Content\Testmap.txt");
                 List<string> stringList = new List<string>();
 
@@ -25,10 +30,10 @@ namespace Sombi
                 {
                     stringList.Add(sr.ReadLine());
                 }
-                grid = new Tile[(int)GlobalValues.GRID_SIZE.X, (int)GlobalValues.GRID_SIZE.Y];
-                for (int i = 0; i < GlobalValues.GRID_SIZE.Y; i++)
+                grid = new Tile[(int)GlobalValues.gridSize.X, (int)GlobalValues.gridSize.Y];
+                for (int i = 0; i < GlobalValues.gridSize.Y; i++)
                 {
-                    for (int k = 0; k < GlobalValues.GRID_SIZE.X; k++)
+                    for (int k = 0; k < GlobalValues.gridSize.X; k++)
                     {
                         switch (stringList[i][k])
                         {
@@ -37,6 +42,14 @@ namespace Sombi
                                 break;
                             case 'W':
                                 grid[k, i] = new Tile(new Vector2(k, i), false);
+                                break;
+                            case 'S':
+                                grid[k, i] = new Tile(new Vector2(k, i), true);
+                                spawnPoints.Add(new Vector2(k * 50, i * 50));
+                                break;
+                            case 'P':
+                                grid[k, i] = new Tile(new Vector2(k, i), true);
+                                packageSpawnPoints.Add(new Vector2(k * 50, i * 50));
                                 break;
                         }
                     }
