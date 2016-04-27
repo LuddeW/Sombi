@@ -28,8 +28,8 @@ namespace Sombi
             oldKeyboard = currentKeyboard;
             currentKeyboard = Keyboard.GetState();
             MoveActive();
-            LevelUp( ref shotgunLevel, ref rifleLevel, ref explosiveLevel);
-            
+            LevelUp(ref shotgunLevel, ref rifleLevel, ref explosiveLevel);
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -39,13 +39,17 @@ namespace Sombi
                 for (int k = 0; k < levelMenu.numberOfRows; k++)
                 {
                     spriteBatch.Draw(TextureLibrary.rifleLevel, levelMenu.hitbox[0, k], Color.White);
-                    //spriteBatch.DrawString(TextureLibrary.HudText, "Level 1", levelMenu.hitbox[i, 1], Color.White);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 1     $100", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 0].Y + levelMenu.hitbox[i, k].Height), Color.Black);
                     spriteBatch.Draw(TextureLibrary.shotgunLevel, levelMenu.hitbox[1, k], Color.White);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 2     $150", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 1].Y + levelMenu.hitbox[i, k].Height), Color.Black);
                     spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[2, k], Color.White);
-
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 3     $200", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 2].Y + levelMenu.hitbox[i, k].Height), Color.Black);
                     spriteBatch.Draw(TextureLibrary.rifleLevel, levelMenu.hitbox[3, k], Color.White);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 4     $250", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 3].Y + levelMenu.hitbox[i, k].Height), Color.Black);
                     spriteBatch.Draw(TextureLibrary.shotgunLevel, levelMenu.hitbox[4, k], Color.White);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 5     $300", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 4].Y + levelMenu.hitbox[i, k].Height), Color.Black);
                     spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[5, k], Color.White);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 6     $350", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 5].Y + levelMenu.hitbox[i, k].Height), Color.Black);
                 }
             }
             spriteBatch.Draw(TextureLibrary.sourceRectTex, levelMenu.hitbox[(int)player1Active.X, (int)player1Active.Y], Color.Black * 0.2f);
@@ -88,7 +92,7 @@ namespace Sombi
             }
         }
 
-        private void LevelUp(ref int shotgunLevel,ref int rifleLevel, ref int explosiveLevel)
+        private void LevelUp(ref int shotgunLevel, ref int rifleLevel, ref int explosiveLevel)
         {
             if (currentKeyboard.IsKeyDown(Keys.Enter) && !oldKeyboard.IsKeyDown(Keys.Enter))
             {
