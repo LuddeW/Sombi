@@ -10,10 +10,11 @@ namespace Sombi
     class PackageManager
     {
         Package package;
-        
+        Rectangle dropZone;
         public PackageManager()
         {
             //package = new Package(new Vector2(850, 550));
+            dropZone = new Rectangle(1600, 1375, 160, 170);
         }
 
         public void Update(GameTime gameTime, List<Player> players, int numberOfPlayers)
@@ -48,6 +49,8 @@ namespace Sombi
                 }
             }
         }
+ 
+        
 
         private void leaveChest(List<Player>players, int numberOfPlayers)
         {
@@ -55,7 +58,7 @@ namespace Sombi
             {
                 foreach (Player player in players)
                 {
-                    if (player.pos.X / 50 > 29 && player.pos.Y / 50 < 4 && player.gotPackage)
+                    if (player.HitBox.Intersects(dropZone) && player.gotPackage)
                     {
                         if (numberOfPlayers == 2)
                         {
@@ -63,14 +66,17 @@ namespace Sombi
                             players[1].cash += 100;
                             HighscoreManager.score += 100;
                             package.taken = false;
-                            AddPackage();
+                            GlobalValues.difficultyLevel++;
+                            
                         }
                         else
                         {
                             players[0].cash += 100;
                             HighscoreManager.score += 100;
                             package.taken = false;
+                            GlobalValues.difficultyLevel++;
                             AddPackage();
+                            
                         }
                     }
                 }

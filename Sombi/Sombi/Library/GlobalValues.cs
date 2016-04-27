@@ -10,6 +10,7 @@ namespace Sombi
     {
         public const int TILE_SIZE = 50;
         public static Vector2 gridSize = new Vector2(114, 90);
+        public static int difficultyLevel = 1;
 
         public static Random rnd = new Random();
         public static Rectangle windowBounds = new Rectangle(0, 0, (int)gridSize.X * TILE_SIZE, (int)gridSize.Y * TILE_SIZE);

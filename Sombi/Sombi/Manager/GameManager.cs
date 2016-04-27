@@ -180,7 +180,7 @@ namespace Sombi
         {
             if (menuManager.start)
             {
-                enemyManager.AddZombiesToRandomLocation(6);
+                enemyManager.AddZombiesToRandomLocation(12 * GlobalValues.difficultyLevel);
                 packageManager.AddPackage();
 
                 if (menuManager.numberOfPlayers == 1)
