@@ -34,7 +34,7 @@ namespace Sombi
         {
             Zombie z = new Zombie(startPos);
             zombies.Add(z);
-            z.Load();
+            z.LoadContent();
         }
         public void ClearZombies()
         {

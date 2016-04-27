@@ -29,7 +29,7 @@ namespace Sombi
             this.haveTarget = false;
         }
 
-        public void Load()
+        public void LoadContent()
         {
             //walkAnimation = new Animation(TextureLibrary.fastZombieTex, 50, 0.08f, true);
             //walkAnimation = new Animation(TextureLibrary.zombieTex, 50, 0.2f, true);

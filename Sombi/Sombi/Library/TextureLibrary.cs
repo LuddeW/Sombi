@@ -10,7 +10,7 @@ namespace Sombi
     public class TextureLibrary
     {
 
-        //Player and Enemy Sprites
+        //Player and Enemy Spritesheets
         public static Texture2D player1RifleTex { get; private set; }
         public static Texture2D player1ShotgunTex { get; private set; }
         public static Texture2D player1RocketTex { get; private set; }
@@ -20,8 +20,8 @@ namespace Sombi
         public static Texture2D zombieTex { get; private set; }
         public static Texture2D fastZombieTex { get; private set; }
         public static Texture2D fatZombieTex { get; private set; }
-
-                
+        public static Texture2D player1RifleSheet { get; private set; }
+    
         //Structures and Objects
         public static Texture2D packageTex { get; private set; }
         public static Texture2D medicTentTex { get; private set; }
@@ -69,6 +69,7 @@ namespace Sombi
             player1RifleTex = Content.Load<Texture2D>(@"Player1Rifle");
             player1ShotgunTex = Content.Load<Texture2D>(@"Player1Shotgun");
             //player1RocketTex = Content.Load<Texture2D>(@"Player1Rocket");
+            player1RifleSheet = Content.Load<Texture2D>(@"Player1RifleSheet");
 
             player2RifleTex = Content.Load<Texture2D>(@"Player2Rifle");
             player2ShotgunTex = Content.Load<Texture2D>(@"Player2Shotgun");

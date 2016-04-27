@@ -40,23 +40,39 @@ namespace Sombi
         public int shotgunLevel;
         public int rifleLevel;
         public int explosivesLevel;
+        public Animation rifleShootingAnimation;
+        public Animation shotgunShootingAnimation;
+        AnimationPlayer animationplayer;
+        WeaponManager weaponManager;
 
         public Player(Weapon weapon, Vector2 position, int ID) : base(position)
-        {
-            velocity = Vector2.Zero;
-            maxspeed = 2.0f;
+        {        
             playerWeapon = weapon;
+            this.ID = ID;
+            hitBox = new Rectangle((int)position.X, (int)position.Y, TextureLibrary.sourceRectTex.Width, TextureLibrary.sourceRectTex.Height);
+            SetPlayerID(ID);
+            weaponManager = new WeaponManager();
+            LoadContent();
+        }
+
+        public void LoadContent()
+        {
+            rifleShootingAnimation = new Animation(TextureLibrary.player1RifleSheet ,63 ,0.1f ,true);
+            velocity = Vector2.Zero;    
+            maxspeed = 2.0f;
             playerSpeed = 1.8f;
             health = 1000;
             timeToRevive = 3.0f;
             reviveTime = 0.0f;
-            this.ID = ID;
-            hitBox = new Rectangle((int)position.X, (int)position.Y, TextureLibrary.sourceRectTex.Width, TextureLibrary.sourceRectTex.Height);
-            SetPlayerID(ID);
             cash = 0;
             explosivesLevel = 1;
             rifleLevel = 1;
             shotgunLevel = 1;
+
+            if (weaponManager.rifleIsShooting == true)
+            {
+                animationplayer.PlayAnimation(rifleShootingAnimation);
+            }
         }
 
         public Rectangle HitBox
