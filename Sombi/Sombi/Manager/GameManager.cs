@@ -82,12 +82,11 @@ namespace Sombi
                         }
 
                     }
-
                     break;
 
                 case GameState.Highscore:
                     {
-                        if (currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B)) // enbart för test, tas bort sen lolololo
+                        if (currentKeyboard.IsKeyDown(Keys.A) && !oldKeyboard.IsKeyDown(Keys.A)) // enbart för test, tas bort sen lolololo
                         {
                             currentGameState = GameState.Highscore;
                         }
@@ -116,8 +115,6 @@ namespace Sombi
                         break;
                     }
 
-                    break;
-
                 case GameState.LevelUp:
                     {
                         levelMenuManager.Update(ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel);
@@ -137,7 +134,7 @@ namespace Sombi
 
             if (playerManager.GameOver())
             {
-                spriteBatch.DrawString(TextureLibrary.HudText, "Well...", new Vector2(450, 500), Color.Black);
+                spriteBatch.DrawString(TextureLibrary.HudText, "Well....", new Vector2(450, 500), Color.Black);
                 Color fadeOutColor = new Color(new Vector3(255, 0, 0));
                 Color fadeInColor = new Color(new Vector3(0, 0, 0));
                 spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeOutColor * fadeOutPercentage);
