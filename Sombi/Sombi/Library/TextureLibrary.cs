@@ -48,6 +48,7 @@ namespace Sombi
 
         //Map and UI
         public static Texture2D testMapTex;
+
         //public static Texture2D HUD { get; private set; }
         public static Texture2D player1ScoreHud { get; private set; }
         public static Texture2D player2ScoreHud { get; private set; }
