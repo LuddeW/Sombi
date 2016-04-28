@@ -62,7 +62,6 @@ namespace Sombi
             rifleShootingAnimation = new Animation(TextureLibrary.player1RifleSheet, 63, 0.1f, true);
             velocity = Vector2.Zero;
             maxspeed = 2.0f;
-            playerSpeed = 1.8f;
             //playerWeapon = weapon;
             playerSpeed = 2.0f;
             health = 1000;
