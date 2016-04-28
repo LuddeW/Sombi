@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace Sombi
 {
     public class GlobalValues
     {
+
+
         public const int TILE_SIZE = 50;
         public static Vector2 gridSize = new Vector2(114, 90);
         public static int numberOfPlayers;
