@@ -31,7 +31,6 @@ namespace Sombi
             MovePlayer2Active();
             LevelUpPlayer1(ref shotgunLevelP1, ref rifleLevelP1, ref explosiveLevelP1);
             LevelUpPlayer2(ref shotgunLevelP2, ref rifleLevelP2, ref explosiveLevelP2);
-
         }
 
         public void Draw(SpriteBatch spriteBatch)

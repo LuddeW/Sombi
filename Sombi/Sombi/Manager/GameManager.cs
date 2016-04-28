@@ -121,15 +121,12 @@ namespace Sombi
                             currentGameState = GameState.Playing;
                         }
                         break;
-                    }
-
-            
+                    }            
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
             if (playerManager.GameOver())
             {
                 spriteBatch.DrawString(TextureLibrary.HudText, "Well....", new Vector2(450, 500), Color.Black);

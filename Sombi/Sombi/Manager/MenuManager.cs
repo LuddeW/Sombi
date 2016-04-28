@@ -28,6 +28,7 @@ namespace Sombi
             timeToPress = 2f;
             pressedTime = 0;
         }
+
         public void Update(GameTime gameTime)
         {
             if (fadePercentage >= 0)
@@ -43,6 +44,7 @@ namespace Sombi
             CheckSettings(gameTime);
             CheckHighscore(gameTime);
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(TextureLibrary.startButton, menu.startRect, Color.White);
@@ -123,6 +125,7 @@ namespace Sombi
                 }
             }
         }
+
         private void CheckSettings(GameTime gameTime)
         {
             foreach (Player player in players)
@@ -164,6 +167,4 @@ namespace Sombi
         }
 
     }
-
-
 }
