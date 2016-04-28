@@ -15,14 +15,16 @@ namespace Sombi
         public List<Player> players;
         public WeaponManager weaponManager;
 
+        Camera camera;
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
 
 
-        public PlayerManager()
+        public PlayerManager(Camera camera)
         {
             weaponManager = new WeaponManager();
             players = new List<Player>();
+            this.camera = camera;
             CreatePlayers();           
         }
 
@@ -55,6 +57,7 @@ namespace Sombi
             SwitchWeapon();
             weaponManager.Update(gameTime);
             Revive();
+            ScreenCollide();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -62,6 +65,33 @@ namespace Sombi
             player1.Draw(spriteBatch);
             player2.Draw(spriteBatch);
             weaponManager.Draw(spriteBatch);
+        }
+
+        protected void ScreenCollide()
+        {
+            foreach (Player p in players)
+            {
+                if (p.pos.X <= camera.position.X - GlobalValues.cameraBounds.X)
+                {
+                    p.velocity.X = 0;
+                    p.pos.X = camera.position.X - GlobalValues.cameraBounds.X  + 1;
+                }
+                if (p.pos.X >= camera.position.X + GlobalValues.cameraBounds.X)
+                {
+                    p.velocity.X = 0;
+                    p.pos.X = camera.position.X + GlobalValues.cameraBounds.X - 1;
+                }
+                if (p.pos.Y <= camera.position.Y - GlobalValues.cameraBounds.Y)
+                {
+                    p.velocity.Y = 0;
+                    p.pos.Y = camera.position.Y - GlobalValues.cameraBounds.Y + 1;
+                }
+                if (p.pos.Y >= camera.position.Y + GlobalValues.cameraBounds.Y)
+                {
+                    p.velocity.Y = 0;
+                    p.pos.Y = camera.position.Y + GlobalValues.cameraBounds.Y + 1;
+                }
+            }
         }
 
         public void CheckPlayerBulletCollisions()

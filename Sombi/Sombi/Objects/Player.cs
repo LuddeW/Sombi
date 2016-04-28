@@ -17,7 +17,7 @@ namespace Sombi
 
     class Player : GameObject
     {
-        Vector2 velocity;
+        public Vector2 velocity;
         Vector2 direction;
         public float angle;
         public float playerSpeed;

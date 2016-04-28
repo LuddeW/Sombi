@@ -47,7 +47,7 @@ namespace Sombi
             SoundLibrary.LoadContent(contentManager);
             Grid.CreateGridFactory();
             camera = new Camera((int)GlobalValues.TILE_SIZE);
-            playerManager = new PlayerManager();
+            playerManager = new PlayerManager(camera);
             enemyManager = new EnemyManager();
             hudManager = new HUDManager(playerManager.players);
             fpsManager = new FPSManager();
