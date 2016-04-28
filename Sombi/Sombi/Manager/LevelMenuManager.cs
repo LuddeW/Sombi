@@ -20,7 +20,7 @@ namespace Sombi
         {
             levelMenu = new LevelMenu();
             player1Active = new Vector2(0, 0);
-            player2Active = new Vector2(3, 1);
+            player2Active = new Vector2(3, 0);
         }
 
         public void Update(ref int shotgunLevelP1, ref int rifleLevelP1, ref int explosiveLevelP1, ref int shotgunLevelP2, ref int rifleLevelP2, ref int explosiveLevelP2)
