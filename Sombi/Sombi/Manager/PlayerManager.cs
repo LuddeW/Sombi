@@ -23,7 +23,7 @@ namespace Sombi
         {
             weaponManager = new WeaponManager();
             players = new List<Player>();
-            CreatePlayers();           
+            CreatePlayers();
         }
 
         public bool GameOver()
@@ -45,12 +45,12 @@ namespace Sombi
 
             if (player1.FireWeapon() && !player1.dead)
             {
-                weaponManager.CreateBullets(1,player1.pos, player1.angle, player1.explosivesLevel);
+                weaponManager.CreateBullets(1, player1.pos, player1.angle, player1.explosivesLevel);
             }
 
             if (player2.FireWeapon() && !player2.dead)
             {
-                weaponManager.CreateBullets(2,player2.pos, player2.angle, player2.explosivesLevel);
+                weaponManager.CreateBullets(2, player2.pos, player2.angle, player2.explosivesLevel);
             }
             SwitchWeapon();
             weaponManager.Update(gameTime);
@@ -78,7 +78,7 @@ namespace Sombi
                         {
                             weaponManager.bulletManager.bullets.RemoveAt(k);
                         }
-                        
+
                     }
                 }
             }
@@ -88,10 +88,10 @@ namespace Sombi
             players.Clear();
             player1 = new Player(weaponManager.playerOneWeapon, new Vector2(150, 150), 1);
             player2 = new Player(weaponManager.playerTwoWeapon, new Vector2(150, 200), 2);
-            players.Add(player1);
-            players.Add(player2);
             player1.LoadContent();
             player2.LoadContent();
+            players.Add(player1);
+            players.Add(player2);
         }
 
         private void Revive()
@@ -128,7 +128,7 @@ namespace Sombi
             }
             if (currentKeyboard.IsKeyDown(Keys.Q) && !oldKeyboard.IsKeyDown(Keys.Q))
             {
-                weaponManager.SwitchWeaponLeft(1, player1.shotgunLevel, player1.explosivesLevel, player1.rifleLevel);           
+                weaponManager.SwitchWeaponLeft(1, player1.shotgunLevel, player1.explosivesLevel, player1.rifleLevel);
             }
             if (player1.GamePadState.IsButtonDown(Buttons.RightShoulder) && !player1.OldGamePadState.IsButtonDown(Buttons.RightShoulder))
             {

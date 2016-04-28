@@ -17,7 +17,7 @@ namespace Sombi
         private float timeSinceLastPlayerTwoBullet;
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
-        public bool rifleIsShooting = false;
+        public bool rifleIsSelected = false;
 
         public WeaponManager()
         {
@@ -53,7 +53,7 @@ namespace Sombi
                     
                     if (playerOneWeapon is Rifle)
                     {
-                        rifleIsShooting = true;
+                        rifleIsSelected = true;
                         bulletManager.AddBullets(b);
                     }
                     else if (playerOneWeapon is Explosives)
@@ -97,6 +97,7 @@ namespace Sombi
                     {
                         if (playerTwoWeapon is Rifle)
                         {
+                            rifleIsSelected = true;
                             bulletManager.AddBullets(b);
                         }
                         else if (playerTwoWeapon is Explosives)
