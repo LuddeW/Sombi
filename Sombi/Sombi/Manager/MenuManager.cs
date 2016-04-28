@@ -100,6 +100,7 @@ namespace Sombi
                         }
                     }
                 }
+                GlobalValues.numberOfPlayers = numberOfPlayers;
             }                        
         }
 

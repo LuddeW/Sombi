@@ -56,7 +56,7 @@ namespace Sombi
             highscoreManager.ReadScore();
             menuManager = new MenuManager(playerManager.players);
             levelMenuManager = new LevelMenuManager();
-            packageManager = new PackageManager();
+            packageManager = new PackageManager(enemyManager);
             this.game = game;
 
         }
@@ -180,7 +180,7 @@ namespace Sombi
         {
             if (menuManager.start)
             {
-                enemyManager.AddZombiesToRandomLocation(12 * GlobalValues.difficultyLevel);
+                enemyManager.AddZombiesToRandomLocation(24 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
                 packageManager.AddPackage();
 
                 if (menuManager.numberOfPlayers == 1)
