@@ -36,7 +36,6 @@ namespace Sombi
                     {
                         hitbox[i, k] = new Rectangle(x * (i + 1), y * (k + 1), 110, 54);
                     }
-
                     hitbox[i, k].X += 100;
                     hitbox[i, k].Y += 100;
                 }

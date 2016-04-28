@@ -16,8 +16,7 @@ namespace Sombi
         private float timeSinceLastPlayerOneBullet;
         private float timeSinceLastPlayerTwoBullet;
         KeyboardState currentKeyboard;
-        KeyboardState oldKeyboard;
-        public bool rifleIsShooting = false;
+        KeyboardState oldKeyboard;      
 
         public WeaponManager()
         {
@@ -54,7 +53,6 @@ namespace Sombi
                     if (playerOneWeapon is Rifle)
                     {
                         SoundLibrary.rifleFire.Play();
-                        rifleIsShooting = true;
                         bulletManager.AddBullets(b);
                     }
                     else if (playerOneWeapon is Explosives)

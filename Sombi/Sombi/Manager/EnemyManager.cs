@@ -10,16 +10,18 @@ namespace Sombi
     class EnemyManager
     {
 
-
-        //int maxzombies = 10;
-
-
         public List<Zombie> zombies = new List<Zombie>();
         public List<BloodStain> bloodPositions = new List<BloodStain>();
         public void Update(GameTime gameTime, List<Projectile> bulletList)
         {
             CheckForBulletCollisions(bulletList);
             ClearZombies();
+            UpdateZombies(gameTime);
+
+        }
+
+        private void UpdateZombies(GameTime gameTime)
+        {
             foreach (Zombie z in zombies)
             {
                 z.Update(gameTime);
@@ -32,6 +34,7 @@ namespace Sombi
             zombies.Add(z);
             z.LoadContent();
         }
+
         public void ClearZombies()
         {
             for (int i = zombies.Count - 1; i >= 0; i--)
@@ -42,9 +45,6 @@ namespace Sombi
                     bloodPositions.Add(new BloodStain(zombies[i].pos));
                     zombies.RemoveAt(i);
                     HighscoreManager.score++;
-
-                    //maxzombies++;
-
                 }
             }
         }

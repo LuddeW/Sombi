@@ -74,7 +74,6 @@ namespace Sombi
             {
                 case GameState.MainMenu:
                     {
-
                         MenuUpdate(gameTime);
                         if (currentKeyboard.IsKeyDown(Keys.A)) ///enbart för test, tas bort sen
                         {
@@ -116,21 +115,18 @@ namespace Sombi
 
                 case GameState.LevelUp:
                     {
-                        levelMenuManager.Update(ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel);
+                        levelMenuManager.Update(ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel, ref playerManager.player2.shotgunLevel, ref playerManager.player2.rifleLevel, ref playerManager.player2.explosivesLevel);
                         if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
                         {
                             currentGameState = GameState.Playing;
                         }
                         break;
-                    }
-
-            
+                    }            
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
             if (playerManager.GameOver())
             {
                 spriteBatch.DrawString(TextureLibrary.HudText, "Well....", new Vector2(450, 500), Color.Black);
@@ -148,11 +144,7 @@ namespace Sombi
                 }
                 case GameState.Highscore:
                 {
-                    spriteBatch.DrawString(TextureLibrary.HudText,highscoreManager.HighScores[0].ToString(), new Vector2(100,100), Color.Black);
-                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[1].ToString(), new Vector2(100, 200), Color.Black);
-                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[2].ToString(), new Vector2(100, 300), Color.Black);
-                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[3].ToString(), new Vector2(100, 400), Color.Black);
-                    spriteBatch.DrawString(TextureLibrary.HudText, highscoreManager.HighScores[4].ToString(), new Vector2(100, 500), Color.Black);
+                    highscoreManager.Draw(spriteBatch);
                     break;
                 }
                 case GameState.Playing:

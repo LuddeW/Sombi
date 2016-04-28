@@ -52,14 +52,22 @@ namespace Sombi
                     weaponRotationIndex = 2;
                 }
             }
-            /*if (player1.GamePadState.IsButtonDown(Buttons.RightShoulder) && !player1.OldGamePadState.IsButtonDown(Buttons.RightShoulder))
+            if (players[0].GamePadState.IsButtonDown(Buttons.RightShoulder) && !players[0].OldGamePadState.IsButtonDown(Buttons.RightShoulder))
             {
                 weaponRotationIndex++;
+                if (weaponRotationIndex > 2)
+                {
+                    weaponRotationIndex = 0;
+                }
             }
-            if (player1.GamePadState.IsButtonDown(Buttons.LeftShoulder) && !player1.OldGamePadState.IsButtonDown(Buttons.LeftShoulder))
+            if (players[0].GamePadState.IsButtonDown(Buttons.LeftShoulder) && !players[0].OldGamePadState.IsButtonDown(Buttons.LeftShoulder))
             {
-                weaponRotationIndex++;
-            }*/
+                weaponRotationIndex--;
+                if (weaponRotationIndex < 0)
+                {
+                    weaponRotationIndex = 2;
+                }
+            }
         }
         public void Draw(SpriteBatch spriteBatch, int numberOfPlayers)
         {

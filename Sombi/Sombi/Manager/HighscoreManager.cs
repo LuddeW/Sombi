@@ -39,10 +39,10 @@ namespace Sombi
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(TextureLibrary.HudText, highScores[0].ToString(), new Vector2(100, 100), Color.Black);
-            spriteBatch.DrawString(TextureLibrary.HudText, highScores[0].ToString(), new Vector2(100, 200), Color.Black);
-            spriteBatch.DrawString(TextureLibrary.HudText, highScores[0].ToString(), new Vector2(100, 300), Color.Black);
-            spriteBatch.DrawString(TextureLibrary.HudText, highScores[0].ToString(), new Vector2(100, 400), Color.Black);
-            spriteBatch.DrawString(TextureLibrary.HudText, highScores[0].ToString(), new Vector2(100, 500), Color.Black);
+            spriteBatch.DrawString(TextureLibrary.HudText, highScores[1].ToString(), new Vector2(100, 200), Color.Black);
+            spriteBatch.DrawString(TextureLibrary.HudText, highScores[2].ToString(), new Vector2(100, 300), Color.Black);
+            spriteBatch.DrawString(TextureLibrary.HudText, highScores[3].ToString(), new Vector2(100, 400), Color.Black);
+            spriteBatch.DrawString(TextureLibrary.HudText, highScores[4].ToString(), new Vector2(100, 500), Color.Black);
         }
 
         public void WriteScore()

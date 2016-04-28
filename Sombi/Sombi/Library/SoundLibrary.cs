@@ -12,14 +12,10 @@ namespace Sombi
     {
         public static Song menuSong;
         public static SoundEffect shotGunFire;
-        //public static SoundEffectInstance shotGunFireInstance;
         public static SoundEffect rifleFire;
-        //public static SoundEffectInstance rifleFireInstance;
         public static SoundEffect explosiveFire;
-        //public static SoundEffectInstance explosiveFireInstance;
         public static SoundEffect explosion;
         public static SoundEffectInstance explosionInstance;
-
 
         public static void LoadContent(ContentManager Content)
         {

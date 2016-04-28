@@ -24,8 +24,12 @@ namespace Sombi
         {
             weaponManager = new WeaponManager();
             players = new List<Player>();
+
+            CreatePlayers();
+
             this.camera = camera;
             CreatePlayers();           
+
         }
 
         public bool GameOver()
@@ -42,17 +46,20 @@ namespace Sombi
 
         public void Update(GameTime gameTime)
         {
+            player1.UpdateAnimation(weaponManager.playerOneWeapon);
+            player2.UpdateAnimation(weaponManager.playerTwoWeapon);
             player1.Update(gameTime);
             player2.Update(gameTime);
 
+
             if (player1.FireWeapon() && !player1.dead)
             {
-                weaponManager.CreateBullets(1,player1.pos, player1.angle, player1.explosivesLevel);
+                weaponManager.CreateBullets(1, player1.pos, player1.angle, player1.explosivesLevel);
             }
 
             if (player2.FireWeapon() && !player2.dead)
             {
-                weaponManager.CreateBullets(2,player2.pos, player2.angle, player2.explosivesLevel);
+                weaponManager.CreateBullets(2, player2.pos, player2.angle, player2.explosivesLevel);
             }
             SwitchWeapon();
             weaponManager.Update(gameTime);
@@ -110,7 +117,7 @@ namespace Sombi
                         {
                             weaponManager.bulletManager.bullets.RemoveAt(k);
                         }
-                        
+
                     }
                 }
             }
@@ -118,12 +125,12 @@ namespace Sombi
         public void CreatePlayers()
         {
             players.Clear();
-            player1 = new Player(weaponManager.playerOneWeapon, new Vector2(150, 150), 1);
-            player2 = new Player(weaponManager.playerTwoWeapon, new Vector2(150, 200), 2);
-            players.Add(player1);
-            players.Add(player2);
+            player1 = new Player(/*weaponManager.playerOneWeapon, */new Vector2(150, 150), 1);
+            player2 = new Player(/*weaponManager.playerTwoWeapon, */new Vector2(150, 200), 2);
             player1.LoadContent();
             player2.LoadContent();
+            players.Add(player1);
+            players.Add(player2);
         }
 
         private void Revive()
@@ -160,7 +167,7 @@ namespace Sombi
             }
             if (currentKeyboard.IsKeyDown(Keys.Q) && !oldKeyboard.IsKeyDown(Keys.Q))
             {
-                weaponManager.SwitchWeaponLeft(1, player1.shotgunLevel, player1.explosivesLevel, player1.rifleLevel);           
+                weaponManager.SwitchWeaponLeft(1, player1.shotgunLevel, player1.explosivesLevel, player1.rifleLevel);
             }
             if (player1.GamePadState.IsButtonDown(Buttons.RightShoulder) && !player1.OldGamePadState.IsButtonDown(Buttons.RightShoulder))
             {
