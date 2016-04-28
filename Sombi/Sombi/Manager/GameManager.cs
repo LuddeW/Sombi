@@ -258,7 +258,18 @@ namespace Sombi
         {
             if (menuManager.numberOfPlayers == 2)
             {
-                camera.Update(playerManager.players[0].pos, playerManager.players[1].pos);
+                if (playerManager.player1.eaten)
+                {
+                    camera.Update(playerManager.players[1].pos, playerManager.players[1].pos);
+                }
+                else if (playerManager.player2.eaten)
+                {
+                    camera.Update(playerManager.players[0].pos, playerManager.players[0].pos);
+                }
+                else
+                {
+                    camera.Update(playerManager.players[0].pos, playerManager.players[1].pos);
+                }  
             }
             else
             {
