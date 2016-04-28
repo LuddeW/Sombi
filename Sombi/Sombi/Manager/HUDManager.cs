@@ -4,13 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Input;
 
 namespace Sombi
 {
     class HUDManager
     {
+        KeyboardState currentKeyboard;
+        KeyboardState oldKeyboard;
+
         List<Player> players;
         Vector2 hudPos;
+
+        int weaponRotationIndex = 0;
 
         public HUDManager(List<Player> players)
         {
@@ -21,6 +27,38 @@ namespace Sombi
         {
             hudPos.X = cameraPos.X;
             hudPos.Y = cameraPos.Y;
+
+        }
+        public void WeaponRotation()
+        {
+            oldKeyboard = currentKeyboard;
+            currentKeyboard = Keyboard.GetState();
+
+
+            if (currentKeyboard.IsKeyDown(Keys.E) && !oldKeyboard.IsKeyDown(Keys.E))
+            {
+                weaponRotationIndex++;           //För player 1
+                if (weaponRotationIndex > 2)
+                {
+                    weaponRotationIndex = 0;
+                }
+            }
+            if (currentKeyboard.IsKeyDown(Keys.Q) && !oldKeyboard.IsKeyDown(Keys.Q))
+            {
+                weaponRotationIndex--;
+                if (weaponRotationIndex < 0)
+                {
+                    weaponRotationIndex = 2;
+                }
+            }
+            /*if (player1.GamePadState.IsButtonDown(Buttons.RightShoulder) && !player1.OldGamePadState.IsButtonDown(Buttons.RightShoulder))
+            {
+                weaponRotationIndex++;
+            }
+            if (player1.GamePadState.IsButtonDown(Buttons.LeftShoulder) && !player1.OldGamePadState.IsButtonDown(Buttons.LeftShoulder))
+            {
+                weaponRotationIndex++;
+            }*/
         }
         public void Draw(SpriteBatch spriteBatch, int numberOfPlayers)
         {
