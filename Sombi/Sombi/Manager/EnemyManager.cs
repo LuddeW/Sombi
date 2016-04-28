@@ -60,19 +60,21 @@ namespace Sombi
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void DrawZombie(SpriteBatch spriteBatch)
         {
-            foreach (BloodStain bs in bloodPositions)
-            {
-                bs.Draw(spriteBatch);
-            }
-
             foreach (Zombie z in zombies)
             {
                 z.Draw(spriteBatch);
             }
             spriteBatch.DrawString(TextureLibrary.billBoardText, "" + zombies.Count, new Vector2(1366, 1430), GlobalValues.billBoardColor);
 
+        }
+        public void DrawBlood(SpriteBatch spriteBatch)
+        {
+            foreach (BloodStain bs in bloodPositions)
+            {
+                bs.Draw(spriteBatch);
+            }
         }
         public void CheckForBulletCollisions(List<Projectile> bulletList)
         {

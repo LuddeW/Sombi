@@ -4,13 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Input;
 
 namespace Sombi
 {
     class HUDManager
     {
+        KeyboardState currentKeyboard;
+        KeyboardState oldKeyboard;
+
         List<Player> players;
         Vector2 hudPos;
+
+        int weaponRotationIndex = 0;
 
         public HUDManager(List<Player> players)
         {
@@ -21,11 +27,44 @@ namespace Sombi
         {
             hudPos.X = cameraPos.X;
             hudPos.Y = cameraPos.Y;
+            WeaponRotation();
+
+        }
+        public void WeaponRotation()
+        {
+            oldKeyboard = currentKeyboard;
+            currentKeyboard = Keyboard.GetState();
+
+
+            if (currentKeyboard.IsKeyDown(Keys.E) && !oldKeyboard.IsKeyDown(Keys.E))
+            {
+                weaponRotationIndex++;           //För player 1
+                if (weaponRotationIndex > 2)
+                {
+                    weaponRotationIndex = 0;
+                }
+            }
+            if (currentKeyboard.IsKeyDown(Keys.Q) && !oldKeyboard.IsKeyDown(Keys.Q))
+            {
+                weaponRotationIndex--;
+                if (weaponRotationIndex < 0)
+                {
+                    weaponRotationIndex = 2;
+                }
+            }
+            /*if (player1.GamePadState.IsButtonDown(Buttons.RightShoulder) && !player1.OldGamePadState.IsButtonDown(Buttons.RightShoulder))
+            {
+                weaponRotationIndex++;
+            }
+            if (player1.GamePadState.IsButtonDown(Buttons.LeftShoulder) && !player1.OldGamePadState.IsButtonDown(Buttons.LeftShoulder))
+            {
+                weaponRotationIndex++;
+            }*/
         }
         public void Draw(SpriteBatch spriteBatch, int numberOfPlayers)
         {
             spriteBatch.Draw(TextureLibrary.player1ScoreHud, new Vector2(hudPos.X + 0, hudPos.Y + 0) , Color.White);          
-            spriteBatch.Draw(TextureLibrary.weaponHud, new Vector2(hudPos.X + 0, hudPos.Y + GlobalValues.screenBounds.Y - TextureLibrary.weaponHud.Height), Color.White * 0.8f);
+            spriteBatch.Draw(TextureLibrary.weaponWheel[weaponRotationIndex], new Vector2(hudPos.X + 0, hudPos.Y + GlobalValues.screenBounds.Y - TextureLibrary.weaponHud.Height), Color.White * 0.8f);
             spriteBatch.DrawString(TextureLibrary.HudText, "Health: " + players[0].health, new Vector2(hudPos.X + 15, hudPos.Y + 10), Color.Black);
             spriteBatch.DrawString(TextureLibrary.HudText, "Cash: " + players[0].cash, new Vector2(hudPos.X + 15, hudPos.Y + 25), Color.Black);
             if (numberOfPlayers == 2)

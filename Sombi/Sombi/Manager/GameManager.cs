@@ -47,7 +47,7 @@ namespace Sombi
             SoundLibrary.LoadContent(contentManager);
             Grid.CreateGridFactory();
             camera = new Camera((int)GlobalValues.TILE_SIZE);
-            playerManager = new PlayerManager();
+            playerManager = new PlayerManager(camera);
             enemyManager = new EnemyManager();
             hudManager = new HUDManager(playerManager.players);
             fpsManager = new FPSManager();
@@ -56,7 +56,7 @@ namespace Sombi
             highscoreManager.ReadScore();
             menuManager = new MenuManager(playerManager.players);
             levelMenuManager = new LevelMenuManager();
-            packageManager = new PackageManager();
+            packageManager = new PackageManager(enemyManager);
             this.game = game;
 
         }
@@ -116,7 +116,7 @@ namespace Sombi
 
                 case GameState.LevelUp:
                     {
-                        levelMenuManager.Update(ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel);
+                        levelMenuManager.Update(ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel, ref playerManager.player2.shotgunLevel, ref playerManager.player2.rifleLevel, ref playerManager.player2.explosivesLevel);
                         if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
                         {
                             currentGameState = GameState.Playing;
@@ -180,7 +180,7 @@ namespace Sombi
         {
             if (menuManager.start)
             {
-                enemyManager.AddZombiesToRandomLocation(12 * GlobalValues.difficultyLevel);
+                enemyManager.AddZombiesToRandomLocation(24 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
                 packageManager.AddPackage();
 
                 if (menuManager.numberOfPlayers == 1)
@@ -245,9 +245,10 @@ namespace Sombi
             
             spriteBatch.Draw(TextureLibrary.testMapTex, Vector2.Zero, Color.White);
             packageManager.Draw(spriteBatch);
-            enemyManager.Draw(spriteBatch);
+            enemyManager.DrawBlood(spriteBatch);
             fpsManager.Draw(spriteBatch);
             playerManager.Draw(spriteBatch);
+            enemyManager.DrawZombie(spriteBatch);
             floatingTextures.Draw(spriteBatch);
             hudManager.Draw(spriteBatch, menuManager.numberOfPlayers);
             Color fadeInColor = new Color(new Vector3(0, 0, 0));
@@ -258,7 +259,18 @@ namespace Sombi
         {
             if (menuManager.numberOfPlayers == 2)
             {
-                camera.Update(playerManager.players[0].pos, playerManager.players[1].pos);
+                if (playerManager.player1.eaten)
+                {
+                    camera.Update(playerManager.players[1].pos, playerManager.players[1].pos);
+                }
+                else if (playerManager.player2.eaten)
+                {
+                    camera.Update(playerManager.players[0].pos, playerManager.players[0].pos);
+                }
+                else
+                {
+                    camera.Update(playerManager.players[0].pos, playerManager.players[1].pos);
+                }  
             }
             else
             {

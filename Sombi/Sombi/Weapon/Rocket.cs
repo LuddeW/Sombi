@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,8 @@ namespace Sombi
         private int AOE;
         AnimationPlayer animationPlayer;
         private Rectangle explodingHb;
+        GamePadState circularGamePadState;
+
         public Rocket(Vector2 pos, float speed, float angle, int damage, int range, int ID)
             : base(pos, speed, angle, damage, range, ID)
         {
@@ -36,7 +39,7 @@ namespace Sombi
         {
             pos += velocity * speed;
             distanceTraveled = Vector2.Distance(Pos, startPos);
-            explodingHb.X = (int)pos.X - (explodingHb.Width/2);
+            explodingHb.X = (int)pos.X - (explodingHb.Width / 2);
             explodingHb.Y = (int)pos.Y - (explodingHb.Height / 2);
             if (exploding && explodeTimer < explodeDuration)
             {
@@ -44,15 +47,14 @@ namespace Sombi
                 explodeTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 animationPlayer.PlayAnimation(animation);
                 animationPlayer.Update(gameTime);
-                
-                
             }
-
-
+            UpdateRocketRotation();
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TextureLibrary.bulletBlue, pos, Color.White);
+            spriteBatch.Draw(TextureLibrary.rocket, pos, null, Color.White, angle, new Vector2(TextureLibrary.rocket.Width / 2, TextureLibrary.rocket.Height / 2), 1f, SpriteEffects.None, 0f);
+
+
             animationPlayer.Draw(spriteBatch, pos);
         }
         public override void Explode()
@@ -61,10 +63,20 @@ namespace Sombi
             explodingHb.Width = AOE;
             explodingHb.Height = AOE;
             exploding = true;
+            //SoundLibrary.explosion.Play();
+            SoundLibrary.PlaySound(SoundLibrary.Explosion);
+
         }
         public override Rectangle GetHitBox()
         {
             return explodingHb;
+        }
+        private void UpdateRocketRotation() //Rotate sprite based on controller input
+        {
+            if (circularGamePadState.ThumbSticks.Right.X != 0 && circularGamePadState.ThumbSticks.Right.Y != 0)
+            {
+                angle = (float)Math.Atan2(circularGamePadState.ThumbSticks.Right.X, circularGamePadState.ThumbSticks.Right.Y) - (float)Math.PI / 2;
+            }
         }
         public void SetVariables(int level)
         {

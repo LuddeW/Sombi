@@ -11,10 +11,12 @@ namespace Sombi
     {
         Package package;
         Rectangle dropZone;
-        public PackageManager()
+        EnemyManager enemyManager;
+        public PackageManager(EnemyManager enemyManager)
         {
             //package = new Package(new Vector2(850, 550));
             dropZone = new Rectangle(1600, 1375, 160, 170);
+            this.enemyManager = enemyManager;
         }
 
         public void Update(GameTime gameTime, List<Player> players, int numberOfPlayers)
@@ -78,6 +80,7 @@ namespace Sombi
                             AddPackage();
                             
                         }
+                        enemyManager.AddZombiesToRandomLocation(13 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
                     }
                 }
             }

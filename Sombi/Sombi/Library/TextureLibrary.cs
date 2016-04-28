@@ -18,6 +18,11 @@ namespace Sombi
         public static Texture2D player2ShotgunTex { get; private set; }
         public static Texture2D player2RocketTex { get; private set; }
         public static Texture2D zombieTex { get; private set; }
+        public static Texture2D player1IncapacitatedTex { get; private set; }
+        public static Texture2D player2IncapacitatedTex { get; private set; }
+        public static Texture2D player1DeadTex { get; private set; }
+        public static Texture2D player2DeadTex { get; private set; }
+
         public static Texture2D fastZombieTex { get; private set; }
         public static Texture2D fatZombieTex { get; private set; }
 
@@ -25,6 +30,7 @@ namespace Sombi
         public static Texture2D player1RifleAnimationSheet { get; private set; }
         public static Texture2D player1RifleIdle { get; private set; }
             
+
         //Structures and Objects
         public static Texture2D packageTex { get; private set; }
         public static Texture2D medicTentTex { get; private set; }
@@ -46,19 +52,24 @@ namespace Sombi
         public static Texture2D player1ScoreHud { get; private set; }
         public static Texture2D player2ScoreHud { get; private set; }
         public static Texture2D weaponHud { get; private set; }
-        
+        public static Texture2D rifleLevel { get; private set; }
+        public static Texture2D shotgunLevel { get; private set; }
+        public static Texture2D rocketLevel { get; private set; }
+        public static Texture2D[] weaponWheel = new Texture2D[3];
+
         //Menu
         public static Texture2D startButton { get; private set; }
         public static Texture2D settingButton { get; private set; }
         public static Texture2D highscoreButton { get; private set; }
         public static Texture2D exitButton { get; private set; }
         public static Texture2D logoTex { get; private set; }
-        
+
         //Projectiles and Blood
         public static Texture2D bulletBlue { get; private set; }
         public static Texture2D[] bloodStain = new Texture2D[10];
         public static Texture2D rocketExplosion { get; private set; }
-        
+        public static Texture2D rocket { get; private set; }
+
         //Spritefonts
         public static SpriteFont HudText { get; private set; }
         public static SpriteFont pauseText { get; private set; }
@@ -72,6 +83,7 @@ namespace Sombi
         {
             //Player and Enemy Sprites            
             player1RifleTex = Content.Load<Texture2D>(@"Player1Rifle");
+
             player1ShotgunTex = Content.Load<Texture2D>(@"Player1Shotgun");
             player1RocketTex = Content.Load<Texture2D>(@"Player1Rocket");
             player1RifleAnimationSheet = Content.Load<Texture2D>(@"AnimationPlayer1RifleSheet");
@@ -80,16 +92,23 @@ namespace Sombi
             // Player1 shooting animation
             player1RifleSheet = Content.Load<Texture2D>(@"Player1RifleSheet");
 
+            player1RifleSheet = Content.Load<Texture2D>(@"Player1RifleSheet");
+            player1ShotgunTex = Content.Load<Texture2D>(@"Player1Shotgun");
+            player1RocketTex = Content.Load<Texture2D>(@"Player1Rocket");
+            player1IncapacitatedTex = Content.Load<Texture2D>(@"Player1Incapacitated");
+            player1DeadTex = Content.Load<Texture2D>(@"Player1Dead");
 
 
             player2RifleTex = Content.Load<Texture2D>(@"Player2Rifle");
             player2ShotgunTex = Content.Load<Texture2D>(@"Player2Shotgun");
             player2RocketTex = Content.Load<Texture2D>(@"Player2Rocket");
+            player2IncapacitatedTex = Content.Load<Texture2D>(@"Player2Incapacitated");
+            player2DeadTex = Content.Load<Texture2D>(@"Player2Dead");
 
             zombieTex = Content.Load<Texture2D>(@"ZombieSheet");
             fastZombieTex = Content.Load<Texture2D>(@"ZombieSheet2");
             fatZombieTex = Content.Load<Texture2D>(@"FatZombie");
-            
+
             //Structures and Objects
             packageTex = Content.Load<Texture2D>("Package");
             medicTentTex = Content.Load<Texture2D>("MedicTent");
@@ -119,26 +138,32 @@ namespace Sombi
             bloodStain[8] = Content.Load<Texture2D>(@"BloodStain9");
             bloodStain[9] = Content.Load<Texture2D>(@"BloodStain10");
             rocketExplosion = Content.Load<Texture2D>(@"ExplosionSombi");
-            
+            rocket = Content.Load<Texture2D>(@"Rocket");
+
             //Map and UI
             testMapTex = Content.Load<Texture2D>(@"TestMap2");
             //HUD = Content.Load<Texture2D>(@"TestHud");
             player1ScoreHud = Content.Load<Texture2D>("Player1ScoreHUD");
             player2ScoreHud = Content.Load<Texture2D>("Player2ScoreHUD");
             weaponHud = Content.Load<Texture2D>("WeaponHUD");
-            
+            rifleLevel = Content.Load<Texture2D>("RifleLevel");
+            shotgunLevel = Content.Load<Texture2D>("ShotgunLevel");
+            rocketLevel = Content.Load<Texture2D>("RocketLevel");
+            weaponWheel[0] = Content.Load<Texture2D>("WeaponHUDRocket");
+            weaponWheel[1] = Content.Load<Texture2D>("WeaponHUDShotgun");
+            weaponWheel[2] = Content.Load<Texture2D>("WeaponHUDRifle");
             //Menu
             logoTex = Content.Load<Texture2D>(@"Logo1Sombi");
             startButton = Content.Load<Texture2D>(@"Play");
             settingButton = Content.Load<Texture2D>(@"Settings");
             highscoreButton = Content.Load<Texture2D>(@"Highscore");
-            exitButton = Content.Load<Texture2D>(@"Exit");            
-                        
+            exitButton = Content.Load<Texture2D>(@"Exit");
+
             //Spritefonts
             HudText = Content.Load<SpriteFont>(@"HUDText");
             billBoardText = Content.Load<SpriteFont>("BillboardFont");
             pauseText = Content.Load<SpriteFont>("pauseFont");
-            
+
             //Miscellaneous
             sourceRectTex = Content.Load<Texture2D>(@"Rectangle");
             fadeScreenTex = Content.Load<Texture2D>("FadeScreen");

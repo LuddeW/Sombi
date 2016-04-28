@@ -129,7 +129,11 @@
     <Content Include="Content\Play.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Player1Incapacitated.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Player1ScoreHUD.png" />
+    <Content Include="Content\Player2Incapacitated.png" />
     <Content Include="Content\Player2ScoreHUD.png" />
     <Content Include="Content\Rectangle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

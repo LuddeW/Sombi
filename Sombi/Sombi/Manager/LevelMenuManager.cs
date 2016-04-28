@@ -23,13 +23,15 @@ namespace Sombi
             player2Active = new Vector2(3, 0);
         }
 
-        public void Update(ref int shotgunLevel, ref int rifleLevel, ref int explosiveLevel)
+        public void Update(ref int shotgunLevelP1, ref int rifleLevelP1, ref int explosiveLevelP1, ref int shotgunLevelP2, ref int rifleLevelP2, ref int explosiveLevelP2)
         {
             oldKeyboard = currentKeyboard;
             currentKeyboard = Keyboard.GetState();
-            MoveActive();
-            LevelUp( ref shotgunLevel, ref rifleLevel, ref explosiveLevel);
-            
+            MovePlayer1Active();
+            MovePlayer2Active();
+            LevelUpPlayer1(ref shotgunLevelP1, ref rifleLevelP1, ref explosiveLevelP1);
+            LevelUpPlayer2(ref shotgunLevelP2, ref rifleLevelP2, ref explosiveLevelP2);
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -38,14 +40,25 @@ namespace Sombi
             {
                 for (int k = 0; k < levelMenu.numberOfRows; k++)
                 {
-                    spriteBatch.Draw(TextureLibrary.busTex, levelMenu.hitbox[i, k], Color.White);
+                    spriteBatch.Draw(TextureLibrary.rifleLevel, levelMenu.hitbox[0, k], Color.White);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 1     $100", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 0].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    spriteBatch.Draw(TextureLibrary.shotgunLevel, levelMenu.hitbox[1, k], Color.White);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 2     $150", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 1].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[2, k], Color.White);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 3     $200", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 2].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    spriteBatch.Draw(TextureLibrary.rifleLevel, levelMenu.hitbox[3, k], Color.White);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 4     $250", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 3].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    spriteBatch.Draw(TextureLibrary.shotgunLevel, levelMenu.hitbox[4, k], Color.White);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 5     $300", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 4].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[5, k], Color.White);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 6     $350", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 5].Y + levelMenu.hitbox[i, k].Height), Color.Black);
                 }
             }
-            spriteBatch.Draw(TextureLibrary.busTex, levelMenu.hitbox[(int)player1Active.X, (int)player1Active.Y], Color.Black);
-            spriteBatch.Draw(TextureLibrary.busTex, levelMenu.hitbox[(int)player2Active.X, (int)player2Active.Y], Color.Black);
+            spriteBatch.Draw(TextureLibrary.sourceRectTex, levelMenu.hitbox[(int)player1Active.X, (int)player1Active.Y], Color.Black * 0.2f);
+            spriteBatch.Draw(TextureLibrary.sourceRectTex, levelMenu.hitbox[(int)player2Active.X, (int)player2Active.Y], Color.Black * 0.2f);
         }
 
-        private void MoveActive()
+        private void MovePlayer1Active()
         {
             if (currentKeyboard.IsKeyDown(Keys.W) && !oldKeyboard.IsKeyDown(Keys.W) && (int)player1Active.Y > 0)
             {
@@ -63,6 +76,10 @@ namespace Sombi
             {
                 player1Active.X += 1;
             }
+        }
+
+        private void MovePlayer2Active()
+        {
             if (currentKeyboard.IsKeyDown(Keys.Up) && !oldKeyboard.IsKeyDown(Keys.Up) && (int)player2Active.Y > 0)
             {
                 player2Active.Y -= 1;
@@ -81,7 +98,7 @@ namespace Sombi
             }
         }
 
-        private void LevelUp(ref int shotgunLevel,ref int rifleLevel, ref int explosiveLevel)
+        private void LevelUpPlayer1(ref int shotgunLevel, ref int rifleLevel, ref int explosiveLevel)
         {
             if (currentKeyboard.IsKeyDown(Keys.Enter) && !oldKeyboard.IsKeyDown(Keys.Enter))
             {
@@ -94,6 +111,27 @@ namespace Sombi
                         rifleLevel = (int)player1Active.Y + 1;
                         break;
                     case 2:
+                        explosiveLevel = (int)player1Active.Y + 1;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void LevelUpPlayer2(ref int shotgunLevel, ref int rifleLevel, ref int explosiveLevel)
+        {
+            if (currentKeyboard.IsKeyDown(Keys.Enter) && !oldKeyboard.IsKeyDown(Keys.Enter))
+            {
+                switch ((int)player2Active.X)
+                {
+                    case 3:
+                        shotgunLevel = (int)player1Active.Y + 1;
+                        break;
+                    case 4:
+                        rifleLevel = (int)player1Active.Y + 1;
+                        break;
+                    case 5:
                         explosiveLevel = (int)player1Active.Y + 1;
                         break;
                     default:

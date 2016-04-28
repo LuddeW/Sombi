@@ -34,8 +34,8 @@ namespace Sombi
             bulletManager.Update(gameTime);
             timeSinceLastPlayerOneBullet += (float)gameTime.ElapsedGameTime.TotalSeconds;
             timeSinceLastPlayerTwoBullet += (float)gameTime.ElapsedGameTime.TotalSeconds;
-          /*  SwitchWeapon(1);
-            SwitchWeapon(2);*/
+            /*  SwitchWeapon(1);
+              SwitchWeapon(2);*/
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -50,15 +50,18 @@ namespace Sombi
                 {
                     Bullet b = new Bullet(position, playerOneWeapon.projectileSpeed, angle, playerOneWeapon.damage, playerOneWeapon.weaponRange, PlayerID);
                     Rocket r = new Rocket(position, playerOneWeapon.projectileSpeed, angle, playerOneWeapon.damage, playerOneWeapon.weaponRange, PlayerID, explosivesLevel);
-                    
+
                     if (playerOneWeapon is Rifle)
                     {
                         rifleIsSelected = true;
+                        SoundLibrary.rifleFire.Play();
+                        rifleIsShooting = true;
                         bulletManager.AddBullets(b);
                     }
                     else if (playerOneWeapon is Explosives)
                     {
                         bulletManager.AddBullets(r);
+                        SoundLibrary.explosiveFire.Play();
                     }
                     else if (playerOneWeapon is Shotgun)
                     {
@@ -66,25 +69,24 @@ namespace Sombi
 
 
                         bulletManager.AddBullets(b);
-                        for (int i  = 0; i < playerOneWeapon.numberOfProjectilesPerFire - 1; i++)
+                        for (int i = 0; i < playerOneWeapon.numberOfProjectilesPerFire - 1; i++)
                         {
                             if (i % 2 == 0)
                             {
                                 b = new Bullet(position, playerOneWeapon.projectileSpeed, angle - (float)((Math.PI / 180) * angleIndex), playerOneWeapon.damage, playerOneWeapon.weaponRange, PlayerID);
-                                
+
                             }
                             else
                             {
                                 b = new Bullet(position, playerOneWeapon.projectileSpeed, angle + (float)((Math.PI / 180) * angleIndex), playerOneWeapon.damage, playerOneWeapon.weaponRange, PlayerID);
                                 angleIndex += angleIndex;
                             }
-                               bulletManager.AddBullets(b);
-                               
-                         }
-                      
+                            bulletManager.AddBullets(b);
+
+                        }
+
                     }
                     timeSinceLastPlayerOneBullet = 0f;
-                    SoundLibrary.rifleFire.Play();
                 }
             }
             if (PlayerID == 2)
@@ -112,7 +114,7 @@ namespace Sombi
                         }
                     }
                     timeSinceLastPlayerTwoBullet = 0f;
-                    SoundLibrary.rifleFire.Play(); 
+                    SoundLibrary.rifleFire.Play();
                 }
 
             }
@@ -136,7 +138,7 @@ namespace Sombi
                     else if (playerOneWeapon is Shotgun)
                     {
                         playerOneWeapon = new Rifle(rifleLevel);
-                    }                    
+                    }
                     break;
                 case 2:
                     if (playerTwoWeapon is Rifle)
@@ -176,7 +178,7 @@ namespace Sombi
                     }
                     break;
             }
-                    
+
         }
     }
 }
