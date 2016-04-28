@@ -55,7 +55,6 @@ namespace Sombi
                     {
                         rifleIsSelected = true;
                         SoundLibrary.rifleFire.Play();
-                        rifleIsShooting = true;
                         bulletManager.AddBullets(b);
                     }
                     else if (playerOneWeapon is Explosives)
