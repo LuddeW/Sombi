@@ -245,9 +245,9 @@ namespace Sombi
             
             spriteBatch.Draw(TextureLibrary.testMapTex, Vector2.Zero, Color.White);
             packageManager.Draw(spriteBatch);
-            enemyManager.Draw(spriteBatch);
             fpsManager.Draw(spriteBatch);
             playerManager.Draw(spriteBatch);
+            enemyManager.Draw(spriteBatch);
             floatingTextures.Draw(spriteBatch);
             hudManager.Draw(spriteBatch, menuManager.numberOfPlayers);
             Color fadeInColor = new Color(new Vector3(0, 0, 0));

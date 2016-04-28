@@ -20,6 +20,8 @@ namespace Sombi
         public static Texture2D zombieTex { get; private set; }
         public static Texture2D player1IncapacitatedTex { get; private set; }
         public static Texture2D player2IncapacitatedTex { get; private set; }
+        public static Texture2D player1DeadTex { get; private set; }
+        public static Texture2D player2DeadTex { get; private set; }
 
         public static Texture2D fastZombieTex { get; private set; }
         public static Texture2D fatZombieTex { get; private set; }
@@ -80,11 +82,14 @@ namespace Sombi
             player1ShotgunTex = Content.Load<Texture2D>(@"Player1Shotgun");
             player1RocketTex = Content.Load<Texture2D>(@"Player1Rocket");
             player1IncapacitatedTex = Content.Load<Texture2D>(@"Player1Incapacitated");
+            player1DeadTex = Content.Load<Texture2D>(@"Player1Dead");
+
 
             player2RifleTex = Content.Load<Texture2D>(@"Player2Rifle");
             player2ShotgunTex = Content.Load<Texture2D>(@"Player2Shotgun");
             player2RocketTex = Content.Load<Texture2D>(@"Player2Rocket");
             player2IncapacitatedTex = Content.Load<Texture2D>(@"Player2Incapacitated");
+            player2DeadTex = Content.Load<Texture2D>(@"Player2Dead");
 
             zombieTex = Content.Load<Texture2D>(@"ZombieSheet");
             fastZombieTex = Content.Load<Texture2D>(@"ZombieSheet2");

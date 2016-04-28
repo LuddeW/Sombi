@@ -134,9 +134,9 @@ namespace Sombi
             if (dead)
             {
                 if (playerID == PlayerID.One)
-                    spriteBatch.Draw(TextureLibrary.player1IncapacitatedTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player1IncapacitatedTex.Width / 2, TextureLibrary.player1IncapacitatedTex.Height / 2), 1f, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(TextureLibrary.player1DeadTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player1IncapacitatedTex.Width / 2, TextureLibrary.player1IncapacitatedTex.Height / 2), 1f, SpriteEffects.None, 0f);
                 if (playerID == PlayerID.Two)
-                    spriteBatch.Draw(TextureLibrary.player2IncapacitatedTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player2IncapacitatedTex.Width / 2, TextureLibrary.player2IncapacitatedTex.Height / 2), 1f, SpriteEffects.None, 0f);
+                    spriteBatch.Draw(TextureLibrary.player2DeadTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player2IncapacitatedTex.Width / 2, TextureLibrary.player2IncapacitatedTex.Height / 2), 1f, SpriteEffects.None, 0f);
             }
             else
             {
