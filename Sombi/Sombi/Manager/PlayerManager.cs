@@ -46,8 +46,11 @@ namespace Sombi
 
         public void Update(GameTime gameTime)
         {
+            player1.UpdateAnimation(weaponManager.playerOneWeapon);
+            player2.UpdateAnimation(weaponManager.playerTwoWeapon);
             player1.Update(gameTime);
             player2.Update(gameTime);
+
 
             if (player1.FireWeapon() && !player1.dead)
             {
@@ -122,8 +125,8 @@ namespace Sombi
         public void CreatePlayers()
         {
             players.Clear();
-            player1 = new Player(weaponManager.playerOneWeapon, new Vector2(150, 150), 1);
-            player2 = new Player(weaponManager.playerTwoWeapon, new Vector2(150, 200), 2);
+            player1 = new Player(/*weaponManager.playerOneWeapon, */new Vector2(150, 150), 1);
+            player2 = new Player(/*weaponManager.playerTwoWeapon, */new Vector2(150, 200), 2);
             player1.LoadContent();
             player2.LoadContent();
             players.Add(player1);
