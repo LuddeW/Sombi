@@ -62,8 +62,10 @@ namespace Sombi
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            player1.DrawDead(spriteBatch);
+            player2.DrawDead(spriteBatch);
             player1.Draw(spriteBatch);
-            player2.Draw(spriteBatch);
+            player2.Draw(spriteBatch);            
             weaponManager.Draw(spriteBatch);
         }
 
