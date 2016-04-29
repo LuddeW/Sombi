@@ -176,7 +176,7 @@ namespace Sombi
 
             if (weapon is Rifle)
             {
-
+                
 
                 if (!FireWeapon())
                 {
@@ -245,11 +245,11 @@ namespace Sombi
             else
                 direction = new Vector2(0, 0);
 
-            if (Grid.grid[(int)((pos.X) / 50) + (int)direction.X, (int)((pos.Y) / 50) + (int)direction.Y].passable)   //Förhindrar flytt om vägg framför
-	        {
+           /* if (Grid.grid[(int)((this.pos.X) / 50) + (int)direction.X, (int)((this.pos.Y) / 50) + (int)direction.Y].passable)   //Förhindrar flytt om vägg framför
+	        {*/
                 velocity = Vector2.Normalize(velocity);                                             //För att diagonalen ska bli 1 istället för 1.4
                 this.pos += velocity * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds;     //Flyttar gubben relativt till delta time
-	        }
+	        //}
             
 
             
