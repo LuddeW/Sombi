@@ -125,15 +125,15 @@ namespace Sombi
                 case 1:
                     if (playerOneWeapon is Rifle)
                     {
-                        playerOneWeapon = new Explosives(/*explosiveLevel*/);
+                        playerOneWeapon = new Shotgun(shotGunLevel);
                     }
                     else if (playerOneWeapon is Explosives)
                     {
-                        playerOneWeapon = new Shotgun(shotGunLevel);
+                        playerOneWeapon = new Rifle(shotGunLevel);
                     }
                     else if (playerOneWeapon is Shotgun)
                     {
-                        playerOneWeapon = new Rifle(rifleLevel);
+                        playerOneWeapon = new Explosives(/*explosiveLevel*/);
                     }
                     break;
                 case 2:
