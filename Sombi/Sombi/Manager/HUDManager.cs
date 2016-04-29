@@ -84,7 +84,7 @@ namespace Sombi
                 //spriteBatch.Draw(TextureLibrary.weaponHud, new Vector2(GlobalValues.screenBounds.X - TextureLibrary.weaponHud.Width, GlobalValues.screenBounds.Y - TextureLibrary.weaponHud.Height), Color.White * 0.8f);
             }            
 
-            spriteBatch.DrawString(TextureLibrary.billBoardText, "" + HighscoreManager.score, new Vector2(1320, 1478), GlobalValues.billBoardColor);
+            spriteBatch.DrawString(TextureLibrary.billBoardText, "" + HighscoreManager.kills, new Vector2(1320, 1478), GlobalValues.billBoardColor);
             //spriteBatch.DrawString(TextureLibrary.HudText, "Number of Zombies: " + EnemyManager.zombies.Count, new Vector2(1369, 1434), Color.Yellow);
 
         }

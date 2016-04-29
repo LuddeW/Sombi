@@ -45,6 +45,7 @@ namespace Sombi
                     bloodPositions.Add(new BloodStain(zombies[i].pos));
                     zombies.RemoveAt(i);
                     HighscoreManager.score++;
+                    HighscoreManager.kills++;
                 }
             }
         }

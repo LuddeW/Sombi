@@ -44,7 +44,6 @@ namespace Sombi
             hitBox.X = (int)pos.X - TextureLibrary.fatZombieTex.Width / 12;
             hitBox.Y = (int)pos.Y - TextureLibrary.fatZombieTex.Height / 3;
             FindWallThroughMatrix();
-            animationPlayer.rotation = (float)Math.Atan2(-direction.X, direction.Y);
             
             // Console.WriteLine((int)((pos.X + 25) / 50) + (int)direction.X);
 
@@ -61,8 +60,8 @@ namespace Sombi
             this.health -= damage;
         }
         public override void Draw(SpriteBatch spriteBatch)
-        {            
-            animationPlayer.Draw(spriteBatch, pos);
+        {
+            animationPlayer.Draw(spriteBatch, pos, animationPlayer.rotation = (float)Math.Atan2(-direction.X, direction.Y));
             //spriteBatch.Draw(TextureLibrary.sourceRectTex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
 
         }

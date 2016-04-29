@@ -14,25 +14,31 @@ namespace Sombi
         public static Texture2D player1RifleTex { get; private set; }
         public static Texture2D player1ShotgunTex { get; private set; }
         public static Texture2D player1RocketTex { get; private set; }
+        public static Texture2D player1IncapacitatedTex { get; private set; }
+        public static Texture2D player1DeadTex { get; private set; }
+        public static Texture2D player1RifleIdle { get; private set; }
+        public static Texture2D player1RifleSheet { get; private set; }
+        public static Texture2D player1ShotgunIdle { get; private set; }
+        public static Texture2D player1ShotgunSheet { get; private set; }
+        public static Texture2D player1RocketIdle { get; private set; }
+        //public static Texture2D player1RocketSheet { get; private set; }
+
         public static Texture2D player2RifleTex { get; private set; }
         public static Texture2D player2ShotgunTex { get; private set; }
         public static Texture2D player2RocketTex { get; private set; }
-        public static Texture2D zombieTex { get; private set; }
-        public static Texture2D player1IncapacitatedTex { get; private set; }
         public static Texture2D player2IncapacitatedTex { get; private set; }
-        public static Texture2D player1DeadTex { get; private set; }
         public static Texture2D player2DeadTex { get; private set; }
+        public static Texture2D player2RifleSheet { get; private set; }
+        public static Texture2D player2RifleIdle { get; private set; }
+        public static Texture2D player2ShotgunIdle { get; private set; }
+        public static Texture2D player2ShotgunSheet { get; private set; }
+        public static Texture2D player2RocketIdle { get; private set; }
+        //public static Texture2D player2RocketSheet { get; private set; }
 
+        public static Texture2D zombieTex { get; private set; }
         public static Texture2D fastZombieTex { get; private set; }
         public static Texture2D fatZombieTex { get; private set; }
 
-        public static Texture2D player1RifleSheet { get; private set; }
-        public static Texture2D player1RifleAnimationSheet { get; private set; }
-        public static Texture2D player1RifleIdle { get; private set; }
-
-        public static Texture2D player2RifleSheet { get; private set; }
-        public static Texture2D player2RifleAnimationSheet { get; private set; }
-        public static Texture2D player2RifleIdle { get; private set; }
 
         //Structures and Objects
         public static Texture2D packageTex { get; private set; }
@@ -89,30 +95,27 @@ namespace Sombi
             player1RifleTex = Content.Load<Texture2D>(@"Player1Rifle");
             player1ShotgunTex = Content.Load<Texture2D>(@"Player1Shotgun");
             player1RocketTex = Content.Load<Texture2D>(@"Player1Rocket");
-
-            player1RifleAnimationSheet = Content.Load<Texture2D>(@"AnimationPlayer1RifleSheet");
-            player1RifleIdle = Content.Load<Texture2D>(@"Player1RifleIdle");
-
-            player2RifleAnimationSheet = Content.Load<Texture2D>(@"AnimationPlayer2RifleSheet");
-            player2RifleIdle = Content.Load<Texture2D>(@"Player2RifleIdle");
-
-            // Player1 shooting animation
-            player1RifleSheet = Content.Load<Texture2D>(@"Player1RifleSheet");
-            // Player2 shooting animation
-            player2RifleSheet = Content.Load<Texture2D>(@"Player2RifleSheet");
-
-            player1RifleSheet = Content.Load<Texture2D>(@"Player1RifleSheet");
-            player1ShotgunTex = Content.Load<Texture2D>(@"Player1Shotgun");
             player1RocketTex = Content.Load<Texture2D>(@"Player1Rocket");
             player1IncapacitatedTex = Content.Load<Texture2D>(@"Player1Incapacitated");
-            player1DeadTex = Content.Load<Texture2D>(@"Player1Dead");
-
-
+            player1DeadTex = Content.Load<Texture2D>(@"Player1Dead");            
+            player1RifleIdle = Content.Load<Texture2D>(@"Player1RifleIdle2");            
+            player1RifleSheet = Content.Load<Texture2D>(@"Player1RifleSheet");
+            player1ShotgunIdle = Content.Load<Texture2D>(@"Player1ShotgunIdle2");
+            player1ShotgunSheet = Content.Load<Texture2D>(@"Player1ShotgunSheet");
+            player1RocketIdle = Content.Load<Texture2D>(@"Player1RocketIdle2");
+            //player1RocketSheet = Content.Load<Texture2D>(@"Player1RocketSheet");
+            
             player2RifleTex = Content.Load<Texture2D>(@"Player2Rifle");
             player2ShotgunTex = Content.Load<Texture2D>(@"Player2Shotgun");
             player2RocketTex = Content.Load<Texture2D>(@"Player2Rocket");
             player2IncapacitatedTex = Content.Load<Texture2D>(@"Player2Incapacitated");
             player2DeadTex = Content.Load<Texture2D>(@"Player2Dead");
+            player2RifleIdle = Content.Load<Texture2D>(@"Player2RifleIdle2");
+            player2RifleSheet = Content.Load<Texture2D>(@"Player2RifleSheet");
+            player2ShotgunIdle = Content.Load<Texture2D>(@"Player2ShotgunIdle2");
+            player2ShotgunSheet = Content.Load<Texture2D>(@"Player2ShotgunSheet");
+            player2RocketIdle = Content.Load<Texture2D>(@"Player2RocketIdle2");
+            //player2RocketSheet = Content.Load<Texture2D>(@"Player2RocketSheet");
 
             zombieTex = Content.Load<Texture2D>(@"ZombieSheet");
             fastZombieTex = Content.Load<Texture2D>(@"ZombieSheet2");
@@ -136,6 +139,9 @@ namespace Sombi
 
             //Projectiles and Blood
             bulletBlue = Content.Load<Texture2D>(@"BulletBlue");
+            rocket = Content.Load<Texture2D>(@"Rocket");
+            rocketExplosion = Content.Load<Texture2D>(@"ExplosionSombi");
+
             bloodStain[0] = Content.Load<Texture2D>(@"BlodStain1");
             bloodStain[1] = Content.Load<Texture2D>(@"BloodStain2");
             bloodStain[2] = Content.Load<Texture2D>(@"BloodStain3");
@@ -146,12 +152,9 @@ namespace Sombi
             bloodStain[7] = Content.Load<Texture2D>(@"BloodStain8");
             bloodStain[8] = Content.Load<Texture2D>(@"BloodStain9");
             bloodStain[9] = Content.Load<Texture2D>(@"BloodStain10");
-            rocketExplosion = Content.Load<Texture2D>(@"ExplosionSombi");
-            rocket = Content.Load<Texture2D>(@"Rocket");
 
             //Map and UI
             testMapTex = Content.Load<Texture2D>(@"TestMap2");
-            //HUD = Content.Load<Texture2D>(@"TestHud");
             player1ScoreHud = Content.Load<Texture2D>("Player1ScoreHUD");
             player2ScoreHud = Content.Load<Texture2D>("Player2ScoreHUD");
             weaponHud = Content.Load<Texture2D>("WeaponHUD");

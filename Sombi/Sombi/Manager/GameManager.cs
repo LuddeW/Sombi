@@ -303,7 +303,7 @@ namespace Sombi
         private void PauseDraw(SpriteBatch spriteBatch)
         {
             PlayingDraw(spriteBatch);
-            spriteBatch.DrawString(TextureLibrary.HudText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
+            spriteBatch.DrawString(TextureLibrary.billBoardText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
         }
     }
 }
