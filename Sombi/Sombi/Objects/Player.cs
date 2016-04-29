@@ -79,6 +79,7 @@ namespace Sombi
 
             velocity = Vector2.Zero;
             maxspeed = 2.0f;
+
             playerSpeed = 2.0f;
             health = 1000;
             timeToRevive = 3.0f;
@@ -127,15 +128,16 @@ namespace Sombi
                 UpdateGamepad();
                 if (gamePadState.IsConnected)
                 {
-                    UpdatePosition();
+                    UpdatePosition(gameTime);
                     UpdateRotation();
                     FireWeapon();
                 }
                 else
                 {
                     KeyBoardMovement();
+                    //Collide();                  
                 }
-                Collide();
+               // Collide();
                 UpdateHitbox();
             }
             Revive(gameTime);
@@ -240,11 +242,11 @@ namespace Sombi
             }
         }
 
-        private void UpdatePosition() //Update Velocity and Position based on controller input
+        private void UpdatePosition(GameTime gameTime) //Update Velocity and Position based on controller input
         {
 
-            velocity.X = gamePadState.ThumbSticks.Left.X * maxspeed;
-            velocity.Y = -gamePadState.ThumbSticks.Left.Y * maxspeed;
+            velocity.X = gamePadState.ThumbSticks.Left.X/*  *maxspeed;*/;
+            velocity.Y = -gamePadState.ThumbSticks.Left.Y/* * maxspeed;*/;
 
             if (velocity.Y < 0) // CLEAR UP THIS CODE 
             {
@@ -262,6 +264,16 @@ namespace Sombi
             {
                 direction.X = 1;
             }
+
+            if (Grid.grid[(int)((pos.X) / 50) + (int)direction.X, (int)(pos.Y) / 50 + (int)direction.Y].passable == true)   //Förhindrar flytt om vägg framför
+	        {
+                velocity = Vector2.Normalize(velocity);                                             //För att diagonalen ska bli 1 istället för 1.4
+                this.pos += velocity * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds;     //Flyttar gubben relativt till delta time
+	        }
+            
+
+            
+
         }
 
         private void UpdateRotation() //Rotate sprite based on controller input
@@ -288,26 +300,26 @@ namespace Sombi
 
         private void KeyBoardMovement()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            if (Keyboard.GetState().IsKeyDown(Keys.Up) && Grid.grid[(int)((pos.X) / 50), (int)((pos.Y) / 50) - 1].passable == true)
             {
                 pos.Y -= playerSpeed;
                 direction.Y = -1;
                 angle = MathHelper.ToRadians(270);
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            if (Keyboard.GetState().IsKeyDown(Keys.Left) && Grid.grid[(int)((pos.X) / 50) - 1, (int)(pos.Y) / 50].passable == true)
             {
                 pos.X -= playerSpeed;
                 direction.X = -1;
                 angle = MathHelper.ToRadians(180);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
+            if (Keyboard.GetState().IsKeyDown(Keys.Down) && Grid.grid[(int)((pos.X) / 50), (int)((pos.Y) / 50) + 1].passable == true)
             {
                 pos.Y += playerSpeed;
                 direction.Y = 1;
                 angle = MathHelper.ToRadians(90);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            if (Keyboard.GetState().IsKeyDown(Keys.Right) && Grid.grid[(int)((pos.X) / 50) + 1, (int)(pos.Y) / 50].passable == true)
             {
                 pos.X += playerSpeed;
                 direction.X = 1;

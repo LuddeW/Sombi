@@ -159,8 +159,8 @@ namespace Sombi
             shotgunLevel = Content.Load<Texture2D>("ShotgunLevel");
             rocketLevel = Content.Load<Texture2D>("RocketLevel");
             weaponWheel[0] = Content.Load<Texture2D>("WeaponHUDRocket");
-            weaponWheel[1] = Content.Load<Texture2D>("WeaponHUDShotgun");
-            weaponWheel[2] = Content.Load<Texture2D>("WeaponHUDRifle");
+            weaponWheel[1] = Content.Load<Texture2D>("WeaponHUDRifle");
+            weaponWheel[2] = Content.Load<Texture2D>("WeaponHUDShotgun");
             //Menu
             logoTex = Content.Load<Texture2D>(@"Logo1Sombi");
             startButton = Content.Load<Texture2D>(@"Play");
