@@ -22,7 +22,7 @@ namespace Sombi
         {
             this.bulletManager = new BulletManager();
             playerOneWeapon = new Explosives();
-            playerTwoWeapon = new Shotgun();
+            playerTwoWeapon = new Explosives();
             timeSinceLastPlayerOneBullet = 100f;
             timeSinceLastPlayerTwoBullet = 100f;
         }
@@ -63,6 +63,7 @@ namespace Sombi
                     else if (playerOneWeapon is Shotgun)
                     {
                         int angleIndex = 40 / playerOneWeapon.numberOfProjectilesPerFire; //Ändra 30 till spridning för vapen
+                        SoundLibrary.shotGunFire.Play();
 
 
                         bulletManager.AddBullets(b);
@@ -96,25 +97,42 @@ namespace Sombi
                     {
                         if (playerTwoWeapon is Rifle)
                         {
+                            SoundLibrary.rifleFire.Play();
                             bulletManager.AddBullets(b);
                         }
                         else if (playerTwoWeapon is Explosives)
                         {
                             bulletManager.AddBullets(r);
+                            SoundLibrary.explosiveFire.Play();
                         }
                         else if (playerTwoWeapon is Shotgun)
                         {
-                            Bullet b1 = new Bullet(position, playerTwoWeapon.projectileSpeed, angle - 1, playerTwoWeapon.damage, playerTwoWeapon.weaponRange, PlayerID);
-                            Bullet b2 = new Bullet(position, playerTwoWeapon.projectileSpeed, angle, playerTwoWeapon.damage, playerTwoWeapon.weaponRange, PlayerID);
-                            Bullet b3 = new Bullet(position, playerTwoWeapon.projectileSpeed, angle + 1, playerTwoWeapon.damage, playerTwoWeapon.weaponRange, PlayerID);
+                            int angleIndex = 40 / playerTwoWeapon.numberOfProjectilesPerFire; //Ändra 30 till spridning för vapen
+                            SoundLibrary.shotGunFire.Play();
+
+
+                            bulletManager.AddBullets(b);
+                            for (int k = 0; k < playerTwoWeapon.numberOfProjectilesPerFire - 1; k++)
+                            {
+                                if (k % 2 == 0)
+                                {
+                                    b = new Bullet(position, playerTwoWeapon.projectileSpeed, angle - (float)((Math.PI / 180) * angleIndex), playerTwoWeapon.damage, playerTwoWeapon.weaponRange, PlayerID);
+
+                                }
+                                else
+                                {
+                                    b = new Bullet(position, playerTwoWeapon.projectileSpeed, angle + (float)((Math.PI / 180) * angleIndex), playerTwoWeapon.damage, playerTwoWeapon.weaponRange, PlayerID);
+                                    angleIndex += angleIndex;
+                                }
+                                bulletManager.AddBullets(b);
+                            }
                         }
+                        timeSinceLastPlayerTwoBullet = 0f;
+                        // SoundLibrary.rifleFire.Play();
                     }
-                    timeSinceLastPlayerTwoBullet = 0f;
-                    SoundLibrary.rifleFire.Play();
+
                 }
-
             }
-
 
         }
         public void SwitchWeaponRight(int playerID, int shotGunLevel, int explosiveLevel, int rifleLevel)
@@ -127,27 +145,27 @@ namespace Sombi
                     {
                         playerOneWeapon = new Shotgun(shotGunLevel);
                     }
-                    else if (playerOneWeapon is Explosives)
-                    {
-                        playerOneWeapon = new Rifle(shotGunLevel);
-                    }
                     else if (playerOneWeapon is Shotgun)
                     {
                         playerOneWeapon = new Explosives(/*explosiveLevel*/);
+                    }
+                    else if (playerOneWeapon is Explosives)
+                    {
+                        playerOneWeapon = new Rifle(rifleLevel);
                     }
                     break;
                 case 2:
                     if (playerTwoWeapon is Rifle)
                     {
+                        playerTwoWeapon = new Shotgun(shotGunLevel);
+                    }
+                    else if (playerTwoWeapon is Shotgun)
+                    {
                         playerTwoWeapon = new Explosives();
                     }
                     else if (playerTwoWeapon is Explosives)
                     {
-                        playerTwoWeapon = new Shotgun();
-                    }
-                    else if (playerTwoWeapon is Shotgun)
-                    {
-                        playerTwoWeapon = new Rifle();
+                        playerTwoWeapon = new Rifle(rifleLevel);
                     }
                     break;
                 default:
@@ -162,16 +180,32 @@ namespace Sombi
 
                     if (playerOneWeapon is Rifle)
                     {
-                        playerOneWeapon = new Shotgun(shotGunLevel);
+                        playerOneWeapon = new Explosives(/*explosiveLevel*/);
                     }
                     else if (playerOneWeapon is Shotgun)
                     {
-                        playerOneWeapon = new Explosives(/*explosiveLevel*/);
+                        playerOneWeapon = new Rifle(rifleLevel);
                     }
                     else if (playerOneWeapon is Explosives)
                     {
-                        playerOneWeapon = new Rifle(rifleLevel);
+                        playerOneWeapon = new Shotgun(shotGunLevel);
                     }
+                    break;
+                case 2:
+                    if (playerTwoWeapon is Rifle)
+                    {
+                        playerTwoWeapon = new Explosives();
+                    }
+                    else if (playerTwoWeapon is Shotgun)
+                    {
+                        playerTwoWeapon = new Rifle(rifleLevel);
+                    }
+                    else if (playerTwoWeapon is Explosives)
+                    {
+                        playerTwoWeapon = new Shotgun(shotGunLevel);
+                    }
+                    break;
+                default:
                     break;
             }
 

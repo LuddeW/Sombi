@@ -749,3 +749,9 @@
 /processorParam:TextureFormat=Color
 /build:AnimationPlayer2RifleSheet.png
 
+#begin Shotgun1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Shotgun1.wav
+

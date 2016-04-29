@@ -242,6 +242,7 @@ namespace Sombi
             playerManager.Draw(spriteBatch);
             enemyManager.DrawZombie(spriteBatch);
             floatingTextures.Draw(spriteBatch);
+            enemyManager.DrawZombieCount(spriteBatch);
             hudManager.Draw(spriteBatch, menuManager.numberOfPlayers);
             Color fadeInColor = new Color(new Vector3(0, 0, 0));
             spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadeInPercentage);
