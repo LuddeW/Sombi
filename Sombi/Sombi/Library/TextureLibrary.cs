@@ -29,7 +29,10 @@ namespace Sombi
         public static Texture2D player1RifleSheet { get; private set; }
         public static Texture2D player1RifleAnimationSheet { get; private set; }
         public static Texture2D player1RifleIdle { get; private set; }
-            
+
+        public static Texture2D player2RifleSheet { get; private set; }
+        public static Texture2D player2RifleAnimationSheet { get; private set; }
+        public static Texture2D player2RifleIdle { get; private set; }
 
         //Structures and Objects
         public static Texture2D packageTex { get; private set; }
@@ -84,14 +87,19 @@ namespace Sombi
         {
             //Player and Enemy Sprites            
             player1RifleTex = Content.Load<Texture2D>(@"Player1Rifle");
-
             player1ShotgunTex = Content.Load<Texture2D>(@"Player1Shotgun");
             player1RocketTex = Content.Load<Texture2D>(@"Player1Rocket");
+
             player1RifleAnimationSheet = Content.Load<Texture2D>(@"AnimationPlayer1RifleSheet");
             player1RifleIdle = Content.Load<Texture2D>(@"Player1RifleIdle");
 
+            player2RifleAnimationSheet = Content.Load<Texture2D>(@"AnimationPlayer2RifleSheet");
+            player2RifleIdle = Content.Load<Texture2D>(@"Player2RifleIdle");
+
             // Player1 shooting animation
             player1RifleSheet = Content.Load<Texture2D>(@"Player1RifleSheet");
+            // Player2 shooting animation
+            player2RifleSheet = Content.Load<Texture2D>(@"Player2RifleSheet");
 
             player1RifleSheet = Content.Load<Texture2D>(@"Player1RifleSheet");
             player1ShotgunTex = Content.Load<Texture2D>(@"Player1Shotgun");
