@@ -37,24 +37,16 @@ namespace Sombi
         public bool dead = false;
         public bool eaten = false;
         public bool gotPackage = false;
-
-        bool playerOne = false;
-        bool playerTwo = false;
+       
 
         public int shotgunLevel;
         public int rifleLevel;
         public int explosivesLevel;
-        // PLAYER 1
         Animation player1RifleShootingAnimation;
         Animation player1AnimationRifle;
         Animation player1RifleIdle;
-
-        // PLAYER 2
-        Animation player2RifleShootingAnimation;
-        Animation player2AnimationRifle;
-        Animation player2RifleIdle;
         AnimationPlayer animationplayer;
-
+        
 
         public Player(/*Weapon weapon, */Vector2 position, int ID)
             : base(position)
@@ -67,16 +59,9 @@ namespace Sombi
 
         public void LoadContent()
         {
-            // PLAYER 1
             player1RifleIdle = new Animation(TextureLibrary.player1RifleIdle, 63, 0.1f, true);
             player1AnimationRifle = new Animation(TextureLibrary.player1RifleAnimationSheet, 63, 0.1f, true);
             player1RifleShootingAnimation = new Animation(TextureLibrary.player1RifleSheet, 63, 0.1f, true);
-
-            // PLAYER 2
-            player2RifleIdle = new Animation(TextureLibrary.player2RifleIdle, 63, 0.1f, true);
-            player2AnimationRifle = new Animation(TextureLibrary.player2RifleAnimationSheet, 63, 0.1f, true);
-            player2RifleShootingAnimation = new Animation(TextureLibrary.player2RifleAnimationSheet ,63, 0.1f, true);
-
             velocity = Vector2.Zero;
             maxspeed = 2.0f;
 
@@ -110,7 +95,7 @@ namespace Sombi
 
         public override void Update(GameTime gameTime)
         {
-
+            
 
             if (health <= 0)
             {
@@ -150,21 +135,15 @@ namespace Sombi
             {
                 spriteBatch.DrawString(TextureLibrary.pauseText, (3 - (int)reviveTime).ToString(), pos - new Vector2(6, 45), Color.Green);
             }
-
-            if (!dead)
+            
+            if(!dead)
             {
                 if (playerID == PlayerID.One)
-                {
                     animationplayer.Draw(spriteBatch, pos);
-                    playerOne = true;
-                }
                 //spriteBatch.Draw(TextureLibrary.player1RifleTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player1RifleTex.Width / 2, TextureLibrary.player1RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
-                // spriteBatch.Draw(TextureLibrary.player1RocketTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player1RifleTex.Width / 2, TextureLibrary.player1RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
+                   // spriteBatch.Draw(TextureLibrary.player1RocketTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player1RifleTex.Width / 2, TextureLibrary.player1RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
                 if (playerID == PlayerID.Two)
-                {
                     animationplayer.Draw(spriteBatch, pos);
-                    playerTwo = true;
-                }
                 //    spriteBatch.Draw(TextureLibrary.player2RifleTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player2RifleTex.Width / 2, TextureLibrary.player2RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
                 //////spriteBatch.Draw(TextureLibrary.sourceRectTex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
             }
@@ -193,15 +172,15 @@ namespace Sombi
 
         public void UpdateAnimation(Weapon weapon)
         {
+
+
             if (weapon is Rifle)
             {
+
+
                 if (!FireWeapon())
                 {
-                    if (playerOne)
-                        animationplayer.PlayAnimation(player1RifleIdle);
-
-                    if (playerTwo)
-                        animationplayer.PlayAnimation(player2RifleIdle);
+                    animationplayer.PlayAnimation(player1RifleIdle);
                 }
                 else if (FireWeapon())
                     animationplayer.PlayAnimation(player1RifleShootingAnimation);
@@ -209,11 +188,10 @@ namespace Sombi
 
 
 
-
-        /*if (isShooting == true && weaponManager.rifleIsSelected == true)
-        {
-            animationplayer.PlayAnimation(player1RifleShootingAnimation);
-        }*/
+            /*if (isShooting == true && weaponManager.rifleIsSelected == true)
+            {
+                animationplayer.PlayAnimation(player1RifleShootingAnimation);
+            }*/
             else
             {
                 animationplayer.PlayAnimation(player1RifleIdle);
@@ -264,8 +242,10 @@ namespace Sombi
             {
                 direction.X = 1;
             }
+            else
+                direction = new Vector2(0, 0);
 
-            if (Grid.grid[(int)((pos.X) / 50) + (int)direction.X, (int)(pos.Y) / 50 + (int)direction.Y].passable == true)   //Förhindrar flytt om vägg framför
+            if (Grid.grid[(int)((pos.X) / 50) + (int)direction.X, (int)((pos.Y) / 50) + (int)direction.Y].passable)   //Förhindrar flytt om vägg framför
 	        {
                 velocity = Vector2.Normalize(velocity);                                             //För att diagonalen ska bli 1 istället för 1.4
                 this.pos += velocity * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds;     //Flyttar gubben relativt till delta time
