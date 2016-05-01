@@ -104,13 +104,22 @@ namespace Sombi
                 switch ((int)player1Active.X)
                 {
                     case 0:
-                        shotgunLevel = (int)player1Active.Y + 1;
+                        if (true)
+                        {
+                            shotgunLevel = (int)player1Active.Y + 1;
+                        }                  
                         break;
                     case 1:
-                        rifleLevel = (int)player1Active.Y + 1;
+                        if (true)
+                        {
+                            rifleLevel = (int)player1Active.Y + 1;
+                        }
                         break;
                     case 2:
-                        explosiveLevel = (int)player1Active.Y + 1;
+                        if (true)
+                        {
+                            explosiveLevel = (int)player1Active.Y + 1;
+                        }
                         break;
                     default:
                         break;
@@ -125,13 +134,22 @@ namespace Sombi
                 switch ((int)player2Active.X)
                 {
                     case 3:
-                        shotgunLevel = (int)player1Active.Y + 1;
+                        if (true)
+                        {
+                            shotgunLevel = (int)player1Active.Y + 1;
+                        }                       
                         break;
                     case 4:
-                        rifleLevel = (int)player1Active.Y + 1;
+                        if (true)
+                        {
+                            rifleLevel = (int)player1Active.Y + 1;
+                        }                      
                         break;
                     case 5:
-                        explosiveLevel = (int)player1Active.Y + 1;
+                        if (true)
+                        {
+                            explosiveLevel = (int)player1Active.Y + 1;
+                        }
                         break;
                     default:
                         break;
