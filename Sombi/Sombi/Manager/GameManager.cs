@@ -95,12 +95,12 @@ namespace Sombi
                 case GameState.Playing:
 
                     {
-                        if (currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B)) // enbart för test, tas bort sen lolololo
-                        {
-                            currentGameState = GameState.LevelUp;
-                        }
-                        PlayingUpdate(gameTime);                     
-                        //Upgrade();
+                        //if (currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B)) // enbart för test, tas bort sen lolololo
+                        //{                            
+                        //    currentGameState = GameState.LevelUp;
+                        //}
+                        PlayingUpdate(gameTime);
+                        Upgrade();
                         break;                  
                     }
 
@@ -116,12 +116,14 @@ namespace Sombi
 
                 case GameState.LevelUp:
                     {
-                        //camera.position = new Vector2(0, 0);
+                        camera.position = new Vector2(0, 0);
+                        camera.ViewMatrix = Matrix.CreateTranslation(new Vector3(-camera.position, 0));
                         levelMenuManager.Update(ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel, ref playerManager.player2.shotgunLevel, ref playerManager.player2.rifleLevel, ref playerManager.player2.explosivesLevel);
                         if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
                         {
                             currentGameState = GameState.Playing;
                         }
+
                         break;
                     }            
             }
