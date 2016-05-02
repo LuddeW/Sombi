@@ -55,7 +55,7 @@ namespace Sombi
                     spriteBatch.DrawString(TextureLibrary.HudText, "Level 6     $1250", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 5].Y + levelMenu.hitbox[i, k].Height), Color.Black);
                 }
             }
-            shadowLockedUpgrades(spr);
+            shadowLockedUpgrades(spriteBatch);
             spriteBatch.Draw(TextureLibrary.sourceRectTex, levelMenu.hitbox[(int)player1Active.X, (int)player1Active.Y], Color.Black * 0.2f);
             spriteBatch.Draw(TextureLibrary.sourceRectTex, levelMenu.hitbox[(int)player2Active.X, (int)player2Active.Y], Color.Black * 0.2f);
         }
