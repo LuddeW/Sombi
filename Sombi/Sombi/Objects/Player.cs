@@ -240,13 +240,13 @@ namespace Sombi
             else
                 direction = new Vector2(0, 0);
 
-            if (Grid.grid[(int)((this.pos.X) / 50) + (int)direction.X, (int)((this.pos.Y) / 50) + (int)direction.Y].passable)   //Förhindrar flytt om vägg framför
+            if (Grid.grid[(int)(((this.pos.X) / 50) + velocity.X * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds), (int)(((this.pos.Y) / 50) + velocity.Y * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds)].passable)   //Förhindrar flytt om vägg framför
             {
                 this.pos += velocity * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds;     //Flyttar gubben relativt till delta time
             }
 
 
-
+            
 
         }
 
