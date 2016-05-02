@@ -119,10 +119,10 @@ namespace Sombi
             {
                 dead = true;
             }
-            if (health <= -2000)
+            if (health <= -3000)
             {
                 eaten = true;
-                health = -2000;
+                health = -3000;
             }
 
             if (!dead)
@@ -150,7 +150,7 @@ namespace Sombi
         {
             if (reviveTime > 0 && reviveTime < 3)
             {
-                //spriteBatch.DrawString(TextureLibrary.pauseText, (3 - (int)reviveTime).ToString(), pos - new Vector2(6, 45), Color.Green);
+                spriteBatch.DrawString(TextureLibrary.pauseText, (3 - (int)reviveTime).ToString(), pos - new Vector2(6, 45), Color.Green);
             }
 
             if (!dead)

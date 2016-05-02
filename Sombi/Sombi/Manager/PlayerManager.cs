@@ -19,7 +19,6 @@ namespace Sombi
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
 
-
         public PlayerManager(Camera camera)
         {
             weaponManager = new WeaponManager();
