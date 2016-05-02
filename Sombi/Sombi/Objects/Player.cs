@@ -133,7 +133,7 @@ namespace Sombi
                 }
                 else
                 {
-                    KeyBoardMovement();
+                    KeyBoardMovement(gameTime);
                     //Collide();                  
                 }
                 // Collide();
@@ -250,33 +250,37 @@ namespace Sombi
             }
         }
 
-        private void KeyBoardMovement()
+        private void KeyBoardMovement(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Up) && Grid.grid[(int)((pos.X) / 50), (int)((pos.Y) / 50) - 1].passable == true)
+            velocity = new Vector2(0, 0);
+            if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                pos.Y -= playerSpeed;
-                direction.Y = -1;
+                velocity.Y = -1;
                 angle = MathHelper.ToRadians(270);
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Left) && Grid.grid[(int)((pos.X) / 50) - 1, (int)(pos.Y) / 50].passable == true)
+            if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
-                pos.X -= playerSpeed;
-                direction.X = -1;
+                velocity.X = -1;
                 angle = MathHelper.ToRadians(180);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Down) && Grid.grid[(int)((pos.X) / 50), (int)((pos.Y) / 50) + 1].passable == true)
+            if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                pos.Y += playerSpeed;
-                direction.Y = 1;
+                velocity.Y = 1;
                 angle = MathHelper.ToRadians(90);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Right) && Grid.grid[(int)((pos.X) / 50) + 1, (int)(pos.Y) / 50].passable == true)
+            if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-                pos.X += playerSpeed;
-                direction.X = 1;
+                velocity.X = 1;
                 angle = MathHelper.ToRadians(0);
             }
+
+            if (Grid.grid[(int)((pos.X) + velocity.X * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50, (int)((pos.Y) + velocity.Y * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50].passable)
+            {
+                pos += velocity * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+
+            
         }
 
         private void Collide()
