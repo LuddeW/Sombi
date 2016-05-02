@@ -107,10 +107,14 @@ namespace Sombi
             set { }
         }
 
+        public float ReviveTime
+        {
+            get { return reviveTime; }
+            set { }
+        }
+
         public override void Update(GameTime gameTime)
         {
-            
-
             if (health <= 0)
             {
                 dead = true;
@@ -146,7 +150,7 @@ namespace Sombi
         {
             if (reviveTime > 0 && reviveTime < 3)
             {
-                spriteBatch.DrawString(TextureLibrary.pauseText, (3 - (int)reviveTime).ToString(), pos - new Vector2(6, 45), Color.Green);
+                //spriteBatch.DrawString(TextureLibrary.pauseText, (3 - (int)reviveTime).ToString(), pos - new Vector2(6, 45), Color.Green);
             }
 
             if (!dead)
