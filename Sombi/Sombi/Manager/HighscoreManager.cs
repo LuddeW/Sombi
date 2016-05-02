@@ -12,6 +12,7 @@ namespace Sombi
     class HighscoreManager
     {
         public static int score;
+        public static int kills;
         List<int> highScores;
 
         public List<int> HighScores

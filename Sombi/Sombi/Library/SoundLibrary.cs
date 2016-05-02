@@ -24,8 +24,8 @@ namespace Sombi
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Volume = 0.4f;
 
-            //shotGunFire = Content.Load<SoundEffect>("shotgun");
-            //SoundEffect.MasterVolume = 0.5f;
+            shotGunFire = Content.Load<SoundEffect>("Shotgun1");
+            SoundEffect.MasterVolume = 0.5f;
 
             rifleFire = Content.Load<SoundEffect>(@"LMG1");
             SoundEffect.MasterVolume = 0.5f;

@@ -55,7 +55,7 @@ namespace Sombi
             spriteBatch.Draw(TextureLibrary.rocket, pos, null, Color.White, angle, new Vector2(TextureLibrary.rocket.Width / 2, TextureLibrary.rocket.Height / 2), 1f, SpriteEffects.None, 0f);
 
 
-            animationPlayer.Draw(spriteBatch, pos);
+            animationPlayer.Draw(spriteBatch, pos, angle);
         }
         public override void Explode()
         {

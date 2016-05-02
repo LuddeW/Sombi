@@ -78,13 +78,13 @@ namespace Sombi
             if (numberOfPlayers == 2)
             {
                 spriteBatch.Draw(TextureLibrary.player2ScoreHud, new Vector2(hudPos.X + GlobalValues.screenBounds.X - TextureLibrary.player2ScoreHud.Width, hudPos.Y + 0), Color.White);
-                spriteBatch.Draw(TextureLibrary.weaponHud, new Vector2(hudPos.X + GlobalValues.screenBounds.X - TextureLibrary.weaponHud.Width, hudPos.Y + GlobalValues.screenBounds.Y - TextureLibrary.weaponHud.Height), Color.White * 0.8f);
+                spriteBatch.Draw(TextureLibrary.weaponWheel[weaponRotationIndex], new Vector2(hudPos.X + GlobalValues.screenBounds.X - TextureLibrary.weaponHud.Width, hudPos.Y + GlobalValues.screenBounds.Y - TextureLibrary.weaponHud.Height), Color.White * 0.8f);
                 spriteBatch.DrawString(TextureLibrary.HudText, "Health: " + players[1].health, new Vector2(hudPos.X + GlobalValues.screenBounds.X - 165, hudPos.Y + 10), Color.Black);
                 spriteBatch.DrawString(TextureLibrary.HudText, "Cash: " + players[1].cash, new Vector2(hudPos.X + GlobalValues.screenBounds.X - 165, hudPos.Y + 25), Color.Black);
                 //spriteBatch.Draw(TextureLibrary.weaponHud, new Vector2(GlobalValues.screenBounds.X - TextureLibrary.weaponHud.Width, GlobalValues.screenBounds.Y - TextureLibrary.weaponHud.Height), Color.White * 0.8f);
             }            
 
-            spriteBatch.DrawString(TextureLibrary.HudText, "Score: " + HighscoreManager.score, new Vector2(450, 30), Color.Black);
+            spriteBatch.DrawString(TextureLibrary.billBoardText, "" + HighscoreManager.kills, new Vector2(1320, 1478), GlobalValues.billBoardColor);
             //spriteBatch.DrawString(TextureLibrary.HudText, "Number of Zombies: " + EnemyManager.zombies.Count, new Vector2(1369, 1434), Color.Yellow);
 
         }

@@ -55,7 +55,7 @@ namespace Sombi
             highscoreManager = new HighscoreManager();
             highscoreManager.ReadScore();
             menuManager = new MenuManager(playerManager.players);
-            levelMenuManager = new LevelMenuManager();
+            levelMenuManager = new LevelMenuManager(playerManager.players);
             packageManager = new PackageManager(enemyManager);
             this.game = game;
 
@@ -242,6 +242,7 @@ namespace Sombi
             playerManager.Draw(spriteBatch);
             enemyManager.DrawZombie(spriteBatch);
             floatingTextures.Draw(spriteBatch);
+            enemyManager.DrawZombieCount(spriteBatch);
             hudManager.Draw(spriteBatch, menuManager.numberOfPlayers);
             Color fadeInColor = new Color(new Vector3(0, 0, 0));
             spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadeInPercentage);
@@ -302,7 +303,7 @@ namespace Sombi
         private void PauseDraw(SpriteBatch spriteBatch)
         {
             PlayingDraw(spriteBatch);
-            spriteBatch.DrawString(TextureLibrary.HudText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
+            spriteBatch.DrawString(TextureLibrary.billBoardText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
         }
     }
 }
