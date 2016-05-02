@@ -55,7 +55,7 @@ namespace Sombi
             highscoreManager = new HighscoreManager();
             highscoreManager.ReadScore();
             menuManager = new MenuManager(playerManager.players);
-            levelMenuManager = new LevelMenuManager();
+            levelMenuManager = new LevelMenuManager(playerManager.players);
             packageManager = new PackageManager(enemyManager);
             this.game = game;
 
