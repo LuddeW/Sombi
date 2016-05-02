@@ -16,6 +16,12 @@ namespace Sombi
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
         List<Player> players;
+        int p1ShotgunLvl;
+        int p1RifleLvl;
+        int p1ExplosiveLvl;
+        int p2ShotgunLvl;
+        int p2RifleLvl;
+        int p2ExplosiveLvl;
 
         public LevelMenuManager(List<Player> players)
         {
@@ -23,6 +29,12 @@ namespace Sombi
             player1Active = new Vector2(0, 0);
             player2Active = new Vector2(3, 0);
             this.players = players;
+            p1ShotgunLvl = 1;
+            p1RifleLvl = 1;
+            p1ExplosiveLvl = 1;
+            p2ShotgunLvl = 1;
+            p2RifleLvl = 1;
+            p2ExplosiveLvl = 1;
         }
 
         public void Update(ref int shotgunLevelP1, ref int rifleLevelP1, ref int explosiveLevelP1, ref int shotgunLevelP2, ref int rifleLevelP2, ref int explosiveLevelP2)
@@ -108,30 +120,33 @@ namespace Sombi
                     case 1:
                         if (!(player1Active.Y + 1 == 1))
                         {
-                            if (players[0].cash > (player1Active.Y + 1) * 250 - 250)
+                            if (players[0].cash > (player1Active.Y + 1) * 250 - 250 && p1ShotgunLvl == player1Active.Y)
                             {
                                 shotgunLevel = (int)player1Active.Y + 1;
                                 players[0].cash -= (int)(player1Active.Y + 1) * 250 - 250;
+                                p1ShotgunLvl++;
                             }
                         }                        
                         break;
                     case 0:
                         if (!(player1Active.Y + 1 == 1))
                         {
-                            if (players[0].cash > (player1Active.Y + 1) * 250 - 250)
+                            if (players[0].cash > (player1Active.Y + 1) * 250 - 250 && p1RifleLvl == player1Active.Y)
                             {
                                 rifleLevel = (int)player1Active.Y + 1;
                                 players[0].cash -= (int)(player1Active.Y + 1) * 250 - 250;
+                                p1RifleLvl++;
                             }
                         }
                         break;
                     case 2:
                         if (!(player1Active.Y + 1 == 1))
                         {
-                            if (players[0].cash > (player1Active.Y + 1) * 250 - 250)
+                            if (players[0].cash > (player1Active.Y + 1) * 250 - 250 && p1ExplosiveLvl == player1Active.Y)
                             {
                                 explosiveLevel = (int)player1Active.Y + 1;
                                 players[0].cash -= (int)(player1Active.Y + 1) * 250 - 250;
+                                p1ExplosiveLvl++;
                             }
                         }
                         break;
@@ -150,30 +165,33 @@ namespace Sombi
                     case 4:
                         if (!(player2Active.Y + 1 == 1))
                         {
-                            if (players[1].cash > (player2Active.Y + 1) * 250 - 250)
+                            if (players[1].cash > (player2Active.Y + 1) * 250 - 250 && p2ShotgunLvl == player2Active.Y)
                             {
                                 shotgunLevel = (int)player2Active.Y + 1;
                                 players[1].cash -= (int)(player2Active.Y + 1) * 250 - 250;
+                                p2ShotgunLvl++;
                             }
                         }                     
                         break;
                     case 3:
                         if (!(player2Active.Y + 1 == 1))
                         {
-                            if (players[1].cash > (player2Active.Y + 1) * 250 - 250)
+                            if (players[1].cash > (player2Active.Y + 1) * 250 - 250 && p2RifleLvl == player2Active.Y)
                             {
                                 rifleLevel = (int)player2Active.Y + 1;
                                 players[1].cash -= (int)(player2Active.Y + 1) * 250 - 250;
+                                p2RifleLvl++;
                             }
                         }                  
                         break;
                     case 5:
                         if (!(player2Active.Y + 1 == 1))
                         {
-                            if (players[1].cash > (player2Active.Y + 1) * 250 - 250)
+                            if (players[1].cash > (player2Active.Y + 1) * 250 - 250 && p2ExplosiveLvl == player2Active.Y)
                             {
                                 explosiveLevel = (int)player2Active.Y + 1;
                                 players[1].cash -= (int)(player2Active.Y + 1) * 250 - 250;
+                                p2ExplosiveLvl++;
                             }
                         }
                         break;
