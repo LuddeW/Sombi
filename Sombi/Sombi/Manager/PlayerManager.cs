@@ -24,8 +24,7 @@ namespace Sombi
             weaponManager = new WeaponManager();
             players = new List<Player>();
             this.camera = camera;
-            CreatePlayers();           
-
+            CreatePlayers();
         }
 
         public bool GameOver()
@@ -40,7 +39,7 @@ namespace Sombi
             }
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, int numberOfPlayers)
         {
             player1.UpdateAnimation(weaponManager.playerOneWeapon);
             player2.UpdateAnimation(weaponManager.playerTwoWeapon);
@@ -59,7 +58,7 @@ namespace Sombi
             }
             SwitchWeapon();
             weaponManager.Update(gameTime);
-            Revive();
+            Revive(numberOfPlayers);
             ScreenCollide();
         }
 
@@ -127,19 +126,22 @@ namespace Sombi
             players.Add(player2);
         }
 
-        private void Revive()
+        private void Revive(int numberOfPlayers)
         {
-            if (player1.HitBox.Intersects(player2.HitBox))
+            if (numberOfPlayers == 2)
             {
-                if (player1.revive && player2.dead && !player2.eaten)
+                if (player1.HitBox.Intersects(player2.HitBox))
                 {
-                    player2.health = 500;
-                    player2.dead = false;
-                }
-                if (player2.revive && player1.dead && !player1.eaten)
-                {
-                    player1.health = 500;
-                    player1.dead = false;
+                    if (player1.revive && player2.dead && !player2.eaten)
+                    {
+                        player2.health = 500;
+                        player2.dead = false;
+                    }
+                    if (player2.revive && player1.dead && !player1.eaten)
+                    {
+                        player1.health = 500;
+                        player1.dead = false;
+                    }
                 }
             }
         }

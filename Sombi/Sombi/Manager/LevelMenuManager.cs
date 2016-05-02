@@ -16,13 +16,15 @@ namespace Sombi
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
         List<Player> players;
+        int numberOfPlayers;
 
-        public LevelMenuManager(List<Player> players)
+        public LevelMenuManager(List<Player> players, int numberOfPlayers)
         {
             levelMenu = new LevelMenu();
             player1Active = new Vector2(0, 0);
             player2Active = new Vector2(3, 0);
             this.players = players;
+            this.numberOfPlayers = numberOfPlayers;
         }
 
         public void Update(ref int shotgunLevelP1, ref int rifleLevelP1, ref int explosiveLevelP1, ref int shotgunLevelP2, ref int rifleLevelP2, ref int explosiveLevelP2)
@@ -46,18 +48,24 @@ namespace Sombi
                     spriteBatch.Draw(TextureLibrary.shotgunLevel, levelMenu.hitbox[1, k], Color.White);
                     spriteBatch.DrawString(TextureLibrary.HudText, "Level 2     $250", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 1].Y + levelMenu.hitbox[i, k].Height), Color.Black);
                     spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[2, k], Color.White);
-                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 3     $500", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 2].Y + levelMenu.hitbox[i, k].Height), Color.Black);
-                    spriteBatch.Draw(TextureLibrary.rifleLevel, levelMenu.hitbox[3, k], Color.White);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 3     $500", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 2].Y + levelMenu.hitbox[i, k].Height), Color.Black);                  
                     spriteBatch.DrawString(TextureLibrary.HudText, "Level 4     $750", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 3].Y + levelMenu.hitbox[i, k].Height), Color.Black);
-                    spriteBatch.Draw(TextureLibrary.shotgunLevel, levelMenu.hitbox[4, k], Color.White);
                     spriteBatch.DrawString(TextureLibrary.HudText, "Level 5     $1000", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 4].Y + levelMenu.hitbox[i, k].Height), Color.Black);
-                    spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[5, k], Color.White);
                     spriteBatch.DrawString(TextureLibrary.HudText, "Level 6     $1250", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 5].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    if (numberOfPlayers == 2)
+                    {
+                        spriteBatch.Draw(TextureLibrary.rifleLevel, levelMenu.hitbox[3, k], Color.White);
+                        spriteBatch.Draw(TextureLibrary.shotgunLevel, levelMenu.hitbox[4, k], Color.White);
+                        spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[5, k], Color.White);
+                    }
                 }
             }
             shadowLockedUpgrades(spriteBatch);
             spriteBatch.Draw(TextureLibrary.sourceRectTex, levelMenu.hitbox[(int)player1Active.X, (int)player1Active.Y], Color.Black * 0.2f);
-            spriteBatch.Draw(TextureLibrary.sourceRectTex, levelMenu.hitbox[(int)player2Active.X, (int)player2Active.Y], Color.Black * 0.2f);
+            if (numberOfPlayers == 2)
+            {
+                spriteBatch.Draw(TextureLibrary.sourceRectTex, levelMenu.hitbox[(int)player2Active.X, (int)player2Active.Y], Color.Black * 0.2f);
+            }
         }
 
         private void MovePlayer1Active()
@@ -144,7 +152,7 @@ namespace Sombi
 
         private void LevelUpPlayer2(ref int shotgunLevel, ref int rifleLevel, ref int explosiveLevel)
         {
-            if (currentKeyboard.IsKeyDown(Keys.Enter) && !oldKeyboard.IsKeyDown(Keys.Enter))
+            if (currentKeyboard.IsKeyDown(Keys.Enter) && !oldKeyboard.IsKeyDown(Keys.Enter) && numberOfPlayers == 2)
             {
                 switch ((int)player2Active.X)
                 {
@@ -207,25 +215,28 @@ namespace Sombi
                     spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[2, k], Color.Black);
                 }
             }
-            for (int i = 0; i < levelMenu.numberOfUpgrades; i++)
+            if (numberOfPlayers == 2)
             {
-                for (int k = players[1].rifleLevel + 1; k < levelMenu.numberOfUpgrades; k++)
+                for (int i = 0; i < levelMenu.numberOfUpgrades; i++)
                 {
-                    spriteBatch.Draw(TextureLibrary.rifleLevel, levelMenu.hitbox[3, k], Color.Black);
+                    for (int k = players[1].rifleLevel + 1; k < levelMenu.numberOfUpgrades; k++)
+                    {
+                        spriteBatch.Draw(TextureLibrary.rifleLevel, levelMenu.hitbox[3, k], Color.Black);
+                    }
                 }
-            }
-            for (int i = 0; i < levelMenu.numberOfUpgrades; i++)
-            {
-                for (int k = players[1].shotgunLevel + 1; k < levelMenu.numberOfUpgrades; k++)
+                for (int i = 0; i < levelMenu.numberOfUpgrades; i++)
                 {
-                    spriteBatch.Draw(TextureLibrary.shotgunLevel, levelMenu.hitbox[4, k], Color.Black);
+                    for (int k = players[1].shotgunLevel + 1; k < levelMenu.numberOfUpgrades; k++)
+                    {
+                        spriteBatch.Draw(TextureLibrary.shotgunLevel, levelMenu.hitbox[4, k], Color.Black);
+                    }
                 }
-            }
-            for (int i = 0; i < levelMenu.numberOfUpgrades; i++)
-            {
-                for (int k = players[1].explosivesLevel + 1; k < levelMenu.numberOfUpgrades; k++)
+                for (int i = 0; i < levelMenu.numberOfUpgrades; i++)
                 {
-                    spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[5, k], Color.Black);
+                    for (int k = players[1].explosivesLevel + 1; k < levelMenu.numberOfUpgrades; k++)
+                    {
+                        spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[5, k], Color.Black);
+                    }
                 }
             }
         }

@@ -55,7 +55,7 @@ namespace Sombi
             highscoreManager = new HighscoreManager();
             highscoreManager.ReadScore();
             menuManager = new MenuManager(playerManager.players);
-            levelMenuManager = new LevelMenuManager(playerManager.players);
+            levelMenuManager = new LevelMenuManager(playerManager.players, menuManager.numberOfPlayers);
             packageManager = new PackageManager(enemyManager);
             this.game = game;
 
@@ -227,7 +227,7 @@ namespace Sombi
         {
             camera.Update(playerManager.players[0].pos, playerManager.players[1].pos);
             menuManager.Update(gameTime);
-            playerManager.Update(gameTime);
+            playerManager.Update(gameTime, menuManager.numberOfPlayers);
             floatingTextures.Update();
             StartGame();
             ExitGame();
@@ -279,7 +279,7 @@ namespace Sombi
                 currentGameState = GameState.Paused;
             }
             enemyManager.Update(gameTime, playerManager.weaponManager.bulletManager.bullets);
-            playerManager.Update(gameTime);
+            playerManager.Update(gameTime, menuManager.numberOfPlayers);
             packageManager.Update(gameTime, playerManager.players, menuManager.numberOfPlayers);
             floatingTextures.Update();
             hudManager.Update(gameTime, camera.position);
@@ -312,10 +312,20 @@ namespace Sombi
 
         private void Upgrade()
         {
-            if ((playerManager.players[0].HitBox.Intersects(packageManager.dropZone) || playerManager.players[1].HitBox.Intersects(packageManager.dropZone)) && currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B))
+            if (menuManager.numberOfPlayers == 2)
             {
-                currentGameState = GameState.LevelUp;
+                if ((playerManager.players[0].HitBox.Intersects(packageManager.dropZone) || playerManager.players[1].HitBox.Intersects(packageManager.dropZone)) && currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B))
+                {
+                    currentGameState = GameState.LevelUp;
+                }
             }
+            else
+            {
+                if (playerManager.players[0].HitBox.Intersects(packageManager.dropZone) && currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B))
+                {
+                    currentGameState = GameState.LevelUp;
+                }
+            }         
         }
     }
 }
