@@ -55,7 +55,7 @@ namespace Sombi
             highscoreManager = new HighscoreManager();
             highscoreManager.ReadScore();
             menuManager = new MenuManager(playerManager.players);
-            levelMenuManager = new LevelMenuManager(playerManager.players, menuManager.numberOfPlayers);
+            levelMenuManager = new LevelMenuManager(playerManager.players);
             packageManager = new PackageManager(enemyManager);
             this.game = game;
 
@@ -165,7 +165,7 @@ namespace Sombi
 
                 case GameState.LevelUp:
                 {
-                        levelMenuManager.Draw(spriteBatch);
+                        levelMenuManager.Draw(spriteBatch, menuManager.numberOfPlayers);
                         break;
                 }
 

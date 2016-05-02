@@ -65,6 +65,7 @@ namespace Sombi
         public static Texture2D rifleLevel { get; private set; }
         public static Texture2D shotgunLevel { get; private set; }
         public static Texture2D rocketLevel { get; private set; }
+        public static Texture2D lockedUpgrade { get; private set; }
         public static Texture2D[] weaponWheel = new Texture2D[3];
 
         //Menu
@@ -161,6 +162,7 @@ namespace Sombi
             rifleLevel = Content.Load<Texture2D>("RifleLevel");
             shotgunLevel = Content.Load<Texture2D>("ShotgunLevel");
             rocketLevel = Content.Load<Texture2D>("RocketLevel");
+            lockedUpgrade = Content.Load<Texture2D>("LockedUpgrade");
             weaponWheel[0] = Content.Load<Texture2D>("WeaponHUDRocket");
             weaponWheel[1] = Content.Load<Texture2D>("WeaponHUDRifle");
             weaponWheel[2] = Content.Load<Texture2D>("WeaponHUDShotgun");
