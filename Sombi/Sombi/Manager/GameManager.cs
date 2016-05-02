@@ -96,10 +96,7 @@ namespace Sombi
 
                     {
                         PlayingUpdate(gameTime);
-                        if (currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B)) ///enbart för test, tas bort sen
-                        {
-                            currentGameState = GameState.LevelUp;
-                        }
+                        Upgrade();
                         break;                  
                     }
 
@@ -304,6 +301,14 @@ namespace Sombi
         {
             PlayingDraw(spriteBatch);
             spriteBatch.DrawString(TextureLibrary.billBoardText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
+        }
+
+        private void Upgrade()
+        {
+            if (playerManager.players[0].HitBox.Intersects(packageManager.dropZone) || playerManager.players[1].HitBox.Intersects(packageManager.dropZone) && currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B))
+            {
+                currentGameState = GameState.LevelUp;
+            }
         }
     }
 }
