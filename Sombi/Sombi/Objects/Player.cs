@@ -55,16 +55,16 @@ namespace Sombi
             this.ID = ID;
             hitBox = new Rectangle((int)position.X, (int)position.Y, TextureLibrary.sourceRectTex.Width, TextureLibrary.sourceRectTex.Height);
             SetPlayerID(ID);
+            LoadContent();
         }
 
-        public void LoadContent()
+        private void LoadContent()
         {
             player1RifleIdle = new Animation(TextureLibrary.player1RifleIdle, 63, 0.1f, true);
             player1AnimationRifle = new Animation(TextureLibrary.player1RifleAnimationSheet, 63, 0.1f, true);
             player1RifleShootingAnimation = new Animation(TextureLibrary.player1RifleSheet, 63, 0.1f, true);
-            velocity = Vector2.Zero;
+            velocity = new Vector2(0,0);
             maxspeed = 2.0f;
-
             playerSpeed = 2.0f;
             health = 1000;
             timeToRevive = 3.0f;

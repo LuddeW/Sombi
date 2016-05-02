@@ -24,9 +24,6 @@ namespace Sombi
         {
             weaponManager = new WeaponManager();
             players = new List<Player>();
-
-            CreatePlayers();
-
             this.camera = camera;
             CreatePlayers();           
 
@@ -127,8 +124,6 @@ namespace Sombi
             players.Clear();
             player1 = new Player(/*weaponManager.playerOneWeapon, */new Vector2(150, 150), 1);
             player2 = new Player(/*weaponManager.playerTwoWeapon, */new Vector2(150, 200), 2);
-            player1.LoadContent();
-            player2.LoadContent();
             players.Add(player1);
             players.Add(player2);
         }
