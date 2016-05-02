@@ -17,6 +17,7 @@ namespace Sombi
         KeyboardState oldKeyboard;
         List<Player> players;
         int numberOfPlayers;
+        int upgradeCost;
 
         public LevelMenuManager(List<Player> players)
         {
@@ -24,6 +25,7 @@ namespace Sombi
             player1Active = new Vector2(0, 0);
             player2Active = new Vector2(3, 0);
             this.players = players;
+            upgradeCost = 100;
         }
 
         public void Update(ref int shotgunLevelP1, ref int rifleLevelP1, ref int explosiveLevelP1, ref int shotgunLevelP2, ref int rifleLevelP2, ref int explosiveLevelP2)
@@ -45,12 +47,12 @@ namespace Sombi
                     spriteBatch.Draw(TextureLibrary.rifleLevel, levelMenu.hitbox[0, k], Color.White);
                     spriteBatch.DrawString(TextureLibrary.HudText, "Level 1         ", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 0].Y + levelMenu.hitbox[i, k].Height), Color.Black);
                     spriteBatch.Draw(TextureLibrary.shotgunLevel, levelMenu.hitbox[1, k], Color.White);
-                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 2     $250", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 1].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 2     $100", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 1].Y + levelMenu.hitbox[i, k].Height), Color.Black);
                     spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[2, k], Color.White);
-                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 3     $500", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 2].Y + levelMenu.hitbox[i, k].Height), Color.Black);                  
-                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 4     $750", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 3].Y + levelMenu.hitbox[i, k].Height), Color.Black);
-                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 5     $1000", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 4].Y + levelMenu.hitbox[i, k].Height), Color.Black);
-                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 6     $1250", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 5].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 3     $200", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 2].Y + levelMenu.hitbox[i, k].Height), Color.Black);                  
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 4     $300", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 3].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 5     $400", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 4].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 6     $500", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 5].Y + levelMenu.hitbox[i, k].Height), Color.Black);
                     if (numberOfPlayers == 2)
                     {
                         spriteBatch.Draw(TextureLibrary.rifleLevel, levelMenu.hitbox[3, k], Color.White);
@@ -116,30 +118,30 @@ namespace Sombi
                     case 1:
                         if (!(player1Active.Y + 1 == 1))
                         {
-                            if (players[0].cash > (player1Active.Y + 1) * 250 - 250 && shotgunLevel == player1Active.Y)
+                            if (players[0].cash > (player1Active.Y + 1) * upgradeCost - upgradeCost && shotgunLevel == player1Active.Y)
                             {
                                 shotgunLevel = (int)player1Active.Y + 1;
-                                players[0].cash -= (int)(player1Active.Y + 1) * 250 - 250;
+                                players[0].cash -= (int)(player1Active.Y + 1) * upgradeCost - upgradeCost;
                             }
                         }                        
                         break;
                     case 0:
                         if (!(player1Active.Y + 1 == 1))
                         {
-                            if (players[0].cash > (player1Active.Y + 1) * 250 - 250 && rifleLevel == player1Active.Y)
+                            if (players[0].cash > (player1Active.Y + 1) * upgradeCost - upgradeCost && rifleLevel == player1Active.Y)
                             {
                                 rifleLevel = (int)player1Active.Y + 1;
-                                players[0].cash -= (int)(player1Active.Y + 1) * 250 - 250;
+                                players[0].cash -= (int)(player1Active.Y + 1) * upgradeCost - upgradeCost;
                             }
                         }
                         break;
                     case 2:
                         if (!(player1Active.Y + 1 == 1))
                         {
-                            if (players[0].cash > (player1Active.Y + 1) * 250 - 250 && explosiveLevel == player1Active.Y)
+                            if (players[0].cash > (player1Active.Y + 1) * upgradeCost - upgradeCost && explosiveLevel == player1Active.Y)
                             {
                                 explosiveLevel = (int)player1Active.Y + 1;
-                                players[0].cash -= (int)(player1Active.Y + 1) * 250 - 250;
+                                players[0].cash -= (int)(player1Active.Y + 1) * upgradeCost - upgradeCost;
                             }
                         }
                         break;
@@ -158,30 +160,30 @@ namespace Sombi
                     case 4:
                         if (!(player2Active.Y + 1 == 1))
                         {
-                            if (players[1].cash > (player2Active.Y + 1) * 250 - 250 && shotgunLevel == player2Active.Y)
+                            if (players[1].cash > (player2Active.Y + 1) * upgradeCost - upgradeCost && shotgunLevel == player2Active.Y)
                             {
                                 shotgunLevel = (int)player2Active.Y + 1;
-                                players[1].cash -= (int)(player2Active.Y + 1) * 250 - 250;
+                                players[1].cash -= (int)(player2Active.Y + 1) * upgradeCost - upgradeCost;
                             }
                         }                     
                         break;
                     case 3:
                         if (!(player2Active.Y + 1 == 1))
                         {
-                            if (players[1].cash > (player2Active.Y + 1) * 250 - 250 && rifleLevel == player2Active.Y)
+                            if (players[1].cash > (player2Active.Y + 1) * upgradeCost - upgradeCost && rifleLevel == player2Active.Y)
                             {
                                 rifleLevel = (int)player2Active.Y + 1;
-                                players[1].cash -= (int)(player2Active.Y + 1) * 250 - 250;
+                                players[1].cash -= (int)(player2Active.Y + 1) * upgradeCost - upgradeCost;
                             }
                         }                  
                         break;
                     case 5:
                         if (!(player2Active.Y + 1 == 1))
                         {
-                            if (players[1].cash > (player2Active.Y + 1) * 250 - 250 && explosiveLevel == player2Active.Y)
+                            if (players[1].cash > (player2Active.Y + 1) * upgradeCost - upgradeCost && explosiveLevel == player2Active.Y)
                             {
                                 explosiveLevel = (int)player2Active.Y + 1;
-                                players[1].cash -= (int)(player2Active.Y + 1) * 250 - 250;
+                                players[1].cash -= (int)(player2Active.Y + 1) * upgradeCost - upgradeCost;
                             }
                         }
                         break;
