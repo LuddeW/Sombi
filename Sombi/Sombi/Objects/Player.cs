@@ -225,7 +225,7 @@ namespace Sombi
             velocity.X = gamePadState.ThumbSticks.Left.X/*  *maxspeed;*/;
             velocity.Y = -gamePadState.ThumbSticks.Left.Y/* * maxspeed;*/;
 
-            if (Grid.grid[(int)(((this.pos.X)) + velocity.X * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50, (int)(((this.pos.Y)) + velocity.Y * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50].passable)   //Förhindrar flytt om vägg framför
+            if (Grid.grid[(int)(((this.pos.X + ((50 * velocity.X) / 2))) + velocity.X * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50, (int)(((this.pos.Y + ((50 * velocity.Y) / 2))) + velocity.Y * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50].passable)   //Förhindrar flytt om vägg framför
             {
                 this.pos += velocity * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds;     //Flyttar gubben relativt till delta time
             }
@@ -279,7 +279,7 @@ namespace Sombi
                 angle = MathHelper.ToRadians(0);
             }
 
-            if (Grid.grid[(int)((pos.X) + velocity.X * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50, (int)((pos.Y) + velocity.Y * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50].passable)
+            if (Grid.grid[(int)((pos.X + ((50 * velocity.X) / 2)) + velocity.X * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50, (int)((pos.Y + ((50 * velocity.Y) / 2)) + velocity.Y * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50].passable)
             {
                 pos += velocity * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
