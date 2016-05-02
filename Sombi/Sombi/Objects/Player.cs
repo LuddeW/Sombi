@@ -221,32 +221,10 @@ namespace Sombi
             velocity.X = gamePadState.ThumbSticks.Left.X/*  *maxspeed;*/;
             velocity.Y = -gamePadState.ThumbSticks.Left.Y/* * maxspeed;*/;
 
-            if (velocity.Y < 0) // CLEAR UP THIS CODE 
-            {
-                direction.Y = -1;
-            }
-            if (velocity.Y > 0)
-            {
-                direction.Y = 1;
-            }
-            if (velocity.X < 0)
-            {
-                direction.X = -1;
-            }
-            if (velocity.X > 1)
-            {
-                direction.X = 1;
-            }
-            else
-                direction = new Vector2(0, 0);
-
-            if (Grid.grid[(int)(((this.pos.X) / 50) + velocity.X * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds), (int)(((this.pos.Y) / 50) + velocity.Y * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds)].passable)   //Förhindrar flytt om vägg framför
+            if (Grid.grid[(int)(((this.pos.X)) + velocity.X * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50, (int)(((this.pos.Y)) + velocity.Y * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50].passable)   //Förhindrar flytt om vägg framför
             {
                 this.pos += velocity * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds;     //Flyttar gubben relativt till delta time
             }
-
-
-            
 
         }
 
