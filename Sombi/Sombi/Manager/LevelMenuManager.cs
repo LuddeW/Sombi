@@ -16,7 +16,7 @@ namespace Sombi
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
         List<Player> players;
-        int numberOfPlayers;
+        //int numberOfPlayers;
         int upgradeCost;
 
         public LevelMenuManager(List<Player> players)
