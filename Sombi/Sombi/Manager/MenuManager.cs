@@ -60,7 +60,7 @@ namespace Sombi
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
-                numberOfPlayers = 1;
+                numberOfPlayers = 2;
                 start = true;
                 Grid.menu = false;
                 Grid.CreateGridFactory();
@@ -69,7 +69,7 @@ namespace Sombi
             {
                 if (players[0].GamePadState.IsButtonDown(Buttons.A) && players[0].HitBox.Intersects(menu.startRect) && !players[1].HitBox.Intersects(menu.startRect))
                 {
-                    numberOfPlayers = 1;
+                    numberOfPlayers = 2;
                     pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     fadePercentage += 0.03f;
                     //if (pressedTime > timeToPress)

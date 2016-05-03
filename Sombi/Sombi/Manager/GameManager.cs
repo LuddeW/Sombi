@@ -182,10 +182,13 @@ namespace Sombi
                 if (menuManager.numberOfPlayers == 1)
                 {
                     playerManager.CreateOnePlayer();
+                    playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
                 }
                 else if (menuManager.numberOfPlayers == 2)
                 {
                     playerManager.CreatePlayers();
+                    playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
+                    playerManager.players[1].pos = GlobalValues.PLAYER_TWO_START_POS;
                 }
                 
                 currentGameState = GameState.Playing;
@@ -254,6 +257,7 @@ namespace Sombi
 
         private void PlayingUpdate(GameTime gameTime)
         {
+            
             if (menuManager.numberOfPlayers == 2)
             {
                 if (playerManager.player1.eaten)
@@ -302,6 +306,8 @@ namespace Sombi
                     enemyManager.zombies.Clear();
                 }
             }
+            Console.WriteLine(playerManager.players[0].pos);
+            //Console.WriteLine(playerManager.players[1].pos);
         }
 
         private void PauseDraw(SpriteBatch spriteBatch)
