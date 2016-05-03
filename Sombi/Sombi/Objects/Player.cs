@@ -46,6 +46,8 @@ namespace Sombi
         Animation player1ShotgunIdle;
         Animation player1RocketIdle;
         Animation player1AnimationRifle;
+        Animation player1AnimationShotgun;
+        Animation player1AnimationRocket;
         Animation player1RifleShootingAnimation;
         Animation player1ShotgunShootingAnimation;
         Animation player1RocketShootingAnimation;
@@ -65,12 +67,15 @@ namespace Sombi
         {
             player1RifleIdle = new Animation(TextureLibrary.player1RifleIdle, 37, 0.1f, true);
             player1RifleShootingAnimation = new Animation(TextureLibrary.player1RifleSheet, 63, 0.1f, true);
+            player1AnimationRifle = new Animation(TextureLibrary.player1RifleAnimationSheet, 63, 0.25f, true);
 
             player1ShotgunIdle = new Animation(TextureLibrary.player1ShotgunIdle, 37, 0.1f, true);
             player1ShotgunShootingAnimation = new Animation(TextureLibrary.player1ShotgunSheet, 62, 0.1f, true);
+            player1AnimationShotgun = new Animation(TextureLibrary.player1ShotgunAnimationSheet, 63, 0.25f, true);
 
             player1RocketIdle = new Animation(TextureLibrary.player1RocketIdle, 43, 0.1f, true);
             player1RocketShootingAnimation = new Animation(TextureLibrary.player1RocketTex, 63, 0.1f, true);
+            player1AnimationRocket = new Animation(TextureLibrary.player1RocketAnimationSheet, 63, 0.25f, true);
         }
 
         public void LoadContent()
@@ -368,9 +373,13 @@ namespace Sombi
 
             if (weapon is Rifle)
             {
-                if (!FireWeapon())
+                if (!FireWeapon() && velocity.X == 0 && velocity.Y == 0)
                 {
                     animationplayer.PlayAnimation(player1RifleIdle);
+                }
+                if (!FireWeapon())
+                {
+                    animationplayer.PlayAnimation(player1AnimationRifle);
                 }
                 else if (FireWeapon())
                 {
@@ -386,9 +395,13 @@ namespace Sombi
         {
             if (weapon is Shotgun)
             {
-                if (!FireWeapon())
+                if (!FireWeapon() && velocity.X == 0 && velocity.Y == 0)
                 {
                     animationplayer.PlayAnimation(player1ShotgunIdle);
+                }
+                else if (!FireWeapon())
+                {
+                    animationplayer.PlayAnimation(player1AnimationShotgun);
                 }
                 else if (FireWeapon())
                 {
@@ -404,9 +417,13 @@ namespace Sombi
         {
             if (weapon is Explosives)
             {
-                if (!FireWeapon())
+                if (!FireWeapon() && velocity.X == 0 && velocity.Y == 0)
                 {
                     animationplayer.PlayAnimation(player1RocketIdle);
+                }
+                else if (!FireWeapon())
+                {
+                    animationplayer.PlayAnimation(player1AnimationRocket);
                 }
                 else if (FireWeapon())
                 {
