@@ -78,12 +78,12 @@ namespace Sombi
             velocity = new Vector2(0, 0);
             Player1Animation();
             velocity = Vector2.Zero;
-            maxspeed = 100.0f;
-            playerSpeed = 100.0f;
+            maxspeed = 200.0f;
+            playerSpeed = 200.0f;
             health = 1000;
             timeToRevive = 3.0f;
             reviveTime = 0.0f;
-            cash = 10000;
+            cash = 0;
             rifleLevel = 1;
             shotgunLevel = 1;
             explosivesLevel = 1;
