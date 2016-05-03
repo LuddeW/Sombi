@@ -40,29 +40,20 @@ namespace Sombi
         public static Texture2D fatZombieTex { get; private set; }
 
 
-        public static Texture2D player1RifleSheet { get; private set; }
         public static Texture2D player1RifleAnimationSheet { get; private set; }
-        public static Texture2D player1RifleIdle { get; private set; }
 
-        public static Texture2D player1ShotgunSheet { get; private set; }
         public static Texture2D player1ShotgunAnimationSheet { get; private set; }
-        public static Texture2D player1ShotgunIdle { get; private set; }
+
 
         public static Texture2D player1RocketSheet { get; private set; }
         public static Texture2D player1RocketAnimationSheet { get; private set; }
-        public static Texture2D player1RocketIdle { get; private set; }
 
-        public static Texture2D player2RifleSheet { get; private set; }
         public static Texture2D player2RifleAnimationSheet { get; private set; }
-        public static Texture2D player2RifleIdle { get; private set; }
 
-        public static Texture2D player2ShotgunSheet { get; private set; }
         public static Texture2D player2ShotgunAnimationSheet { get; private set; }
-        public static Texture2D player2ShotgunIdle { get; private set; }
 
         public static Texture2D player2RocketSheet { get; private set; }
         public static Texture2D player2RocketAnimationSheet { get; private set; }
-        public static Texture2D player2RocketIdle { get; private set; }
 
         //Structures and Objects
         public static Texture2D packageTex { get; private set; }
