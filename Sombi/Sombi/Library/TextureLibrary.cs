@@ -30,9 +30,25 @@ namespace Sombi
         public static Texture2D player1RifleAnimationSheet { get; private set; }
         public static Texture2D player1RifleIdle { get; private set; }
 
+        public static Texture2D player1ShotgunSheet { get; private set; }
+        public static Texture2D player1ShotgunAnimationSheet { get; private set; }
+        public static Texture2D player1ShotgunIdle { get; private set; }
+
+        public static Texture2D player1RocketSheet { get; private set; }
+        public static Texture2D player1RocketAnimationSheet { get; private set; }
+        public static Texture2D player1RocketIdle { get; private set; }
+
         public static Texture2D player2RifleSheet { get; private set; }
         public static Texture2D player2RifleAnimationSheet { get; private set; }
         public static Texture2D player2RifleIdle { get; private set; }
+
+        public static Texture2D player2ShotgunSheet { get; private set; }
+        public static Texture2D player2ShotgunAnimationSheet { get; private set; }
+        public static Texture2D player2ShotgunIdle { get; private set; }
+
+        public static Texture2D player2RocketSheet { get; private set; }
+        public static Texture2D player2RocketAnimationSheet { get; private set; }
+        public static Texture2D player2RocketIdle { get; private set; }
 
         //Structures and Objects
         public static Texture2D packageTex { get; private set; }
@@ -85,23 +101,39 @@ namespace Sombi
 
         public static void LoadContent(ContentManager Content)
         {
-            //Player and Enemy Sprites            
-            player1RifleTex = Content.Load<Texture2D>(@"Player1Rifle");
-            player1ShotgunTex = Content.Load<Texture2D>(@"Player1Shotgun");
-            player1RocketTex = Content.Load<Texture2D>(@"Player1Rocket");
+            //Player and Enemy Sprites 
+            
+            // ALL ANIMATIONS FOR PLAYER
 
+            // Rifle
             player1RifleAnimationSheet = Content.Load<Texture2D>(@"AnimationPlayer1RifleSheet");
             player1RifleIdle = Content.Load<Texture2D>(@"Player1RifleIdle");
+            player1RifleSheet = Content.Load<Texture2D>(@"Player1RifleSheet");
+            // Shotgun
+            player1ShotgunAnimationSheet = Content.Load<Texture2D>(@"AnimationPlayer1ShotgunSheet");
+            player1ShotgunIdle = Content.Load<Texture2D>(@"Player1ShotgunIdle");
+            player1ShotgunSheet = Content.Load<Texture2D>(@"player1ShotgunSheet");
+            //Rocket
+            player1RocketAnimationSheet = Content.Load<Texture2D>(@"AnimationPlayer1RocketSheet");
+            player1RocketIdle = Content.Load<Texture2D>(@"player1Rocket");
+            player1RocketSheet = Content.Load<Texture2D>(@"player1Rocket");
 
+            // Rifle
             player2RifleAnimationSheet = Content.Load<Texture2D>(@"AnimationPlayer2RifleSheet");
             player2RifleIdle = Content.Load<Texture2D>(@"Player2RifleIdle");
-
-            // Player1 shooting animation
-            player1RifleSheet = Content.Load<Texture2D>(@"Player1RifleSheet");
-            // Player2 shooting animation
             player2RifleSheet = Content.Load<Texture2D>(@"Player2RifleSheet");
 
-            player1RifleSheet = Content.Load<Texture2D>(@"Player1RifleSheet");
+            // Shotgun
+            player2ShotgunAnimationSheet = Content.Load<Texture2D>(@"AnimationPlayer2ShotgunSheet");
+            player2ShotgunIdle = Content.Load<Texture2D>(@"player2ShotgunIdle");
+            player2ShotgunSheet = Content.Load<Texture2D>(@"Player2Shotgunsheet");
+            //Rocket
+            player2RocketAnimationSheet = Content.Load<Texture2D>(@"AnimationPlayer2RocketSheet");
+            player2RocketIdle = Content.Load<Texture2D>(@"player2Rocket");
+            player2RocketSheet = Content.Load<Texture2D>(@"player2Rocket");
+            
+            // TEXTURES FOR PLAYER
+            player1RifleTex = Content.Load<Texture2D>(@"Player1Rifle");
             player1ShotgunTex = Content.Load<Texture2D>(@"Player1Shotgun");
             player1RocketTex = Content.Load<Texture2D>(@"Player1Rocket");
             player1IncapacitatedTex = Content.Load<Texture2D>(@"Player1Incapacitated");
@@ -114,6 +146,7 @@ namespace Sombi
             player2IncapacitatedTex = Content.Load<Texture2D>(@"Player2Incapacitated");
             player2DeadTex = Content.Load<Texture2D>(@"Player2Dead");
 
+            // ZOMBIE ANIMATIONS
             zombieTex = Content.Load<Texture2D>(@"ZombieSheet");
             fastZombieTex = Content.Load<Texture2D>(@"ZombieSheet2");
             fatZombieTex = Content.Load<Texture2D>(@"FatZombie");
