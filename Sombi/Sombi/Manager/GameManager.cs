@@ -107,7 +107,7 @@ namespace Sombi
                 case GameState.Paused:
                     {
                         floatingTextures.Update();
-                        if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
+                        if (currentKeyboard.IsKeyDown(Keys.Escape) && !oldKeyboard.IsKeyDown(Keys.Escape))
                         {
                             currentGameState = GameState.Playing;
                         }
@@ -119,7 +119,7 @@ namespace Sombi
                         camera.position = new Vector2(0, 0);
                         camera.ViewMatrix = Matrix.CreateTranslation(new Vector3(-camera.position, 0));
                         levelMenuManager.Update(ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel, ref playerManager.player2.shotgunLevel, ref playerManager.player2.rifleLevel, ref playerManager.player2.explosivesLevel);
-                        if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
+                        if (currentKeyboard.IsKeyDown(Keys.Escape) && !oldKeyboard.IsKeyDown(Keys.Escape))
                         {
                             currentGameState = GameState.Playing;
                         }
