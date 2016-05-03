@@ -37,16 +37,20 @@ namespace Sombi
         public bool dead = false;
         public bool eaten = false;
         public bool gotPackage = false;
-       
+
 
         public int shotgunLevel;
         public int rifleLevel;
         public int explosivesLevel;
-        Animation player1RifleShootingAnimation;
-        Animation player1AnimationRifle;
         Animation player1RifleIdle;
+        Animation player1ShotgunIdle;
+        Animation player1RocketIdle;
+        Animation player1AnimationRifle;
+        Animation player1RifleShootingAnimation;
+        Animation player1ShotgunShootingAnimation;
+        Animation player1RocketShootingAnimation;
         AnimationPlayer animationplayer;
-        
+
 
         public Player(/*Weapon weapon, */Vector2 position, int ID)
             : base(position)
@@ -55,24 +59,34 @@ namespace Sombi
             this.ID = ID;
             hitBox = new Rectangle((int)position.X, (int)position.Y, TextureLibrary.sourceRectTex.Width, TextureLibrary.sourceRectTex.Height);
             SetPlayerID(ID);
+            LoadContent();
+        }
+        public void Player1Animation()
+        {
+            player1RifleIdle = new Animation(TextureLibrary.player1RifleIdle, 37, 0.1f, true);
+            player1RifleShootingAnimation = new Animation(TextureLibrary.player1RifleSheet, 63, 0.1f, true);
+
+            player1ShotgunIdle = new Animation(TextureLibrary.player1ShotgunIdle, 37, 0.1f, true);
+            player1ShotgunShootingAnimation = new Animation(TextureLibrary.player1ShotgunSheet, 62, 0.1f, true);
+
+            player1RocketIdle = new Animation(TextureLibrary.player1RocketIdle, 43, 0.1f, true);
+            player1RocketShootingAnimation = new Animation(TextureLibrary.player1RocketTex, 63, 0.1f, true);
         }
 
         public void LoadContent()
         {
-            player1RifleIdle = new Animation(TextureLibrary.player1RifleIdle, 63, 0.1f, true);
-            player1AnimationRifle = new Animation(TextureLibrary.player1RifleAnimationSheet, 63, 0.1f, true);
-            player1RifleShootingAnimation = new Animation(TextureLibrary.player1RifleSheet, 63, 0.1f, true);
+            velocity = new Vector2(0, 0);
+            Player1Animation();
             velocity = Vector2.Zero;
-            maxspeed = 2.0f;
-
-            playerSpeed = 2.0f;
+            maxspeed = 100.0f;
+            playerSpeed = 100.0f;
             health = 1000;
             timeToRevive = 3.0f;
             reviveTime = 0.0f;
-            cash = 0;
-            explosivesLevel = 1;
+            cash = 10000;
             rifleLevel = 1;
             shotgunLevel = 1;
+            explosivesLevel = 1;
         }
 
         public Rectangle HitBox
@@ -93,18 +107,22 @@ namespace Sombi
             set { }
         }
 
+        public float ReviveTime
+        {
+            get { return reviveTime; }
+            set { }
+        }
+
         public override void Update(GameTime gameTime)
         {
-            
-
             if (health <= 0)
             {
                 dead = true;
             }
-            if (health <= -2000)
+            if (health <= -3000)
             {
                 eaten = true;
-                health = -2000;
+                health = -3000;
             }
 
             if (!dead)
@@ -119,14 +137,13 @@ namespace Sombi
                 }
                 else
                 {
-                    KeyBoardMovement();
+                    KeyBoardMovement(gameTime);
                     //Collide();                  
                 }
-               // Collide();
+                // Collide();
                 UpdateHitbox();
             }
             Revive(gameTime);
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -135,17 +152,19 @@ namespace Sombi
             {
                 spriteBatch.DrawString(TextureLibrary.pauseText, (3 - (int)reviveTime).ToString(), pos - new Vector2(6, 45), Color.Green);
             }
-            
-            if(!dead)
+
+            if (!dead)
             {
                 if (playerID == PlayerID.One)
-                    animationplayer.Draw(spriteBatch, pos);
+                {
+                    animationplayer.Draw(spriteBatch, pos, angle);
+                }
                 //spriteBatch.Draw(TextureLibrary.player1RifleTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player1RifleTex.Width / 2, TextureLibrary.player1RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
-                   // spriteBatch.Draw(TextureLibrary.player1RocketTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player1RifleTex.Width / 2, TextureLibrary.player1RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
+                // spriteBatch.Draw(TextureLibrary.player1RocketTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player1RifleTex.Width / 2, TextureLibrary.player1RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
                 if (playerID == PlayerID.Two)
-                    animationplayer.Draw(spriteBatch, pos);
+                    animationplayer.Draw(spriteBatch, pos, angle);
                 //    spriteBatch.Draw(TextureLibrary.player2RifleTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player2RifleTex.Width / 2, TextureLibrary.player2RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
-                //////spriteBatch.Draw(TextureLibrary.sourceRectTex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
+                //spriteBatch.Draw(TextureLibrary.sourceRectTex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
             }
         }
         public void DrawDead(SpriteBatch spriteBatch)
@@ -172,31 +191,11 @@ namespace Sombi
 
         public void UpdateAnimation(Weapon weapon)
         {
-
-
-            if (weapon is Rifle)
-            {
-                
-
-                if (!FireWeapon())
-                {
-                    animationplayer.PlayAnimation(player1RifleIdle);
-                }
-                else if (FireWeapon())
-                    animationplayer.PlayAnimation(player1RifleShootingAnimation);
-            }
-
-
-
-            /*if (isShooting == true && weaponManager.rifleIsSelected == true)
-            {
-                animationplayer.PlayAnimation(player1RifleShootingAnimation);
-            }*/
-            else
-            {
-                animationplayer.PlayAnimation(player1RifleIdle);
-            }
+            RifleAnimation(weapon);
+            ShotgunAnimation(weapon);
+            RocketAnimation(weapon);
         }
+
 
         private void UpdateHitbox()
         {
@@ -226,33 +225,10 @@ namespace Sombi
             velocity.X = gamePadState.ThumbSticks.Left.X/*  *maxspeed;*/;
             velocity.Y = -gamePadState.ThumbSticks.Left.Y/* * maxspeed;*/;
 
-            if (velocity.Y < 0) // CLEAR UP THIS CODE 
+            if (Grid.grid[(int)(((this.pos.X + ((50 * velocity.X) / 2))) + velocity.X * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50, (int)(((this.pos.Y + ((50 * velocity.Y) / 2))) + velocity.Y * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50].passable)   //Förhindrar flytt om vägg framför
             {
-                direction.Y = -1;
-            }
-            if (velocity.Y > 0)
-            {
-                direction.Y = 1;
-            }
-            if (velocity.X < 0)
-            {
-                direction.X = -1;
-            }
-            if (velocity.X > 1)
-            {
-                direction.X = 1;
-            }
-            else
-                direction = new Vector2(0, 0);
-
-           /* if (Grid.grid[(int)((this.pos.X) / 50) + (int)direction.X, (int)((this.pos.Y) / 50) + (int)direction.Y].passable)   //Förhindrar flytt om vägg framför
-	        {*/
-                velocity = Vector2.Normalize(velocity);                                             //För att diagonalen ska bli 1 istället för 1.4
                 this.pos += velocity * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds;     //Flyttar gubben relativt till delta time
-	        //}
-            
-
-            
+            }
 
         }
 
@@ -278,33 +254,37 @@ namespace Sombi
             }
         }
 
-        private void KeyBoardMovement()
+        private void KeyBoardMovement(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Up) && Grid.grid[(int)((pos.X) / 50), (int)((pos.Y) / 50) - 1].passable == true)
+            velocity = new Vector2(0, 0);
+            if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                pos.Y -= playerSpeed;
-                direction.Y = -1;
+                velocity.Y = -1;
                 angle = MathHelper.ToRadians(270);
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Left) && Grid.grid[(int)((pos.X) / 50) - 1, (int)(pos.Y) / 50].passable == true)
+            if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
-                pos.X -= playerSpeed;
-                direction.X = -1;
+                velocity.X = -1;
                 angle = MathHelper.ToRadians(180);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Down) && Grid.grid[(int)((pos.X) / 50), (int)((pos.Y) / 50) + 1].passable == true)
+            if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                pos.Y += playerSpeed;
-                direction.Y = 1;
+                velocity.Y = 1;
                 angle = MathHelper.ToRadians(90);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Right) && Grid.grid[(int)((pos.X) / 50) + 1, (int)(pos.Y) / 50].passable == true)
+            if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-                pos.X += playerSpeed;
-                direction.X = 1;
+                velocity.X = 1;
                 angle = MathHelper.ToRadians(0);
             }
+
+            if (Grid.grid[(int)((pos.X + ((50 * velocity.X) / 2)) + velocity.X * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50, (int)((pos.Y + ((50 * velocity.Y) / 2)) + velocity.Y * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds) / 50].passable)
+            {
+                pos += velocity * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+
+            
         }
 
         private void Collide()
@@ -381,6 +361,61 @@ namespace Sombi
             if (reviveTime > timeToRevive)
             {
                 revive = true;
+            }
+        }
+        public void RifleAnimation(Weapon weapon)
+        {
+
+            if (weapon is Rifle)
+            {
+                if (!FireWeapon())
+                {
+                    animationplayer.PlayAnimation(player1RifleIdle);
+                }
+                else if (FireWeapon())
+                {
+                    animationplayer.PlayAnimation(player1RifleShootingAnimation);
+                }
+                else
+                {
+                    animationplayer.PlayAnimation(player1RifleIdle);
+                }
+            }
+        }
+        public void ShotgunAnimation(Weapon weapon)
+        {
+            if (weapon is Shotgun)
+            {
+                if (!FireWeapon())
+                {
+                    animationplayer.PlayAnimation(player1ShotgunIdle);
+                }
+                else if (FireWeapon())
+                {
+                    animationplayer.PlayAnimation(player1ShotgunShootingAnimation);
+                }
+                else
+                {
+                    animationplayer.PlayAnimation(player1ShotgunIdle);
+                }
+            }
+        }
+        public void RocketAnimation(Weapon weapon)
+        {
+            if (weapon is Explosives)
+            {
+                if (!FireWeapon())
+                {
+                    animationplayer.PlayAnimation(player1RocketIdle);
+                }
+                else if (FireWeapon())
+                {
+                    animationplayer.PlayAnimation(player1RocketShootingAnimation);
+                }
+                else
+                {
+                    animationplayer.PlayAnimation(player1RocketIdle);
+                }
             }
         }
 

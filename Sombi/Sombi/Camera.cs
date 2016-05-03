@@ -16,7 +16,7 @@ namespace Sombi
             ViewTileSize = viewTileSize;            
         }
 
-        public Matrix ViewMatrix { get; private set; }
+        public Matrix ViewMatrix { get; set; }
         public int ViewTileSize { get; set; }
 
         public void Update(Vector2 playerOnePos, Vector2 playerTwoPos)

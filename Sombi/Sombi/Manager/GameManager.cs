@@ -55,7 +55,7 @@ namespace Sombi
             highscoreManager = new HighscoreManager();
             highscoreManager.ReadScore();
             menuManager = new MenuManager(playerManager.players);
-            levelMenuManager = new LevelMenuManager();
+            levelMenuManager = new LevelMenuManager(playerManager.players);
             packageManager = new PackageManager(enemyManager);
             this.game = game;
 
@@ -95,11 +95,12 @@ namespace Sombi
                 case GameState.Playing:
 
                     {
+                        //if (currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B)) // enbart för test, tas bort sen lolololo
+                        //{                            
+                        //    currentGameState = GameState.LevelUp;
+                        //}
                         PlayingUpdate(gameTime);
-                        if (currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B)) ///enbart för test, tas bort sen
-                        {
-                            currentGameState = GameState.LevelUp;
-                        }
+                        Upgrade();
                         break;                  
                     }
 
@@ -115,11 +116,14 @@ namespace Sombi
 
                 case GameState.LevelUp:
                     {
+                        camera.position = new Vector2(0, 0);
+                        camera.ViewMatrix = Matrix.CreateTranslation(new Vector3(-camera.position, 0));
                         levelMenuManager.Update(ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel, ref playerManager.player2.shotgunLevel, ref playerManager.player2.rifleLevel, ref playerManager.player2.explosivesLevel);
                         if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
                         {
                             currentGameState = GameState.Playing;
                         }
+
                         break;
                     }            
             }
@@ -161,7 +165,7 @@ namespace Sombi
 
                 case GameState.LevelUp:
                 {
-                        levelMenuManager.Draw(spriteBatch);
+                        levelMenuManager.Draw(spriteBatch, menuManager.numberOfPlayers);
                         break;
                 }
 
@@ -223,7 +227,7 @@ namespace Sombi
         {
             camera.Update(playerManager.players[0].pos, playerManager.players[1].pos);
             menuManager.Update(gameTime);
-            playerManager.Update(gameTime);
+            playerManager.Update(gameTime, menuManager.numberOfPlayers);
             floatingTextures.Update();
             StartGame();
             ExitGame();
@@ -242,6 +246,7 @@ namespace Sombi
             playerManager.Draw(spriteBatch);
             enemyManager.DrawZombie(spriteBatch);
             floatingTextures.Draw(spriteBatch);
+            enemyManager.DrawZombieCount(spriteBatch);
             hudManager.Draw(spriteBatch, menuManager.numberOfPlayers);
             Color fadeInColor = new Color(new Vector3(0, 0, 0));
             spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadeInPercentage);
@@ -274,7 +279,7 @@ namespace Sombi
                 currentGameState = GameState.Paused;
             }
             enemyManager.Update(gameTime, playerManager.weaponManager.bulletManager.bullets);
-            playerManager.Update(gameTime);
+            playerManager.Update(gameTime, menuManager.numberOfPlayers);
             packageManager.Update(gameTime, playerManager.players, menuManager.numberOfPlayers);
             floatingTextures.Update();
             hudManager.Update(gameTime, camera.position);
@@ -302,7 +307,25 @@ namespace Sombi
         private void PauseDraw(SpriteBatch spriteBatch)
         {
             PlayingDraw(spriteBatch);
-            spriteBatch.DrawString(TextureLibrary.HudText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
+            spriteBatch.DrawString(TextureLibrary.billBoardText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
+        }
+
+        private void Upgrade()
+        {
+            if (menuManager.numberOfPlayers == 2)
+            {
+                if ((playerManager.players[0].HitBox.Intersects(packageManager.dropZone) || playerManager.players[1].HitBox.Intersects(packageManager.dropZone)) && currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B))
+                {
+                    currentGameState = GameState.LevelUp;
+                }
+            }
+            else
+            {
+                if (playerManager.players[0].HitBox.Intersects(packageManager.dropZone) && currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B))
+                {
+                    currentGameState = GameState.LevelUp;
+                }
+            }         
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Sombi
     class PackageManager
     {
         Package package;
-        Rectangle dropZone;
+        public Rectangle dropZone;
         EnemyManager enemyManager;
         public PackageManager(EnemyManager enemyManager)
         {

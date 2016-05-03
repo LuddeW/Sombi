@@ -19,17 +19,12 @@ namespace Sombi
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
 
-
         public PlayerManager(Camera camera)
         {
             weaponManager = new WeaponManager();
             players = new List<Player>();
-
-            CreatePlayers();
-
             this.camera = camera;
-            CreatePlayers();           
-
+            CreatePlayers();
         }
 
         public bool GameOver()
@@ -44,7 +39,7 @@ namespace Sombi
             }
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, int numberOfPlayers)
         {
             player1.UpdateAnimation(weaponManager.playerOneWeapon);
             player2.UpdateAnimation(weaponManager.playerTwoWeapon);
@@ -63,7 +58,7 @@ namespace Sombi
             }
             SwitchWeapon();
             weaponManager.Update(gameTime);
-            Revive();
+            Revive(numberOfPlayers);
             ScreenCollide();
         }
 
@@ -127,25 +122,26 @@ namespace Sombi
             players.Clear();
             player1 = new Player(/*weaponManager.playerOneWeapon, */new Vector2(150, 150), 1);
             player2 = new Player(/*weaponManager.playerTwoWeapon, */new Vector2(150, 200), 2);
-            player1.LoadContent();
-            player2.LoadContent();
             players.Add(player1);
             players.Add(player2);
         }
 
-        private void Revive()
+        private void Revive(int numberOfPlayers)
         {
-            if (player1.HitBox.Intersects(player2.HitBox))
+            if (numberOfPlayers == 2)
             {
-                if (player1.revive && player2.dead && !player2.eaten)
+                if (player1.HitBox.Intersects(player2.HitBox))
                 {
-                    player2.health = 500;
-                    player2.dead = false;
-                }
-                if (player2.revive && player1.dead && !player1.eaten)
-                {
-                    player1.health = 500;
-                    player1.dead = false;
+                    if (player1.revive && player2.dead && !player2.eaten)
+                    {
+                        player2.health = 500;
+                        player2.dead = false;
+                    }
+                    if (player2.revive && player1.dead && !player1.eaten)
+                    {
+                        player1.health = 500;
+                        player1.dead = false;
+                    }
                 }
             }
         }
@@ -164,10 +160,13 @@ namespace Sombi
             if (currentKeyboard.IsKeyDown(Keys.E) && !oldKeyboard.IsKeyDown(Keys.E))
             {
                 weaponManager.SwitchWeaponRight(1, player1.shotgunLevel, player1.explosivesLevel, player1.rifleLevel);           //För player 1
+                weaponManager.SwitchWeaponRight(2, player2.shotgunLevel, player2.explosivesLevel, player2.rifleLevel);           //För player 1
+
             }
             if (currentKeyboard.IsKeyDown(Keys.Q) && !oldKeyboard.IsKeyDown(Keys.Q))
             {
                 weaponManager.SwitchWeaponLeft(1, player1.shotgunLevel, player1.explosivesLevel, player1.rifleLevel);
+                weaponManager.SwitchWeaponLeft(2, player2.shotgunLevel, player2.explosivesLevel, player2.rifleLevel);
             }
             if (player1.GamePadState.IsButtonDown(Buttons.RightShoulder) && !player1.OldGamePadState.IsButtonDown(Buttons.RightShoulder))
             {
@@ -177,6 +176,7 @@ namespace Sombi
             {
                 weaponManager.SwitchWeaponLeft(1, player1.shotgunLevel, player1.explosivesLevel, player1.rifleLevel);
             }
+
         }
 
     }

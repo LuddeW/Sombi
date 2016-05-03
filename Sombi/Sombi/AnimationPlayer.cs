@@ -11,6 +11,7 @@ namespace Sombi
     struct AnimationPlayer
     {
         Animation animation;
+
         public Animation Animation
         {
             get { return animation; }
@@ -52,10 +53,10 @@ namespace Sombi
                 if (animation.IsLooping) // Loopar den så sätt frameIndex
                     frameIndex = (frameIndex + 1) % animation.frameCount;
                 else frameIndex = Math.Min((frameIndex + 1), (animation.frameCount - 1));
-            }            
+            }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position, float rotation)
         {         
             // rectangle är source rectangle som tar från din spritesheet.
             if (animation != null)

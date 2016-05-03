@@ -45,6 +45,7 @@ namespace Sombi
                     bloodPositions.Add(new BloodStain(zombies[i].pos));
                     zombies.RemoveAt(i);
                     HighscoreManager.score++;
+                    HighscoreManager.kills++;
                 }
             }
         }
@@ -66,8 +67,6 @@ namespace Sombi
             {
                 z.Draw(spriteBatch);
             }
-            spriteBatch.DrawString(TextureLibrary.billBoardText, "" + zombies.Count, new Vector2(1366, 1430), GlobalValues.billBoardColor);
-
         }
         public void DrawBlood(SpriteBatch spriteBatch)
         {
@@ -75,6 +74,10 @@ namespace Sombi
             {
                 bs.Draw(spriteBatch);
             }
+        }
+        public void DrawZombieCount(SpriteBatch spriteBatch)
+        {
+            spriteBatch.DrawString(TextureLibrary.billBoardText, "" + zombies.Count, new Vector2(1366, 1430), GlobalValues.billBoardColor);
         }
         public void CheckForBulletCollisions(List<Projectile> bulletList)
         {

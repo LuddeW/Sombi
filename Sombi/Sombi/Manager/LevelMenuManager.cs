@@ -15,12 +15,17 @@ namespace Sombi
         Vector2 player2Active;
         KeyboardState currentKeyboard;
         KeyboardState oldKeyboard;
+        List<Player> players;
+        int numberOfPlayers;
+        int upgradeCost;
 
-        public LevelMenuManager()
+        public LevelMenuManager(List<Player> players)
         {
             levelMenu = new LevelMenu();
             player1Active = new Vector2(0, 0);
             player2Active = new Vector2(3, 0);
+            this.players = players;
+            upgradeCost = 100;
         }
 
         public void Update(ref int shotgunLevelP1, ref int rifleLevelP1, ref int explosiveLevelP1, ref int shotgunLevelP2, ref int rifleLevelP2, ref int explosiveLevelP2)
@@ -33,28 +38,35 @@ namespace Sombi
             LevelUpPlayer2(ref shotgunLevelP2, ref rifleLevelP2, ref explosiveLevelP2);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, int numberOfPlayers)
         {
             for (int i = 0; i < levelMenu.numberOfUpgrades; i++)
             {
                 for (int k = 0; k < levelMenu.numberOfRows; k++)
                 {
                     spriteBatch.Draw(TextureLibrary.rifleLevel, levelMenu.hitbox[0, k], Color.White);
-                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 1     $100", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 0].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 1         ", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 0].Y + levelMenu.hitbox[i, k].Height), Color.Black);
                     spriteBatch.Draw(TextureLibrary.shotgunLevel, levelMenu.hitbox[1, k], Color.White);
-                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 2     $150", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 1].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 2     $100", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 1].Y + levelMenu.hitbox[i, k].Height), Color.Black);
                     spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[2, k], Color.White);
-                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 3     $200", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 2].Y + levelMenu.hitbox[i, k].Height), Color.Black);
-                    spriteBatch.Draw(TextureLibrary.rifleLevel, levelMenu.hitbox[3, k], Color.White);
-                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 4     $250", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 3].Y + levelMenu.hitbox[i, k].Height), Color.Black);
-                    spriteBatch.Draw(TextureLibrary.shotgunLevel, levelMenu.hitbox[4, k], Color.White);
-                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 5     $300", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 4].Y + levelMenu.hitbox[i, k].Height), Color.Black);
-                    spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[5, k], Color.White);
-                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 6     $350", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 5].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 3     $200", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 2].Y + levelMenu.hitbox[i, k].Height), Color.Black);                  
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 4     $300", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 3].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 5     $400", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 4].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    spriteBatch.DrawString(TextureLibrary.HudText, "Level 6     $500", new Vector2(levelMenu.hitbox[i, 1].X, levelMenu.hitbox[0, 5].Y + levelMenu.hitbox[i, k].Height), Color.Black);
+                    if (numberOfPlayers == 2)
+                    {
+                        spriteBatch.Draw(TextureLibrary.rifleLevel, levelMenu.hitbox[3, k], Color.White);
+                        spriteBatch.Draw(TextureLibrary.shotgunLevel, levelMenu.hitbox[4, k], Color.White);
+                        spriteBatch.Draw(TextureLibrary.rocketLevel, levelMenu.hitbox[5, k], Color.White);
+                    }
                 }
             }
+            shadowLockedUpgrades(spriteBatch, numberOfPlayers);
             spriteBatch.Draw(TextureLibrary.sourceRectTex, levelMenu.hitbox[(int)player1Active.X, (int)player1Active.Y], Color.Black * 0.2f);
-            spriteBatch.Draw(TextureLibrary.sourceRectTex, levelMenu.hitbox[(int)player2Active.X, (int)player2Active.Y], Color.Black * 0.2f);
+            if (numberOfPlayers == 2)
+            {
+                spriteBatch.Draw(TextureLibrary.sourceRectTex, levelMenu.hitbox[(int)player2Active.X, (int)player2Active.Y], Color.Black * 0.2f);
+            }
         }
 
         private void MovePlayer1Active()
@@ -103,14 +115,35 @@ namespace Sombi
             {
                 switch ((int)player1Active.X)
                 {
-                    case 0:
-                        shotgunLevel = (int)player1Active.Y + 1;
-                        break;
                     case 1:
-                        rifleLevel = (int)player1Active.Y + 1;
+                        if (!(player1Active.Y + 1 == 1))
+                        {
+                            if (players[0].cash > (player1Active.Y + 1) * upgradeCost - upgradeCost && shotgunLevel == player1Active.Y)
+                            {
+                                shotgunLevel = (int)player1Active.Y + 1;
+                                players[0].cash -= (int)(player1Active.Y + 1) * upgradeCost - upgradeCost;
+                            }
+                        }                        
+                        break;
+                    case 0:
+                        if (!(player1Active.Y + 1 == 1))
+                        {
+                            if (players[0].cash > (player1Active.Y + 1) * upgradeCost - upgradeCost && rifleLevel == player1Active.Y)
+                            {
+                                rifleLevel = (int)player1Active.Y + 1;
+                                players[0].cash -= (int)(player1Active.Y + 1) * upgradeCost - upgradeCost;
+                            }
+                        }
                         break;
                     case 2:
-                        explosiveLevel = (int)player1Active.Y + 1;
+                        if (!(player1Active.Y + 1 == 1))
+                        {
+                            if (players[0].cash > (player1Active.Y + 1) * upgradeCost - upgradeCost && explosiveLevel == player1Active.Y)
+                            {
+                                explosiveLevel = (int)player1Active.Y + 1;
+                                players[0].cash -= (int)(player1Active.Y + 1) * upgradeCost - upgradeCost;
+                            }
+                        }
                         break;
                     default:
                         break;
@@ -124,17 +157,87 @@ namespace Sombi
             {
                 switch ((int)player2Active.X)
                 {
-                    case 3:
-                        shotgunLevel = (int)player1Active.Y + 1;
-                        break;
                     case 4:
-                        rifleLevel = (int)player1Active.Y + 1;
+                        if (!(player2Active.Y + 1 == 1))
+                        {
+                            if (players[1].cash > (player2Active.Y + 1) * upgradeCost - upgradeCost && shotgunLevel == player2Active.Y)
+                            {
+                                shotgunLevel = (int)player2Active.Y + 1;
+                                players[1].cash -= (int)(player2Active.Y + 1) * upgradeCost - upgradeCost;
+                            }
+                        }                     
+                        break;
+                    case 3:
+                        if (!(player2Active.Y + 1 == 1))
+                        {
+                            if (players[1].cash > (player2Active.Y + 1) * upgradeCost - upgradeCost && rifleLevel == player2Active.Y)
+                            {
+                                rifleLevel = (int)player2Active.Y + 1;
+                                players[1].cash -= (int)(player2Active.Y + 1) * upgradeCost - upgradeCost;
+                            }
+                        }                  
                         break;
                     case 5:
-                        explosiveLevel = (int)player1Active.Y + 1;
+                        if (!(player2Active.Y + 1 == 1))
+                        {
+                            if (players[1].cash > (player2Active.Y + 1) * upgradeCost - upgradeCost && explosiveLevel == player2Active.Y)
+                            {
+                                explosiveLevel = (int)player2Active.Y + 1;
+                                players[1].cash -= (int)(player2Active.Y + 1) * upgradeCost - upgradeCost;
+                            }
+                        }
                         break;
                     default:
                         break;
+                }
+            }
+        }
+
+        private void shadowLockedUpgrades(SpriteBatch spriteBatch, int numberOfPlayers)
+        {
+            for (int i = 0; i < levelMenu.numberOfUpgrades; i++)
+            {
+                for (int k = players[0].rifleLevel + 1; k < levelMenu.numberOfUpgrades; k++)
+                {
+                    spriteBatch.Draw(TextureLibrary.lockedUpgrade, levelMenu.hitbox[0, k], Color.White);
+                }
+            }
+            for (int i = 0; i < levelMenu.numberOfUpgrades; i++)
+            {
+                for (int k = players[0].shotgunLevel + 1; k < levelMenu.numberOfUpgrades; k++)
+                {
+                    spriteBatch.Draw(TextureLibrary.lockedUpgrade, levelMenu.hitbox[1, k], Color.White);
+                }
+            }
+            for (int i = 0; i < levelMenu.numberOfUpgrades; i++)
+            {
+                for (int k = players[0].explosivesLevel + 1; k < levelMenu.numberOfUpgrades; k++)
+                {
+                    spriteBatch.Draw(TextureLibrary.lockedUpgrade, levelMenu.hitbox[2, k], Color.White);
+                }
+            }
+            if (numberOfPlayers == 2)
+            {
+                for (int i = 0; i < levelMenu.numberOfUpgrades; i++)
+                {
+                    for (int k = players[1].rifleLevel + 1; k < levelMenu.numberOfUpgrades; k++)
+                    {
+                        spriteBatch.Draw(TextureLibrary.lockedUpgrade, levelMenu.hitbox[3, k], Color.White);
+                    }
+                }
+                for (int i = 0; i < levelMenu.numberOfUpgrades; i++)
+                {
+                    for (int k = players[1].shotgunLevel + 1; k < levelMenu.numberOfUpgrades; k++)
+                    {
+                        spriteBatch.Draw(TextureLibrary.lockedUpgrade, levelMenu.hitbox[4, k], Color.White);
+                    }
+                }
+                for (int i = 0; i < levelMenu.numberOfUpgrades; i++)
+                {
+                    for (int k = players[1].explosivesLevel + 1; k < levelMenu.numberOfUpgrades; k++)
+                    {
+                        spriteBatch.Draw(TextureLibrary.lockedUpgrade, levelMenu.hitbox[5, k], Color.White);
+                    }
                 }
             }
         }
