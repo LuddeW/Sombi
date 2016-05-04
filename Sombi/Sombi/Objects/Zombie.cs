@@ -20,11 +20,11 @@ namespace Sombi
         Rectangle hitBox;
         public Zombie(Vector2 startPos) : base(startPos)
         {
-            this.velocity = (float)GlobalValues.rnd.Next(35*(GlobalValues.difficultyLevel/2), 65*(GlobalValues.difficultyLevel/2));
+            this.velocity = (float)GlobalValues.rnd.Next(35 + GlobalValues.difficultyLevel * 3, 65 + GlobalValues.difficultyLevel * 3);
             //this.pos = startPos;
             this.direction = new Vector2(0, 1);
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, 50, 50);
-            this.health = 20 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers;
+            this.health = 20 + GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers;
             this.activationRange = 250;
             this.haveTarget = false;
         }
