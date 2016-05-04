@@ -21,7 +21,6 @@ namespace Sombi
         Vector2 cloudposition4 = new Vector2(0, 3200);
         int height = 1000;
         int width = 1000;
-        float angle;
 
         public FloatingTextures()
         {
