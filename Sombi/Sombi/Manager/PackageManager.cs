@@ -12,6 +12,7 @@ namespace Sombi
         Package package;
         public Rectangle dropZone;
         EnemyManager enemyManager;
+        public static int deliveredPackages;
         public PackageManager(EnemyManager enemyManager)
         {
             //package = new Package(new Vector2(850, 550));
@@ -69,8 +70,9 @@ namespace Sombi
                             HighscoreManager.score += 100;
                             package.taken = false;
                             GlobalValues.difficultyLevel++;
-                           
-                            
+
+                            deliveredPackages++;
+
                         }
                         else
                         {
@@ -78,8 +80,13 @@ namespace Sombi
                             HighscoreManager.score += 100;
                             package.taken = false;
                             GlobalValues.difficultyLevel++;
+
                             
                             
+
+                            AddPackage();
+                            deliveredPackages++;   
+
                         }
                         AddPackage();
                         enemyManager.AddZombiesToRandomLocation(13 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);

@@ -27,12 +27,15 @@ namespace Sombi
             upgradeCost = 100;
         }
 
-        public void Update(ref int shotgunLevelP1, ref int rifleLevelP1, ref int explosiveLevelP1, ref int shotgunLevelP2, ref int rifleLevelP2, ref int explosiveLevelP2)
+        public void Update(int numberOfPlayers, ref int shotgunLevelP1, ref int rifleLevelP1, ref int explosiveLevelP1, ref int shotgunLevelP2, ref int rifleLevelP2, ref int explosiveLevelP2)
         {
             oldKeyboard = currentKeyboard;
             currentKeyboard = Keyboard.GetState();
             MovePlayer1Active();
-            MovePlayer2Active();
+            if (numberOfPlayers == 2)
+            {
+                MovePlayer2Active();
+            }
             LevelUpPlayer1(ref shotgunLevelP1, ref rifleLevelP1, ref explosiveLevelP1);
             LevelUpPlayer2(ref shotgunLevelP2, ref rifleLevelP2, ref explosiveLevelP2);
         }
