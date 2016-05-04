@@ -69,6 +69,7 @@ namespace Sombi
                             HighscoreManager.score += 100;
                             package.taken = false;
                             GlobalValues.difficultyLevel++;
+                           
                             
                         }
                         else
@@ -77,9 +78,10 @@ namespace Sombi
                             HighscoreManager.score += 100;
                             package.taken = false;
                             GlobalValues.difficultyLevel++;
-                            AddPackage();
+                            
                             
                         }
+                        AddPackage();
                         enemyManager.AddZombiesToRandomLocation(13 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
                     }
                 }
