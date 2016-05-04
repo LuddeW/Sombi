@@ -88,7 +88,7 @@ namespace Sombi
             health = 1000;
             timeToRevive = 3.0f;
             reviveTime = 0.0f;
-            cash = 0;
+            cash = 10000;
             rifleLevel = 1;
             shotgunLevel = 1;
             explosivesLevel = 1;
