@@ -307,8 +307,6 @@ namespace Sombi
                     enemyManager.zombies.Clear();
                 }
             }
-            Console.WriteLine(playerManager.players[0].pos);
-            //Console.WriteLine(playerManager.players[1].pos);
         }
 
         private void PauseDraw(SpriteBatch spriteBatch)
