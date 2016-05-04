@@ -38,10 +38,10 @@ namespace Sombi
         public bool eaten = false;
         public bool gotPackage = false;
 
-
         public int shotgunLevel;
         public int rifleLevel;
         public int explosivesLevel;
+        // Player1
         Animation player1RifleIdle;
         Animation player1ShotgunIdle;
         Animation player1RocketIdle;
@@ -51,6 +51,17 @@ namespace Sombi
         Animation player1RifleShootingAnimation;
         Animation player1ShotgunShootingAnimation;
         Animation player1RocketShootingAnimation;
+        // Player2
+        Animation player2RifleIdle;
+        Animation player2ShotgunIdle;
+        Animation player2RocketIdle;
+        Animation player2AnimationRifle;
+        Animation player2AnimationShotgun;
+        Animation player2AnimationRocket;
+        Animation player2RifleShootingAnimation;
+        Animation player2ShotgunShootingAnimation;
+        Animation player2RocketShootingAnimation;
+
         AnimationPlayer animationplayer;
 
 
@@ -78,10 +89,26 @@ namespace Sombi
             player1AnimationRocket = new Animation(TextureLibrary.player1RocketAnimationSheet, 63, 0.25f, true);
         }
 
+        public void Player2Animation()
+        {
+            player2RifleIdle = new Animation(TextureLibrary.player2RifleIdle, 37, 0.1f, true);
+            player2RifleShootingAnimation = new Animation(TextureLibrary.player2RifleSheet, 63, 0.1f, true);
+            player2AnimationRifle = new Animation(TextureLibrary.player2RifleAnimationSheet, 63, 0.25f, true);
+
+            player2ShotgunIdle = new Animation(TextureLibrary.player2ShotgunIdle, 37, 0.1f, true);
+            player2ShotgunShootingAnimation = new Animation(TextureLibrary.player2ShotgunSheet, 62, 0.1f, true);
+            player2AnimationShotgun = new Animation(TextureLibrary.player2ShotgunAnimationSheet, 63, 0.25f, true);
+
+            player2RocketIdle = new Animation(TextureLibrary.player2RocketIdle, 43, 0.1f, true);
+            player2RocketShootingAnimation = new Animation(TextureLibrary.player2RocketTex, 63, 0.1f, true);
+            player2AnimationRocket = new Animation(TextureLibrary.player2RocketAnimationSheet, 63, 0.25f, true);
+        }
+
         public void LoadContent()
         {
             velocity = new Vector2(0, 0);
             Player1Animation();
+            Player2Animation();
             velocity = Vector2.Zero;
             maxspeed = 200.0f;
             playerSpeed = 200.0f;
@@ -289,7 +316,7 @@ namespace Sombi
                 pos += velocity * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
-            
+
         }
 
         private void Collide()
@@ -370,24 +397,45 @@ namespace Sombi
         }
         public void RifleAnimation(Weapon weapon)
         {
-
             if (weapon is Rifle)
             {
-                if (!FireWeapon() && velocity.X == 0 && velocity.Y == 0)
+                if (playerID == PlayerID.One)
                 {
-                    animationplayer.PlayAnimation(player1RifleIdle);
+                    if (!FireWeapon() && velocity.X == 0 && velocity.Y == 0)
+                    {
+                        animationplayer.PlayAnimation(player1RifleIdle);
+                    }
+                    if (!FireWeapon())
+                    {
+                        animationplayer.PlayAnimation(player1AnimationRifle);
+                    }
+                    else if (FireWeapon())
+                    {
+                        animationplayer.PlayAnimation(player1RifleShootingAnimation);
+                    }
+                    else
+                    {
+                        animationplayer.PlayAnimation(player1RifleIdle);
+                    }
                 }
-                if (!FireWeapon())
+                if (playerID == PlayerID.Two)
                 {
-                    animationplayer.PlayAnimation(player1AnimationRifle);
-                }
-                else if (FireWeapon())
-                {
-                    animationplayer.PlayAnimation(player1RifleShootingAnimation);
-                }
-                else
-                {
-                    animationplayer.PlayAnimation(player1RifleIdle);
+                    if (!FireWeapon() && velocity.X == 0 && velocity.Y == 0)
+                    {
+                        animationplayer.PlayAnimation(player2RifleIdle);
+                    }
+                    if (!FireWeapon())
+                    {
+                        animationplayer.PlayAnimation(player2AnimationRifle);
+                    }
+                    else if (FireWeapon())
+                    {
+                        animationplayer.PlayAnimation(player2RifleShootingAnimation);
+                    }
+                    else
+                    {
+                        animationplayer.PlayAnimation(player2RifleIdle);
+                    }
                 }
             }
         }
@@ -395,21 +443,43 @@ namespace Sombi
         {
             if (weapon is Shotgun)
             {
-                if (!FireWeapon() && velocity.X == 0 && velocity.Y == 0)
+                if (playerID == PlayerID.One)
                 {
-                    animationplayer.PlayAnimation(player1ShotgunIdle);
+                    if (!FireWeapon() && velocity.X == 0 && velocity.Y == 0)
+                    {
+                        animationplayer.PlayAnimation(player1ShotgunIdle);
+                    }
+                    else if (!FireWeapon())
+                    {
+                        animationplayer.PlayAnimation(player1AnimationShotgun);
+                    }
+                    else if (FireWeapon())
+                    {
+                        animationplayer.PlayAnimation(player1ShotgunShootingAnimation);
+                    }
+                    else
+                    {
+                        animationplayer.PlayAnimation(player1ShotgunIdle);
+                    }
                 }
-                else if (!FireWeapon())
+                if (playerID == PlayerID.Two)
                 {
-                    animationplayer.PlayAnimation(player1AnimationShotgun);
-                }
-                else if (FireWeapon())
-                {
-                    animationplayer.PlayAnimation(player1ShotgunShootingAnimation);
-                }
-                else
-                {
-                    animationplayer.PlayAnimation(player1ShotgunIdle);
+                    if (!FireWeapon() && velocity.X == 0 && velocity.Y == 0)
+                    {
+                        animationplayer.PlayAnimation(player2ShotgunIdle);
+                    }
+                    else if (!FireWeapon())
+                    {
+                        animationplayer.PlayAnimation(player2AnimationShotgun);
+                    }
+                    else if (FireWeapon())
+                    {
+                        animationplayer.PlayAnimation(player2ShotgunShootingAnimation);
+                    }
+                    else
+                    {
+                        animationplayer.PlayAnimation(player2ShotgunIdle);
+                    }
                 }
             }
         }
@@ -417,21 +487,43 @@ namespace Sombi
         {
             if (weapon is Explosives)
             {
-                if (!FireWeapon() && velocity.X == 0 && velocity.Y == 0)
+                if (playerID == PlayerID.One)
                 {
-                    animationplayer.PlayAnimation(player1RocketIdle);
+                    if (!FireWeapon() && velocity.X == 0 && velocity.Y == 0)
+                    {
+                        animationplayer.PlayAnimation(player1RocketIdle);
+                    }
+                    else if (!FireWeapon())
+                    {
+                        animationplayer.PlayAnimation(player1AnimationRocket);
+                    }
+                    else if (FireWeapon())
+                    {
+                        animationplayer.PlayAnimation(player1RocketShootingAnimation);
+                    }
+                    else
+                    {
+                        animationplayer.PlayAnimation(player1RocketIdle);
+                    }
                 }
-                else if (!FireWeapon())
+                if (playerID == PlayerID.Two)
                 {
-                    animationplayer.PlayAnimation(player1AnimationRocket);
-                }
-                else if (FireWeapon())
-                {
-                    animationplayer.PlayAnimation(player1RocketShootingAnimation);
-                }
-                else
-                {
-                    animationplayer.PlayAnimation(player1RocketIdle);
+                    if (!FireWeapon() && velocity.X == 0 && velocity.Y == 0)
+                    {
+                        animationplayer.PlayAnimation(player2RocketIdle);
+                    }
+                    else if (!FireWeapon())
+                    {
+                        animationplayer.PlayAnimation(player2AnimationRocket);
+                    }
+                    else if (FireWeapon())
+                    {
+                        animationplayer.PlayAnimation(player2RocketShootingAnimation);
+                    }
+                    else
+                    {
+                        animationplayer.PlayAnimation(player2RocketIdle);
+                    }
                 }
             }
         }
