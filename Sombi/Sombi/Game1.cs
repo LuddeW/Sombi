@@ -40,6 +40,8 @@ namespace Sombi
 
         protected override void Update(GameTime gameTime)
         {
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Back))
+                Exit();
             base.Update(gameTime);
             gameManager.Update(gameTime);
         }
