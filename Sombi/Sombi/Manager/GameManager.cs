@@ -313,7 +313,8 @@ namespace Sombi
         private void PauseDraw(SpriteBatch spriteBatch)
         {
             PlayingDraw(spriteBatch);
-            spriteBatch.DrawString(TextureLibrary.billBoardText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
+            spriteBatch.DrawString(TextureLibrary.billBoardText, "PAUSED - PRESS ESC TO UNPAUSE", camera.position + new Vector2(800,500), Color.Red);
+            spriteBatch.DrawString(TextureLibrary.billBoardText, "PAUSED - PRESS BACKSPACE TO EXIT GAME", camera.position + new Vector2(800,540), Color.Red);
         }
 
         private void Upgrade()
