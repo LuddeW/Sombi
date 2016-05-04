@@ -160,7 +160,7 @@ namespace Sombi
             if (currentKeyboard.IsKeyDown(Keys.E) && !oldKeyboard.IsKeyDown(Keys.E))
             {
                 weaponManager.SwitchWeaponRight(1, player1.shotgunLevel, player1.explosivesLevel, player1.rifleLevel);           //För player 1
-                weaponManager.SwitchWeaponRight(2, player2.shotgunLevel, player2.explosivesLevel, player2.rifleLevel);           //För player 1
+                weaponManager.SwitchWeaponRight(2, player2.shotgunLevel, player2.explosivesLevel, player2.rifleLevel);           //För player 2
 
             }
             if (currentKeyboard.IsKeyDown(Keys.Q) && !oldKeyboard.IsKeyDown(Keys.Q))
