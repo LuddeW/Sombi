@@ -39,7 +39,7 @@ namespace Sombi
             }
         }
 
-        public void Update(GameTime gameTime, int numberOfPlayers)
+        public void Update(GameTime gameTime)
         {
             player1.UpdateAnimation(weaponManager.playerOneWeapon);
             player2.UpdateAnimation(weaponManager.playerTwoWeapon);
@@ -58,7 +58,7 @@ namespace Sombi
             }
             SwitchWeapon();
             weaponManager.Update(gameTime);
-            Revive(numberOfPlayers);
+            Revive();
             ScreenCollide();
         }
 
@@ -126,9 +126,9 @@ namespace Sombi
             players.Add(player2);
         }
 
-        private void Revive(int numberOfPlayers)
+        private void Revive()
         {
-            if (numberOfPlayers == 2)
+            if (GlobalValues.numberOfPlayers == 2)
             {
                 if (player1.HitBox.Intersects(player2.HitBox))
                 {

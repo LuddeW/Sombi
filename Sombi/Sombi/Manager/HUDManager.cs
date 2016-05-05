@@ -24,14 +24,14 @@ namespace Sombi
             this.players = players;
             hudPos = new Vector2(0,0); 
         }
-        public void Update(GameTime gameTime, Vector2 cameraPos, int numberOfPlayers)
+        public void Update(GameTime gameTime, Vector2 cameraPos)
         {
             hudPos.X = cameraPos.X;
             hudPos.Y = cameraPos.Y;
-            WeaponRotation(numberOfPlayers);
+            WeaponRotation();
 
         }
-        public void WeaponRotation(int numberOfPlayers)
+        public void WeaponRotation()
         {
             oldKeyboard = currentKeyboard;
             currentKeyboard = Keyboard.GetState();
@@ -69,7 +69,7 @@ namespace Sombi
                     weaponRotationIndex = 2;
                 }
             }
-            if (numberOfPlayers == 2)
+            if (GlobalValues.numberOfPlayers == 2)
             {
                 if (players[1].GamePadState.IsButtonDown(Buttons.RightShoulder) && !players[1].OldGamePadState.IsButtonDown(Buttons.RightShoulder))
                 {
@@ -89,13 +89,13 @@ namespace Sombi
                 }
             }
         }
-        public void Draw(SpriteBatch spriteBatch, int numberOfPlayers)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(TextureLibrary.player1ScoreHud, new Vector2(hudPos.X + 0, hudPos.Y + 0) , Color.White);          
             spriteBatch.Draw(TextureLibrary.weaponWheel[weaponRotationIndex], new Vector2(hudPos.X + 0, hudPos.Y + GlobalValues.screenBounds.Y - TextureLibrary.weaponHud.Height), Color.White * 0.8f);
             spriteBatch.DrawString(TextureLibrary.HudText, "Health: " + players[0].health, new Vector2(hudPos.X + 15, hudPos.Y + 10), Color.Black);
             spriteBatch.DrawString(TextureLibrary.HudText, "Cash: " + players[0].cash, new Vector2(hudPos.X + 15, hudPos.Y + 25), Color.Black);
-            if (numberOfPlayers == 2)
+            if (GlobalValues.numberOfPlayers == 2)
             {
                 spriteBatch.Draw(TextureLibrary.player2ScoreHud, new Vector2(hudPos.X + GlobalValues.screenBounds.X - TextureLibrary.player2ScoreHud.Width, hudPos.Y + 0), Color.White);
                 spriteBatch.Draw(TextureLibrary.weaponWheel[weaponRotationIndex2], new Vector2(hudPos.X + GlobalValues.screenBounds.X - TextureLibrary.weaponHud.Width, hudPos.Y + GlobalValues.screenBounds.Y - TextureLibrary.weaponHud.Height), Color.White * 0.8f);

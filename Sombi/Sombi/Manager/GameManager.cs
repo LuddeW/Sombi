@@ -117,7 +117,7 @@ namespace Sombi
                     {
                         camera.position = new Vector2(0, 0);
                         camera.ViewMatrix = Matrix.CreateTranslation(new Vector3(-camera.position, 0));
-                        levelMenuManager.Update(menuManager.numberOfPlayers, ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel, ref playerManager.player2.shotgunLevel, ref playerManager.player2.rifleLevel, ref playerManager.player2.explosivesLevel, playerManager.players);
+                        levelMenuManager.Update(ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel, ref playerManager.player2.shotgunLevel, ref playerManager.player2.rifleLevel, ref playerManager.player2.explosivesLevel, playerManager.players);
                         if (currentKeyboard.IsKeyDown(Keys.Escape) && !oldKeyboard.IsKeyDown(Keys.Escape))
                         {
                             playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
@@ -180,7 +180,7 @@ namespace Sombi
 
                 case GameState.LevelUp:
                     {
-                        levelMenuManager.Draw(spriteBatch, menuManager.numberOfPlayers, playerManager.players);
+                        levelMenuManager.Draw(spriteBatch, playerManager.players);
                         break;
                     }
 
@@ -195,12 +195,12 @@ namespace Sombi
                 enemyManager.AddNewWave(0.5f, 24 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
                 packageManager.AddPackage();
 
-                if (menuManager.numberOfPlayers == 1)
+                if (GlobalValues.numberOfPlayers == 1)
                 {
                     playerManager.CreateOnePlayer();
                     playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
                 }
-                else if (menuManager.numberOfPlayers == 2)
+                else if (GlobalValues.numberOfPlayers == 2)
                 {
                     playerManager.CreatePlayers();
                     playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
@@ -246,7 +246,7 @@ namespace Sombi
         {
             camera.Update(playerManager.players[0].pos, playerManager.players[1].pos);
             menuManager.Update(gameTime);
-            playerManager.Update(gameTime, menuManager.numberOfPlayers);
+            playerManager.Update(gameTime);
             floatingTextures.Update();
             StartGame();
             ExitGame();
@@ -266,7 +266,7 @@ namespace Sombi
             enemyManager.DrawZombie(spriteBatch);
             floatingTextures.Draw(spriteBatch);
             enemyManager.DrawZombieCount(spriteBatch);
-            hudManager.Draw(spriteBatch, menuManager.numberOfPlayers);
+            hudManager.Draw(spriteBatch);
             Color fadeInColor = new Color(new Vector3(0, 0, 0));
             spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadeInPercentage);
         }
@@ -274,7 +274,7 @@ namespace Sombi
         private void PlayingUpdate(GameTime gameTime)
         {
 
-            if (menuManager.numberOfPlayers == 2)
+            if (GlobalValues.numberOfPlayers == 2)
             {
                 if (playerManager.player1.eaten)
                 {
@@ -299,10 +299,10 @@ namespace Sombi
                 currentGameState = GameState.Paused;
             }
             enemyManager.Update(gameTime, playerManager.weaponManager.bulletManager.bullets);
-            playerManager.Update(gameTime, menuManager.numberOfPlayers);
-            packageManager.Update(gameTime, playerManager.players, menuManager.numberOfPlayers);
+            playerManager.Update(gameTime);
+            packageManager.Update(gameTime, playerManager.players);
             floatingTextures.Update();
-            hudManager.Update(gameTime, camera.position, menuManager.numberOfPlayers);
+            hudManager.Update(gameTime, camera.position);
             fpsManager.Update(gameTime);
             enemyManager.CheckPlayerZombieCollisions(playerManager.players);
             playerManager.CheckPlayerBulletCollisions();
@@ -333,7 +333,7 @@ namespace Sombi
 
         private void Upgrade()
         {
-            if (menuManager.numberOfPlayers == 2)
+            if (GlobalValues.numberOfPlayers == 2)
             {
                 if ((playerManager.players[0].HitBox.Intersects(packageManager.dropZone) || playerManager.players[1].HitBox.Intersects(packageManager.dropZone)) && currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B))
                 {

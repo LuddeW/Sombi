@@ -20,10 +20,10 @@ namespace Sombi
             this.enemyManager = enemyManager;
         }
 
-        public void Update(GameTime gameTime, List<Player> players, int numberOfPlayers)
+        public void Update(GameTime gameTime, List<Player> players)
         {
             GetChest(players);
-            leaveChest(players, numberOfPlayers);
+            leaveChest(players);
             package.Update(gameTime);
         }
         public void AddPackage()
@@ -55,7 +55,7 @@ namespace Sombi
  
         
 
-        private void leaveChest(List<Player>players, int numberOfPlayers)
+        private void leaveChest(List<Player>players)
         {
             if (package.taken)
             {
@@ -63,7 +63,7 @@ namespace Sombi
                 {
                     if (player.HitBox.Intersects(dropZone) && player.gotPackage)
                     {
-                        if (numberOfPlayers == 2)
+                        if (GlobalValues.numberOfPlayers == 2)
                         {
                             players[0].cash += 100;
                             players[1].cash += 100;
