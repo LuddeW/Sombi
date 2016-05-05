@@ -121,7 +121,7 @@ namespace Sombi
                         if (currentKeyboard.IsKeyDown(Keys.Escape) && !oldKeyboard.IsKeyDown(Keys.Escape))
                         {
                             currentGameState = GameState.Playing;
-                        }
+                        }   
                         foreach (Player p in playerManager.players)
                         {
                             if (p.GamePadState.IsButtonDown(Buttons.B))
@@ -330,6 +330,13 @@ namespace Sombi
                 if ((playerManager.players[0].HitBox.Intersects(packageManager.dropZone) || playerManager.players[1].HitBox.Intersects(packageManager.dropZone)) && currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B))
                 {
                     currentGameState = GameState.LevelUp;
+                }
+                foreach (Player p in playerManager.players)
+                {
+                    if (p.HitBox.Intersects(packageManager.dropZone) && p.GamePadState.IsButtonDown(Buttons.A))
+                    {
+                        currentGameState = GameState.LevelUp;
+                    }
                 }
             }
             else
