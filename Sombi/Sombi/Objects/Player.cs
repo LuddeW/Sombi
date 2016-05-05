@@ -235,7 +235,7 @@ namespace Sombi
             hitBox.Y = (int)pos.Y - ((TextureLibrary.player1RifleTex.Height) / 2);
         }
 
-        private void UpdateGamepad()
+        public void UpdateGamepad()
         {
             if (playerID == PlayerID.One)
             {

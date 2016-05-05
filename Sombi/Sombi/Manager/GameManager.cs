@@ -120,16 +120,21 @@ namespace Sombi
                         levelMenuManager.Update(menuManager.numberOfPlayers, ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel, ref playerManager.player2.shotgunLevel, ref playerManager.player2.rifleLevel, ref playerManager.player2.explosivesLevel, playerManager.players);
                         if (currentKeyboard.IsKeyDown(Keys.Escape) && !oldKeyboard.IsKeyDown(Keys.Escape))
                         {
+                            playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
+                            playerManager.players[1].pos = GlobalValues.PLAYER_TWO_START_POS;
                             currentGameState = GameState.Playing;
                         }   
                         foreach (Player p in playerManager.players)
                         {
+                            p.UpdateGamepad();
                             if (p.GamePadState.IsButtonDown(Buttons.B))
                             {
+                                playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
+                                playerManager.players[1].pos = GlobalValues.PLAYER_TWO_START_POS;
                                 currentGameState = GameState.Playing;
                             }
                         }
-                        playerManager.Update(gameTime, GlobalValues.numberOfPlayers);
+                       
 
                         break;
                     }
@@ -330,16 +335,12 @@ namespace Sombi
                 if ((playerManager.players[0].HitBox.Intersects(packageManager.dropZone) || playerManager.players[1].HitBox.Intersects(packageManager.dropZone)) && currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B))
                 {
                     currentGameState = GameState.LevelUp;
-                    playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
-                    playerManager.players[1].pos = GlobalValues.PLAYER_TWO_START_POS;
                 }
                 foreach (Player p in playerManager.players)
                 {
                     if (p.HitBox.Intersects(packageManager.dropZone) && p.GamePadState.IsButtonDown(Buttons.A))
                     {
                         currentGameState = GameState.LevelUp;
-                        playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
-                        playerManager.players[1].pos = GlobalValues.PLAYER_TWO_START_POS;
                     }
                 }
             }
@@ -348,8 +349,6 @@ namespace Sombi
                 if (playerManager.players[0].HitBox.Intersects(packageManager.dropZone) && currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B))
                 {
                     currentGameState = GameState.LevelUp;
-                    playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
-                    playerManager.players[1].pos = GlobalValues.PLAYER_TWO_START_POS;
                 }
             }
         }
