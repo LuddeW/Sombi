@@ -9,6 +9,9 @@ namespace Sombi
 {
     class EnemyManager
     {
+        private int currentWaveSize;
+        private float waveTimer;
+        private float currentWaveInterval;
 
         public List<Zombie> zombies = new List<Zombie>();
         public List<BloodStain> bloodPositions = new List<BloodStain>();
@@ -26,6 +29,11 @@ namespace Sombi
             {
                 z.Update(gameTime);
             }
+            if (currentWaveSize > 0)
+            {
+                WaveSpawner(gameTime);
+            }
+
         }
 
         public void AddZombie(Vector2 startPos)
@@ -99,7 +107,21 @@ namespace Sombi
                 }
             }
         }
-
+        public void AddNewWave(float intervalTime, int waveSize) //addas ny wave på den andra sätts hela intervallet till det nya
+        {
+            currentWaveSize += waveSize;
+            currentWaveInterval = intervalTime;
+        }
+        private void WaveSpawner(GameTime gameTime)
+        {
+            waveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (waveTimer >= currentWaveInterval)
+            {
+                AddZombiesToRandomLocation(1);
+                waveTimer = 0;
+                currentWaveSize--;
+            }
+        }
         public void CheckPlayerZombieCollisions(List<Player> players)
         {
             for (int i = 0; i < zombies.Count; i++)

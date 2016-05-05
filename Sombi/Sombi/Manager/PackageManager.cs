@@ -89,7 +89,8 @@ namespace Sombi
 
                         }
                         AddPackage();
-                        enemyManager.AddZombiesToRandomLocation(13 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
+                        //enemyManager.AddZombiesToRandomLocation(13 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
+                        enemyManager.AddNewWave(0.5f, 24 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
                     }
                 }
             }

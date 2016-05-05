@@ -15,10 +15,12 @@ namespace Sombi
         float cloud1Speed, cloud2Speed, cloud3Speed, cloud4Speed;
         Texture2D[] cloudTex;
         Color color = Color.White;
-        
+        Vector2 cloudposition1 = new Vector2(0, 800);
+        Vector2 cloudposition2 = new Vector2(0, 1600);
+        Vector2 cloudposition3 = new Vector2(0, 2400);
+        Vector2 cloudposition4 = new Vector2(0, 3200);
         int height = 1000;
         int width = 1000;
-        float angle;
 
         public FloatingTextures()
         {
@@ -71,18 +73,34 @@ namespace Sombi
             foreach (Vector2 v in cloud1)
             {
                 spriteBatch.Draw(cloudTex[0], v, color * 0.6f);
+                spriteBatch.Draw(cloudTex[0], v + cloudposition1, color * 0.6f);
+                spriteBatch.Draw(cloudTex[0], v + cloudposition2, color * 0.6f);
+                spriteBatch.Draw(cloudTex[0], v + cloudposition3, color * 0.6f);
+                spriteBatch.Draw(cloudTex[0], v + cloudposition4, color * 0.6f);
             }
             foreach (Vector2 v in cloud2)
             {
                 spriteBatch.Draw(cloudTex[1], v, color * 0.6f);
+                spriteBatch.Draw(cloudTex[1], v + cloudposition1, color * 0.6f);
+                spriteBatch.Draw(cloudTex[1], v + cloudposition2, color * 0.6f);
+                spriteBatch.Draw(cloudTex[1], v + cloudposition3, color * 0.6f);
+                spriteBatch.Draw(cloudTex[1], v + cloudposition4, color * 0.6f);
             }
             foreach (Vector2 v in cloud3)
             {
                 spriteBatch.Draw(cloudTex[2], v, color * 0.6f);
+                spriteBatch.Draw(cloudTex[2], v + cloudposition1, color * 0.6f);
+                spriteBatch.Draw(cloudTex[2], v + cloudposition2, color * 0.6f);
+                spriteBatch.Draw(cloudTex[2], v + cloudposition3, color * 0.6f);
+                spriteBatch.Draw(cloudTex[2], v + cloudposition4, color * 0.6f);
             }
             foreach (Vector2 v in cloud4)
             {
                 spriteBatch.Draw(cloudTex[3], v, color * 0.6f);
+                spriteBatch.Draw(cloudTex[3], v + cloudposition1, color * 0.6f);
+                spriteBatch.Draw(cloudTex[3], v + cloudposition2, color * 0.6f);
+                spriteBatch.Draw(cloudTex[3], v + cloudposition3, color * 0.6f);
+                spriteBatch.Draw(cloudTex[3], v + cloudposition4, color * 0.6f);
             }
         }
         public void UpdateClouds()

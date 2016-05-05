@@ -183,7 +183,8 @@ namespace Sombi
         {
             if (menuManager.start)
             {
-                enemyManager.AddZombiesToRandomLocation(24 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
+                //enemyManager.AddZombiesToRandomLocation(24 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
+                enemyManager.AddNewWave(0.5f, 24 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
                 packageManager.AddPackage();
 
                 if (menuManager.numberOfPlayers == 1)
@@ -293,7 +294,7 @@ namespace Sombi
             playerManager.Update(gameTime, menuManager.numberOfPlayers);
             packageManager.Update(gameTime, playerManager.players, menuManager.numberOfPlayers);
             floatingTextures.Update();
-            hudManager.Update(gameTime, camera.position);
+            hudManager.Update(gameTime, camera.position, menuManager.numberOfPlayers);
             fpsManager.Update(gameTime);
             enemyManager.CheckPlayerZombieCollisions(playerManager.players);
             playerManager.CheckPlayerBulletCollisions();
@@ -313,14 +314,13 @@ namespace Sombi
                     enemyManager.zombies.Clear();
                 }
             }
-            Console.WriteLine(playerManager.players[0].pos);
-            //Console.WriteLine(playerManager.players[1].pos);
         }
 
         private void PauseDraw(SpriteBatch spriteBatch)
         {
             PlayingDraw(spriteBatch);
-            spriteBatch.DrawString(TextureLibrary.billBoardText, "PAUSED - PRESS P TO UNPAUSE", new Vector2(400, 500), Color.Red);
+            spriteBatch.DrawString(TextureLibrary.billBoardText, "PAUSED - PRESS ESC TO UNPAUSE", camera.position + new Vector2(800,500), Color.Red);
+            spriteBatch.DrawString(TextureLibrary.billBoardText, "PAUSED - PRESS BACKSPACE TO EXIT GAME", camera.position + new Vector2(800,540), Color.Red);
         }
 
         private void Upgrade()

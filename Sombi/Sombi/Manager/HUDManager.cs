@@ -24,14 +24,14 @@ namespace Sombi
             this.players = players;
             hudPos = new Vector2(0,0); 
         }
-        public void Update(GameTime gameTime, Vector2 cameraPos)
+        public void Update(GameTime gameTime, Vector2 cameraPos, int numberOfPlayers)
         {
             hudPos.X = cameraPos.X;
             hudPos.Y = cameraPos.Y;
-            WeaponRotation();
+            WeaponRotation(numberOfPlayers);
 
         }
-        public void WeaponRotation()
+        public void WeaponRotation(int numberOfPlayers)
         {
             oldKeyboard = currentKeyboard;
             currentKeyboard = Keyboard.GetState();
@@ -69,20 +69,23 @@ namespace Sombi
                     weaponRotationIndex = 2;
                 }
             }
-            if (players[1].GamePadState.IsButtonDown(Buttons.RightShoulder) && !players[1].OldGamePadState.IsButtonDown(Buttons.RightShoulder))
+            if (numberOfPlayers == 2)
             {
-                weaponRotationIndex2++;
-                if (weaponRotationIndex2 > 2)
+                if (players[1].GamePadState.IsButtonDown(Buttons.RightShoulder) && !players[1].OldGamePadState.IsButtonDown(Buttons.RightShoulder))
                 {
-                    weaponRotationIndex2 = 0;
+                    weaponRotationIndex2++;
+                    if (weaponRotationIndex2 > 2)
+                    {
+                        weaponRotationIndex2 = 0;
+                    }
                 }
-            }
-            if (players[1].GamePadState.IsButtonDown(Buttons.LeftShoulder) && !players[1].OldGamePadState.IsButtonDown(Buttons.LeftShoulder))
-            {
-                weaponRotationIndex2--;
-                if (weaponRotationIndex2 < 0)
+                if (players[1].GamePadState.IsButtonDown(Buttons.LeftShoulder) && !players[1].OldGamePadState.IsButtonDown(Buttons.LeftShoulder))
                 {
-                    weaponRotationIndex2 = 2;
+                    weaponRotationIndex2--;
+                    if (weaponRotationIndex2 < 0)
+                    {
+                        weaponRotationIndex2 = 2;
+                    }
                 }
             }
         }
