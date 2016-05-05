@@ -152,6 +152,7 @@ namespace Sombi
             if (health <= 0)
             {
                 dead = true;
+                cash = 0;
             }
             if (health <= -3000)
             {

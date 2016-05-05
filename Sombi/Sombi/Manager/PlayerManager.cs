@@ -138,13 +138,11 @@ namespace Sombi
                     {
                         player2.health = 500;
                         player2.dead = false;
-                        player2.cash = 0;
                     }
                     if (player2.revive && player1.dead && !player1.eaten)
                     {
                         player1.health = 500;
                         player1.dead = false;
-                        player1.cash = 0;
                     }
                 }
                 else
