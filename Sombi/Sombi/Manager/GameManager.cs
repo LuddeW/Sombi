@@ -121,7 +121,10 @@ namespace Sombi
                         if (currentKeyboard.IsKeyDown(Keys.Escape) && !oldKeyboard.IsKeyDown(Keys.Escape))
                         {
                             playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
-                            playerManager.players[1].pos = GlobalValues.PLAYER_TWO_START_POS;
+                            if (GlobalValues.numberOfPlayers == 2)
+                            {
+                                playerManager.players[1].pos = GlobalValues.PLAYER_TWO_START_POS;
+                            }                           
                             currentGameState = GameState.Playing;
                         }   
                         foreach (Player p in playerManager.players)

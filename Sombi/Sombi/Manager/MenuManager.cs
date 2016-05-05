@@ -60,7 +60,7 @@ namespace Sombi
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
-                numberOfPlayers = 2;
+                numberOfPlayers = 1;
                 start = true;
                 Grid.menu = false;
                 Grid.CreateGridFactory();

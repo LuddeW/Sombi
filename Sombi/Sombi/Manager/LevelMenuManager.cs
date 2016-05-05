@@ -29,14 +29,14 @@ namespace Sombi
         {
             oldKeyboard = currentKeyboard;
             currentKeyboard = Keyboard.GetState();
-            MovePlayer1Active(players);
-
+            MovePlayer1Active(players);          
+            LevelUpPlayer1(ref shotgunLevelP1, ref rifleLevelP1, ref explosiveLevelP1, players);
             if (numberOfPlayers == 2)
             {
                 MovePlayer2Active(players);
+                LevelUpPlayer2(ref shotgunLevelP2, ref rifleLevelP2, ref explosiveLevelP2, players);
             }
-            LevelUpPlayer1(ref shotgunLevelP1, ref rifleLevelP1, ref explosiveLevelP1, players);
-            LevelUpPlayer2(ref shotgunLevelP2, ref rifleLevelP2, ref explosiveLevelP2, players);
+            
         }
 
         public void Draw(SpriteBatch spriteBatch, int numberOfPlayers, List<Player> players)
