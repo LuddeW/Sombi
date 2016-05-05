@@ -55,7 +55,7 @@ namespace Sombi
             highscoreManager = new HighscoreManager();
             highscoreManager.ReadScore();
             menuManager = new MenuManager(playerManager.players);
-            levelMenuManager = new LevelMenuManager(playerManager.players);
+            levelMenuManager = new LevelMenuManager();
             packageManager = new PackageManager(enemyManager);
             this.game = game;
 
@@ -91,9 +91,8 @@ namespace Sombi
                         }
                         break;
                     }
-  
-                case GameState.Playing:
 
+                case GameState.Playing:
                     {
                         //if (currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B)) // enbart för test, tas bort sen lolololo
                         //{                            
@@ -101,7 +100,7 @@ namespace Sombi
                         //}
                         PlayingUpdate(gameTime);
                         Upgrade();
-                        break;                  
+                        break;
                     }
 
                 case GameState.Paused:
@@ -118,14 +117,22 @@ namespace Sombi
                     {
                         camera.position = new Vector2(0, 0);
                         camera.ViewMatrix = Matrix.CreateTranslation(new Vector3(-camera.position, 0));
-                        levelMenuManager.Update(menuManager.numberOfPlayers, ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel, ref playerManager.player2.shotgunLevel, ref playerManager.player2.rifleLevel, ref playerManager.player2.explosivesLevel);
+                        levelMenuManager.Update(menuManager.numberOfPlayers, ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel, ref playerManager.player2.shotgunLevel, ref playerManager.player2.rifleLevel, ref playerManager.player2.explosivesLevel, playerManager.players);
                         if (currentKeyboard.IsKeyDown(Keys.Escape) && !oldKeyboard.IsKeyDown(Keys.Escape))
                         {
                             currentGameState = GameState.Playing;
                         }
+                        foreach (Player p in playerManager.players)
+                        {
+                            if (p.GamePadState.IsButtonDown(Buttons.B))
+                            {
+                                currentGameState = GameState.Playing;
+                            }
+                        }
+                        playerManager.Update(gameTime, GlobalValues.numberOfPlayers);
 
                         break;
-                    }            
+                    }
             }
         }
 
@@ -142,32 +149,32 @@ namespace Sombi
             switch (currentGameState)
             {
                 case GameState.MainMenu:
-                {
-                    MenuDraw(spriteBatch);
-                    break;               
-                }
+                    {
+                        MenuDraw(spriteBatch);
+                        break;
+                    }
                 case GameState.Highscore:
-                {
-                    highscoreManager.Draw(spriteBatch);
-                    break;
-                }
+                    {
+                        highscoreManager.Draw(spriteBatch);
+                        break;
+                    }
                 case GameState.Playing:
-                {
-                    PlayingDraw(spriteBatch);   
-                    break;
-                }
+                    {
+                        PlayingDraw(spriteBatch);
+                        break;
+                    }
                 case GameState.Paused:
-                {
+                    {
                         PauseDraw(spriteBatch);
-                    
-                    break;
-                }
+
+                        break;
+                    }
 
                 case GameState.LevelUp:
-                {
-                        levelMenuManager.Draw(spriteBatch, menuManager.numberOfPlayers);
+                    {
+                        levelMenuManager.Draw(spriteBatch, menuManager.numberOfPlayers, playerManager.players);
                         break;
-                }
+                    }
 
             }
         }
@@ -190,7 +197,7 @@ namespace Sombi
                     playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
                     playerManager.players[1].pos = GlobalValues.PLAYER_TWO_START_POS;
                 }
-                
+
                 currentGameState = GameState.Playing;
             }
         }
@@ -236,12 +243,12 @@ namespace Sombi
             ExitGame();
             Settings();
             Highscore();
-                       
+
         }
 
         private void PlayingDraw(SpriteBatch spriteBatch)
         {
-            
+
             spriteBatch.Draw(TextureLibrary.testMapTex, Vector2.Zero, Color.White);
             packageManager.Draw(spriteBatch);
             enemyManager.DrawBlood(spriteBatch);
@@ -257,7 +264,7 @@ namespace Sombi
 
         private void PlayingUpdate(GameTime gameTime)
         {
-            
+
             if (menuManager.numberOfPlayers == 2)
             {
                 if (playerManager.player1.eaten)
@@ -271,7 +278,7 @@ namespace Sombi
                 else
                 {
                     camera.Update(playerManager.players[0].pos, playerManager.players[1].pos);
-                }  
+                }
             }
             else
             {
@@ -291,7 +298,7 @@ namespace Sombi
             enemyManager.CheckPlayerZombieCollisions(playerManager.players);
             playerManager.CheckPlayerBulletCollisions();
             if (playerManager.GameOver())
-            {                
+            {
                 fadeOutPercentage += 0.016f;
                 fadeInPercentage += 0.025f;
 
@@ -331,7 +338,7 @@ namespace Sombi
                 {
                     currentGameState = GameState.LevelUp;
                 }
-            }         
+            }
         }
     }
 }
