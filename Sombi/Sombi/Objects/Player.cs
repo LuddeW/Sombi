@@ -24,6 +24,7 @@ namespace Sombi
         float maxspeed;
         float timeToRevive;
         float reviveTime;
+        public bool reviveing;
         public int cash;
         GamePadState gamePadState;
         GamePadState oldgamePadState;
@@ -119,6 +120,7 @@ namespace Sombi
             rifleLevel = 1;
             shotgunLevel = 1;
             explosivesLevel = 1;
+            reviveing = false;
         }
 
         public Rectangle HitBox
@@ -180,7 +182,7 @@ namespace Sombi
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (reviveTime > 0 && reviveTime < 3)
+            if (reviveTime > 0 && reviveTime < 3 && reviveing)
             {
                 spriteBatch.DrawString(TextureLibrary.pauseText, (3 - (int)reviveTime).ToString(), pos - new Vector2(6, 45), Color.Green);
             }
