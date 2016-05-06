@@ -111,6 +111,9 @@ namespace Sombi
                     spriteBatch.DrawString(TextureLibrary.HudText, "Cash: " + players[1].cash, new Vector2(hudPos.X + GlobalValues.screenBounds.X - 165, hudPos.Y + 25), Color.Black);
 
                     //spriteBatch.Draw(TextureLibrary.smallPackage, sourceRect[i,0]+hudPos.X, Color.White);
+                    spriteBatch.Draw(TextureLibrary.smallPackage, new Vector2(sourceRect[i, 0].X + sourceRect[i, 0].Width + hudPos.X + (GlobalValues.screenBounds.X - TextureLibrary.player2ScoreHud.Width) + 87, sourceRect[i, 0].Y + hudPos.Y + 79), Color.White * 0.6f);
+                    spriteBatch.Draw(TextureLibrary.smallPackage, new Vector2(sourceRect[i, 0].X + sourceRect[i, 0].Width + hudPos.X + (GlobalValues.screenBounds.X - TextureLibrary.player2ScoreHud.Width) + 116, sourceRect[i, 0].Y + hudPos.Y + 79), Color.White * 0.6f);
+                    spriteBatch.Draw(TextureLibrary.smallPackage, new Vector2(sourceRect[i, 0].X + sourceRect[i, 0].Width + hudPos.X + (GlobalValues.screenBounds.X - TextureLibrary.player2ScoreHud.Width) + 145, sourceRect[i, 0].Y + hudPos.Y + 79), Color.White * 0.6f);
 
                 }
             }
