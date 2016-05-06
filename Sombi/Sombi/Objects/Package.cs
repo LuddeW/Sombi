@@ -27,7 +27,7 @@ namespace Sombi
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TextureLibrary.packageTex, packagePos, Color.White);
+            spriteBatch.Draw(TextureLibrary.moneyPackTex, packagePos, Color.White);
         }
     }
 }

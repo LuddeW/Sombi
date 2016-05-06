@@ -258,7 +258,7 @@ namespace Sombi
         private void PlayingDraw(SpriteBatch spriteBatch)
         {
 
-            spriteBatch.Draw(TextureLibrary.testMapTex, Vector2.Zero, Color.White);
+            spriteBatch.Draw(TextureLibrary.mapTex, Vector2.Zero, Color.White);
             packageManager.Draw(spriteBatch);
             enemyManager.DrawBlood(spriteBatch);
             fpsManager.Draw(spriteBatch);

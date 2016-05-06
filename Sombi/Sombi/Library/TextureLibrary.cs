@@ -57,6 +57,9 @@ namespace Sombi
 
         //Structures and Objects
         public static Texture2D packageTex { get; private set; }
+        public static Texture2D healthPackTex { get; private set; }
+        public static Texture2D moneyPackTex { get; private set; }
+
         public static Texture2D medicTentTex { get; private set; }
         public static Texture2D hqTentTex { get; private set; }
         public static Texture2D tankTex { get; private set; }
@@ -71,7 +74,7 @@ namespace Sombi
         public static Texture2D cloud4Tex { get; private set; }
 
         //Map and UI
-        public static Texture2D testMapTex;
+        public static Texture2D mapTex;
 
         //public static Texture2D HUD { get; private set; }
         public static Texture2D player1ScoreHud { get; private set; }
@@ -140,10 +143,7 @@ namespace Sombi
             player2RocketIdle = Content.Load<Texture2D>(@"player2Rocket");
             player2RocketSheet = Content.Load<Texture2D>(@"player2Rocket");
             
-            // TEXTURES FOR PLAYER
-            player1RifleTex = Content.Load<Texture2D>(@"Player1Rifle");
-            player1ShotgunTex = Content.Load<Texture2D>(@"Player1Shotgun");
-
+           
             //Player and Enemy Sprites            
             player1RifleTex = Content.Load<Texture2D>(@"Player1Rifle");
             player1ShotgunTex = Content.Load<Texture2D>(@"Player1Shotgun");
@@ -178,6 +178,9 @@ namespace Sombi
 
             //Structures and Objects
             packageTex = Content.Load<Texture2D>("Package");
+            healthPackTex = Content.Load<Texture2D>("HealthPack");
+            moneyPackTex = Content.Load<Texture2D>("MoneyPack");
+
             medicTentTex = Content.Load<Texture2D>("MedicTent");
             hqTentTex = Content.Load<Texture2D>("HQtent");
             tankTex = Content.Load<Texture2D>("tank1");
@@ -209,7 +212,7 @@ namespace Sombi
             bloodStain[9] = Content.Load<Texture2D>(@"BloodStain10");
 
             //Map and UI
-            testMapTex = Content.Load<Texture2D>(@"TestMap2");
+            mapTex = Content.Load<Texture2D>(@"TestMap2");
             player1ScoreHud = Content.Load<Texture2D>("Player1ScoreHUD");
             player2ScoreHud = Content.Load<Texture2D>("Player2ScoreHUD");
             weaponHud = Content.Load<Texture2D>("WeaponHUD");
