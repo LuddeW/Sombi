@@ -13,6 +13,7 @@ namespace Sombi
         public Rectangle dropZone;
         EnemyManager enemyManager;
         public static int deliveredPackages;
+        public static int numberOfCarriedPackages;
         public PackageManager(EnemyManager enemyManager)
         {
             //package = new Package(new Vector2(850, 550));
@@ -48,12 +49,11 @@ namespace Sombi
                 {
                     Console.WriteLine("Got Package");
                     package.taken = true;
-                    player.gotPackage = true;                   
+                    player.gotPackage = true;
+                    numberOfCarriedPackages++;
                 }
             }
-        }
- 
-        
+        }        
 
         private void leaveChest(List<Player>players)
         {
@@ -70,9 +70,8 @@ namespace Sombi
                             HighscoreManager.score += 100;
                             package.taken = false;
                             GlobalValues.difficultyLevel++;
-
                             deliveredPackages++;
-
+                            numberOfCarriedPackages = 0;
                         }
                         else
                         {
@@ -80,13 +79,8 @@ namespace Sombi
                             HighscoreManager.score += 100;
                             package.taken = false;
                             GlobalValues.difficultyLevel++;
-
-                            
-                            
-
                             AddPackage();
-                            deliveredPackages++;   
-
+                            deliveredPackages++;
                         }
                         AddPackage();
                         //enemyManager.AddZombiesToRandomLocation(13 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
