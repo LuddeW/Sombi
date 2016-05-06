@@ -93,8 +93,8 @@ namespace Sombi
                 {
                     Bullet b = new Bullet(position, playerTwoWeapon.projectileSpeed, angle, playerTwoWeapon.damage, playerTwoWeapon.weaponRange, PlayerID);
                     Rocket r = new Rocket(position, playerTwoWeapon.projectileSpeed, angle, playerTwoWeapon.damage, playerTwoWeapon.weaponRange, PlayerID);
-                    for (int i = 0; i < playerTwoWeapon.numberOfProjectilesPerFire; i++)
-                    {
+                    //for (int i = 0; i < playerTwoWeapon.numberOfProjectilesPerFire; i++)
+                    //{
                         if (playerTwoWeapon is Rifle)
                         {
                             SoundLibrary.rifleFire.Play();
@@ -129,7 +129,7 @@ namespace Sombi
                         }
                         timeSinceLastPlayerTwoBullet = 0f;
                         // SoundLibrary.rifleFire.Play();
-                    }
+                    //}
 
                 }
             }

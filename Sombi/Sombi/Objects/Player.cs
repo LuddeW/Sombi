@@ -24,6 +24,7 @@ namespace Sombi
         float maxspeed;
         float timeToRevive;
         float reviveTime;
+        public bool reviveing;
         public int cash;
         GamePadState gamePadState;
         GamePadState oldgamePadState;
@@ -115,10 +116,11 @@ namespace Sombi
             health = 1000;
             timeToRevive = 3.0f;
             reviveTime = 0.0f;
-            cash = 10000;
+            cash = 1;
             rifleLevel = 1;
             shotgunLevel = 1;
             explosivesLevel = 1;
+            reviveing = false;
         }
 
         public Rectangle HitBox
@@ -150,6 +152,7 @@ namespace Sombi
             if (health <= 0)
             {
                 dead = true;
+                cash = 0;
             }
             if (health <= -3000)
             {
@@ -180,7 +183,7 @@ namespace Sombi
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (reviveTime > 0 && reviveTime < 3)
+            if (reviveTime > 0 && reviveTime < 3 && reviveing)
             {
                 spriteBatch.DrawString(TextureLibrary.pauseText, (3 - (int)reviveTime).ToString(), pos - new Vector2(6, 45), Color.Green);
             }
@@ -206,7 +209,10 @@ namespace Sombi
                 if (playerID == PlayerID.One)
                     spriteBatch.Draw(TextureLibrary.player1DeadTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player1IncapacitatedTex.Width / 2, TextureLibrary.player1IncapacitatedTex.Height / 2), 1f, SpriteEffects.None, 0f);
                 if (playerID == PlayerID.Two)
-                    spriteBatch.Draw(TextureLibrary.player2DeadTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player2IncapacitatedTex.Width / 2, TextureLibrary.player2IncapacitatedTex.Height / 2), 1f, SpriteEffects.None, 0f);
+                    if (GlobalValues.numberOfPlayers == 2)
+                    {
+                        spriteBatch.Draw(TextureLibrary.player2DeadTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player2IncapacitatedTex.Width / 2, TextureLibrary.player2IncapacitatedTex.Height / 2), 1f, SpriteEffects.None, 0f);
+                    }                   
             }
         }
         private void SetPlayerID(int ID)
@@ -235,7 +241,7 @@ namespace Sombi
             hitBox.Y = (int)pos.Y - ((TextureLibrary.player1RifleTex.Height) / 2);
         }
 
-        private void UpdateGamepad()
+        public void UpdateGamepad()
         {
             if (playerID == PlayerID.One)
             {

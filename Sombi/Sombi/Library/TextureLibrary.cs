@@ -90,6 +90,7 @@ namespace Sombi
         public static Texture2D highscoreButton { get; private set; }
         public static Texture2D exitButton { get; private set; }
         public static Texture2D logoTex { get; private set; }
+        public static Texture2D whiteBox { get; private set; }
 
         //Projectiles and Blood
         public static Texture2D bulletBlue { get; private set; }
@@ -226,6 +227,7 @@ namespace Sombi
             settingButton = Content.Load<Texture2D>(@"Settings");
             highscoreButton = Content.Load<Texture2D>(@"Highscore");
             exitButton = Content.Load<Texture2D>(@"Exit");
+            whiteBox = Content.Load<Texture2D>(@"WhiteBox");
 
             //Spritefonts
             HudText = Content.Load<SpriteFont>(@"HUDText");

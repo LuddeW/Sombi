@@ -55,7 +55,7 @@ namespace Sombi
             highscoreManager = new HighscoreManager();
             highscoreManager.ReadScore();
             menuManager = new MenuManager(playerManager.players);
-            levelMenuManager = new LevelMenuManager(playerManager.players);
+            levelMenuManager = new LevelMenuManager();
             packageManager = new PackageManager(enemyManager);
             this.game = game;
 
@@ -91,9 +91,8 @@ namespace Sombi
                         }
                         break;
                     }
-  
-                case GameState.Playing:
 
+                case GameState.Playing:
                     {
                         //if (currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B)) // enbart för test, tas bort sen lolololo
                         //{                            
@@ -101,7 +100,7 @@ namespace Sombi
                         //}
                         PlayingUpdate(gameTime);
                         Upgrade();
-                        break;                  
+                        break;
                     }
 
                 case GameState.Paused:
@@ -118,14 +117,30 @@ namespace Sombi
                     {
                         camera.position = new Vector2(0, 0);
                         camera.ViewMatrix = Matrix.CreateTranslation(new Vector3(-camera.position, 0));
-                        levelMenuManager.Update(menuManager.numberOfPlayers, ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel, ref playerManager.player2.shotgunLevel, ref playerManager.player2.rifleLevel, ref playerManager.player2.explosivesLevel);
+                        levelMenuManager.Update(ref playerManager.player1.shotgunLevel, ref playerManager.player1.rifleLevel, ref playerManager.player1.explosivesLevel, ref playerManager.player2.shotgunLevel, ref playerManager.player2.rifleLevel, ref playerManager.player2.explosivesLevel, playerManager.players);
                         if (currentKeyboard.IsKeyDown(Keys.Escape) && !oldKeyboard.IsKeyDown(Keys.Escape))
                         {
+                            playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
+                            if (GlobalValues.numberOfPlayers == 2)
+                            {
+                                playerManager.players[1].pos = GlobalValues.PLAYER_TWO_START_POS;
+                            }                           
                             currentGameState = GameState.Playing;
+                        }   
+                        foreach (Player p in playerManager.players)
+                        {
+                            p.UpdateGamepad();
+                            if (p.GamePadState.IsButtonDown(Buttons.B))
+                            {
+                                playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
+                                playerManager.players[1].pos = GlobalValues.PLAYER_TWO_START_POS;
+                                currentGameState = GameState.Playing;
+                            }
                         }
+                       
 
                         break;
-                    }            
+                    }
             }
         }
 
@@ -142,32 +157,32 @@ namespace Sombi
             switch (currentGameState)
             {
                 case GameState.MainMenu:
-                {
-                    MenuDraw(spriteBatch);
-                    break;               
-                }
+                    {
+                        MenuDraw(spriteBatch);
+                        break;
+                    }
                 case GameState.Highscore:
-                {
-                    highscoreManager.Draw(spriteBatch);
-                    break;
-                }
+                    {
+                        highscoreManager.Draw(spriteBatch);
+                        break;
+                    }
                 case GameState.Playing:
-                {
-                    PlayingDraw(spriteBatch);   
-                    break;
-                }
+                    {
+                        PlayingDraw(spriteBatch);
+                        break;
+                    }
                 case GameState.Paused:
-                {
+                    {
                         PauseDraw(spriteBatch);
-                    
-                    break;
-                }
+
+                        break;
+                    }
 
                 case GameState.LevelUp:
-                {
-                        levelMenuManager.Draw(spriteBatch, menuManager.numberOfPlayers);
+                    {
+                        levelMenuManager.Draw(spriteBatch, playerManager.players);
                         break;
-                }
+                    }
 
             }
         }
@@ -180,18 +195,18 @@ namespace Sombi
                 enemyManager.AddNewWave(0.5f, 24 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
                 packageManager.AddPackage();
 
-                if (menuManager.numberOfPlayers == 1)
+                if (GlobalValues.numberOfPlayers == 1)
                 {
                     playerManager.CreateOnePlayer();
                     playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
                 }
-                else if (menuManager.numberOfPlayers == 2)
+                else if (GlobalValues.numberOfPlayers == 2)
                 {
                     playerManager.CreatePlayers();
                     playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
                     playerManager.players[1].pos = GlobalValues.PLAYER_TWO_START_POS;
                 }
-                
+
                 currentGameState = GameState.Playing;
             }
         }
@@ -231,18 +246,18 @@ namespace Sombi
         {
             camera.Update(playerManager.players[0].pos, playerManager.players[1].pos);
             menuManager.Update(gameTime);
-            playerManager.Update(gameTime, menuManager.numberOfPlayers);
+            playerManager.Update(gameTime);
             floatingTextures.Update();
             StartGame();
             ExitGame();
             Settings();
             Highscore();
-                       
+
         }
 
         private void PlayingDraw(SpriteBatch spriteBatch)
         {
-            
+
             spriteBatch.Draw(TextureLibrary.testMapTex, Vector2.Zero, Color.White);
             packageManager.Draw(spriteBatch);
             enemyManager.DrawBlood(spriteBatch);
@@ -251,15 +266,15 @@ namespace Sombi
             enemyManager.DrawZombie(spriteBatch);
             floatingTextures.Draw(spriteBatch);
             enemyManager.DrawZombieCount(spriteBatch);
-            hudManager.Draw(spriteBatch, menuManager.numberOfPlayers);
+            hudManager.Draw(spriteBatch);
             Color fadeInColor = new Color(new Vector3(0, 0, 0));
             spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadeInPercentage);
         }
 
         private void PlayingUpdate(GameTime gameTime)
         {
-            
-            if (menuManager.numberOfPlayers == 2)
+
+            if (GlobalValues.numberOfPlayers == 2)
             {
                 if (playerManager.player1.eaten)
                 {
@@ -272,7 +287,7 @@ namespace Sombi
                 else
                 {
                     camera.Update(playerManager.players[0].pos, playerManager.players[1].pos);
-                }  
+                }
             }
             else
             {
@@ -284,15 +299,15 @@ namespace Sombi
                 currentGameState = GameState.Paused;
             }
             enemyManager.Update(gameTime, playerManager.weaponManager.bulletManager.bullets);
-            playerManager.Update(gameTime, menuManager.numberOfPlayers);
-            packageManager.Update(gameTime, playerManager.players, menuManager.numberOfPlayers);
+            playerManager.Update(gameTime);
+            packageManager.Update(gameTime, playerManager.players);
             floatingTextures.Update();
             hudManager.Update(gameTime, camera.position);
             fpsManager.Update(gameTime);
             enemyManager.CheckPlayerZombieCollisions(playerManager.players);
             playerManager.CheckPlayerBulletCollisions();
             if (playerManager.GameOver())
-            {                
+            {
                 fadeOutPercentage += 0.016f;
                 fadeInPercentage += 0.025f;
 
@@ -307,8 +322,6 @@ namespace Sombi
                     enemyManager.zombies.Clear();
                 }
             }
-            Console.WriteLine(playerManager.players[0].pos);
-            //Console.WriteLine(playerManager.players[1].pos);
         }
 
         private void PauseDraw(SpriteBatch spriteBatch)
@@ -320,11 +333,18 @@ namespace Sombi
 
         private void Upgrade()
         {
-            if (menuManager.numberOfPlayers == 2)
+            if (GlobalValues.numberOfPlayers == 2)
             {
                 if ((playerManager.players[0].HitBox.Intersects(packageManager.dropZone) || playerManager.players[1].HitBox.Intersects(packageManager.dropZone)) && currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B))
                 {
                     currentGameState = GameState.LevelUp;
+                }
+                foreach (Player p in playerManager.players)
+                {
+                    if (p.HitBox.Intersects(packageManager.dropZone) && p.GamePadState.IsButtonDown(Buttons.A))
+                    {
+                        currentGameState = GameState.LevelUp;
+                    }
                 }
             }
             else
@@ -333,7 +353,7 @@ namespace Sombi
                 {
                     currentGameState = GameState.LevelUp;
                 }
-            }         
+            }
         }
     }
 }
