@@ -82,6 +82,7 @@ namespace Sombi
         public static Texture2D rocketLevel { get; private set; }
         public static Texture2D lockedUpgrade { get; private set; }
         public static Texture2D[] weaponWheel = new Texture2D[3];
+        public static Texture2D smallPackage { get; private set; }
 
         //Menu
         public static Texture2D startButton { get; private set; }
@@ -218,6 +219,7 @@ namespace Sombi
             weaponWheel[0] = Content.Load<Texture2D>("WeaponHUDRocket");
             weaponWheel[1] = Content.Load<Texture2D>("WeaponHUDRifle");
             weaponWheel[2] = Content.Load<Texture2D>("WeaponHUDShotgun");
+            smallPackage = Content.Load<Texture2D>("SmallPackage");
             //Menu
             logoTex = Content.Load<Texture2D>(@"Logo1Sombi");
             startButton = Content.Load<Texture2D>(@"Play");
