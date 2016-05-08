@@ -52,7 +52,7 @@ namespace Sombi
             spriteBatch.Draw(TextureLibrary.highscoreButton, menu.highscoreRect, Color.White);
             spriteBatch.Draw(TextureLibrary.exitButton, menu.exitRect, Color.White);
             spriteBatch.Draw(TextureLibrary.logoTex, menu.logoRect, Color.White);
-            Color fadeColor = new Color(new Vector3(0, 0, 0));
+            Color fadeColor = Color.Black;
             spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeColor * fadePercentage);
         }
 

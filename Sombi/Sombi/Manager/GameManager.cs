@@ -146,14 +146,6 @@ namespace Sombi
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (playerManager.GameOver())
-            {
-                spriteBatch.DrawString(TextureLibrary.HudText, "Well....", new Vector2(450, 500), Color.Black);
-                Color fadeOutColor = new Color(new Vector3(255, 0, 0));
-                Color fadeInColor = new Color(new Vector3(0, 0, 0));
-                spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeOutColor * fadeOutPercentage);
-                spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadeInPercentage);
-            }
             switch (currentGameState)
             {
                 case GameState.MainMenu:
@@ -184,6 +176,14 @@ namespace Sombi
                         break;
                     }
 
+            }
+            if (playerManager.GameOver())
+            {
+                Color fadeOutColor = Color.Red;
+                Color fadeInColor = Color.Black;
+                spriteBatch.Draw(TextureLibrary.fadeScreenTex, camera.position, fadeOutColor * fadeOutPercentage);
+                spriteBatch.Draw(TextureLibrary.fadeScreenTex, camera.position, fadeInColor * fadeInPercentage);
+                spriteBatch.DrawString(TextureLibrary.billBoardText, "YOU DIED", new Vector2(camera.position.X + 905, camera.position.Y + 450), Color.Black);
             }
         }
 
@@ -267,8 +267,8 @@ namespace Sombi
             floatingTextures.Draw(spriteBatch);
             enemyManager.DrawZombieCount(spriteBatch);
             hudManager.Draw(spriteBatch, GlobalValues.numberOfPlayers);
-            Color fadeInColor = new Color(new Vector3(0, 0, 0));
-            spriteBatch.Draw(TextureLibrary.fadeScreenTex, Vector2.Zero, fadeInColor * fadeInPercentage);
+            Color fadeInColor = Color.Black;
+            spriteBatch.Draw(TextureLibrary.fadeScreenTex, new Vector2(camera.position.X,camera.position.Y), fadeInColor * fadeInPercentage);
         }
 
         private void PlayingUpdate(GameTime gameTime)
@@ -293,7 +293,6 @@ namespace Sombi
             {
                 camera.Update(playerManager.players[0].pos);
             }
-            fadeInPercentage -= 0.008f;
             if (currentKeyboard.IsKeyDown(Keys.P) && !oldKeyboard.IsKeyDown(Keys.P))
             {
                 currentGameState = GameState.Paused;
@@ -306,10 +305,11 @@ namespace Sombi
             fpsManager.Update(gameTime);
             enemyManager.CheckPlayerZombieCollisions(playerManager.players);
             playerManager.CheckPlayerBulletCollisions();
+            fadeInPercentage -= 0.008f;
             if (playerManager.GameOver())
             {
-                fadeOutPercentage += 0.016f;
-                fadeInPercentage += 0.025f;
+                fadeOutPercentage += 0.010f;
+                fadeInPercentage += 0.035f;
 
                 if (fadeOutPercentage >= 3)
                 {
