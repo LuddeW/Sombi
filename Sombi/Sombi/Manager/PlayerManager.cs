@@ -32,7 +32,7 @@ namespace Sombi
             if (player1.dead && player2.dead)
             {
                 return true;
-            }
+            }   
             else
             {
                 return false;
@@ -43,10 +43,15 @@ namespace Sombi
         {
             player1.UpdateAnimation(weaponManager.playerOneWeapon);
             player2.UpdateAnimation(weaponManager.playerTwoWeapon);
-            player1.Update(gameTime);
-            player2.Update(gameTime);
-
-
+            if (!player1.eaten)
+            {
+                player1.Update(gameTime);
+            }
+            if (!player2.eaten)
+            {
+                player2.Update(gameTime);
+            }
+            
             if (player1.FireWeapon() && !player1.dead)
             {
                 weaponManager.CreateBullets(1, player1.pos, player1.angle, player1.explosivesLevel);
