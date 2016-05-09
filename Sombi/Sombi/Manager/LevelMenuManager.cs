@@ -131,19 +131,19 @@ namespace Sombi
             }
             if (players[1].GamePadState.IsButtonDown(Buttons.DPadUp) && players[1].OldGamePadState.IsButtonUp(Buttons.DPadUp) && (int)player2Active.Y > 0)
             {
-                player1Active.Y -= 1;
+                player2Active.Y -= 1;
             }
             if (players[1].GamePadState.IsButtonDown(Buttons.DPadLeft) && players[1].OldGamePadState.IsButtonUp(Buttons.DPadLeft) && (int)player2Active.X > 3)
             {
-                player1Active.X -= 1;
+                player2Active.X -= 1;
             }
             if (players[1].GamePadState.IsButtonDown(Buttons.DPadRight) && players[1].OldGamePadState.IsButtonUp(Buttons.DPadRight) && (int)player2Active.X < 5)
             {
-                player1Active.X += 1;
+                player2Active.X += 1;
             }
             if (players[1].GamePadState.IsButtonDown(Buttons.DPadDown) && players[1].OldGamePadState.IsButtonUp(Buttons.DPadDown) && (int)player2Active.Y < 5)
             {
-                player1Active.Y += 1;
+                player2Active.Y += 1;
             }
         }
 
