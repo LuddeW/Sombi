@@ -341,7 +341,7 @@ namespace Sombi
                 }
                 foreach (Player p in playerManager.players)
                 {
-                    if (p.HitBox.Intersects(packageManager.dropZone) && p.GamePadState.IsButtonDown(Buttons.A))
+                    if (p.HitBox.Intersects(packageManager.dropZone) && p.GamePadState.IsButtonDown(Buttons.X))
                     {
                         currentGameState = GameState.LevelUp;
                     }
