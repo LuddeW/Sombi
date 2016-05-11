@@ -17,6 +17,7 @@ namespace Sombi
         public List<BloodStain> bloodPositions = new List<BloodStain>();
         public void Update(GameTime gameTime, List<Projectile> bulletList)
         {
+
             CheckForBulletCollisions(bulletList);
             ClearZombies();
             UpdateZombies(gameTime);

@@ -25,8 +25,10 @@ namespace Sombi
             this.direction = new Vector2(0, 1);
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, 50, 50);
             this.health = 20 + GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers;
+            
             this.activationRange = 250;
             this.haveTarget = false;
+            //CalculateCurrentTile();
         }
 
         public void LoadContent()
@@ -67,6 +69,7 @@ namespace Sombi
         }
         public void FindWallThroughMatrix()
         {
+            CalculateCurrentTile();
             if (direction.X > 0)
             {
                 if (!Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].passable || Grid.grid[(int)currentTile.X + 1, (int)currentTile.Y].hasZombie)
@@ -202,31 +205,10 @@ namespace Sombi
         }
         public void CalculateCurrentTile()
         {
-            
-            if (direction.X > 0)
-            {
-                Grid.SetCurrentTileHasZombie(false, currentTile);
-                currentTile = new Vector2((int)(pos.X ) / 50, (int)(pos.Y) / 50);
-                Grid.SetCurrentTileHasZombie(true, currentTile);
-            }
-            else if (direction.X < 0)
-            {
-                Grid.SetCurrentTileHasZombie(false, currentTile);
-                currentTile = new Vector2((int)(pos.X) / 50, (int)(pos.Y) / 50);          //plusa på tex.width ist
-                Grid.SetCurrentTileHasZombie(true, currentTile);
-            }
-            if (direction.Y > 0)
-            {
-                Grid.SetCurrentTileHasZombie(false, currentTile);
-                currentTile = new Vector2((int)(pos.X) / 50, (int)(pos.Y) / 50);
-                Grid.SetCurrentTileHasZombie(true, currentTile);
-            }
-            else if (direction.Y < 0)
-            {
-                Grid.SetCurrentTileHasZombie(false, currentTile);
-                currentTile = new Vector2((int)(pos.X) / 50, (int)(pos.Y) / 50);
-                Grid.SetCurrentTileHasZombie(true, currentTile);
-            }
+
+            Grid.SetCurrentTileHasZombie(false, currentTile);
+            currentTile = new Vector2((int)(pos.X) / 50, (int)(pos.Y) / 50);
+            Grid.SetCurrentTileHasZombie(true, currentTile);
         }
         public void ResetTarget()
         {
