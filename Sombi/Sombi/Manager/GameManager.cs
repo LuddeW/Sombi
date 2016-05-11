@@ -192,7 +192,7 @@ namespace Sombi
             if (menuManager.start)
             {
                 //enemyManager.AddZombiesToRandomLocation(24 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
-                enemyManager.AddNewWave(0.5f, 24 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
+                enemyManager.AddNewWave(0.5f, 36 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
                 packageManager.AddPackage();
 
                 if (GlobalValues.numberOfPlayers == 1)

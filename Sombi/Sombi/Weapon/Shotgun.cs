@@ -12,7 +12,7 @@ namespace Sombi
         public Shotgun() : base()
         {
             projectileSpeed = 15f;
-            weaponRange = 75;
+            weaponRange = 100;
             damage = 10;
             fireRate = 1;
             numberOfProjectilesPerFire = 7;
@@ -32,7 +32,7 @@ namespace Sombi
             {
                 case 1:
                     projectileSpeed = 15f;
-                    weaponRange = 75;
+                    weaponRange = 100;
                     damage = 10;
                     fireRate = 1;
                     numberOfProjectilesPerFire = 3;
@@ -40,7 +40,7 @@ namespace Sombi
                     break;
                 case 2:
                     projectileSpeed = 15f;
-                    weaponRange = 100;
+                    weaponRange = 125;
                     damage = 12;
                     fireRate = 1;
                     numberOfProjectilesPerFire = 3;
@@ -48,7 +48,7 @@ namespace Sombi
                     break;
                 case 3:
                     projectileSpeed = 15f;
-                    weaponRange = 100;
+                    weaponRange = 150;
                     damage = 15;
                     fireRate = 1;
                     numberOfProjectilesPerFire = 5;
@@ -56,7 +56,7 @@ namespace Sombi
                     break;
                 case 4:
                     projectileSpeed = 15f;
-                    weaponRange = 100;
+                    weaponRange = 175;
                     damage = 18;
                     fireRate = 0.75f;
                     numberOfProjectilesPerFire = 5;
@@ -64,7 +64,7 @@ namespace Sombi
                     break;
                 case 5:
                     projectileSpeed = 15f;
-                    weaponRange = 150;
+                    weaponRange = 200;
                     damage = 22;
                     fireRate = 1;
                     numberOfProjectilesPerFire = 5;
@@ -72,7 +72,7 @@ namespace Sombi
                     break;
                 case 6:
                     projectileSpeed = 15f;
-                    weaponRange = 150;
+                    weaponRange = 225;
                     damage = 25;
                     fireRate = 0.5f;
                     numberOfProjectilesPerFire = 7;
