@@ -156,7 +156,7 @@ namespace Sombi
                     case 1:
                         if (!(player1Active.Y + 1 == 1))
                         {
-                            if (players[0].cash > (player1Active.Y + 1) * upgradeCost - upgradeCost && shotgunLevel == player1Active.Y)
+                            if (players[0].cash >= (player1Active.Y + 1) * upgradeCost - upgradeCost && shotgunLevel == player1Active.Y)
                             {
                                 shotgunLevel = (int)player1Active.Y + 1;
                                 players[0].cash -= (int)(player1Active.Y + 1) * upgradeCost - upgradeCost;
@@ -166,7 +166,7 @@ namespace Sombi
                     case 0:
                         if (!(player1Active.Y + 1 == 1))
                         {
-                            if (players[0].cash > (player1Active.Y + 1) * upgradeCost - upgradeCost && rifleLevel == player1Active.Y)
+                            if (players[0].cash >= (player1Active.Y + 1) * upgradeCost - upgradeCost && rifleLevel == player1Active.Y)
                             {
                                 rifleLevel = (int)player1Active.Y + 1;
                                 players[0].cash -= (int)(player1Active.Y + 1) * upgradeCost - upgradeCost;
@@ -176,7 +176,7 @@ namespace Sombi
                     case 2:
                         if (!(player1Active.Y + 1 == 1))
                         {
-                            if (players[0].cash > (player1Active.Y + 1) * upgradeCost - upgradeCost && explosiveLevel == player1Active.Y)
+                            if (players[0].cash >= (player1Active.Y + 1) * upgradeCost - upgradeCost && explosiveLevel == player1Active.Y)
                             {
                                 explosiveLevel = (int)player1Active.Y + 1;
                                 players[0].cash -= (int)(player1Active.Y + 1) * upgradeCost - upgradeCost;
@@ -198,7 +198,7 @@ namespace Sombi
                     case 4:
                         if (!(player2Active.Y + 1 == 1))
                         {
-                            if (players[1].cash > (player2Active.Y + 1) * upgradeCost - upgradeCost && shotgunLevel == player2Active.Y)
+                            if (players[1].cash >= (player2Active.Y + 1) * upgradeCost - upgradeCost && shotgunLevel == player2Active.Y)
                             {
                                 shotgunLevel = (int)player2Active.Y + 1;
                                 players[1].cash -= (int)(player2Active.Y + 1) * upgradeCost - upgradeCost;
@@ -208,7 +208,7 @@ namespace Sombi
                     case 3:
                         if (!(player2Active.Y + 1 == 1))
                         {
-                            if (players[1].cash > (player2Active.Y + 1) * upgradeCost - upgradeCost && rifleLevel == player2Active.Y)
+                            if (players[1].cash >= (player2Active.Y + 1) * upgradeCost - upgradeCost && rifleLevel == player2Active.Y)
                             {
                                 rifleLevel = (int)player2Active.Y + 1;
                                 players[1].cash -= (int)(player2Active.Y + 1) * upgradeCost - upgradeCost;
@@ -218,7 +218,7 @@ namespace Sombi
                     case 5:
                         if (!(player2Active.Y + 1 == 1))
                         {
-                            if (players[1].cash > (player2Active.Y + 1) * upgradeCost - upgradeCost && explosiveLevel == player2Active.Y)
+                            if (players[1].cash >= (player2Active.Y + 1) * upgradeCost - upgradeCost && explosiveLevel == player2Active.Y)
                             {
                                 explosiveLevel = (int)player2Active.Y + 1;
                                 players[1].cash -= (int)(player2Active.Y + 1) * upgradeCost - upgradeCost;

@@ -24,7 +24,7 @@ namespace Sombi
             //this.pos = startPos;
             this.direction = new Vector2(0, 1);
             hitBox = new Rectangle((int)pos.X, (int)pos.Y, 50, 50);
-            this.health = 20 + GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers;
+            this.health = 0;//20 + GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers;
             
             this.activationRange = 250;
             this.haveTarget = false;
