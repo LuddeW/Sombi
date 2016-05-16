@@ -12,10 +12,11 @@ namespace Sombi
         public Rifle() : base()
         {
             projectileSpeed = 15.0f;
-            weaponRange = 300;
-            damage = 20;
-            fireRate = 2;
-            numberOfProjectilesPerFire = 6;
+            weaponRange = 290;
+            damage = 19;
+            fireRate = 0.55f;
+            numberOfProjectilesPerFire = 1;
+            projectileSpread = 40;
             //projectileSpread = 1;
         }
         public Rifle(int level) : base()
@@ -28,49 +29,49 @@ namespace Sombi
             {
                 case 1:
                     projectileSpeed = 15.0f;
-                    weaponRange = 300;
-                    damage = 20;
-                    fireRate = 0.5f;
+                    weaponRange = 290;
+                    damage = 19;
+                    fireRate = 0.55f;
                     numberOfProjectilesPerFire = 1;
                     projectileSpread = 40;
                     break;
                 case 2:
                     projectileSpeed = 15.0f;
-                    weaponRange = 350;
-                    damage = 25;
+                    weaponRange = 310;
+                    damage = 24;
                     fireRate = 0.5f;
                     numberOfProjectilesPerFire = 1;
                     projectileSpread = 40;
                     break;
                 case 3:
                     projectileSpeed = 15.0f;
-                    weaponRange = 350;
-                    damage = 30;
-                    fireRate = 0.25f;
+                    weaponRange = 330;
+                    damage = 29;
+                    fireRate = 0.45f;
                     numberOfProjectilesPerFire = 1;
                     projectileSpread = 40;
                     break;
                 case 4:
                     projectileSpeed = 15.0f;
                     weaponRange = 350;
-                    damage = 35;
-                    fireRate = 0.25f;
+                    damage = 34;
+                    fireRate = 0.4f;
                     numberOfProjectilesPerFire = 1;
                     projectileSpread = 40;
                     break;
                 case 5:
                     projectileSpeed = 15.0f;
-                    weaponRange = 400;
-                    damage = 40;
-                    fireRate = 0.25f;
+                    weaponRange = 370;
+                    damage = 39;
+                    fireRate = 0.35f;
                     numberOfProjectilesPerFire = 1;
                     projectileSpread = 40;
                     break;
                 case 6:
                     projectileSpeed = 15.0f;
-                    weaponRange = 400;
-                    damage = 45;
-                    fireRate = 0.10f;
+                    weaponRange = 39;
+                    damage = 44;
+                    fireRate = 0.30f;
                     numberOfProjectilesPerFire = 1;
                     projectileSpread = 40;
                     break;
