@@ -40,6 +40,8 @@ namespace Sombi
         float fadeInPercentage = 1;
         float fadeOutPercentage = 0;
 
+        PackageMarker marker;
+
         public GameManager(ContentManager contentManager, Game1 game)
         {
             this.contentManager = contentManager;
@@ -58,6 +60,8 @@ namespace Sombi
             levelMenuManager = new LevelMenuManager();
             packageManager = new PackageManager(enemyManager);
             this.game = game;
+
+            
 
         }
 
@@ -195,6 +199,8 @@ namespace Sombi
                 enemyManager.AddNewWave(0.5f, 36 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
                 packageManager.AddPackage();
 
+                marker = new PackageMarker(playerManager.player1.pos, packageManager.package.pos);
+
                 if (GlobalValues.numberOfPlayers == 1)
                 {
                     playerManager.CreateOnePlayer();
@@ -259,7 +265,7 @@ namespace Sombi
         {
 
             spriteBatch.Draw(TextureLibrary.mapTex, Vector2.Zero, Color.White);
-            packageManager.Draw(spriteBatch);
+            packageManager.Draw(spriteBatch); 
             enemyManager.DrawBlood(spriteBatch);
             fpsManager.Draw(spriteBatch);
             playerManager.Draw(spriteBatch);
@@ -269,6 +275,7 @@ namespace Sombi
             hudManager.Draw(spriteBatch, GlobalValues.numberOfPlayers);
             Color fadeInColor = Color.Black;
             spriteBatch.Draw(TextureLibrary.fadeScreenTex, new Vector2(camera.position.X,camera.position.Y), fadeInColor * fadeInPercentage);
+            marker.Draw(spriteBatch);
         }
 
         private void PlayingUpdate(GameTime gameTime)
@@ -306,6 +313,7 @@ namespace Sombi
             enemyManager.CheckPlayerZombieCollisions(playerManager.players);
             playerManager.CheckPlayerBulletCollisions();
             fadeInPercentage -= 0.008f;
+            marker.Update(playerManager.player1.pos, packageManager.package.pos);
             if (playerManager.GameOver())
             {
                 fadeOutPercentage += 0.010f;

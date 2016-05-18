@@ -9,9 +9,9 @@ namespace Sombi
 {
     class PackageManager
     {
-        Package package;
+        public Package package;
         public Rectangle dropZone;
-        EnemyManager enemyManager;
+        EnemyManager enemyManager; 
         public static int deliveredPackages;
         public static int numberOfCarriedPackages;
         public PackageManager(EnemyManager enemyManager)
@@ -19,6 +19,7 @@ namespace Sombi
             //package = new Package(new Vector2(850, 550));
             dropZone = new Rectangle(1600, 1375, 160, 170);
             this.enemyManager = enemyManager;
+            
         }
 
         public void Update(GameTime gameTime, List<Player> players)
@@ -26,6 +27,7 @@ namespace Sombi
             GetChest(players);
             leaveChest(players);
             package.Update(gameTime);
+           
         }
         public void AddPackage()
         {
@@ -72,6 +74,7 @@ namespace Sombi
                             GlobalValues.difficultyLevel++;
                             deliveredPackages++;
                             numberOfCarriedPackages = 0;
+                            
                         }
                         else
                         {
@@ -79,7 +82,7 @@ namespace Sombi
                             HighscoreManager.score += 100;
                             package.taken = false;
                             GlobalValues.difficultyLevel++;
-                            AddPackage();
+                            //AddPackage();
                             deliveredPackages++;
                         }
                         AddPackage();

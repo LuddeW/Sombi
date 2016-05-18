@@ -67,6 +67,7 @@
     <Compile Include="Objects\Package.cs" />
     <Compile Include="Objects\Player.cs" />
     <Compile Include="Manager\PackageManager.cs" />
+    <Compile Include="PackageMarker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Map\Tile.cs" />
