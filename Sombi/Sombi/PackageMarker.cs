@@ -32,10 +32,10 @@ namespace Sombi
         public void Draw(SpriteBatch sb)
         {
             Vector2 pos = startPos;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
-                pos += Vector2.Normalize(endPos - startPos) * 20;
-                sb.Draw(TextureLibrary.bulletBlue, pos, Color.Red);               
+                pos += Vector2.Normalize(endPos - startPos) * 50;
+                sb.Draw(TextureLibrary.guideLineTex, pos, Color.White * 0.7f);               
             }
         }
     }
