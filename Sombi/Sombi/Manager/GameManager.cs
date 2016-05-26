@@ -137,7 +137,11 @@ namespace Sombi
                             if (p.GamePadState.IsButtonDown(Buttons.B))
                             {
                                 playerManager.players[0].pos = GlobalValues.PLAYER_ONE_START_POS;
-                                playerManager.players[1].pos = GlobalValues.PLAYER_TWO_START_POS;
+                                if (GlobalValues.numberOfPlayers == 2)
+                                {
+                                    playerManager.players[1].pos = GlobalValues.PLAYER_TWO_START_POS;
+                                }
+                               
                                 currentGameState = GameState.Playing;
                             }
                         }
@@ -325,6 +329,7 @@ namespace Sombi
                     Grid.CreateGridFactory();
                     menuManager.start = false;
                     currentGameState = GameState.MainMenu;
+                    GlobalValues.difficultyLevel = 1;
                     highscoreManager.WriteScore();
                     playerManager.CreatePlayers();
                     enemyManager.zombies.Clear();
@@ -360,6 +365,13 @@ namespace Sombi
                 if (playerManager.players[0].HitBox.Intersects(packageManager.dropZone) && currentKeyboard.IsKeyDown(Keys.B) && !oldKeyboard.IsKeyDown(Keys.B))
                 {
                     currentGameState = GameState.LevelUp;
+                }
+                foreach (Player p in playerManager.players)
+                {
+                    if (p.HitBox.Intersects(packageManager.dropZone) && p.GamePadState.IsButtonDown(Buttons.X))
+                    {
+                        currentGameState = GameState.LevelUp;
+                    }
                 }
             }
         }

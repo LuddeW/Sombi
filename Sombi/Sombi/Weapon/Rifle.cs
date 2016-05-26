@@ -69,7 +69,7 @@ namespace Sombi
                     break;
                 case 6:
                     projectileSpeed = 15.0f;
-                    weaponRange = 39;
+                    weaponRange = 390;
                     damage = 44;
                     fireRate = 0.30f;
                     numberOfProjectilesPerFire = 1;

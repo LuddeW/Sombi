@@ -67,8 +67,8 @@ namespace Sombi
                     {
                         if (GlobalValues.numberOfPlayers == 2)
                         {
-                            players[0].cash += 110;
-                            players[1].cash += 110;
+                            players[0].cash += 100;
+                            players[1].cash += 100;
                             HighscoreManager.score += 100;
                             package.taken = false;
                             GlobalValues.difficultyLevel++;

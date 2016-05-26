@@ -69,7 +69,7 @@ namespace Sombi
             {
                 if (players[0].GamePadState.IsButtonDown(Buttons.A) && players[0].HitBox.Intersects(menu.startRect) && !players[1].HitBox.Intersects(menu.startRect))
                 {
-                    numberOfPlayers = 2;
+                    numberOfPlayers = 1;
                     pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     fadePercentage += 0.03f;
                     //if (pressedTime > timeToPress)
