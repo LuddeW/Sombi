@@ -9,7 +9,6 @@ namespace Sombi
 {
     class BloodStain
     {
-        int time;
         int bloodNr;
         Vector2 pos;
 

@@ -49,13 +49,13 @@ namespace Sombi
         }
         public static void PlaySound(SoundEffectInstance sound)
         {
-            if (sound != null)
-            {
+            //if (sound != null)
+            //{
                 if (sound.State == SoundState.Stopped)
                 {
                     sound.Play();
                 }
-            }
+            //}
         }
         public static void StopSound(SoundEffectInstance sound)
         {
