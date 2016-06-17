@@ -27,6 +27,7 @@ namespace Sombi
             RemoveExplosions();
 
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (Projectile b in bullets)
@@ -36,10 +37,8 @@ namespace Sombi
             
         }
 
-
         public void AddBullets(Projectile proj)
         {
-
             bullets.Add(proj);
         }
 
@@ -53,8 +52,7 @@ namespace Sombi
                     if (bullets[i].timeToLiveAfterImpact == 0)
                     {
                         bullets.Remove(bullets[i]);
-                    }
-                    
+                    }                    
                 }
 
             }

@@ -9,6 +9,7 @@ namespace Sombi
 {
     class EnemyManager
     {
+        private int spawnIndex;
         private int currentWaveSize;
         private float waveTimer;
         private float currentWaveInterval;
@@ -30,11 +31,7 @@ namespace Sombi
             {
                 z.Update(gameTime);
             }
-            if (currentWaveSize > 0)
-            {
-                WaveSpawner(gameTime);
-            }
-
+            WaveSpawner(gameTime);
         }
 
         public void AddZombie(Vector2 startPos)
@@ -58,10 +55,9 @@ namespace Sombi
                 }
             }
         }
+
         public void AddZombiesToRandomLocation(int nrOfZombiesToAdd)//All zombies at once
         {
-            int spawnIndex;
-
             for (int i = 0; i < nrOfZombiesToAdd; i++)
             {
                 spawnIndex = GlobalValues.rnd.Next(0, Grid.spawnPoints.Count);
@@ -77,6 +73,7 @@ namespace Sombi
                 z.Draw(spriteBatch);
             }
         }
+
         public void DrawBlood(SpriteBatch spriteBatch)
         {
             foreach (BloodStain bs in bloodPositions)
@@ -84,10 +81,12 @@ namespace Sombi
                 bs.Draw(spriteBatch);
             }
         }
+
         public void DrawZombieCount(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(TextureLibrary.billBoardText, "" + zombies.Count, new Vector2(1366, 1430), GlobalValues.billBoardColor);
         }
+
         public void CheckForBulletCollisions(List<Projectile> bulletList)
         {
             for (int i = 0; i < zombies.Count; i++)
@@ -102,8 +101,6 @@ namespace Sombi
                         {
                             bulletList.RemoveAt(k);
                         }
-
-
                     }
                 }
             }
@@ -113,6 +110,7 @@ namespace Sombi
             currentWaveSize += waveSize;
             currentWaveInterval = intervalTime;
         }
+
         private void WaveSpawner(GameTime gameTime)
         {
             waveTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -123,6 +121,7 @@ namespace Sombi
                 currentWaveSize--;
             }
         }
+
         public void CheckPlayerZombieCollisions(List<Player> players)
         {
             for (int i = 0; i < zombies.Count; i++)
@@ -133,11 +132,9 @@ namespace Sombi
                     {
                         players[j].handleBulletHit(10);
                     }
-
                     if (Vector2.Distance(zombies[i].pos, players[j].pos) < zombies[i].activationRange && !players[j].eaten)
                     {
                         zombies[i].SetChasingDirection(players[j].pos);
-
                     }
                     else if (Vector2.Distance(zombies[i].pos, players[j].pos) > zombies[i].activationRange)
                     {

@@ -14,9 +14,7 @@ namespace Sombi
         public Weapon playerOneWeapon;
         public Weapon playerTwoWeapon;
         private float timeSinceLastPlayerOneBullet;
-        private float timeSinceLastPlayerTwoBullet;
-        KeyboardState currentKeyboard;
-        KeyboardState oldKeyboard;      
+        private float timeSinceLastPlayerTwoBullet;   
 
         public WeaponManager()
         {
@@ -117,7 +115,6 @@ namespace Sombi
                                 if (k % 2 == 0)
                                 {
                                     b = new Bullet(position, playerTwoWeapon.projectileSpeed, angle - (float)((Math.PI / 180) * angleIndex), playerTwoWeapon.damage, playerTwoWeapon.weaponRange, PlayerID);
-
                                 }
                                 else
                                 {
