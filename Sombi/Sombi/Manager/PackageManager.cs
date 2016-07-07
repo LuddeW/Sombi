@@ -16,7 +16,6 @@ namespace Sombi
         public static int numberOfCarriedPackages;
         public PackageManager(EnemyManager enemyManager)
         {
-            //package = new Package(new Vector2(850, 550));
             dropZone = new Rectangle(1600, 1375, 160, 170);
             this.enemyManager = enemyManager;
             
@@ -82,11 +81,10 @@ namespace Sombi
                             HighscoreManager.score += 100;
                             package.taken = false;
                             GlobalValues.difficultyLevel++;
-                            //AddPackage();
                             deliveredPackages++;
                         }
-                        AddPackage();
-                        //enemyManager.AddZombiesToRandomLocation(13 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
+
+                        AddPackage();      
                         enemyManager.AddNewWave(0.5f, 36 * GlobalValues.difficultyLevel * GlobalValues.numberOfPlayers);
                     }
                 }

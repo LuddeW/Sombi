@@ -16,7 +16,6 @@ namespace Sombi
         public bool settings = false;
         public bool highscore = false;
         public bool exit = false;
-        private float pressedTime;
         float fadePercentage = 1;
         public int numberOfPlayers;
 
@@ -24,7 +23,6 @@ namespace Sombi
         {
             menu = new Menu();
             this.players = players;
-            pressedTime = 0;
         }
 
         public void Update(GameTime gameTime)
@@ -69,37 +67,30 @@ namespace Sombi
                 if (players[0].GamePadState.IsButtonDown(Buttons.A) && players[0].HitBox.Intersects(menu.startRect) && !players[1].HitBox.Intersects(menu.startRect))
                 {
                     numberOfPlayers = 1;
-                    //pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     fadePercentage += 0.03f;
-                    //if (pressedTime > timeToPress)
+
+                    if (fadePercentage > 1)
                     {
-                        //pressedTime = 0;
-                        if (fadePercentage > 1)
-                        {
-                            start = true;
-                            Grid.menu = false;
-                            Grid.CreateGridFactory();
-                            fadePercentage = 1;
-                        }
+                        start = true;
+                        Grid.menu = false;
+                        Grid.CreateGridFactory();
+                        fadePercentage = 1;
                     }
                 }
 
                 else if (players[0].GamePadState.IsButtonDown(Buttons.A) && players[0].HitBox.Intersects(menu.startRect) && players[1].HitBox.Intersects(menu.startRect))
                 {
                     numberOfPlayers = 2;
-                    pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     fadePercentage += 0.03f;
-                    //if (pressedTime > timeToPress)
+
+                    if (fadePercentage > 1)
                     {
-                        pressedTime = 0;
-                        if (fadePercentage > 1)
-                        {
-                            start = true;
-                            Grid.menu = false;
-                            Grid.CreateGridFactory();
-                            fadePercentage = 1;
-                        }
+                        start = true;
+                        Grid.menu = false;
+                        Grid.CreateGridFactory();
+                        fadePercentage = 1;
                     }
+
                 }
                 GlobalValues.numberOfPlayers = numberOfPlayers;
             }
@@ -111,16 +102,13 @@ namespace Sombi
             {
                 if (player.GamePadState.IsButtonDown(Buttons.A) && player.HitBox.Intersects(menu.exitRect))
                 {
-                    pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     fadePercentage += 0.03f;
-                    //if (pressedTime > timeToPress)
+
+                    if (fadePercentage > 1)
                     {
-                        pressedTime = 0;
-                        if (fadePercentage > 1)
-                        {
-                            exit = true;
-                        }
+                        exit = true;
                     }
+
                 }
             }
         }
@@ -131,16 +119,13 @@ namespace Sombi
             {
                 if (player.GamePadState.IsButtonDown(Buttons.A) && player.HitBox.Intersects(menu.settingRect))
                 {
-                    pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     fadePercentage += 0.03f;
-                    //if (pressedTime > timeToPress)
+
+                    if (fadePercentage > 1)
                     {
-                        pressedTime = 0;
-                        if (fadePercentage > 1)
-                        {
-                            settings = true;
-                        }
+                        settings = true;
                     }
+
                 }
             }
         }
@@ -151,16 +136,13 @@ namespace Sombi
             {
                 if (player.GamePadState.IsButtonDown(Buttons.A) && player.HitBox.Intersects(menu.highscoreRect))
                 {
-                    pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     fadePercentage += 0.03f;
-                    //if (pressedTime > timeToPress)
+
+                    if (fadePercentage > 1)
                     {
-                        pressedTime = 0;
-                        if (fadePercentage > 1)
-                        {
-                            highscore = true;
-                        }
+                        highscore = true;
                     }
+
                 }
             }
         }

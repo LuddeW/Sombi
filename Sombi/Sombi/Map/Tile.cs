@@ -24,14 +24,15 @@ namespace Sombi
         {
             this.passable = passable;
         }
-        public void SetHasSombie (bool b)
-        {
-            this.hasZombie = b;
-        }
         public bool GetPassable()
         {
             return this.passable;
         }
+
+        //public void SetHasSombie (bool b)
+        //{
+        //    this.hasZombie = b;
+        //}
     }
     
 }
