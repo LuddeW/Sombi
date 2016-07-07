@@ -16,8 +16,7 @@ namespace Sombi
             damage = 19;
             fireRate = 0.55f;
             numberOfProjectilesPerFire = 1;
-            projectileSpread = 40;
-            //projectileSpread = 1;
+            projectileSpread = 40;         
         }
         public Rifle(int level) : base()
         {
@@ -33,7 +32,7 @@ namespace Sombi
                     damage = 19;
                     fireRate = 0.55f;
                     numberOfProjectilesPerFire = 1;
-                    projectileSpread = 40;
+                    projectileSpread = 1000;
                     break;
                 case 2:
                     projectileSpeed = 15.0f;

@@ -268,18 +268,18 @@ namespace Sombi
         private void PlayingDraw(SpriteBatch spriteBatch)
         {
 
+            spriteBatch.Draw(TextureLibrary.mapTex, Vector2.Zero, Color.White);
             packageManager.Draw(spriteBatch); 
             enemyManager.DrawBlood(spriteBatch);
             fpsManager.Draw(spriteBatch);
             playerManager.Draw(spriteBatch);
             enemyManager.DrawZombie(spriteBatch);
             enemyManager.DrawZombieCount(spriteBatch);
+            floatingTextures.Draw(spriteBatch);
             hudManager.Draw(spriteBatch, GlobalValues.numberOfPlayers);
             Color fadeInColor = Color.Black;
             spriteBatch.Draw(TextureLibrary.fadeScreenTex, new Vector2(camera.position.X,camera.position.Y), fadeInColor * fadeInPercentage);
             marker.Draw(spriteBatch);
-            floatingTextures.Draw(spriteBatch);
-            spriteBatch.Draw(TextureLibrary.mapTex, Vector2.Zero, Color.White);
         }
 
         private void PlayingUpdate(GameTime gameTime)

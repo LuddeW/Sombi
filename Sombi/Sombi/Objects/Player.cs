@@ -17,8 +17,8 @@ namespace Sombi
 
     class Player : GameObject
     {
+        //Vector2 direction;
         public Vector2 velocity;
-        Vector2 direction;
         public float angle;
         public float playerSpeed;
         float maxspeed;
@@ -172,10 +172,8 @@ namespace Sombi
                 }
                 else
                 {
-                    KeyBoardMovement(gameTime);
-                    //Collide();                  
+                    KeyBoardMovement(gameTime);                 
                 }
-                // Collide();
                 UpdateHitbox();
             }
             Revive(gameTime);
@@ -191,15 +189,11 @@ namespace Sombi
             if (!dead)
             {
                 if (playerID == PlayerID.One)
-                {
                     animationplayer.Draw(spriteBatch, pos, angle);
-                }
-                //spriteBatch.Draw(TextureLibrary.player1RifleTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player1RifleTex.Width / 2, TextureLibrary.player1RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
-                // spriteBatch.Draw(TextureLibrary.player1RocketTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player1RifleTex.Width / 2, TextureLibrary.player1RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
+
                 if (playerID == PlayerID.Two)
                     animationplayer.Draw(spriteBatch, pos, angle);
-                //    spriteBatch.Draw(TextureLibrary.player2RifleTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player2RifleTex.Width / 2, TextureLibrary.player2RifleTex.Height / 2), 1f, SpriteEffects.None, 0f);
-                //spriteBatch.Draw(TextureLibrary.sourceRectTex, new Vector2(hitBox.X, hitBox.Y), Color.Red);
+
             }
         }
         public void DrawDead(SpriteBatch spriteBatch)
@@ -212,7 +206,7 @@ namespace Sombi
                     if (GlobalValues.numberOfPlayers == 2)
                     {
                         spriteBatch.Draw(TextureLibrary.player2DeadTex, pos, null, Color.White, angle, new Vector2(TextureLibrary.player2IncapacitatedTex.Width / 2, TextureLibrary.player2IncapacitatedTex.Height / 2), 1f, SpriteEffects.None, 0f);
-                    }                   
+                    }
             }
         }
         private void SetPlayerID(int ID)
@@ -282,12 +276,10 @@ namespace Sombi
         {
             if (gamePadState.Triggers.Right > 0.5f || Keyboard.GetState().IsKeyDown(Keys.Space))
             {
-                //isShooting = true;
                 return true;
             }
             else
             {
-                //isShooting = false;
                 return false;
             }
         }
@@ -322,57 +314,6 @@ namespace Sombi
                 pos += velocity * maxspeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
-
-        }
-
-        private void Collide()
-        {
-            if (direction.X > 0)
-            {
-                if (Grid.grid[(int)((pos.X) / 50) + (int)direction.X, (int)(pos.Y) / 50].passable != true)
-                {
-                    pos.X += direction.X * -1;
-                }
-                else
-                {
-                    pos += velocity;
-                }
-            }
-            else if (direction.X < 0)
-            {
-                if (Grid.grid[(int)((pos.X + (TextureLibrary.player1RifleTex.Width / 3)) / 50) + (int)direction.X, (int)(pos.Y) / 50].passable != true)
-                {
-                    pos.X += direction.X * -1;
-
-                }
-                else
-                {
-                    pos += velocity;
-                }
-            }
-
-            if (direction.Y > 0)
-            {
-                if (Grid.grid[(int)(pos.X / 50), ((int)(pos.Y) / 50) + (int)direction.Y].passable != true)
-                {
-                    pos.Y += direction.Y * -1;
-                }
-                else
-                {
-                    pos += velocity;
-                }
-            }
-            else if (direction.Y < 0)
-            {
-                if (Grid.grid[(int)((pos.X) / 50), ((int)(pos.Y + TextureLibrary.player1RifleTex.Height) / 50) + (int)direction.Y].passable != true)
-                {
-                    pos.Y += direction.Y * -1;
-                }
-                else
-                {
-                    pos += velocity;
-                }
-            }
 
         }
 

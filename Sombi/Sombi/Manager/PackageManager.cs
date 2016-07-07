@@ -25,7 +25,6 @@ namespace Sombi
         {
             GetChest(players);
             leaveChest(players);
-            package.Update(gameTime);
            
         }
         public void AddPackage()
