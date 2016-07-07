@@ -19,20 +19,6 @@ namespace Sombi
             this.passable = passable;
             this.hasZombie = false;
         }
-
-        public void SetPassable(bool passable)
-        {
-            this.passable = passable;
-        }
-        public bool GetPassable()
-        {
-            return this.passable;
-        }
-
-        //public void SetHasSombie (bool b)
-        //{
-        //    this.hasZombie = b;
-        //}
     }
     
 }
