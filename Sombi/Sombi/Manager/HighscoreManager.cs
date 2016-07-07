@@ -32,11 +32,6 @@ namespace Sombi
             highScores = new List<int>();
         }
 
-        public void Update()
-        {
-
-        }
-
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(TextureLibrary.HudText, highScores[0].ToString(), new Vector2(100, 100), Color.Black);

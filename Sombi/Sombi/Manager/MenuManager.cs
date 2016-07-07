@@ -16,7 +16,6 @@ namespace Sombi
         public bool settings = false;
         public bool highscore = false;
         public bool exit = false;
-        private float timeToPress;
         private float pressedTime;
         float fadePercentage = 1;
         public int numberOfPlayers;
@@ -25,7 +24,6 @@ namespace Sombi
         {
             menu = new Menu();
             this.players = players;
-            timeToPress = 2f;
             pressedTime = 0;
         }
 
@@ -65,16 +63,17 @@ namespace Sombi
                 Grid.menu = false;
                 Grid.CreateGridFactory();
             }
+
             for (int i = 0; i < players.Count; i++)
             {
                 if (players[0].GamePadState.IsButtonDown(Buttons.A) && players[0].HitBox.Intersects(menu.startRect) && !players[1].HitBox.Intersects(menu.startRect))
                 {
                     numberOfPlayers = 1;
-                    pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    //pressedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     fadePercentage += 0.03f;
                     //if (pressedTime > timeToPress)
                     {
-                        pressedTime = 0;
+                        //pressedTime = 0;
                         if (fadePercentage > 1)
                         {
                             start = true;
@@ -103,7 +102,7 @@ namespace Sombi
                     }
                 }
                 GlobalValues.numberOfPlayers = numberOfPlayers;
-            }                        
+            }
         }
 
         private void CheckExit(GameTime gameTime)
