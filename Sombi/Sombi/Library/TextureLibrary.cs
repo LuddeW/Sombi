@@ -67,7 +67,6 @@ namespace Sombi
         public static Texture2D busTex { get; private set; }
         public static Texture2D tent { get; private set; }
         public static Texture2D Buildings { get; private set; }
-        public static Texture2D Roof1 { get; private set; }
 
         //Floating Objects
         public static Texture2D cloud1Tex { get; private set; }
@@ -191,7 +190,6 @@ namespace Sombi
             busTex = Content.Load<Texture2D>("Bus1");
             tent = Content.Load<Texture2D>("base");
             Buildings = Content.Load<Texture2D>("Buildings");
-            Roof1 = Content.Load<Texture2D>("Tak1");
 
             //Floating Objects
             cloud1Tex = Content.Load<Texture2D>("Cloud1");
